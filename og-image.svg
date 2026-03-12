@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0a0a0a"/>
+
+  <!-- Ambient glow -->
+  <radialGradient id="glow" cx="70%" cy="40%" r="50%">
+    <stop offset="0%" stop-color="#e8ff4d" stop-opacity="0.06"/>
+    <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0"/>
+  </radialGradient>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Top border accent -->
+  <rect x="60" y="60" width="60" height="3" rx="1.5" fill="#e8ff4d"/>
+
+  <!-- Name -->
+  <text x="60" y="200" font-family="Georgia, serif" font-size="72" font-weight="900" fill="#f0ede8" letter-spacing="-2">Andrew Dumitru</text>
+
+  <!-- Title -->
+  <text x="60" y="260" font-family="Georgia, serif" font-size="28" fill="#a09b93" letter-spacing="0">UX &amp; Product Designer</text>
+
+  <!-- Tagline -->
+  <text x="60" y="360" font-family="Georgia, serif" font-size="22" fill="#5c5852">Crafting purposeful digital experiences</text>
+  <text x="60" y="395" font-family="Georgia, serif" font-size="22" fill="#5c5852">that make people feel something.</text>
+
+  <!-- URL pill -->
+  <rect x="60" y="500" width="310" height="44" rx="22" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="80" y="528" font-family="Georgia, serif" font-size="16" fill="#a09b93">adumitru195.github.io/Portfolio</text>
+
+  <!-- Decorative grid lines -->
+  <line x1="900" y1="60" x2="900" y2="570" stroke="#1a1a1a" stroke-width="1"/>
+  <line x1="1050" y1="60" x2="1050" y2="570" stroke="#1a1a1a" stroke-width="1"/>
+  <line x1="900" y1="200" x2="1140" y2="200" stroke="#1a1a1a" stroke-width="1"/>
+  <line x1="900" y1="350" x2="1140" y2="350" stroke="#1a1a1a" stroke-width="1"/>
+  <line x1="900" y1="500" x2="1140" y2="500" stroke="#1a1a1a" stroke-width="1"/>
+
+  <!-- Accent dot cluster -->
+  <circle cx="975" cy="280" r="3" fill="#e8ff4d"/>
+  <circle cx="1010" cy="280" r="3" fill="#e8ff4d" opacity="0.5"/>
+  <circle cx="1045" cy="280" r="3" fill="#e8ff4d" opacity="0.25"/>
+
+  <!-- Large A monogram -->
+  <text x="920" y="490" font-family="Georgia, serif" font-size="220" font-weight="900" fill="#1a1a1a" letter-spacing="-8">A</text>
+</svg>
