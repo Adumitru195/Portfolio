@@ -72,7 +72,7 @@ export const projects: Project[] = [
           '/Portfolio/projects/arcadian-homes/wireframes/wireframe-10.webp',
           '/Portfolio/projects/arcadian-homes/wireframes/wireframe-11.webp',
         ],
-        imageLayout: 'grid',
+        imageLayout: 'grid-2',
       },
       {
         id: 'usability-study',

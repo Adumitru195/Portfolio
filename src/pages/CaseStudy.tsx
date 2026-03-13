@@ -37,7 +37,23 @@ function SectionImages({ section }: { section: CaseStudySection }) {
     )
   }
 
-  // grid
+  if (section.imageLayout === 'grid-2') {
+    return (
+      <div className="mt-6 grid grid-cols-2 gap-3">
+        {section.images.map((src, i) => (
+          <div key={i} className="rounded-xl overflow-hidden border border-subtle">
+            <img
+              src={src}
+              alt={`${section.title} ${i + 1}`}
+              className="w-full block"
+            />
+          </div>
+        ))}
+      </div>
+    )
+  }
+
+  // grid (3-col)
   return (
     <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-3">
       {section.images.map((src, i) => (

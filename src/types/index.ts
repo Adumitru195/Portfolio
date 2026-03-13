@@ -3,7 +3,7 @@ export interface CaseStudySection {
   title: string
   body?: string
   images?: string[]
-  imageLayout?: 'single' | 'grid' | 'gallery'
+  imageLayout?: 'single' | 'grid' | 'grid-2' | 'gallery'
 }
 
 export interface Project {
