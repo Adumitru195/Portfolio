@@ -3,6 +3,8 @@ export interface Project {
   title: string
   subtitle: string
   description: string
+  problem?: string
+  goal?: string
   tags: string[]
   year: string
   role: string
