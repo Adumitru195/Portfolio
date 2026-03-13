@@ -105,13 +105,15 @@ export const projects: Project[] = [
     role: 'UX Designer — conception to delivery',
     tags: ['UX Design', 'Mobile App', 'Interaction Design', 'Usability Testing'],
     year: '2023',
-    image: '/Portfolio/projects/reelhouse-cinemas.svg',
+    image: '/Portfolio/projects/reelhouse-cinemas/image-01.webp',
     featured: true,
     sections: [
       {
         id: 'background',
         title: 'Background',
         body: 'ReelHouse is a concept project where people can browse movies, watch trailers, and book tickets. ReelHouse aims to make the process of searching for movies easy by way of simple-to-use filters, being accessible, and allowing its users to pick seats and book tickets in advance to avoid long lines.',
+        images: ['/Portfolio/projects/reelhouse-cinemas/image-02.webp'],
+        imageLayout: 'single',
       },
       {
         id: 'role',
@@ -119,19 +121,46 @@ export const projects: Project[] = [
         body: 'My role was to design the ReelHouse Cinemas app from conception to delivery. This included: conducting interviews, making paper and digital wireframes, low and high-fidelity prototyping, conducting usability studies, accounting for accessibility, and iterating on designs.',
       },
       {
+        id: 'user-research',
+        title: 'User Research',
+        body: 'I conducted user research to uncover the primary pain points of moviegoers — from searching for showtimes across multiple platforms to waiting in long lines. This research directly informed the core features of the app.',
+        images: [
+          '/Portfolio/projects/reelhouse-cinemas/image-03.png',
+          '/Portfolio/projects/reelhouse-cinemas/image-04.png',
+          '/Portfolio/projects/reelhouse-cinemas/image-05.webp',
+          '/Portfolio/projects/reelhouse-cinemas/image-06.webp',
+          '/Portfolio/projects/reelhouse-cinemas/image-07.webp',
+          '/Portfolio/projects/reelhouse-cinemas/image-08.webp',
+        ],
+        imageLayout: 'grid',
+      },
+      {
+        id: 'user-flow',
+        title: 'User Flow',
+        body: 'Mapping the full user flow from opening the app to completing a ticket booking helped ensure every step was intentional and friction-free.',
+        images: ['/Portfolio/projects/reelhouse-cinemas/image-09.webp'],
+        imageLayout: 'single',
+      },
+      {
         id: 'sketches',
         title: 'Sketches',
         body: 'Taking the time to draft multiple sketches of the same screen ensured that each element would address user pain points. For the homepage, I chose to make multiple options (New, Coming Soon, and Leaving Soon movies) visible from the moment users open the app.',
+        images: ['/Portfolio/projects/reelhouse-cinemas/image-10.png'],
+        imageLayout: 'single',
       },
       {
         id: 'wireframes',
         title: 'Wireframes & Prototypes',
         body: 'I wanted users to be able to quickly and easily select seats without worrying about whether they are selecting seats for the right day, time, or location. I also ensured inclusivity for those who require wheelchair access to easily see their options.',
+        images: ['/Portfolio/projects/reelhouse-cinemas/image-11.png'],
+        imageLayout: 'single',
       },
       {
         id: 'usability-study',
         title: 'Usability Study',
         body: 'I conducted two rounds of usability studies. The first round helped guide my designs from mockups to prototypes and surface pain points. The second showed that all five participants found the app easy and straightforward to use — validating the improvements made from round one.',
+        images: ['/Portfolio/projects/reelhouse-cinemas/image-12.png'],
+        imageLayout: 'single',
       },
       {
         id: 'iterations',
