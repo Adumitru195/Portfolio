@@ -8,7 +8,7 @@ export const person: PersonInfo = {
     "I'm a UX designer focused on the intersection of usability and craft — where systems thinking meets visual precision.",
     "I believe good design is invisible: it removes friction, builds trust, and lets the human at the center do what they came to do.",
   ],
-  email: 'AndrewDumitru@yahoo.com',
+  email: 'andrewdumitru@outlook.com',
   phone: '773-319-4110',
   socials: [
     { label: 'LinkedIn', url: 'https://www.linkedin.com/in/andrew-dumitru-1364a9200/' },
