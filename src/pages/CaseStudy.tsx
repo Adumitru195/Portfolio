@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowLeft } from '@phosphor-icons/react'
 import { projects } from '@/data/projects'
@@ -83,6 +84,25 @@ export default function CaseStudy() {
 
   const sectionIds = project.sections?.map((s) => s.id) ?? []
 
+  const [activeSection, setActiveSection] = useState<string>(sectionIds[0] ?? '')
+
+  useEffect(() => {
+    if (sectionIds.length === 0) return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id)
+        })
+      },
+      { rootMargin: '-20% 0px -70% 0px' },
+    )
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
+    return () => observer.disconnect()
+  }, [sectionIds.join(',')])
+
   return (
     <div className="min-h-screen bg-bg">
       {/* Back nav */}
@@ -106,17 +126,37 @@ export default function CaseStudy() {
           <motion.div variants={fadeUp} className="mb-12">
             <div className="flex items-center gap-3 mb-4">
               <div className="h-px w-8 bg-accent" />
-              <span className="text-xs text-text-muted uppercase tracking-widest">{project.year} — {project.role}</span>
+              <span className="text-xs text-text-muted uppercase tracking-widest">{project.year} · {project.role}</span>
             </div>
             <h1 className="font-display font-black text-4xl md:text-6xl tracking-tightest text-text-primary mb-3">
               {project.title}
             </h1>
             <p className="text-text-secondary text-lg md:text-xl mb-6">{project.subtitle}</p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 mb-8">
               {project.tags.map((tag) => (
                 <Tag key={tag} label={tag} />
               ))}
             </div>
+            {project.details && (
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-subtle">
+                <div>
+                  <p className="text-xs text-text-muted uppercase tracking-widest mb-1">Role</p>
+                  <p className="text-sm text-text-primary font-medium">{project.role}</p>
+                </div>
+                <div>
+                  <p className="text-xs text-text-muted uppercase tracking-widest mb-1">Timeline</p>
+                  <p className="text-sm text-text-primary font-medium">{project.details.timeline}</p>
+                </div>
+                <div>
+                  <p className="text-xs text-text-muted uppercase tracking-widest mb-1">Tools</p>
+                  <p className="text-sm text-text-primary font-medium">{project.details.tools}</p>
+                </div>
+                <div>
+                  <p className="text-xs text-text-muted uppercase tracking-widest mb-1">Platform</p>
+                  <p className="text-sm text-text-primary font-medium">{project.details.platform}</p>
+                </div>
+              </div>
+            )}
           </motion.div>
 
           {/* Cover image */}
@@ -131,11 +171,11 @@ export default function CaseStudy() {
             </motion.div>
           )}
 
-          {/* Overview: problem + goal */}
-          {(project.problem || project.goal) && (
+          {/* Overview: problem + goal + solution */}
+          {(project.problem || project.goal || project.solution) && (
             <motion.div
               variants={fadeUp}
-              className="mb-16 grid grid-cols-1 md:grid-cols-2 gap-6"
+              className={`mb-16 grid grid-cols-1 gap-6 ${project.solution ? 'md:grid-cols-3' : 'md:grid-cols-2'}`}
             >
               {project.problem && (
                 <div className="p-6 rounded-2xl border border-subtle bg-surface">
@@ -149,6 +189,12 @@ export default function CaseStudy() {
                   <p className="text-text-secondary text-sm leading-relaxed">{project.goal}</p>
                 </div>
               )}
+              {project.solution && (
+                <div className="p-6 rounded-2xl border border-subtle bg-surface">
+                  <p className="text-xs text-text-muted uppercase tracking-widest mb-3">Solution</p>
+                  <p className="text-text-secondary text-sm leading-relaxed">{project.solution}</p>
+                </div>
+              )}
             </motion.div>
           )}
 
@@ -158,13 +204,17 @@ export default function CaseStudy() {
               <p className="text-xs text-text-muted uppercase tracking-widest mb-4">Jump to</p>
               <div className="flex flex-wrap gap-2">
                 {project.sections!.map((s) => (
-                  <a
+                  <button
                     key={s.id}
-                    href={`#${s.id}`}
-                    className="text-xs px-3 py-1.5 rounded-full border border-subtle text-text-secondary hover:text-text-primary hover:border-text-muted transition-colors"
+                    onClick={() => document.getElementById(s.id)?.scrollIntoView({ behavior: 'smooth' })}
+                    className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
+                      activeSection === s.id
+                        ? 'border-text-primary bg-text-primary text-surface font-semibold'
+                        : 'border-subtle text-text-secondary hover:text-text-primary hover:border-text-muted'
+                    }`}
                   >
                     {s.title}
-                  </a>
+                  </button>
                 ))}
               </div>
             </motion.div>
@@ -176,7 +226,7 @@ export default function CaseStudy() {
               key={section.id}
               id={section.id}
               variants={fadeUp}
-              className="mb-20 scroll-mt-8"
+              className="mb-20 scroll-mt-24"
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="h-px flex-1 bg-subtle" />

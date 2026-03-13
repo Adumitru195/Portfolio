@@ -1,6 +1,6 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { useEffect } from 'react'
-import { ArrowDown, ArrowUpRight } from '@phosphor-icons/react'
+import { ArrowDown } from '@phosphor-icons/react'
 import { staggerContainer, fadeUp, slideInLeft } from '@/lib/motion'
 import { person } from '@/data/person'
 
@@ -31,9 +31,11 @@ export default function Hero() {
         style={{
           x: blobX,
           y: blobY,
-          background: 'radial-gradient(circle, rgba(232,255,77,0.04) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(184,255,59,0.14) 0%, transparent 70%)',
           filter: 'blur(60px)',
         }}
+        animate={{ scale: [1, 1.06, 1], opacity: [0.8, 1, 0.8] }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
       />
 
       <motion.div
@@ -63,32 +65,11 @@ export default function Hero() {
         </motion.h1>
 
         {/* Meta row */}
-        <motion.div
-          variants={fadeUp}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-8"
-        >
-          <div className="max-w-md">
-            <p className="text-text-secondary text-base leading-relaxed">
-              {person.tagline}
-            </p>
-            <p className="text-text-muted text-sm mt-2">{person.location}</p>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <a
-              href="#work"
-              className="flex items-center gap-2 text-sm font-medium text-text-primary hover:text-accent transition-colors duration-200"
-            >
-              View work
-              <ArrowUpRight size={16} />
-            </a>
-            <a
-              href={`mailto:${person.email}`}
-              className="flex items-center gap-2 text-sm font-medium text-ink bg-text-primary hover:bg-accent px-5 py-2.5 rounded-full transition-colors duration-200"
-            >
-              Let's talk
-            </a>
-          </div>
+        <motion.div variants={fadeUp}>
+          <p className="text-text-secondary text-base leading-relaxed max-w-md">
+            {person.tagline}
+          </p>
+          <p className="text-text-muted text-sm mt-2">{person.location}</p>
         </motion.div>
 
         {/* Scroll indicator */}

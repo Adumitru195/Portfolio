@@ -1,21 +1,20 @@
 import type { Experience } from '@/types'
 
-// UPDATE THIS with real experience from Andrew's Notion page
 export const experience: Experience[] = [
   {
-    company: 'Company Name',
-    role: 'UX Designer',
-    period: '2023 — Present',
+    company: 'DePaul University',
+    role: 'UX Designer & Researcher',
+    period: 'Jan 2024 – Present',
     description:
-      'Placeholder. Replace with real experience from the Notion page.',
-    tags: ['Product Design', 'Design Systems', 'Figma'],
+      'Designed wireframes, prototypes, and UI components for web-based UX projects using Figma, supporting iterative design workflows. Applied user-centered design principles to improve usability, visual hierarchy, and interface clarity. Iterated on designs based on peer, stakeholder, and instructor feedback. Collaborated with designers and developers to refine layouts and interactions within technical constraints.',
+    tags: ['Figma', 'Wireframing', 'Prototyping', 'User Research', 'UI Design'],
   },
   {
-    company: 'Previous Company',
-    role: 'UI/UX Designer',
-    period: '2021 — 2023',
+    company: 'Blue Demon Theatre',
+    role: 'UX Designer — Website Redesign',
+    period: 'Jan 2024 – Apr 2024',
     description:
-      'Placeholder. Replace with real experience from the Notion page.',
-    tags: ['Mobile Design', 'User Research', 'Prototyping'],
+      'Created wireframes and interactive prototypes in Figma for a theatre website redesign. Improved content organization and navigation through research-driven design decisions. Coordinated with developers during implementation using Weebly to ensure design accuracy.',
+    tags: ['Figma', 'Wireframing', 'Prototyping', 'Weebly'],
   },
 ]

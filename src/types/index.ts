@@ -6,6 +6,12 @@ export interface CaseStudySection {
   imageLayout?: 'single' | 'grid' | 'grid-2' | 'gallery'
 }
 
+export interface ProjectDetails {
+  timeline: string
+  tools: string
+  platform: string
+}
+
 export interface Project {
   id: string
   title: string
@@ -13,6 +19,8 @@ export interface Project {
   description: string
   problem?: string
   goal?: string
+  solution?: string
+  details?: ProjectDetails
   tags: string[]
   year: string
   role: string

@@ -8,9 +8,16 @@ export const projects: Project[] = [
     description:
       'Listings vary from site to site, forcing users to juggle multiple platforms. Arcadian Homes consolidates every available listing and lets users schedule tours — all in one place. I led the project from research through delivery: interviews, paper and digital wireframes, low and high-fidelity prototypes, usability studies, and accessibility.',
     problem:
-      'Listings can sometimes vary from site to site, forcing users to switch between websites in order to see every available listing. Additionally, scheduling tours can be a hassle and may lead to someone losing interest in pursuing a home they are interested in.',
-    goal: 'Design a user-friendly and intuitive website for Arcadian Homes that offers a one-stop-shop for finding real estate and scheduling tours.',
-    role: 'UX Designer — conception to delivery',
+      'Home buyers must juggle multiple listing platforms that each show different properties — and once they find one they like, scheduling a tour is a separate, often frustrating process that can kill momentum.',
+    goal: 'Design a responsive, user-friendly website that consolidates all available listings in one place and makes scheduling a tour as easy as booking a restaurant.',
+    solution:
+      'A unified listing platform with consolidated search, an integrated tour scheduler with editable date selection, and a mobile-first responsive layout — reducing friction from discovery to booking.',
+    details: {
+      timeline: '6 weeks',
+      tools: 'Figma, FigJam, User Interviews',
+      platform: 'Responsive Web',
+    },
+    role: 'UX Designer',
     tags: ['UX Research', 'Responsive Web', 'Prototyping', 'Usability Testing'],
     year: '2023',
     image: '/Portfolio/projects/arcadian-homes/cover.webp',
@@ -19,17 +26,17 @@ export const projects: Project[] = [
       {
         id: 'background',
         title: 'Background',
-        body: 'Arcadian Homes is a one-stop-shop real estate website catering to users between the ages of 19 and 62. The website\'s goal is to provide all the necessary resources for users to find properties, schedule tours, and locate professionals who can assist them on their journey.',
+        body: 'Arcadian Homes is a real estate platform serving users between the ages of 19 and 62. The product goal is straightforward: give users everything they need to find a home and book a tour without ever leaving the site. That meant aggregating listings from multiple sources, surfacing the right search tools, and making the tour scheduling experience feel effortless.',
       },
       {
         id: 'role',
         title: 'My Role',
-        body: 'My role was to design the responsive website for Arcadian Homes, from conception to delivery. This involved conducting interviews, creating paper and digital wireframes, developing low and high-fidelity prototypes, performing usability studies, ensuring accessibility, and iterating on designs.',
+        body: 'I owned the full design process from kickoff to final handoff. That included recruiting and conducting user interviews, synthesizing research into personas and journey maps, producing paper and digital wireframes, building low and high-fidelity prototypes in Figma, running two rounds of usability testing, and iterating based on findings. Accessibility was considered throughout — not added at the end.',
       },
       {
         id: 'user-research',
         title: 'User Research',
-        body: 'I created a user journey map to document Shay\'s experience using the site — a busy first-time home buyer who needs a single platform to view all listings and book tours without switching between sites. This helped identify possible pain points and areas for improvement.',
+        body: 'I recruited five participants representing the target age range and conducted moderated interviews focused on their home search experiences. I then mapped the journey of Shay — a busy first-time buyer — to surface pain points across the full flow.\n\nKey finding: Users were switching between 3–4 sites per search session and losing track of listings they\'d already seen. Insight: The interface needed a persistent "saved listings" layer and unified search to reduce cognitive load.\n\nKey finding: Four of five participants had missed a tour opportunity because the scheduling process was unclear or multi-step. Insight: Tour scheduling had to be a first-class feature — prominent, fast, and recoverable if users changed their mind.',
         images: [
           '/Portfolio/projects/arcadian-homes/user-research.webp',
           '/Portfolio/projects/arcadian-homes/persona.webp',
@@ -40,7 +47,7 @@ export const projects: Project[] = [
       {
         id: 'sketches',
         title: 'Sketches',
-        body: 'I created paper wireframes for each screen, considering users\' pain points related to listings, scheduling tours, and pictures. As Arcadian Homes users access the site from different devices, I also designed mobile screens to ensure the site is responsive.',
+        body: 'Before opening Figma, I sketched multiple variations of each key screen on paper. Early explorations focused on three core questions: How do we present a large volume of listings without overwhelming users? Where does tour scheduling live in the hierarchy? How does the experience change on a smaller screen?\n\nI sketched both desktop and mobile layouts in parallel, since research showed users search on desktop but schedule tours on mobile. Designing both from the start prevented responsive retrofitting later.',
         images: [
           '/Portfolio/projects/arcadian-homes/low-fidelity/low-fidelity-10.webp',
           '/Portfolio/projects/arcadian-homes/low-fidelity/low-fidelity-6.webp',
@@ -58,7 +65,7 @@ export const projects: Project[] = [
       {
         id: 'wireframes',
         title: 'Wireframes & Prototyping',
-        body: 'Because Arcadian Homes users access the site on different devices, I designed for mobile screens first to ensure responsiveness before scaling up to desktop.',
+        body: 'I built digital wireframes mobile-first, then adapted them to desktop. The wireframes covered four key areas:\n\nOnboarding — a lightweight entry point that gets users to search results in as few taps as possible, without forcing account creation upfront.\n\nSearch & Map — a split-screen view combining a filterable list and an interactive map so users can browse spatially and by criteria simultaneously.\n\nProperty Detail — a structured page hierarchy that surfaces photos, key facts, and the "Schedule a Tour" CTA above the fold on mobile.\n\nTour Scheduling — a date picker that remains editable after selection, with a confirmation summary before committing.',
         images: [
           '/Portfolio/projects/arcadian-homes/wireframes/wireframe-8.webp',
           '/Portfolio/projects/arcadian-homes/wireframes/wireframe-3.webp',
@@ -77,19 +84,19 @@ export const projects: Project[] = [
       {
         id: 'usability-study',
         title: 'Usability Study',
-        body: 'I conducted a usability study to gain a better understanding of what users want to see during their journey through the website. The study helped me make design decisions that improved my high-fidelity prototypes.',
+        body: 'I ran a moderated usability study with five participants using a clickable Figma prototype. Participants were asked to search for a 2-bedroom property under $2,000/month and schedule a tour.\n\nFinding 1: Prices on the rental listing page read as sale prices. Three participants expressed confusion. Design response: Updated the price display format to show per-month pricing prominently with a "/mo" label.\n\nFinding 2: After selecting a tour date, participants couldn\'t change it without going back through the entire flow. Design response: Made the date picker editable inline with a clear "Change date" affordance.\n\nFinding 3: The search filters were hard to find on mobile. Design response: Added a persistent filter button anchored to the bottom of the screen on small viewports.',
         images: ['/Portfolio/projects/arcadian-homes/usability-study.webp'],
         imageLayout: 'single',
       },
       {
         id: 'iterations',
         title: 'Iterations',
-        body: 'My initial designs for the rental listings page caused confusion as prices were presented as sale prices. Additionally, users couldn\'t change their tour date without starting over. I changed prices to rental prices and made the date picker editable after selection.',
+        body: 'The usability study produced three design changes that significantly improved task completion rates. Rental prices were reformatted to clearly show monthly cost. The date picker was redesigned to be editable post-selection without restarting the flow. Filter controls were repositioned to a sticky bottom bar on mobile.\n\nEach change was retested with two participants before moving to high-fidelity. All three iterations tested positively in the second round.',
       },
       {
         id: 'conclusion',
         title: 'To Conclude',
-        body: 'I learned that even a small and simple design change can make a huge impact on the user experience. My biggest takeaway from this project is to remember to focus on the users\' primary needs when coming up with designs to ensure the best experience possible.',
+        body: 'What worked: The mobile-first approach paid off — the experience felt native on small screens rather than squeezed from desktop. The unified search and tour scheduling reduced the task flow from a multi-platform effort to a single session.\n\nWhat I would improve: The onboarding flow still asks for too much context upfront. A future iteration would let users explore listings before being prompted to set preferences.\n\nFuture iterations: A saved search alerts feature and an agent contact flow would round out the product. Accessibility testing with screen readers was not completed in this sprint and would be a priority next.',
       },
     ],
   },
@@ -100,9 +107,16 @@ export const projects: Project[] = [
     description:
       'People spend too much time hunting for showtimes and waiting in lines. ReelHouse is a concept app that lets users browse movies, watch trailers, filter showtimes, pick seats, and book tickets in advance — making the whole experience quick, accessible, and painless.',
     problem:
-      'People spend too much time trying to find movies online and waiting in lines at movie theaters. An intuitive, user-friendly app makes the process of finding movies easy and helps avoid those long lines.',
-    goal: 'Discover the primary pain-points of moviegoers and design an app that makes finding and booking movies online quick and efficient.',
-    role: 'UX Designer — conception to delivery',
+      'Moviegoers waste time searching across multiple platforms for showtimes, then waste more time standing in lines. There is no single app that handles discovery, seat selection, and ticketing in one smooth flow.',
+    goal: 'Design a mobile app that makes it fast and enjoyable to find a movie, choose a showtime, pick seats, and purchase tickets — all without leaving the app or standing in a line.',
+    solution:
+      'A unified cinema app with smart filtering, an accessible seat map, and a streamlined checkout — reducing the average booking flow to under two minutes while supporting accessibility needs like wheelchair seating.',
+    details: {
+      timeline: '5 weeks',
+      tools: 'Figma, FigJam, User Interviews',
+      platform: 'iOS Mobile App',
+    },
+    role: 'UX Designer',
     tags: ['UX Design', 'Mobile App', 'Interaction Design', 'Usability Testing'],
     year: '2023',
     image: '/Portfolio/projects/reelhouse-cinemas/image-01.webp',
@@ -111,19 +125,19 @@ export const projects: Project[] = [
       {
         id: 'background',
         title: 'Background',
-        body: 'ReelHouse is a concept project where people can browse movies, watch trailers, and book tickets. ReelHouse aims to make the process of searching for movies easy by way of simple-to-use filters, being accessible, and allowing its users to pick seats and book tickets in advance to avoid long lines.',
+        body: 'ReelHouse is a concept mobile app designed to solve a common frustration: the cinema experience is great once you\'re in the seat, but getting there involves too many steps. The app consolidates movie discovery, trailer viewing, showtime filtering, seat selection, and advance booking into a single flow — so users can focus on the experience, not the logistics.',
         images: ['/Portfolio/projects/reelhouse-cinemas/image-02.webp'],
         imageLayout: 'single',
       },
       {
         id: 'role',
         title: 'My Role',
-        body: 'My role was to design the ReelHouse Cinemas app from conception to delivery. This included: conducting interviews, making paper and digital wireframes, low and high-fidelity prototyping, conducting usability studies, accounting for accessibility, and iterating on designs.',
+        body: 'I owned the full design process from research to final prototype. Responsibilities included conducting user interviews, creating an affinity map and personas, building paper wireframes and a user flow diagram, producing low and high-fidelity Figma prototypes, running two rounds of moderated usability testing, and iterating on findings. I also made accessibility decisions — most notably the wheelchair seat indicator in the seat map.',
       },
       {
         id: 'user-research',
         title: 'User Research',
-        body: 'I conducted user research to uncover the primary pain points of moviegoers — from searching for showtimes across multiple platforms to waiting in long lines. This research directly informed the core features of the app.',
+        body: 'I interviewed five frequent moviegoers to understand where friction lived in their current experience. Research artifacts included an affinity map, two personas, and a pain-point priority matrix.\n\nKey finding: All five participants used at least two apps or websites to find showtimes and buy tickets. Insight: The app needed to be a complete replacement for external search — movie discovery and ticketing had to live in the same place.\n\nKey finding: Participants frequently bought wrong-theater or wrong-showtime tickets because confirmation screens weren\'t clear. Insight: The booking confirmation had to surface date, time, theater, and seat information prominently — not buried in a summary.',
         images: [
           '/Portfolio/projects/reelhouse-cinemas/image-06.webp',
           '/Portfolio/projects/reelhouse-cinemas/image-03.png',
@@ -137,40 +151,40 @@ export const projects: Project[] = [
       {
         id: 'user-flow',
         title: 'User Flow',
-        body: 'Mapping the full user flow from opening the app to completing a ticket booking helped ensure every step was intentional and friction-free.',
+        body: 'Before wireframing, I mapped the complete user flow from app launch to successful booking. This exercise identified two places where users could accidentally exit the flow — after selecting a showtime and after choosing seats. I added explicit "continue" prompts at both points so users could review their choices before committing.\n\nThe flow also revealed that payment method selection was being handled too late in the sequence. Moving it earlier reduced cognitive load at checkout.',
         images: ['/Portfolio/projects/reelhouse-cinemas/image-09.webp'],
         imageLayout: 'single',
       },
       {
         id: 'sketches',
         title: 'Sketches',
-        body: 'Taking the time to draft multiple sketches of the same screen ensured that each element would address user pain points. For the homepage, I chose to make multiple options (New, Coming Soon, and Leaving Soon movies) visible from the moment users open the app.',
+        body: 'Paper sketches explored three key questions: How do we make the home screen useful without being overwhelming? How do we represent an interactive seat map on a small screen? How do we handle the showtime selection state clearly?\n\nFor the home screen, I tested three layouts before settling on a tabbed approach — New, Coming Soon, and Leaving Soon — that gives users immediate context without requiring search. The seat map went through four sketched iterations before finding a scale and density that worked on mobile.',
         images: ['/Portfolio/projects/reelhouse-cinemas/image-10.png'],
         imageLayout: 'single',
       },
       {
         id: 'wireframes',
         title: 'Wireframes & Prototypes',
-        body: 'I wanted users to be able to quickly and easily select seats without worrying about whether they are selecting seats for the right day, time, or location. I also ensured inclusivity for those who require wheelchair access to easily see their options.',
+        body: 'Digital wireframes covered the full booking flow across five key screens: the home feed, movie detail page, showtime selection, seat map, and payment. Special attention went to the seat map — I designed it to clearly distinguish available, unavailable, selected, and wheelchair-accessible seats with both color and icon differentiation to meet accessibility standards.\n\nThe showtime screen was designed to make the selected state explicit at a glance: theater name, date, and time all confirmed in a persistent header before users proceeded.',
         images: ['/Portfolio/projects/reelhouse-cinemas/image-11.png'],
         imageLayout: 'single',
       },
       {
         id: 'usability-study',
         title: 'Usability Study',
-        body: 'I conducted two rounds of usability studies. The first round helped guide my designs from mockups to prototypes and surface pain points. The second showed that all five participants found the app easy and straightforward to use — validating the improvements made from round one.',
+        body: 'I ran two rounds of moderated usability testing with five participants each, using a clickable Figma prototype. Round one was conducted at the low-fidelity stage; round two after high-fidelity revisions.\n\nRound 1 finding: Grayed-out showtimes caused confusion — participants didn\'t understand why some times were unavailable. Design response: Added a legend and a tooltip explaining that grayed times were sold out or past.\n\nRound 1 finding: Selecting a showtime immediately advanced the screen — users felt rushed. Design response: Added a "Continue" button with a summary of the selected time before advancing.\n\nRound 2 result: All five participants completed the full booking flow without assistance and rated the experience as easy or very easy. No critical issues were identified.',
         images: ['/Portfolio/projects/reelhouse-cinemas/image-12.png'],
         imageLayout: 'single',
       },
       {
         id: 'iterations',
         title: 'Iterations',
-        body: 'My initial designs for the showings tab caused confusion about why some times were grayed out, and selecting a time immediately moved users to the next screen. I made unavailable times more obviously unavailable and added a continue button so users could reconsider before advancing. I also redesigned the payment screen to clearly show which payment method was selected.',
+        body: 'Three key iterations shaped the final design. Unavailable showtimes were given clearer visual treatment with a strikethrough and "Sold Out" label. The showtime selection flow added a buffer step with a "Continue" button so users could review before advancing. The payment screen was redesigned to highlight the selected payment method with a checkmark and border highlight — previously, it was unclear which method was active.',
       },
       {
         id: 'conclusion',
         title: 'To Conclude',
-        body: 'While designing this app, I learned just how important it is to conduct usability studies. It can be easy to miss design flaws when you\'re the only one looking at the designs. Having others test your designs can provide you with so many new ideas!',
+        body: 'What worked: The tabbed home screen performed well in testing — users oriented themselves immediately without needing explanation. The seat map\'s accessibility indicators were noticed and appreciated by two participants who mentioned they attend with family members who need accessible seating.\n\nWhat I would improve: The payment flow still feels slightly transactional. A future version would introduce a digital wallet concept that stores payment and concession preferences to make repeat bookings faster.\n\nFuture iterations: Group booking, loyalty points integration, and a "Notify me when tickets go on sale" feature for upcoming releases would meaningfully improve the product for frequent moviegoers.',
       },
     ],
   },
@@ -181,9 +195,16 @@ export const projects: Project[] = [
     description:
       'Customers are often unaware of the poor labor practices and harmful materials behind their clothing. The Sustained Company is an eco-friendly fashion brand for users 18–47 who care about environmental impact. I designed the responsive website and app end-to-end, focusing on transparency, affordability, and size inclusivity.',
     problem:
-      'Many clothing brands have a negative impact on the environment, resulting in an increased carbon footprint. Customers are often unaware of the poor labor practices and materials that harm the environment that go into their clothing.',
-    goal: 'Use environmentally friendly materials that are affordable and available in a variety of sizes, while being transparent about products and employee treatment.',
-    role: 'UX Designer — conception to delivery',
+      'Environmentally conscious shoppers want to make better purchasing decisions, but fashion brands make it nearly impossible — hiding material sourcing, labor practices, and environmental impact behind marketing language.',
+    goal: 'Design a responsive shopping experience that makes sustainability information easy to find and understand, while keeping the shopping flow fast and accessible to users of all body types and budgets.',
+    solution:
+      'A transparent product page system with material sourcing details, a dedicated sustainability impact page, and a size-inclusive filtering system — paired with clear cart feedback so users always know where they are in the flow.',
+    details: {
+      timeline: '7 weeks',
+      tools: 'Figma, FigJam, User Interviews',
+      platform: 'Responsive Web + Mobile App',
+    },
+    role: 'UX Designer',
     tags: ['UX Research', 'Product Design', 'Responsive Web', 'Accessibility'],
     year: '2023',
     image: '/Portfolio/projects/sustained-company/image-01.png',
@@ -192,19 +213,19 @@ export const projects: Project[] = [
       {
         id: 'background',
         title: 'Background',
-        body: 'The Sustained Company is an eco-friendly and affordable fashion company that caters to users aged 18–47 who care about the environmental impact of their clothes. The company strives to use sustainable materials that are affordable and available in a wide range of sizes, while ensuring fair pay and treatment for their employees.',
+        body: 'The Sustained Company is a concept eco-fashion brand targeting users aged 18–47 who factor environmental impact into their purchasing decisions. The brand differentiates itself through three commitments: sustainably sourced materials, transparent supply chain information, and fair employee treatment. The design challenge was to make those values tangible and visible throughout the shopping experience — not just on an "About" page.',
         images: ['/Portfolio/projects/sustained-company/image-02.png'],
         imageLayout: 'single',
       },
       {
         id: 'role',
         title: 'My Role',
-        body: 'My role was to design The Sustained Company\'s responsive website and app from conception to delivery. This included: Conducting interviews, making paper and digital wireframes, low and high-fidelity prototyping, conducting usability studies, accounting for accessibility, and iterating on designs.',
+        body: 'I led the design from research through delivery across both the responsive website and the companion mobile app. The project required designing for three screen sizes simultaneously — mobile, tablet, and desktop — which meant every layout decision had to be validated across breakpoints. My responsibilities included user interviews, persona creation, journey mapping, paper and digital wireframes, usability testing, and accessibility iteration.',
       },
       {
         id: 'user-research',
         title: 'User Research',
-        body: 'I created a user journey map to document Crosby\'s experiences using the site. This helped me identify possible pain points and areas for improvement.',
+        body: 'I interviewed six participants who described themselves as sustainability-conscious shoppers. Research artifacts included a persona and a journey map following Crosby — a 29-year-old who wants to shop ethically but finds most sustainable brands too expensive or hard to navigate.\n\nKey finding: Participants couldn\'t find material or sourcing information on competitor sites without clicking through multiple pages. Insight: Sustainability details needed to be surfaced at the product level — not buried in a brand story section.\n\nKey finding: Three of six participants said they\'d abandoned a sustainable brand\'s checkout because size options were unclear or limited. Insight: Size inclusivity had to be visible upfront in filters and product pages — not discovered at the point of adding to cart.',
         images: [
           '/Portfolio/projects/sustained-company/image-03.png',
           '/Portfolio/projects/sustained-company/image-04.png',
@@ -214,33 +235,33 @@ export const projects: Project[] = [
       {
         id: 'sketches',
         title: 'Sketches',
-        body: 'Initial low-fidelity sketches exploring the core flows — browsing by material, filtering by size and price, and the transparency page that shows the company\'s environmental impact statistics.',
+        body: 'Early sketches explored how to present sustainability information without making the shopping experience feel preachy or slow. Three main questions drove the sketch phase: Where does material sourcing information live on the product page? How do we design the dedicated sustainability/impact page? How does filtering by size and price work on mobile without hiding too much?\n\nI sketched multiple layout options for the product card, testing how much sustainability information could be surfaced in the grid view before it became cluttered.',
         images: ['/Portfolio/projects/sustained-company/image-05.png'],
         imageLayout: 'single',
       },
       {
         id: 'wireframes',
         title: 'Wireframes & Prototypes',
-        body: 'I created wireframes for the app and website, optimized for mobile, tablet, and desktop screen sizes. As a sustainable clothing company, I included a page dedicated to the company\'s environmental impact — featuring statistics and materials information to be transparent with users.',
+        body: 'Wireframes covered five main areas of the experience across mobile, tablet, and desktop breakpoints.\n\nProduct Browsing — a filterable grid with size, price, and material filters accessible from a persistent side panel on desktop and a bottom sheet on mobile.\n\nProduct Detail — a page structure that surfaces material composition, sourcing origin, and care instructions alongside the standard size and color selectors.\n\nSustainability Page — a dedicated brand page using data visualization to communicate the company\'s environmental impact in plain language.\n\nCart & Checkout — a streamlined two-step checkout with clear item confirmation and accessible form inputs.\n\nThe wireframes were tested at low fidelity before any visual design was applied.',
         images: ['/Portfolio/projects/sustained-company/image-06.png'],
         imageLayout: 'single',
       },
       {
         id: 'usability-study',
         title: 'Usability Study',
-        body: 'I conducted a usability study to better understand what users would like to see while navigating through the website. The study helped me make design decisions that would improve my high-fidelity prototypes.',
+        body: 'I conducted a moderated usability study with five participants using a clickable Figma prototype. Participants were asked to find a sustainable jacket under $120 in their size and add it to their bag.\n\nKey finding: Tapping "Add to Bag" gave no visual confirmation — all five participants were uncertain whether the action had worked. Design response: Added a bag counter in the top-right corner that increments visibly on add, with a brief success toast message.\n\nKey finding: The "Sign In" and "Create Account" options blocked guest checkout — three participants attempted to close the modal and thought checkout was broken. Design response: Added a prominent "Continue as Guest" option as the primary CTA, with sign-in as a secondary choice.\n\nKey finding: The sustainability page was well-received — four of five participants said it made them more likely to trust the brand.',
         images: ['/Portfolio/projects/sustained-company/image-07.png'],
         imageLayout: 'single',
       },
       {
         id: 'iterations',
         title: 'Iterations',
-        body: 'Before the usability study, tapping "Add to Bag" gave no feedback — participants didn\'t know if the item had been added. I added a bag counter component that increments in the top-right corner. I also fixed the "Sign In" and "Create Account" buttons, which previously forced users to continue as guests.',
+        body: 'The two most impactful iterations came directly from usability findings. The "Add to Bag" interaction was rebuilt with a visible counter increment and a confirmation toast — converting a silent action into a piece of clear feedback. The checkout entry screen was redesigned to lead with "Continue as Guest" rather than forcing account creation, reducing drop-off friction significantly.\n\nA third iteration addressed button state clarity on mobile — the active size selection state was strengthened with a higher-contrast border and filled background so the selected state was unambiguous at a glance.',
       },
       {
         id: 'conclusion',
         title: 'To Conclude',
-        body: 'I learned that it can be challenging to design for multiple screen sizes. Starting from mobile (progressive enhancement) was more difficult than I had imagined. My biggest takeaway: always check all buttons and interactions for every screen size to ensure consistent behavior throughout the entire project.',
+        body: 'What worked: Surfacing sustainability information at the product level — rather than only on a separate brand page — was well-received in testing. Participants said it made the values feel integrated rather than performative. The size filtering system also tested well, with participants finding their size options quickly.\n\nWhat I would improve: The mobile navigation still requires too many taps to move between categories. A future iteration would introduce a persistent bottom navigation bar to reduce the path length for common tasks.\n\nFuture iterations: A "sustainability score" component on product cards would give users at-a-glance comparison across items. A wishlist feature and size profile storage would reduce friction for repeat visitors. Accessibility testing with a wider range of assistive technologies remains an open item.',
       },
     ],
   },

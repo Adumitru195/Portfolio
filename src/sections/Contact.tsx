@@ -5,7 +5,7 @@ import { person } from '@/data/person'
 
 export default function Contact() {
   return (
-    <section id="contact" className="px-6 md:px-10 py-24 md:py-32 border-t border-subtle">
+    <section id="contact" className="px-6 md:px-10 pt-32 pb-24 md:pt-44 md:pb-32 border-t border-subtle">
       <div className="max-w-6xl mx-auto">
         <motion.div
           variants={staggerContainer}
@@ -30,9 +30,11 @@ export default function Contact() {
             variants={fadeUp}
             className="flex flex-col sm:flex-row items-start sm:items-center gap-4"
           >
-            <a
+            <motion.a
               href={`mailto:${person.email}`}
               className="group flex items-center gap-3 bg-accent hover:bg-accent-dim text-ink font-medium px-6 py-3.5 rounded-full transition-colors duration-200"
+              whileHover={{ y: -2 }}
+              transition={{ duration: 0.2, ease: 'easeOut' }}
             >
               <Envelope size={18} weight="bold" />
               {person.email}
@@ -41,17 +43,19 @@ export default function Contact() {
                 weight="bold"
                 className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               />
-            </a>
+            </motion.a>
 
             {person.socials
               .filter((s) => s.label === 'LinkedIn')
               .map((social) => (
-                <a
+                <motion.a
                   key={social.label}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center gap-2 border border-subtle text-text-secondary hover:text-text-primary hover:border-text-muted px-6 py-3.5 rounded-full transition-colors duration-200"
+                  whileHover={{ y: -2 }}
+                  transition={{ duration: 0.2, ease: 'easeOut' }}
                 >
                   <LinkedinLogo size={18} />
                   LinkedIn
@@ -59,25 +63,10 @@ export default function Contact() {
                     size={14}
                     className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   />
-                </a>
+                </motion.a>
               ))}
           </motion.div>
 
-          {/* Social links row */}
-          <motion.div variants={fadeUp} className="mt-16 flex items-center gap-6">
-            {person.socials.map((social) => (
-              <a
-                key={social.label}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1 text-xs text-text-muted hover:text-text-secondary transition-colors duration-200"
-              >
-                {social.label}
-                <ArrowUpRight size={11} />
-              </a>
-            ))}
-          </motion.div>
         </motion.div>
       </div>
     </section>

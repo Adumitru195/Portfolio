@@ -12,7 +12,13 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <motion.article
       variants={scaleUp}
-      className="group relative rounded-2xl overflow-hidden border border-subtle bg-surface hover:border-text-muted transition-colors duration-500"
+      className="group relative rounded-2xl overflow-hidden border border-subtle bg-surface hover:border-text-muted transition-colors duration-300"
+      style={{ boxShadow: '0 12px 30px rgba(0,0,0,0.07)' }}
+      whileHover={{
+        y: -6,
+        boxShadow: '0 20px 40px rgba(0,0,0,0.11)',
+        transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] },
+      }}
     >
       <Link to={`/project/${project.id}`} className="block">
         {/* Thumbnail */}
@@ -20,8 +26,8 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           className="w-full aspect-[16/9] relative overflow-hidden"
           style={{
             background: isEven
-              ? 'linear-gradient(135deg, #1a1a1a 0%, #242424 100%)'
-              : 'linear-gradient(135deg, #141414 0%, #1e1e1e 100%)',
+              ? 'linear-gradient(135deg, #F2F2F0 0%, #EBEBEA 100%)'
+              : 'linear-gradient(135deg, #EBEBEA 0%, #E4E4E2 100%)',
           }}
         >
           {project.image ? (
@@ -48,7 +54,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         <div className="p-6 md:p-8">
           <div className="flex items-start justify-between gap-4 mb-3">
             <div>
-              <p className="text-xs text-text-muted mb-1">{project.year} — {project.role}</p>
+              <p className="text-xs text-text-muted mb-1">{project.year} · {project.role}</p>
               <h3 className="font-display font-bold text-xl md:text-2xl text-text-primary tracking-tight">
                 {project.title}
               </h3>
@@ -75,9 +81,6 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 }
 
 export default function Work() {
-  const featured = projects.filter((p) => p.featured)
-  const rest = projects.filter((p) => !p.featured)
-
   return (
     <section id="work" className="px-6 md:px-10 py-24 md:py-32">
       <div className="max-w-6xl mx-auto">
@@ -98,27 +101,15 @@ export default function Work() {
             </h2>
           </motion.div>
 
-          {/* Featured projects — 2-col grid */}
+          {/* All projects — uniform 3-col grid */}
           <motion.div
             variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-4 md:mb-6"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
           >
-            {featured.map((project, i) => (
+            {projects.map((project, i) => (
               <ProjectCard key={project.id} project={project} index={i} />
             ))}
           </motion.div>
-
-          {/* Non-featured — 3-col grid */}
-          {rest.length > 0 && (
-            <motion.div
-              variants={staggerContainer}
-              className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6"
-            >
-              {rest.map((project, i) => (
-                <ProjectCard key={project.id} project={project} index={featured.length + i} />
-              ))}
-            </motion.div>
-          )}
         </motion.div>
       </div>
     </section>

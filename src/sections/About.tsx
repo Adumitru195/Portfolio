@@ -4,9 +4,19 @@ import { person } from '@/data/person'
 import { experience } from '@/data/experience'
 import Tag from '@/components/Tag'
 
-const tools = [
-  'Figma', 'FigJam', 'Framer', 'Notion', 'Miro', 'Maze',
-  'Hotjar', 'Linear', 'Lottie', 'Principle',
+const competencies = [
+  {
+    label: 'Design & Research',
+    items: ['User Experience Research and Design', 'UX Design', 'User Research', 'UX Research', 'Wireframing', 'Prototyping', 'User Interface Design', 'UI Design', 'Visual Hierarchy'],
+  },
+  {
+    label: 'Tools',
+    items: ['Figma', 'Adobe Creative Suite', 'Miro', 'Microsoft Office Suite'],
+  },
+  {
+    label: 'Languages',
+    items: ['English (Native)', 'Romanian (Fluent)'],
+  },
 ]
 
 export default function About() {
@@ -22,6 +32,14 @@ export default function About() {
         >
           {/* Left — bio */}
           <div>
+            <motion.div variants={fadeUp} className="mb-8">
+              <img
+                src="/Portfolio/profile.jpg"
+                alt={person.name}
+                className="w-48 h-48 rounded-2xl object-cover object-top border border-subtle"
+              />
+            </motion.div>
+
             <motion.div variants={slideInLeft} className="mb-10">
               <div className="flex items-center gap-3 mb-4">
                 <div className="h-px w-8 bg-accent" />
@@ -40,13 +58,17 @@ export default function About() {
               ))}
             </motion.div>
 
-            <motion.div variants={fadeUp}>
-              <p className="text-xs text-text-muted uppercase tracking-widest mb-3">Tools & Methods</p>
-              <div className="flex flex-wrap gap-2">
-                {tools.map((tool) => (
-                  <Tag key={tool} label={tool} />
-                ))}
-              </div>
+            <motion.div variants={fadeUp} className="space-y-5">
+              {competencies.map((group) => (
+                <div key={group.label}>
+                  <p className="text-xs text-text-muted uppercase tracking-widest mb-2">{group.label}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {group.items.map((item) => (
+                      <Tag key={item} label={item} />
+                    ))}
+                  </div>
+                </div>
+              ))}
             </motion.div>
           </div>
 

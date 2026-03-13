@@ -8,24 +8,25 @@ export default {
         body: ['Geist', 'sans-serif'],
       },
       colors: {
+        bg: '#F7F7F5',
         ink: {
           DEFAULT: '#0a0a0a',
-          soft: '#121212',
-          muted: '#1a1a1a',
+          soft: '#1C1C1C',
+          muted: '#3a3a3a',
         },
         surface: {
-          DEFAULT: '#141414',
-          raised: '#1e1e1e',
-          overlay: '#242424',
+          DEFAULT: '#FFFFFF',
+          raised: '#F2F2F0',
+          overlay: '#EBEBEA',
         },
         accent: {
-          DEFAULT: '#e8ff4d',
-          dim: '#c8df2d',
+          DEFAULT: '#B8FF3B',
+          dim: '#9BEA2E',
         },
         text: {
-          primary: '#f0ede8',
-          secondary: '#a09b93',
-          muted: '#5c5852',
+          primary: '#1C1C1C',
+          secondary: '#4B4B4B',
+          muted: '#9A9A9A',
         },
       },
       letterSpacing: {
