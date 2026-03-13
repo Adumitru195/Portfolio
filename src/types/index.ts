@@ -30,7 +30,8 @@ export interface PersonInfo {
   title: string
   tagline: string
   bio: string[]
-  location: string
+  location?: string
   email: string
+  phone?: string
   socials: SocialLink[]
 }
