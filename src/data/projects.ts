@@ -132,7 +132,7 @@ export const projects: Project[] = [
           '/Portfolio/projects/reelhouse-cinemas/image-07.webp',
           '/Portfolio/projects/reelhouse-cinemas/image-08.webp',
         ],
-        imageLayout: 'grid',
+        imageLayout: 'gallery',
       },
       {
         id: 'user-flow',
