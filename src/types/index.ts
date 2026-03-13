@@ -1,3 +1,11 @@
+export interface CaseStudySection {
+  id: string
+  title: string
+  body?: string
+  images?: string[]
+  imageLayout?: 'single' | 'grid' | 'gallery'
+}
+
 export interface Project {
   id: string
   title: string
@@ -12,6 +20,7 @@ export interface Project {
   caseStudyLink?: string
   image?: string
   featured: boolean
+  sections?: CaseStudySection[]
 }
 
 export interface Experience {

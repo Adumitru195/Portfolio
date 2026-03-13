@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowUpRight } from '@phosphor-icons/react'
+import { Link } from 'react-router-dom'
 import { staggerContainer, fadeUp, scaleUp } from '@/lib/motion'
 import { projects } from '@/data/projects'
 import Tag from '@/components/Tag'
@@ -13,63 +14,62 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       variants={scaleUp}
       className="group relative rounded-2xl overflow-hidden border border-subtle bg-surface hover:border-text-muted transition-colors duration-500"
     >
-      {/* Thumbnail */}
-      <div
-        className="w-full aspect-[16/9] relative overflow-hidden"
-        style={{
-          background: isEven
-            ? 'linear-gradient(135deg, #1a1a1a 0%, #242424 100%)'
-            : 'linear-gradient(135deg, #141414 0%, #1e1e1e 100%)',
-        }}
-      >
-        {project.image ? (
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
-          />
-        ) : (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="font-display font-black text-6xl md:text-8xl text-surface-overlay select-none">
-              {String(index + 1).padStart(2, '0')}
+      <Link to={`/project/${project.id}`} className="block">
+        {/* Thumbnail */}
+        <div
+          className="w-full aspect-[16/9] relative overflow-hidden"
+          style={{
+            background: isEven
+              ? 'linear-gradient(135deg, #1a1a1a 0%, #242424 100%)'
+              : 'linear-gradient(135deg, #141414 0%, #1e1e1e 100%)',
+          }}
+        >
+          {project.image ? (
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="font-display font-black text-6xl md:text-8xl text-surface-overlay select-none">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+            </div>
+          )}
+          {/* Hover overlay with "View Case Study" label */}
+          <div className="absolute inset-0 bg-bg/60 opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-center justify-center">
+            <span className="inline-flex items-center gap-2 text-text-primary text-sm font-medium px-4 py-2 rounded-full border border-text-muted bg-bg/80">
+              View Case Study <ArrowUpRight size={14} />
             </span>
           </div>
-        )}
-        {/* Hover overlay */}
-        <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      </div>
+        </div>
 
-      <div className="p-6 md:p-8">
-        <div className="flex items-start justify-between gap-4 mb-3">
-          <div>
-            <p className="text-xs text-text-muted mb-1">{project.year} — {project.role}</p>
-            <h3 className="font-display font-bold text-xl md:text-2xl text-text-primary tracking-tight">
-              {project.title}
-            </h3>
-            <p className="text-text-secondary text-sm mt-0.5">{project.subtitle}</p>
-          </div>
-          {project.caseStudyLink && (
-            <a
-              href={project.caseStudyLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="shrink-0 flex items-center justify-center w-9 h-9 rounded-full border border-subtle text-text-secondary hover:text-text-primary hover:border-text-secondary transition-colors duration-200"
-            >
+        <div className="p-6 md:p-8">
+          <div className="flex items-start justify-between gap-4 mb-3">
+            <div>
+              <p className="text-xs text-text-muted mb-1">{project.year} — {project.role}</p>
+              <h3 className="font-display font-bold text-xl md:text-2xl text-text-primary tracking-tight">
+                {project.title}
+              </h3>
+              <p className="text-text-secondary text-sm mt-0.5">{project.subtitle}</p>
+            </div>
+            <span className="shrink-0 flex items-center justify-center w-9 h-9 rounded-full border border-subtle text-text-secondary group-hover:text-text-primary group-hover:border-text-secondary transition-colors duration-200">
               <ArrowUpRight size={16} />
-            </a>
-          )}
-        </div>
+            </span>
+          </div>
 
-        <p className="text-text-secondary text-sm leading-relaxed mb-5">
-          {project.description}
-        </p>
+          <p className="text-text-secondary text-sm leading-relaxed mb-5">
+            {project.description}
+          </p>
 
-        <div className="flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
-            <Tag key={tag} label={tag} />
-          ))}
+          <div className="flex flex-wrap gap-2">
+            {project.tags.map((tag) => (
+              <Tag key={tag} label={tag} />
+            ))}
+          </div>
         </div>
-      </div>
+      </Link>
     </motion.article>
   )
 }

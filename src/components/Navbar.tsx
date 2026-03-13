@@ -3,10 +3,14 @@ import { ArrowUpRight } from '@phosphor-icons/react'
 import { person } from '@/data/person'
 
 const navLinks = [
-  { label: 'Work', href: '#work' },
-  { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Work', id: 'work' },
+  { label: 'About', id: 'about' },
+  { label: 'Contact', id: 'contact' },
 ]
+
+function scrollTo(id: string) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+}
 
 export default function Navbar() {
   const { scrollY } = useScroll()
@@ -18,22 +22,22 @@ export default function Navbar() {
       style={{ borderBottomWidth: 1, borderBottomColor: `rgba(240,237,232,${borderOpacity.get() * 0.08})` }}
     >
       <nav className="max-w-6xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
-        <a
-          href="#"
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="font-display font-bold text-text-primary tracking-tight hover:text-accent transition-colors duration-200"
         >
           {person.name.split(' ')[0]}<span className="text-text-muted">.</span>
-        </a>
+        </button>
 
         <ul className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
+            <li key={link.id}>
+              <button
+                onClick={() => scrollTo(link.id)}
                 className="text-sm text-text-secondary hover:text-text-primary transition-colors duration-200"
               >
                 {link.label}
-              </a>
+              </button>
             </li>
           ))}
         </ul>
