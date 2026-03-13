@@ -186,13 +186,15 @@ export const projects: Project[] = [
     role: 'UX Designer — conception to delivery',
     tags: ['UX Research', 'Product Design', 'Responsive Web', 'Accessibility'],
     year: '2023',
-    image: '/Portfolio/projects/sustained-company/cover.webp',
+    image: '/Portfolio/projects/sustained-company/image-01.png',
     featured: false,
     sections: [
       {
         id: 'background',
         title: 'Background',
         body: 'The Sustained Company is an eco-friendly and affordable fashion company that caters to users aged 18–47 who care about the environmental impact of their clothes. The company strives to use sustainable materials that are affordable and available in a wide range of sizes, while ensuring fair pay and treatment for their employees.',
+        images: ['/Portfolio/projects/sustained-company/image-02.png'],
+        imageLayout: 'single',
       },
       {
         id: 'role',
@@ -204,8 +206,8 @@ export const projects: Project[] = [
         title: 'User Research',
         body: 'I created a user journey map to document Crosby\'s experiences using the site. This helped me identify possible pain points and areas for improvement.',
         images: [
-          '/Portfolio/projects/sustained-company/persona.webp',
-          '/Portfolio/projects/sustained-company/journey-map.webp',
+          '/Portfolio/projects/sustained-company/image-03.png',
+          '/Portfolio/projects/sustained-company/image-04.png',
         ],
         imageLayout: 'gallery',
       },
@@ -213,19 +215,21 @@ export const projects: Project[] = [
         id: 'sketches',
         title: 'Sketches',
         body: 'Initial low-fidelity sketches exploring the core flows — browsing by material, filtering by size and price, and the transparency page that shows the company\'s environmental impact statistics.',
-        images: ['/Portfolio/projects/sustained-company/low-fidelity/low-fidelity-1.webp'],
+        images: ['/Portfolio/projects/sustained-company/image-05.png'],
         imageLayout: 'single',
       },
       {
         id: 'wireframes',
         title: 'Wireframes & Prototypes',
         body: 'I created wireframes for the app and website, optimized for mobile, tablet, and desktop screen sizes. As a sustainable clothing company, I included a page dedicated to the company\'s environmental impact — featuring statistics and materials information to be transparent with users.',
+        images: ['/Portfolio/projects/sustained-company/image-06.png'],
+        imageLayout: 'single',
       },
       {
         id: 'usability-study',
         title: 'Usability Study',
         body: 'I conducted a usability study to better understand what users would like to see while navigating through the website. The study helped me make design decisions that would improve my high-fidelity prototypes.',
-        images: ['/Portfolio/projects/sustained-company/usability-study.webp'],
+        images: ['/Portfolio/projects/sustained-company/image-07.png'],
         imageLayout: 'single',
       },
       {
