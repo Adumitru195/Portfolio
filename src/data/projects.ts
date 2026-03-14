@@ -36,7 +36,7 @@ export const projects: Project[] = [
       {
         id: 'user-research',
         title: 'User Research',
-        body: 'I recruited five participants representing the target age range and conducted moderated interviews focused on their home search experiences. I then mapped the journey of Shay — a busy first-time buyer — to surface pain points across the full flow.\n\nKey finding: Users were switching between 3–4 sites per search session and losing track of listings they\'d already seen. Insight: The interface needed a persistent "saved listings" layer and unified search to reduce cognitive load.\n\nKey finding: Four of five participants had missed a tour opportunity because the scheduling process was unclear or multi-step. Insight: Tour scheduling had to be a first-class feature — prominent, fast, and recoverable if users changed their mind.',
+        body: 'I recruited five participants representing the target age range and conducted moderated interviews focused on their home search experiences. I then mapped the journey of Shay — a busy first-time buyer — to surface pain points across the full flow.\n\nKey finding: Users were switching between 3–4 sites per search session and losing track of listings they\'d already seen. Insight: The interface needed a persistent "saved listings" layer and unified search to reduce cognitive load.\n\nKey finding: Four of five participants had missed a tour opportunity because the scheduling process was unclear or multi step. Insight: Tour scheduling had to be a first-class feature — prominent, fast, and recoverable if users changed their mind.',
         images: [
           '/Portfolio/projects/arcadian-homes/user-research.webp',
           '/Portfolio/projects/arcadian-homes/persona.webp',
@@ -65,7 +65,7 @@ export const projects: Project[] = [
       {
         id: 'wireframes',
         title: 'Wireframes & Prototyping',
-        body: 'I built digital wireframes mobile first, then adapted them to desktop. The wireframes covered four key areas:\n\nOnboarding — a lightweight entry point that gets users to search results in as few taps as possible, without forcing account creation upfront.\n\nSearch & Map — a split-screen view combining a filterable list and an interactive map so users can browse spatially and by criteria simultaneously.\n\nProperty Detail — a structured page hierarchy that surfaces photos, key facts, and the "Schedule a Tour" CTA above the fold on mobile.\n\nTour Scheduling — a date picker that remains editable after selection, with a confirmation summary before committing.',
+        body: 'I built digital wireframes mobile first, then adapted them to desktop. The wireframes covered four key areas:\n\nOnboarding — a lightweight entry point that gets users to search results in as few taps as possible, without forcing account creation upfront.\n\nSearch & Map — a split screen view combining a filterable list and an interactive map so users can browse spatially and by criteria simultaneously.\n\nProperty Detail — a structured page hierarchy that surfaces photos, key facts, and the "Schedule a Tour" CTA above the fold on mobile.\n\nTour Scheduling — a date picker that remains editable after selection, with a confirmation summary before committing.',
         images: [
           '/Portfolio/projects/arcadian-homes/wireframes/wireframe-8.webp',
           '/Portfolio/projects/arcadian-homes/wireframes/wireframe-3.webp',
@@ -137,7 +137,7 @@ export const projects: Project[] = [
       {
         id: 'user-research',
         title: 'User Research',
-        body: 'I interviewed five frequent moviegoers to understand where friction lived in their current experience. Research artifacts included an affinity map, two personas, and a pain-point priority matrix.\n\nKey finding: All five participants used at least two apps or websites to find showtimes and buy tickets. Insight: The app needed to be a complete replacement for external search — movie discovery and ticketing had to live in the same place.\n\nKey finding: Participants frequently bought wrong-theater or wrong-showtime tickets because confirmation screens weren\'t clear. Insight: The booking confirmation had to surface date, time, theater, and seat information prominently — not buried in a summary.',
+        body: 'I interviewed five frequent moviegoers to understand where friction lived in their current experience. Research artifacts included an affinity map, two personas, and a pain point priority matrix.\n\nKey finding: All five participants used at least two apps or websites to find showtimes and buy tickets. Insight: The app needed to be a complete replacement for external search — movie discovery and ticketing had to live in the same place.\n\nKey finding: Participants frequently bought wrong theater or wrong showtime tickets because confirmation screens weren\'t clear. Insight: The booking confirmation had to surface date, time, theater, and seat information prominently — not buried in a summary.',
         images: [
           '/Portfolio/projects/reelhouse-cinemas/image-06.webp',
           '/Portfolio/projects/reelhouse-cinemas/image-03.png',
@@ -191,7 +191,7 @@ export const projects: Project[] = [
   {
     id: 'sustained-company',
     title: 'The Sustained Company',
-    subtitle: 'Eco-friendly fashion made transparent and accessible',
+    subtitle: 'Eco friendly fashion made transparent and accessible',
     description:
       'Customers are often unaware of the poor labor practices and harmful materials behind their clothing. The Sustained Company is an eco friendly fashion brand for users 18–47 who care about environmental impact. I designed the responsive website and app end-to-end, focusing on transparency, affordability, and size inclusivity.',
     problem:
@@ -213,7 +213,7 @@ export const projects: Project[] = [
       {
         id: 'background',
         title: 'Background',
-        body: 'The Sustained Company is a concept eco-fashion brand targeting users aged 18–47 who factor environmental impact into their purchasing decisions. The brand differentiates itself through three commitments: sustainably sourced materials, transparent supply chain information, and fair employee treatment. The design challenge was to make those values tangible and visible throughout the shopping experience — not just on an "About" page.',
+        body: 'The Sustained Company is a concept eco fashion brand targeting users aged 18–47 who factor environmental impact into their purchasing decisions. The brand differentiates itself through three commitments: sustainably sourced materials, transparent supply chain information, and fair employee treatment. The design challenge was to make those values tangible and visible throughout the shopping experience — not just on an "About" page.',
         images: ['/Portfolio/projects/sustained-company/image-02.png'],
         imageLayout: 'single',
       },
@@ -225,7 +225,7 @@ export const projects: Project[] = [
       {
         id: 'user-research',
         title: 'User Research',
-        body: 'I interviewed six participants who described themselves as sustainability-conscious shoppers. Research artifacts included a persona and a journey map following Crosby — a 29-year-old who wants to shop ethically but finds most sustainable brands too expensive or hard to navigate.\n\nKey finding: Participants couldn\'t find material or sourcing information on competitor sites without clicking through multiple pages. Insight: Sustainability details needed to be surfaced at the product level — not buried in a brand story section.\n\nKey finding: Three of six participants said they\'d abandoned a sustainable brand\'s checkout because size options were unclear or limited. Insight: Size inclusivity had to be visible upfront in filters and product pages — not discovered at the point of adding to cart.',
+        body: 'I interviewed six participants who described themselves as sustainability conscious shoppers. Research artifacts included a persona and a journey map following Crosby — a 29-year-old who wants to shop ethically but finds most sustainable brands too expensive or hard to navigate.\n\nKey finding: Participants couldn\'t find material or sourcing information on competitor sites without clicking through multiple pages. Insight: Sustainability details needed to be surfaced at the product level — not buried in a brand story section.\n\nKey finding: Three of six participants said they\'d abandoned a sustainable brand\'s checkout because size options were unclear or limited. Insight: Size inclusivity had to be visible upfront in filters and product pages — not discovered at the point of adding to cart.',
         images: [
           '/Portfolio/projects/sustained-company/image-03.png',
           '/Portfolio/projects/sustained-company/image-04.png',
@@ -256,7 +256,7 @@ export const projects: Project[] = [
       {
         id: 'iterations',
         title: 'Iterations',
-        body: 'The two most impactful iterations came directly from usability findings. The "Add to Bag" interaction was rebuilt with a visible counter increment and a confirmation toast — converting a silent action into a piece of clear feedback. The checkout entry screen was redesigned to lead with "Continue as Guest" rather than forcing account creation, reducing drop-off friction significantly.\n\nA third iteration addressed button state clarity on mobile — the active size selection state was strengthened with a higher-contrast border and filled background so the selected state was unambiguous at a glance.',
+        body: 'The two most impactful iterations came directly from usability findings. The "Add to Bag" interaction was rebuilt with a visible counter increment and a confirmation toast — converting a silent action into a piece of clear feedback. The checkout entry screen was redesigned to lead with "Continue as Guest" rather than forcing account creation, reducing drop-off friction significantly.\n\nA third iteration addressed button state clarity on mobile — the active size selection state was strengthened with a higher contrast border and filled background so the selected state was unambiguous at a glance.',
       },
       {
         id: 'conclusion',
