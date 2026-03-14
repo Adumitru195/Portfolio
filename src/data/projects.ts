@@ -4,9 +4,9 @@ export const projects: Project[] = [
   {
     id: 'arcadian-homes',
     title: 'Arcadian Homes',
-    subtitle: 'A one-stop-shop for finding real estate and scheduling tours',
+    subtitle: 'A one stop shop for finding real estate and scheduling tours',
     description:
-      'Listings vary from site to site, forcing users to juggle multiple platforms. Arcadian Homes consolidates every available listing and lets users schedule tours — all in one place. I led the project from research through delivery: interviews, paper and digital wireframes, low and high-fidelity prototypes, usability studies, and accessibility.',
+      'Listings vary from site to site, forcing users to juggle multiple platforms. Arcadian Homes consolidates every available listing and lets users schedule tours — all in one place. I led the project from research through delivery: interviews, paper and digital wireframes, low and high fidelity prototypes, usability studies, and accessibility.',
     problem:
       'Home buyers must juggle multiple listing platforms that each show different properties — and once they find one they like, scheduling a tour is a separate, often frustrating process that can kill momentum.',
     goal: 'Design a responsive, user friendly website that consolidates all available listings in one place and makes scheduling a tour as easy as booking a restaurant.',
@@ -31,12 +31,12 @@ export const projects: Project[] = [
       {
         id: 'role',
         title: 'My Role',
-        body: 'I owned the full design process from kickoff to final handoff. That included recruiting and conducting user interviews, synthesizing research into personas and journey maps, producing paper and digital wireframes, building low and high-fidelity prototypes in Figma, running two rounds of usability testing, and iterating based on findings. Accessibility was considered throughout — not added at the end.',
+        body: 'I owned the full design process from kickoff to final handoff. That included recruiting and conducting user interviews, synthesizing research into personas and journey maps, producing paper and digital wireframes, building low and high fidelity prototypes in Figma, running two rounds of usability testing, and iterating based on findings. Accessibility was considered throughout — not added at the end.',
       },
       {
         id: 'user-research',
         title: 'User Research',
-        body: 'I recruited five participants representing the target age range and conducted moderated interviews focused on their home search experiences. I then mapped the journey of Shay — a busy first-time buyer — to surface pain points across the full flow.\n\nKey finding: Users were switching between 3–4 sites per search session and losing track of listings they\'d already seen. Insight: The interface needed a persistent "saved listings" layer and unified search to reduce cognitive load.\n\nKey finding: Four of five participants had missed a tour opportunity because the scheduling process was unclear or multi step. Insight: Tour scheduling had to be a first-class feature — prominent, fast, and recoverable if users changed their mind.',
+        body: 'I recruited five participants representing the target age range and conducted moderated interviews focused on their home search experiences. I then mapped the journey of Shay — a busy first time buyer — to surface pain points across the full flow.\n\nKey finding: Users were switching between 3–4 sites per search session and losing track of listings they\'d already seen. Insight: The interface needed a persistent "saved listings" layer and unified search to reduce cognitive load.\n\nKey finding: Four of five participants had missed a tour opportunity because the scheduling process was unclear or multi step. Insight: Tour scheduling had to be a first class feature — prominent, fast, and recoverable if users changed their mind.',
         images: [
           '/Portfolio/projects/arcadian-homes/user-research.webp',
           '/Portfolio/projects/arcadian-homes/persona.webp',
@@ -49,16 +49,16 @@ export const projects: Project[] = [
         title: 'Sketches',
         body: 'Before opening Figma, I sketched multiple variations of each key screen on paper. Early explorations focused on three core questions: How do we present a large volume of listings without overwhelming users? Where does tour scheduling live in the hierarchy? How does the experience change on a smaller screen?\n\nI sketched both desktop and mobile layouts in parallel, since research showed users search on desktop but schedule tours on mobile. Designing both from the start prevented responsive retrofitting later.',
         images: [
-          '/Portfolio/projects/arcadian-homes/low-fidelity/low-fidelity-10.webp',
-          '/Portfolio/projects/arcadian-homes/low-fidelity/low-fidelity-6.webp',
-          '/Portfolio/projects/arcadian-homes/low-fidelity/low-fidelity-7.webp',
-          '/Portfolio/projects/arcadian-homes/low-fidelity/low-fidelity-8.webp',
-          '/Portfolio/projects/arcadian-homes/low-fidelity/low-fidelity-5.webp',
-          '/Portfolio/projects/arcadian-homes/low-fidelity/low-fidelity-9.webp',
-          '/Portfolio/projects/arcadian-homes/low-fidelity/low-fidelity-2.webp',
-          '/Portfolio/projects/arcadian-homes/low-fidelity/low-fidelity-1.webp',
-          '/Portfolio/projects/arcadian-homes/low-fidelity/low-fidelity-4.webp',
-          '/Portfolio/projects/arcadian-homes/low-fidelity/low-fidelity-3.webp',
+          '/Portfolio/projects/arcadian-homes/low fidelity/low fidelity-10.webp',
+          '/Portfolio/projects/arcadian-homes/low fidelity/low fidelity-6.webp',
+          '/Portfolio/projects/arcadian-homes/low fidelity/low fidelity-7.webp',
+          '/Portfolio/projects/arcadian-homes/low fidelity/low fidelity-8.webp',
+          '/Portfolio/projects/arcadian-homes/low fidelity/low fidelity-5.webp',
+          '/Portfolio/projects/arcadian-homes/low fidelity/low fidelity-9.webp',
+          '/Portfolio/projects/arcadian-homes/low fidelity/low fidelity-2.webp',
+          '/Portfolio/projects/arcadian-homes/low fidelity/low fidelity-1.webp',
+          '/Portfolio/projects/arcadian-homes/low fidelity/low fidelity-4.webp',
+          '/Portfolio/projects/arcadian-homes/low fidelity/low fidelity-3.webp',
         ],
         imageLayout: 'grid',
       },
@@ -84,14 +84,14 @@ export const projects: Project[] = [
       {
         id: 'usability-study',
         title: 'Usability Study',
-        body: 'I ran a moderated usability study with five participants using a clickable Figma prototype. Participants were asked to search for a 2-bedroom property under $2,000/month and schedule a tour.\n\nFinding 1: Prices on the rental listing page read as sale prices. Three participants expressed confusion. Design response: Updated the price display format to show per-month pricing prominently with a "/mo" label.\n\nFinding 2: After selecting a tour date, participants couldn\'t change it without going back through the entire flow. Design response: Made the date picker editable inline with a clear "Change date" affordance.\n\nFinding 3: The search filters were hard to find on mobile. Design response: Added a persistent filter button anchored to the bottom of the screen on small viewports.',
+        body: 'I ran a moderated usability study with five participants using a clickable Figma prototype. Participants were asked to search for a 2-bedroom property under $2,000/month and schedule a tour.\n\nFinding 1: Prices on the rental listing page read as sale prices. Three participants expressed confusion. Design response: Updated the price display format to show per month pricing prominently with a "/mo" label.\n\nFinding 2: After selecting a tour date, participants couldn\'t change it without going back through the entire flow. Design response: Made the date picker editable inline with a clear "Change date" affordance.\n\nFinding 3: The search filters were hard to find on mobile. Design response: Added a persistent filter button anchored to the bottom of the screen on small viewports.',
         images: ['/Portfolio/projects/arcadian-homes/usability-study.webp'],
         imageLayout: 'single',
       },
       {
         id: 'iterations',
         title: 'Iterations',
-        body: 'The usability study produced three design changes that significantly improved task completion rates. Rental prices were reformatted to clearly show monthly cost. The date picker was redesigned to be editable post-selection without restarting the flow. Filter controls were repositioned to a sticky bottom bar on mobile.\n\nEach change was retested with two participants before moving to high-fidelity. All three iterations tested positively in the second round.',
+        body: 'The usability study produced three design changes that significantly improved task completion rates. Rental prices were reformatted to clearly show monthly cost. The date picker was redesigned to be editable post selection without restarting the flow. Filter controls were repositioned to a sticky bottom bar on mobile.\n\nEach change was retested with two participants before moving to high fidelity. All three iterations tested positively in the second round.',
       },
       {
         id: 'conclusion',
@@ -132,7 +132,7 @@ export const projects: Project[] = [
       {
         id: 'role',
         title: 'My Role',
-        body: 'I owned the full design process from research to final prototype. Responsibilities included conducting user interviews, creating an affinity map and personas, building paper wireframes and a user flow diagram, producing low and high-fidelity Figma prototypes, running two rounds of moderated usability testing, and iterating on findings. I also made accessibility decisions — most notably the wheelchair seat indicator in the seat map.',
+        body: 'I owned the full design process from research to final prototype. Responsibilities included conducting user interviews, creating an affinity map and personas, building paper wireframes and a user flow diagram, producing low and high fidelity Figma prototypes, running two rounds of moderated usability testing, and iterating on findings. I also made accessibility decisions — most notably the wheelchair seat indicator in the seat map.',
       },
       {
         id: 'user-research',
@@ -165,14 +165,14 @@ export const projects: Project[] = [
       {
         id: 'wireframes',
         title: 'Wireframes & Prototypes',
-        body: 'Digital wireframes covered the full booking flow across five key screens: the home feed, movie detail page, showtime selection, seat map, and payment. Special attention went to the seat map — I designed it to clearly distinguish available, unavailable, selected, and wheelchair-accessible seats with both color and icon differentiation to meet accessibility standards.\n\nThe showtime screen was designed to make the selected state explicit at a glance: theater name, date, and time all confirmed in a persistent header before users proceeded.',
+        body: 'Digital wireframes covered the full booking flow across five key screens: the home feed, movie detail page, showtime selection, seat map, and payment. Special attention went to the seat map — I designed it to clearly distinguish available, unavailable, selected, and wheelchair accessible seats with both color and icon differentiation to meet accessibility standards.\n\nThe showtime screen was designed to make the selected state explicit at a glance: theater name, date, and time all confirmed in a persistent header before users proceeded.',
         images: ['/Portfolio/projects/reelhouse-cinemas/image-11.png'],
         imageLayout: 'single',
       },
       {
         id: 'usability-study',
         title: 'Usability Study',
-        body: 'I ran two rounds of moderated usability testing with five participants each, using a clickable Figma prototype. Round one was conducted at the low-fidelity stage; round two after high-fidelity revisions.\n\nRound 1 finding: Grayed-out showtimes caused confusion — participants didn\'t understand why some times were unavailable. Design response: Added a legend and a tooltip explaining that grayed times were sold out or past.\n\nRound 1 finding: Selecting a showtime immediately advanced the screen — users felt rushed. Design response: Added a "Continue" button with a summary of the selected time before advancing.\n\nRound 2 result: All five participants completed the full booking flow without assistance and rated the experience as easy or very easy. No critical issues were identified.',
+        body: 'I ran two rounds of moderated usability testing with five participants each, using a clickable Figma prototype. Round one was conducted at the low fidelity stage; round two after high fidelity revisions.\n\nRound 1 finding: Grayed out showtimes caused confusion — participants didn\'t understand why some times were unavailable. Design response: Added a legend and a tooltip explaining that grayed times were sold out or past.\n\nRound 1 finding: Selecting a showtime immediately advanced the screen — users felt rushed. Design response: Added a "Continue" button with a summary of the selected time before advancing.\n\nRound 2 result: All five participants completed the full booking flow without assistance and rated the experience as easy or very easy. No critical issues were identified.',
         images: ['/Portfolio/projects/reelhouse-cinemas/image-12.png'],
         imageLayout: 'single',
       },
@@ -193,7 +193,7 @@ export const projects: Project[] = [
     title: 'The Sustained Company',
     subtitle: 'Eco friendly fashion made transparent and accessible',
     description:
-      'Customers are often unaware of the poor labor practices and harmful materials behind their clothing. The Sustained Company is an eco friendly fashion brand for users 18–47 who care about environmental impact. I designed the responsive website and app end-to-end, focusing on transparency, affordability, and size inclusivity.',
+      'Customers are often unaware of the poor labor practices and harmful materials behind their clothing. The Sustained Company is an eco friendly fashion brand for users 18–47 who care about environmental impact. I designed the responsive website and app end to end, focusing on transparency, affordability, and size inclusivity.',
     problem:
       'Environmentally conscious shoppers want to make better purchasing decisions, but fashion brands make it nearly impossible — hiding material sourcing, labor practices, and environmental impact behind marketing language.',
     goal: 'Design a responsive shopping experience that makes sustainability information easy to find and understand, while keeping the shopping flow fast and accessible to users of all body types and budgets.',
@@ -225,7 +225,7 @@ export const projects: Project[] = [
       {
         id: 'user-research',
         title: 'User Research',
-        body: 'I interviewed six participants who described themselves as sustainability conscious shoppers. Research artifacts included a persona and a journey map following Crosby — a 29-year-old who wants to shop ethically but finds most sustainable brands too expensive or hard to navigate.\n\nKey finding: Participants couldn\'t find material or sourcing information on competitor sites without clicking through multiple pages. Insight: Sustainability details needed to be surfaced at the product level — not buried in a brand story section.\n\nKey finding: Three of six participants said they\'d abandoned a sustainable brand\'s checkout because size options were unclear or limited. Insight: Size inclusivity had to be visible upfront in filters and product pages — not discovered at the point of adding to cart.',
+        body: 'I interviewed six participants who described themselves as sustainability conscious shoppers. Research artifacts included a persona and a journey map following Crosby — a 29-year old who wants to shop ethically but finds most sustainable brands too expensive or hard to navigate.\n\nKey finding: Participants couldn\'t find material or sourcing information on competitor sites without clicking through multiple pages. Insight: Sustainability details needed to be surfaced at the product level — not buried in a brand story section.\n\nKey finding: Three of six participants said they\'d abandoned a sustainable brand\'s checkout because size options were unclear or limited. Insight: Size inclusivity had to be visible upfront in filters and product pages — not discovered at the point of adding to cart.',
         images: [
           '/Portfolio/projects/sustained-company/image-03.png',
           '/Portfolio/projects/sustained-company/image-04.png',
@@ -242,26 +242,26 @@ export const projects: Project[] = [
       {
         id: 'wireframes',
         title: 'Wireframes & Prototypes',
-        body: 'Wireframes covered five main areas of the experience across mobile, tablet, and desktop breakpoints.\n\nProduct Browsing — a filterable grid with size, price, and material filters accessible from a persistent side panel on desktop and a bottom sheet on mobile.\n\nProduct Detail — a page structure that surfaces material composition, sourcing origin, and care instructions alongside the standard size and color selectors.\n\nSustainability Page — a dedicated brand page using data visualization to communicate the company\'s environmental impact in plain language.\n\nCart & Checkout — a streamlined two-step checkout with clear item confirmation and accessible form inputs.\n\nThe wireframes were tested at low fidelity before any visual design was applied.',
+        body: 'Wireframes covered five main areas of the experience across mobile, tablet, and desktop breakpoints.\n\nProduct Browsing — a filterable grid with size, price, and material filters accessible from a persistent side panel on desktop and a bottom sheet on mobile.\n\nProduct Detail — a page structure that surfaces material composition, sourcing origin, and care instructions alongside the standard size and color selectors.\n\nSustainability Page — a dedicated brand page using data visualization to communicate the company\'s environmental impact in plain language.\n\nCart & Checkout — a streamlined two step checkout with clear item confirmation and accessible form inputs.\n\nThe wireframes were tested at low fidelity before any visual design was applied.',
         images: ['/Portfolio/projects/sustained-company/image-06.png'],
         imageLayout: 'single',
       },
       {
         id: 'usability-study',
         title: 'Usability Study',
-        body: 'I conducted a moderated usability study with five participants using a clickable Figma prototype. Participants were asked to find a sustainable jacket under $120 in their size and add it to their bag.\n\nKey finding: Tapping "Add to Bag" gave no visual confirmation — all five participants were uncertain whether the action had worked. Design response: Added a bag counter in the top-right corner that increments visibly on add, with a brief success toast message.\n\nKey finding: The "Sign In" and "Create Account" options blocked guest checkout — three participants attempted to close the modal and thought checkout was broken. Design response: Added a prominent "Continue as Guest" option as the primary CTA, with sign-in as a secondary choice.\n\nKey finding: The sustainability page was well received — four of five participants said it made them more likely to trust the brand.',
+        body: 'I conducted a moderated usability study with five participants using a clickable Figma prototype. Participants were asked to find a sustainable jacket under $120 in their size and add it to their bag.\n\nKey finding: Tapping "Add to Bag" gave no visual confirmation — all five participants were uncertain whether the action had worked. Design response: Added a bag counter in the top right corner that increments visibly on add, with a brief success toast message.\n\nKey finding: The "Sign In" and "Create Account" options blocked guest checkout — three participants attempted to close the modal and thought checkout was broken. Design response: Added a prominent "Continue as Guest" option as the primary CTA, with sign in as a secondary choice.\n\nKey finding: The sustainability page was well received — four of five participants said it made them more likely to trust the brand.',
         images: ['/Portfolio/projects/sustained-company/image-07.png'],
         imageLayout: 'single',
       },
       {
         id: 'iterations',
         title: 'Iterations',
-        body: 'The two most impactful iterations came directly from usability findings. The "Add to Bag" interaction was rebuilt with a visible counter increment and a confirmation toast — converting a silent action into a piece of clear feedback. The checkout entry screen was redesigned to lead with "Continue as Guest" rather than forcing account creation, reducing drop-off friction significantly.\n\nA third iteration addressed button state clarity on mobile — the active size selection state was strengthened with a higher contrast border and filled background so the selected state was unambiguous at a glance.',
+        body: 'The two most impactful iterations came directly from usability findings. The "Add to Bag" interaction was rebuilt with a visible counter increment and a confirmation toast — converting a silent action into a piece of clear feedback. The checkout entry screen was redesigned to lead with "Continue as Guest" rather than forcing account creation, reducing drop off friction significantly.\n\nA third iteration addressed button state clarity on mobile — the active size selection state was strengthened with a higher contrast border and filled background so the selected state was unambiguous at a glance.',
       },
       {
         id: 'conclusion',
         title: 'To Conclude',
-        body: 'What worked: Surfacing sustainability information at the product level — rather than only on a separate brand page — was well received in testing. Participants said it made the values feel integrated rather than performative. The size filtering system also tested well, with participants finding their size options quickly.\n\nWhat I would improve: The mobile navigation still requires too many taps to move between categories. A future iteration would introduce a persistent bottom navigation bar to reduce the path length for common tasks.\n\nFuture iterations: A "sustainability score" component on product cards would give users at-a-glance comparison across items. A wishlist feature and size profile storage would reduce friction for repeat visitors. Accessibility testing with a wider range of assistive technologies remains an open item.',
+        body: 'What worked: Surfacing sustainability information at the product level — rather than only on a separate brand page — was well received in testing. Participants said it made the values feel integrated rather than performative. The size filtering system also tested well, with participants finding their size options quickly.\n\nWhat I would improve: The mobile navigation still requires too many taps to move between categories. A future iteration would introduce a persistent bottom navigation bar to reduce the path length for common tasks.\n\nFuture iterations: A "sustainability score" component on product cards would give users at a glance comparison across items. A wishlist feature and size profile storage would reduce friction for repeat visitors. Accessibility testing with a wider range of assistive technologies remains an open item.',
       },
     ],
   },
