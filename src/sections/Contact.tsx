@@ -32,7 +32,7 @@ export default function Contact() {
           >
             <motion.a
               href={`mailto:${person.email}`}
-              className="group flex items-center gap-3 bg-accent hover:bg-accent-dim text-ink font-medium px-6 py-3.5 rounded-full transition-colors duration-200"
+              className="group flex items-center gap-3 bg-accent hover:bg-accent-dim text-white font-medium px-6 py-3.5 rounded-full transition-colors duration-200"
               whileHover={{ y: -2 }}
               transition={{ duration: 0.2, ease: 'easeOut' }}
             >

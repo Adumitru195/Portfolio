@@ -20,8 +20,9 @@ export default {
           overlay: '#EBEBEA',
         },
         accent: {
-          DEFAULT: '#B8FF3B',
-          dim: '#9BEA2E',
+          DEFAULT: '#4F46E5',
+          dim: '#4338CA',
+          highlight: '#E0E7FF',
         },
         text: {
           primary: '#1C1C1C',

@@ -55,7 +55,7 @@ export default function Navbar() {
           </motion.a>
           <motion.a
             href={`mailto:${person.email}`}
-            className="flex items-center gap-1.5 text-sm font-medium text-ink bg-accent hover:bg-accent-dim px-4 py-2 rounded-full transition-colors duration-200"
+            className="flex items-center gap-1.5 text-sm font-medium text-white bg-accent hover:bg-accent-dim px-4 py-2 rounded-full transition-colors duration-200"
             whileHover={{ y: -2 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
           >
