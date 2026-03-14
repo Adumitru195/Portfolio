@@ -9,9 +9,9 @@ export const projects: Project[] = [
       'Listings vary from site to site, forcing users to juggle multiple platforms. Arcadian Homes consolidates every available listing and lets users schedule tours — all in one place. I led the project from research through delivery: interviews, paper and digital wireframes, low and high-fidelity prototypes, usability studies, and accessibility.',
     problem:
       'Home buyers must juggle multiple listing platforms that each show different properties — and once they find one they like, scheduling a tour is a separate, often frustrating process that can kill momentum.',
-    goal: 'Design a responsive, user-friendly website that consolidates all available listings in one place and makes scheduling a tour as easy as booking a restaurant.',
+    goal: 'Design a responsive, user friendly website that consolidates all available listings in one place and makes scheduling a tour as easy as booking a restaurant.',
     solution:
-      'A unified listing platform with consolidated search, an integrated tour scheduler with editable date selection, and a mobile-first responsive layout — reducing friction from discovery to booking.',
+      'A unified listing platform with consolidated search, an integrated tour scheduler with editable date selection, and a mobile first responsive layout — reducing friction from discovery to booking.',
     details: {
       timeline: '6 weeks',
       tools: 'Figma, FigJam, User Interviews',
@@ -65,7 +65,7 @@ export const projects: Project[] = [
       {
         id: 'wireframes',
         title: 'Wireframes & Prototyping',
-        body: 'I built digital wireframes mobile-first, then adapted them to desktop. The wireframes covered four key areas:\n\nOnboarding — a lightweight entry point that gets users to search results in as few taps as possible, without forcing account creation upfront.\n\nSearch & Map — a split-screen view combining a filterable list and an interactive map so users can browse spatially and by criteria simultaneously.\n\nProperty Detail — a structured page hierarchy that surfaces photos, key facts, and the "Schedule a Tour" CTA above the fold on mobile.\n\nTour Scheduling — a date picker that remains editable after selection, with a confirmation summary before committing.',
+        body: 'I built digital wireframes mobile first, then adapted them to desktop. The wireframes covered four key areas:\n\nOnboarding — a lightweight entry point that gets users to search results in as few taps as possible, without forcing account creation upfront.\n\nSearch & Map — a split-screen view combining a filterable list and an interactive map so users can browse spatially and by criteria simultaneously.\n\nProperty Detail — a structured page hierarchy that surfaces photos, key facts, and the "Schedule a Tour" CTA above the fold on mobile.\n\nTour Scheduling — a date picker that remains editable after selection, with a confirmation summary before committing.',
         images: [
           '/Portfolio/projects/arcadian-homes/wireframes/wireframe-8.webp',
           '/Portfolio/projects/arcadian-homes/wireframes/wireframe-3.webp',
@@ -96,7 +96,7 @@ export const projects: Project[] = [
       {
         id: 'conclusion',
         title: 'To Conclude',
-        body: 'What worked: The mobile-first approach paid off — the experience felt native on small screens rather than squeezed from desktop. The unified search and tour scheduling reduced the task flow from a multi-platform effort to a single session.\n\nWhat I would improve: The onboarding flow still asks for too much context upfront. A future iteration would let users explore listings before being prompted to set preferences.\n\nFuture iterations: A saved search alerts feature and an agent contact flow would round out the product. Accessibility testing with screen readers was not completed in this sprint and would be a priority next.',
+        body: 'What worked: The mobile first approach paid off — the experience felt native on small screens rather than squeezed from desktop. The unified search and tour scheduling reduced the task flow from a multi platform effort to a single session.\n\nWhat I would improve: The onboarding flow still asks for too much context upfront. A future iteration would let users explore listings before being prompted to set preferences.\n\nFuture iterations: A saved search alerts feature and an agent contact flow would round out the product. Accessibility testing with screen readers was not completed in this sprint and would be a priority next.',
       },
     ],
   },
@@ -193,12 +193,12 @@ export const projects: Project[] = [
     title: 'The Sustained Company',
     subtitle: 'Eco-friendly fashion made transparent and accessible',
     description:
-      'Customers are often unaware of the poor labor practices and harmful materials behind their clothing. The Sustained Company is an eco-friendly fashion brand for users 18–47 who care about environmental impact. I designed the responsive website and app end-to-end, focusing on transparency, affordability, and size inclusivity.',
+      'Customers are often unaware of the poor labor practices and harmful materials behind their clothing. The Sustained Company is an eco friendly fashion brand for users 18–47 who care about environmental impact. I designed the responsive website and app end-to-end, focusing on transparency, affordability, and size inclusivity.',
     problem:
       'Environmentally conscious shoppers want to make better purchasing decisions, but fashion brands make it nearly impossible — hiding material sourcing, labor practices, and environmental impact behind marketing language.',
     goal: 'Design a responsive shopping experience that makes sustainability information easy to find and understand, while keeping the shopping flow fast and accessible to users of all body types and budgets.',
     solution:
-      'A transparent product page system with material sourcing details, a dedicated sustainability impact page, and a size-inclusive filtering system — paired with clear cart feedback so users always know where they are in the flow.',
+      'A transparent product page system with material sourcing details, a dedicated sustainability impact page, and a size inclusive filtering system — paired with clear cart feedback so users always know where they are in the flow.',
     details: {
       timeline: '7 weeks',
       tools: 'Figma, FigJam, User Interviews',
@@ -249,7 +249,7 @@ export const projects: Project[] = [
       {
         id: 'usability-study',
         title: 'Usability Study',
-        body: 'I conducted a moderated usability study with five participants using a clickable Figma prototype. Participants were asked to find a sustainable jacket under $120 in their size and add it to their bag.\n\nKey finding: Tapping "Add to Bag" gave no visual confirmation — all five participants were uncertain whether the action had worked. Design response: Added a bag counter in the top-right corner that increments visibly on add, with a brief success toast message.\n\nKey finding: The "Sign In" and "Create Account" options blocked guest checkout — three participants attempted to close the modal and thought checkout was broken. Design response: Added a prominent "Continue as Guest" option as the primary CTA, with sign-in as a secondary choice.\n\nKey finding: The sustainability page was well-received — four of five participants said it made them more likely to trust the brand.',
+        body: 'I conducted a moderated usability study with five participants using a clickable Figma prototype. Participants were asked to find a sustainable jacket under $120 in their size and add it to their bag.\n\nKey finding: Tapping "Add to Bag" gave no visual confirmation — all five participants were uncertain whether the action had worked. Design response: Added a bag counter in the top-right corner that increments visibly on add, with a brief success toast message.\n\nKey finding: The "Sign In" and "Create Account" options blocked guest checkout — three participants attempted to close the modal and thought checkout was broken. Design response: Added a prominent "Continue as Guest" option as the primary CTA, with sign-in as a secondary choice.\n\nKey finding: The sustainability page was well received — four of five participants said it made them more likely to trust the brand.',
         images: ['/Portfolio/projects/sustained-company/image-07.png'],
         imageLayout: 'single',
       },
@@ -261,7 +261,7 @@ export const projects: Project[] = [
       {
         id: 'conclusion',
         title: 'To Conclude',
-        body: 'What worked: Surfacing sustainability information at the product level — rather than only on a separate brand page — was well-received in testing. Participants said it made the values feel integrated rather than performative. The size filtering system also tested well, with participants finding their size options quickly.\n\nWhat I would improve: The mobile navigation still requires too many taps to move between categories. A future iteration would introduce a persistent bottom navigation bar to reduce the path length for common tasks.\n\nFuture iterations: A "sustainability score" component on product cards would give users at-a-glance comparison across items. A wishlist feature and size profile storage would reduce friction for repeat visitors. Accessibility testing with a wider range of assistive technologies remains an open item.',
+        body: 'What worked: Surfacing sustainability information at the product level — rather than only on a separate brand page — was well received in testing. Participants said it made the values feel integrated rather than performative. The size filtering system also tested well, with participants finding their size options quickly.\n\nWhat I would improve: The mobile navigation still requires too many taps to move between categories. A future iteration would introduce a persistent bottom navigation bar to reduce the path length for common tasks.\n\nFuture iterations: A "sustainability score" component on product cards would give users at-a-glance comparison across items. A wishlist feature and size profile storage would reduce friction for repeat visitors. Accessibility testing with a wider range of assistive technologies remains an open item.',
       },
     ],
   },
