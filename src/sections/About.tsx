@@ -6,12 +6,16 @@ import Tag from '@/components/Tag'
 
 const competencies = [
   {
-    label: 'Design & Research',
-    items: ['User Experience Research and Design', 'UX Design', 'User Research', 'UX Research', 'Wireframing', 'Prototyping', 'User Interface Design', 'UI Design', 'Visual Hierarchy'],
+    label: 'UX & Product',
+    items: ['User Research', 'UX Design', 'UI Design', 'Wireframing', 'Prototyping', 'User Flows', 'Information Architecture', 'Usability Testing', 'Accessibility', 'Interaction Design'],
   },
   {
     label: 'Tools',
     items: ['Figma', 'Adobe Creative Suite', 'Miro', 'Microsoft Office Suite'],
+  },
+  {
+    label: 'Technical',
+    items: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React Native', 'Expo', 'Supabase', 'SQL', 'Git/GitHub'],
   },
   {
     label: 'Languages',
