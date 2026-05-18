@@ -3,7 +3,9 @@ export interface CaseStudySection {
   title: string
   body?: string
   images?: string[]
-  imageLayout?: 'single' | 'grid' | 'grid-2' | 'gallery'
+  imageLayout?: 'single' | 'grid' | 'grid-2' | 'gallery' | 'full-gallery'
+  captions?: string[]
+  previewImages?: string[]
 }
 
 export interface ProjectDetails {
@@ -53,4 +55,15 @@ export interface PersonInfo {
   email: string
   phone?: string
   socials: SocialLink[]
+}
+
+export interface AcademicProject {
+  id: string
+  title: string
+  category: string
+  course: string
+  tools: string[]
+  description: string
+  image?: string
+  link?: string
 }
