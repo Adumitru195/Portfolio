@@ -265,4 +265,71 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    id: 'typography-systems',
+    title: 'Typography Systems',
+    subtitle: 'Editorial Design · Typography · Academic Project',
+    description:
+      'A multi-page typography study exploring hierarchy, spacing, alignment, rhythm, and layout systems using repeated lecture-series content.',
+    problem:
+      'Typography shapes how information is read and understood, but the relationship between type decisions and comprehension is rarely made explicit. How much does layout structure actually change the reading experience when the content stays exactly the same?',
+    goal: 'Explore how hierarchy, spacing, alignment, scale, and repetition can transform the same written content into multiple distinct layout systems, each with its own visual rhythm and information flow.',
+    solution:
+      'A multi-page typographic study using a single set of lecture-series content across varied layout systems, comparing how type decisions affect readability, prioritization, and visual structure.',
+    details: {
+      timeline: 'Spring 2026',
+      tools: 'Adobe InDesign',
+      platform: 'Print / Editorial',
+    },
+    role: 'Visual Designer',
+    tags: ['Typography', 'Editorial Design', 'Visual Hierarchy', 'Layout Systems'],
+    year: '2026',
+    image: '/Portfolio/projects/typography-systems/page-03.jpg',
+    featured: false,
+    sections: [
+      {
+        id: 'overview',
+        title: 'Overview',
+        body: 'A typography systems project created for GD 232: Typography at DePaul University. This project explores how hierarchy, spacing, alignment, scale, and repetition can transform the same written content into multiple layout systems. Using lecture-series information as the source material, I experimented with different typographic structures to improve readability, visual rhythm, and information flow across a multi-page design study.\n\nThis project uses the same lecture-series content across multiple layout variations to study how typography changes the way information is read, prioritized, and understood. The goal was to create structured compositions that balance readability with visual interest while experimenting with type hierarchy, spacing, rhythm, and alignment.',
+      },
+      {
+        id: 'design-focus',
+        title: 'Design Focus',
+        body: 'This project focused on using typography as a system rather than decoration. Each layout explores how small changes in type size, weight, spacing, alignment, and positioning can change the reading experience. The repeated content allowed me to compare different systems and understand how structure affects clarity, rhythm, and visual communication.',
+      },
+      {
+        id: 'exploration',
+        title: 'What I Explored',
+        body: 'Each layout variation was an opportunity to test a specific typographic idea. Typographic hierarchy — how size, weight, and position direct the reader\'s eye. Information flow — how reading order can be shaped through placement and grouping. Editorial layout systems — how grids and structure create rhythm across a page. Alignment and spacing — how margins and white space affect density and readability. Scale and contrast — how size relationships create emphasis. Repetition and variation — how repeated elements build visual consistency. Readability across dense content — how to maintain clarity when there is a lot of information. Visual rhythm and composition — how the eye moves across the page as a whole.',
+      },
+      {
+        id: 'process',
+        title: 'Process',
+        body: '1. Content Analysis — I reviewed the lecture-series content and identified the major information groups: institution, event title, description, speaker names, lecture titles, dates, location, language, and registration information.\n\n2. Hierarchy Development — I explored how different pieces of content should be prioritized visually so the viewer could quickly understand the event series and scan the lecture information.\n\n3. Layout Variation — I created multiple layout systems using the same content, changing alignment, scale, spacing, and typographic rhythm to test different ways of organizing the information.\n\n4. Refinement — I adjusted spacing, line breaks, grouping, and hierarchy to improve readability and create stronger visual structure.',
+      },
+      {
+        id: 'layouts',
+        title: 'Layout Studies',
+        images: [
+          '/Portfolio/projects/typography-systems/page-02.jpg',
+          '/Portfolio/projects/typography-systems/page-03.jpg',
+          '/Portfolio/projects/typography-systems/page-04.jpg',
+          '/Portfolio/projects/typography-systems/page-05.jpg',
+          '/Portfolio/projects/typography-systems/page-06.jpg',
+          '/Portfolio/projects/typography-systems/page-08.jpg',
+        ],
+        imageLayout: 'gallery',
+      },
+      {
+        id: 'outcome',
+        title: 'Outcome',
+        body: 'The final study demonstrates multiple ways typography can organize dense information into readable, structured, and visually distinct layouts. The project helped strengthen my understanding of type hierarchy, editorial composition, and systematic visual design.',
+      },
+      {
+        id: 'reflection',
+        title: 'Reflection',
+        body: 'This project helped me better understand how typography affects usability and communication. Even when the written content stays the same, layout decisions can completely change how easily someone understands the information. This connects directly to UX design because strong hierarchy, readable structure, and clear information flow are essential in both visual design and digital interfaces.',
+      },
+    ],
+  },
 ]
