@@ -6,6 +6,8 @@ export interface CaseStudySection {
   imageLayout?: 'single' | 'grid' | 'grid-2' | 'gallery' | 'full-gallery'
   captions?: string[]
   previewImages?: string[]
+  items?: string[]
+  sectionStyle?: 'chips' | 'numbered-cards'
 }
 
 export interface ProjectDetails {

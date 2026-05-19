@@ -300,12 +300,28 @@ export const projects: Project[] = [
       {
         id: 'exploration',
         title: 'What I Explored',
-        body: 'Each layout variation was an opportunity to test a specific typographic idea. Typographic hierarchy — how size, weight, and position direct the reader\'s eye. Information flow — how reading order can be shaped through placement and grouping. Editorial layout systems — how grids and structure create rhythm across a page. Alignment and spacing — how margins and white space affect density and readability. Scale and contrast — how size relationships create emphasis. Repetition and variation — how repeated elements build visual consistency. Readability across dense content — how to maintain clarity when there is a lot of information. Visual rhythm and composition — how the eye moves across the page as a whole.',
+        sectionStyle: 'chips',
+        items: [
+          'Typographic Hierarchy',
+          'Information Flow',
+          'Editorial Layout Systems',
+          'Alignment and Spacing',
+          'Scale and Contrast',
+          'Repetition and Variation',
+          'Readability',
+          'Visual Rhythm and Composition',
+        ],
       },
       {
         id: 'process',
         title: 'Process',
-        body: '1. Content Analysis — I reviewed the lecture-series content and identified the major information groups: institution, event title, description, speaker names, lecture titles, dates, location, language, and registration information.\n\n2. Hierarchy Development — I explored how different pieces of content should be prioritized visually so the viewer could quickly understand the event series and scan the lecture information.\n\n3. Layout Variation — I created multiple layout systems using the same content, changing alignment, scale, spacing, and typographic rhythm to test different ways of organizing the information.\n\n4. Refinement — I adjusted spacing, line breaks, grouping, and hierarchy to improve readability and create stronger visual structure.',
+        sectionStyle: 'numbered-cards',
+        items: [
+          'Content Analysis — I reviewed the lecture-series content and identified the major information groups: institution, event title, description, speaker names, lecture titles, dates, location, language, and registration information.',
+          'Hierarchy Development — I explored how different pieces of content should be prioritized visually so the viewer could quickly understand the event series and scan the lecture information.',
+          'Layout Variation — I created multiple layout systems using the same content, changing alignment, scale, spacing, and typographic rhythm to test different ways of organizing the information.',
+          'Refinement — I adjusted spacing, line breaks, grouping, and hierarchy to improve readability and create stronger visual structure.',
+        ],
       },
       {
         id: 'layouts',
@@ -316,7 +332,7 @@ export const projects: Project[] = [
           '/Portfolio/projects/typography-systems/page-05.jpg',
           '/Portfolio/projects/typography-systems/page-08.jpg',
         ],
-        imageLayout: 'grid-2',
+        imageLayout: 'gallery',
       },
       {
         id: 'full-gallery',

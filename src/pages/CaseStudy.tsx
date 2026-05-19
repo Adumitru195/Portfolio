@@ -8,24 +8,22 @@ import { fadeUp, staggerContainer } from '@/lib/motion'
 import type { CaseStudySection } from '@/types'
 
 function FullGalleryImages({ section }: { section: CaseStudySection }) {
-  const [open, setOpen] = useState(false)
-  const [index, setIndex] = useState(0)
+  const [expanded, setExpanded] = useState(false)
+  const [lightboxIdx, setLightboxIdx] = useState(-1)
 
   const images = section.images ?? []
   const captions = section.captions ?? []
   const preview = section.previewImages ?? images.slice(0, 4)
-
-  const prev = () => setIndex((i) => Math.max(0, i - 1))
-  const next = () => setIndex((i) => Math.min(images.length - 1, i + 1))
-
-  const openAt = (i: number) => { setIndex(i); setOpen(true) }
+  const displayed = expanded ? images : preview
+  const lightboxOpen = lightboxIdx >= 0
+  const closeLightbox = () => setLightboxIdx(-1)
 
   useEffect(() => {
-    if (!open) return
+    if (!lightboxOpen) return
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpen(false)
-      if (e.key === 'ArrowRight') next()
-      if (e.key === 'ArrowLeft') prev()
+      if (e.key === 'Escape') closeLightbox()
+      if (e.key === 'ArrowRight') setLightboxIdx((i) => Math.min(i + 1, images.length - 1))
+      if (e.key === 'ArrowLeft') setLightboxIdx((i) => Math.max(i - 1, 0))
     }
     document.addEventListener('keydown', onKey)
     document.body.style.overflow = 'hidden'
@@ -33,107 +31,98 @@ function FullGalleryImages({ section }: { section: CaseStudySection }) {
       document.removeEventListener('keydown', onKey)
       document.body.style.overflow = ''
     }
-  }, [open, index])
+  }, [lightboxOpen, images.length])
 
   if (images.length === 0) return null
 
   return (
     <div className="mt-6">
-      {/* Curated preview grid */}
-      <div className="grid grid-cols-2 gap-3 mb-5">
-        {preview.map((src, i) => {
+      {/* Preview or expanded grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+        {displayed.map((src) => {
           const fullIdx = images.indexOf(src)
-          const caption = captions[fullIdx] ?? captions[i] ?? ''
+          const caption = captions[fullIdx] ?? ''
           return (
             <button
-              key={i}
-              onClick={() => openAt(fullIdx >= 0 ? fullIdx : i)}
+              key={src}
+              onClick={() => setLightboxIdx(fullIdx >= 0 ? fullIdx : 0)}
               className="group block rounded-xl overflow-hidden border border-subtle hover:border-text-muted transition-colors duration-200 text-left"
-              aria-label={`Open ${caption || `layout ${i + 1}`} in gallery`}
+              aria-label={caption ? `View: ${caption}` : 'Open layout in lightbox'}
             >
-              <img
-                src={src}
-                alt={caption || `Typography layout study ${i + 1}`}
-                className="w-full block group-hover:scale-[1.02] transition-transform duration-500"
-              />
+              <div className="overflow-hidden">
+                <img
+                  src={src}
+                  alt={caption || 'Typography layout study'}
+                  className="w-full block group-hover:scale-[1.02] transition-transform duration-500"
+                />
+              </div>
               {caption && (
-                <p className="px-3 py-2 text-xs text-text-muted">{caption}</p>
+                <p className="px-3 py-2.5 text-xs text-text-muted border-t border-subtle">{caption}</p>
               )}
             </button>
           )
         })}
       </div>
 
-      {/* View all button */}
+      {/* Expand / collapse button */}
       <button
-        onClick={() => openAt(0)}
+        onClick={() => setExpanded((e) => !e)}
         className="inline-flex items-center gap-2 text-sm font-medium text-text-secondary hover:text-text-primary border border-subtle hover:border-text-muted px-5 py-2.5 rounded-full transition-colors duration-200"
       >
-        View All Layouts
-        <span className="text-text-muted font-normal">({images.length})</span>
+        {expanded ? 'Show Fewer Layouts' : `View All ${images.length} Layouts`}
       </button>
 
-      {/* Lightbox modal */}
-      {open && (
+      {/* Lightbox */}
+      {lightboxOpen && (
         <div
           className="fixed inset-0 z-50 bg-black/95 flex flex-col items-center justify-center p-4 md:p-8"
-          onClick={() => setOpen(false)}
+          onClick={closeLightbox}
           role="dialog"
           aria-modal="true"
-          aria-label="Full layout gallery"
+          aria-label="Layout lightbox"
         >
-          <div
-            className="relative w-full max-w-5xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Top bar */}
+          <div className="relative w-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-3">
-              <span className="text-white/40 text-xs font-mono">{index + 1} / {images.length}</span>
+              <span className="text-white/40 text-xs font-mono">{lightboxIdx + 1} / {images.length}</span>
               <button
-                onClick={() => setOpen(false)}
+                onClick={closeLightbox}
                 className="flex items-center gap-1.5 text-white/60 hover:text-white text-sm transition-colors"
-                aria-label="Close gallery"
+                aria-label="Close lightbox"
               >
                 <X size={16} weight="bold" /> Close
               </button>
             </div>
 
-            {/* Image */}
             <div className="rounded-xl overflow-hidden bg-white">
               <img
-                src={images[index]}
-                alt={captions[index] || `Typography layout study, page ${index + 1}`}
+                src={images[lightboxIdx]}
+                alt={captions[lightboxIdx] || `Typography layout study, page ${lightboxIdx + 1}`}
                 className="w-full max-h-[68vh] object-contain block"
               />
             </div>
 
-            {/* Caption */}
-            {captions[index] && (
-              <p className="text-white/60 text-sm mt-3 text-center">{captions[index]}</p>
+            {captions[lightboxIdx] && (
+              <p className="text-white/60 text-sm mt-3 text-center">{captions[lightboxIdx]}</p>
             )}
 
-            {/* Prev / thumbnail strip / Next */}
             <div className="flex items-center gap-3 mt-4">
               <button
-                onClick={prev}
-                disabled={index === 0}
+                onClick={() => setLightboxIdx((i) => Math.max(0, i - 1))}
+                disabled={lightboxIdx === 0}
                 className="flex items-center gap-1.5 text-white/60 hover:text-white disabled:opacity-20 disabled:cursor-not-allowed transition-colors text-sm shrink-0"
                 aria-label="Previous layout"
               >
                 <ArrowLeft size={15} /> Prev
               </button>
 
-              {/* Thumbnail strip */}
               <div className="flex-1 overflow-x-auto">
-                <div className="flex gap-1.5 justify-center min-w-0">
+                <div className="flex gap-1.5 justify-center">
                   {images.map((src, i) => (
                     <button
                       key={i}
-                      onClick={() => setIndex(i)}
+                      onClick={() => setLightboxIdx(i)}
                       className={`shrink-0 w-10 h-7 rounded overflow-hidden border-2 transition-all duration-150 ${
-                        i === index
-                          ? 'border-white opacity-100'
-                          : 'border-transparent opacity-40 hover:opacity-70'
+                        i === lightboxIdx ? 'border-white opacity-100' : 'border-transparent opacity-40 hover:opacity-70'
                       }`}
                       aria-label={captions[i] ?? `Page ${i + 1}`}
                     >
@@ -144,8 +133,8 @@ function FullGalleryImages({ section }: { section: CaseStudySection }) {
               </div>
 
               <button
-                onClick={next}
-                disabled={index === images.length - 1}
+                onClick={() => setLightboxIdx((i) => Math.min(images.length - 1, i + 1))}
+                disabled={lightboxIdx === images.length - 1}
                 className="flex items-center gap-1.5 text-white/60 hover:text-white disabled:opacity-20 disabled:cursor-not-allowed transition-colors text-sm shrink-0"
                 aria-label="Next layout"
               >
@@ -378,9 +367,9 @@ export default function CaseStudy() {
               key={section.id}
               id={section.id}
               variants={fadeUp}
-              className="mb-20 scroll-mt-24"
+              className="mb-24 scroll-mt-24"
             >
-              <div className="flex items-center gap-4 mb-6">
+              <div className="flex items-center gap-4 mb-8">
                 <div className="h-px flex-1 bg-subtle" />
                 <h2 className="font-display font-bold text-2xl md:text-3xl text-text-primary tracking-tight whitespace-nowrap">
                   {section.title}
@@ -389,7 +378,39 @@ export default function CaseStudy() {
               </div>
 
               {section.body && (
-                <p className="text-text-secondary leading-relaxed">{section.body}</p>
+                <p className="text-text-secondary text-base leading-loose">{section.body}</p>
+              )}
+
+              {/* Chips layout */}
+              {section.sectionStyle === 'chips' && section.items && (
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {section.items.map((item) => (
+                    <span
+                      key={item}
+                      className="inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium bg-surface border border-subtle text-text-secondary"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {/* Numbered cards layout */}
+              {section.sectionStyle === 'numbered-cards' && section.items && (
+                <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {section.items.map((item, i) => {
+                    const dashIdx = item.indexOf(' — ')
+                    const title = dashIdx >= 0 ? item.slice(0, dashIdx) : item
+                    const body = dashIdx >= 0 ? item.slice(dashIdx + 3) : ''
+                    return (
+                      <div key={i} className="p-6 rounded-2xl border border-subtle bg-surface">
+                        <p className="font-mono text-xs text-accent font-bold mb-3">0{i + 1}</p>
+                        <h3 className="font-display font-semibold text-text-primary mb-2">{title}</h3>
+                        {body && <p className="text-text-secondary text-sm leading-relaxed">{body}</p>}
+                      </div>
+                    )
+                  })}
+                </div>
               )}
 
               {section.imageLayout === 'full-gallery'
