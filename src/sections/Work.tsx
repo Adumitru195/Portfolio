@@ -91,15 +91,20 @@ export default function Work() {
           viewport={{ once: true, margin: '-10%' }}
         >
           {/* Section header */}
-          <motion.div variants={fadeUp} className="mb-16">
+          <motion.div variants={fadeUp} className="mb-6">
             <div className="flex items-center gap-3 mb-4">
               <div className="h-px w-8 bg-accent" />
               <span className="text-xs text-text-muted uppercase tracking-widest">Selected Work</span>
             </div>
             <h2 className="font-display font-black text-4xl md:text-6xl tracking-tightest text-text-primary">
-              Things I've built.
+              Selected Work
             </h2>
           </motion.div>
+
+          <motion.p variants={fadeUp} className="text-text-secondary leading-relaxed max-w-2xl mb-16">
+            A collection of UX, product design, visual design, and academic projects exploring research,
+            interaction design, prototyping, and visual systems.
+          </motion.p>
 
           {/* All projects — uniform 3-col grid */}
           <motion.div
