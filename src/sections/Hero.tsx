@@ -57,11 +57,11 @@ export default function Hero() {
           variants={fadeUp}
           className="font-display font-black text-5xl md:text-7xl lg:text-8xl tracking-tightest text-text-primary leading-[0.92] mb-8 max-w-5xl"
         >
-          Design that
+          Designing products
           <br />
-          <span className="text-gradient">makes people</span>
+          that are <span className="text-gradient">clear, useful,</span>
           <br />
-          feel something.
+          and human.
         </motion.h1>
 
         {/* Meta row */}
@@ -88,6 +88,12 @@ export default function Hero() {
           >
             Resume
           </a>
+          <button
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="inline-flex items-center gap-2 border border-subtle hover:border-text-muted text-text-secondary hover:text-text-primary text-sm font-medium px-5 py-2.5 rounded-full transition-colors duration-200"
+          >
+            Contact Me
+          </button>
         </motion.div>
 
         {/* Scroll indicator */}

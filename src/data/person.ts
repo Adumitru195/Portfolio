@@ -13,5 +13,6 @@ export const person: PersonInfo = {
   phone: '773-319-4110',
   socials: [
     { label: 'LinkedIn', url: 'https://www.linkedin.com/in/andrew-dumitru-925764287/' },
+    { label: 'GitHub', url: 'https://github.com/Adumitru195' },
   ],
 }

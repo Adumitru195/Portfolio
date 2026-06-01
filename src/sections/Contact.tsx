@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowUpRight, Envelope, LinkedinLogo } from '@phosphor-icons/react'
+import { ArrowUpRight, Envelope, LinkedinLogo, GithubLogo } from '@phosphor-icons/react'
 import { staggerContainer, fadeUp } from '@/lib/motion'
 import { person } from '@/data/person'
 
@@ -59,6 +59,27 @@ export default function Contact() {
                 >
                   <LinkedinLogo size={18} />
                   LinkedIn
+                  <ArrowUpRight
+                    size={14}
+                    className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  />
+                </motion.a>
+              ))}
+
+            {person.socials
+              .filter((s) => s.label === 'GitHub')
+              .map((social) => (
+                <motion.a
+                  key={social.label}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-2 border border-subtle text-text-secondary hover:text-text-primary hover:border-text-muted px-6 py-3.5 rounded-full transition-colors duration-200"
+                  whileHover={{ y: -2 }}
+                  transition={{ duration: 0.2, ease: 'easeOut' }}
+                >
+                  <GithubLogo size={18} />
+                  GitHub
                   <ArrowUpRight
                     size={14}
                     className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
