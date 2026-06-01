@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andrew M. Dumitru — Resume</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      font-size: 10.2pt;
+      line-height: 1.4;
+      color: #111;
+      background: #fff;
+    }
+
+    .page {
+      width: 8.5in;
+      min-height: 11in;
+      margin: 0 auto;
+      padding: 0.55in 0.65in 0.5in 0.65in;
+    }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .header h1 {
+      font-size: 20pt;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .contact {
+      font-size: 9.5pt;
+      color: #222;
+    }
+
+    .contact a {
+      color: #222;
+      text-decoration: none;
+    }
+
+    .contact span {
+      margin: 0 5px;
+      color: #666;
+    }
+
+    /* ── Summary ── */
+    .summary {
+      font-size: 9.8pt;
+      line-height: 1.45;
+      margin-bottom: 9px;
+      color: #222;
+    }
+
+    /* ── Section ── */
+    .section {
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 11pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      border-bottom: 1.2px solid #111;
+      padding-bottom: 2px;
+      margin-bottom: 6px;
+    }
+
+    /* ── Competencies ── */
+    .competencies p {
+      font-size: 9.5pt;
+      line-height: 1.5;
+      margin-bottom: 2px;
+    }
+
+    .competencies strong {
+      font-weight: 700;
+    }
+
+    /* ── Experience / Projects ── */
+    .entry {
+      margin-bottom: 7px;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .entry-title {
+      font-size: 10.2pt;
+      font-weight: 700;
+    }
+
+    .entry-date {
+      font-size: 9.5pt;
+      color: #444;
+      white-space: nowrap;
+      font-style: italic;
+    }
+
+    .entry-sub {
+      font-size: 9.5pt;
+      color: #444;
+      margin-bottom: 2px;
+    }
+
+    ul {
+      padding-left: 14px;
+      margin-top: 2px;
+    }
+
+    li {
+      font-size: 9.5pt;
+      line-height: 1.42;
+      margin-bottom: 2px;
+      color: #222;
+    }
+
+    /* ── Education ── */
+    .edu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .edu-degree {
+      font-size: 10pt;
+      font-weight: 700;
+    }
+
+    .edu-school {
+      font-size: 9.5pt;
+      color: #444;
+    }
+
+    /* ── Certifications ── */
+    .cert-list {
+      list-style: disc;
+      padding-left: 14px;
+    }
+
+    .cert-list li {
+      font-size: 9.5pt;
+      margin-bottom: 2px;
+    }
+
+    /* ── Print ── */
+    @media print {
+      body { background: #fff; }
+      .page {
+        width: 100%;
+        min-height: unset;
+        margin: 0;
+        padding: 0.5in 0.6in 0.45in 0.6in;
+      }
+      a { color: #111 !important; text-decoration: none !important; }
+    }
+
+    @page {
+      size: letter;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>Andrew M. Dumitru</h1>
+    <div class="contact">
+      Chicago, Illinois
+      <span>|</span>
+      <a href="mailto:AndrewDumitru@outlook.com">AndrewDumitru@outlook.com</a>
+      <span>|</span>
+      773-319-4110
+      <span>|</span>
+      <a href="https://adumitru195.github.io/Portfolio/">adumitru195.github.io/Portfolio</a>
+      <span>|</span>
+      <a href="https://www.linkedin.com/in/andrew-dumitru-925764287/">linkedin.com/in/andrew-dumitru-925764287</a>
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div class="summary">
+    UX / Product Designer with experience creating user-centered digital products through research, wireframing, prototyping, usability
+    testing, and iterative design. Brings a disciplined, detail-oriented approach shaped by military precision work and quality assurance.
+    Focused on designing accessible, intuitive experiences and collaborating across teams to deliver clear, effective product solutions.
+  </div>
+
+  <!-- Core Competencies -->
+  <div class="section">
+    <div class="section-title">Core Competencies</div>
+    <div class="competencies">
+      <p><strong>UX &amp; Product:</strong> User Research, UX Design, UI Design, Wireframing, Prototyping, User Flows, Information Architecture, Usability Testing, Accessibility, Interaction Design</p>
+      <p><strong>Tools:</strong> Figma, Adobe Creative Suite, Miro, Microsoft Office Suite, ChatGPT, Claude, GitHub Copilot/Codex</p>
+      <p><strong>Technical:</strong> HTML, CSS, JavaScript, TypeScript, React Native, Expo, Supabase, SQL, Git/GitHub</p>
+      <p><strong>Languages:</strong> English (Native) &middot; Romanian (Fluent)</p>
+    </div>
+  </div>
+
+  <!-- Experience -->
+  <div class="section">
+    <div class="section-title">Experience</div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">UX Designer &amp; Researcher &nbsp;|&nbsp; DePaul University</span>
+        <span class="entry-date">Jan 2024 &ndash; Present</span>
+      </div>
+      <ul>
+        <li>Designed wireframes, prototypes, and high-fidelity interface concepts in Figma across web and mobile UX projects spanning user flows, information architecture, and interaction patterns.</li>
+        <li>Applied user-centered design principles to improve usability, navigation clarity, and visual hierarchy through iterative, feedback-driven refinement.</li>
+        <li>Incorporated direction from instructors, peers, and stakeholders across multiple stages of the design process.</li>
+        <li>Collaborated with developers to align designs with technical constraints and maintain consistency from concept to implementation.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">UX Designer (Website Redesign) &nbsp;|&nbsp; Blue Demon Theatre</span>
+        <span class="entry-date">Jan 2024 &ndash; Apr 2024</span>
+      </div>
+      <ul>
+        <li>Created wireframes and interactive prototypes in Figma for a theatre website redesign.</li>
+        <li>Improved content organization and navigation through research-informed design decisions.</li>
+        <li>Partnered with developers in Weebly to support accurate implementation and design consistency.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">Aircraft Maintenance Specialist &nbsp;|&nbsp; United States Air Force</span>
+        <span class="entry-date">Oct 2018 &ndash; Oct 2024</span>
+      </div>
+      <ul>
+        <li>Performed precision structural repairs and preventive maintenance in safety-critical environments.</li>
+        <li>Maintained detailed technical documentation under strict quality and compliance standards.</li>
+        <li>Reduced maintenance time by 20% through improved quality-control practices.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Projects -->
+  <div class="section">
+    <div class="section-title">Projects</div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">Arcadian Homes &nbsp;|&nbsp; UX Research + Responsive Web</span>
+      </div>
+      <ul>
+        <li>Led end-to-end UX design for a real estate platform — interviews, personas, journey maps, wireframes, prototypes, and two rounds of usability testing.</li>
+        <li>Designed a unified listing and tour scheduling experience across desktop and mobile, resolving friction points identified in research.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">ReelHouse Cinemas &nbsp;|&nbsp; UX Design + iOS Mobile App</span>
+      </div>
+      <ul>
+        <li>Designed a cinema booking app covering movie discovery, showtime filtering, accessible seat selection, and streamlined checkout.</li>
+        <li>Conducted user interviews, mapped the full booking flow, ran two rounds of moderated usability testing, and iterated to a zero-critical-issue final prototype.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">The Sustained Company &nbsp;|&nbsp; UX Research + Product Design</span>
+      </div>
+      <ul>
+        <li>Designed a responsive eco-fashion shopping experience across mobile, tablet, and desktop, surfacing sustainability information at the product level.</li>
+        <li>Improved checkout entry and cart feedback through usability findings, significantly reducing drop-off friction.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Education -->
+  <div class="section">
+    <div class="section-title">Education</div>
+    <div class="edu-row">
+      <span class="edu-degree">Bachelor&rsquo;s in User Experience Research and Design</span>
+      <span class="entry-date">2024 &ndash; Present</span>
+    </div>
+    <div class="edu-school">DePaul University</div>
+  </div>
+
+  <!-- Certifications -->
+  <div class="section">
+    <div class="section-title">Certifications</div>
+    <ul class="cert-list">
+      <li>UX Design Specialization &ndash; Certification (2024)</li>
+      <li>Google Cloud Database Engineer Certification (2024)</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>
