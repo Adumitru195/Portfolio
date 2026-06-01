@@ -6,8 +6,8 @@ export const experience: Experience[] = [
     role: 'UX Designer & Researcher',
     period: 'Jan 2024 – Present',
     description:
-      'Design wireframes, prototypes, and interface concepts in Figma for web-based UX projects across multiple stages of the design process. Apply user-centered design principles to improve usability, navigation clarity, and visual hierarchy. Iterate on designs through feedback from peers, stakeholders, and instructors. Collaborate with designers and developers to refine layouts and interactions within technical constraints.',
-    tags: ['Figma', 'Wireframing', 'Prototyping', 'User Research', 'UI Design'],
+      'Design wireframes, prototypes, and high-fidelity interface concepts in Figma across web and mobile UX projects — covering user flows, information architecture, and interaction patterns. Apply user-centered design principles to improve usability, navigation clarity, and visual hierarchy through iterative, feedback-driven refinement. Incorporate direction from instructors, peers, and stakeholders across multiple design stages. Collaborate with developers to align designs with technical constraints and maintain consistency from concept to implementation.',
+    tags: ['Figma', 'Wireframing', 'Prototyping', 'User Research', 'UI Design', 'Information Architecture', 'User Flows'],
   },
   {
     company: 'Blue Demon Theatre',

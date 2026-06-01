@@ -72,10 +72,28 @@ export default function Hero() {
           <p className="text-text-muted text-sm mt-2">{person.location}</p>
         </motion.div>
 
+        {/* CTA row */}
+        <motion.div variants={fadeUp} className="mt-10 flex flex-wrap items-center gap-4">
+          <button
+            onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
+            className="inline-flex items-center gap-2 bg-accent hover:bg-accent-dim text-white text-sm font-medium px-5 py-2.5 rounded-full transition-colors duration-200"
+          >
+            View Work
+            <ArrowDown size={14} weight="bold" />
+          </button>
+          <a
+            href="/Portfolio/AndrewDumitruResume.pdf"
+            download
+            className="inline-flex items-center gap-2 border border-subtle hover:border-text-muted text-text-secondary hover:text-text-primary text-sm font-medium px-5 py-2.5 rounded-full transition-colors duration-200"
+          >
+            Resume
+          </a>
+        </motion.div>
+
         {/* Scroll indicator */}
         <motion.div
           variants={fadeUp}
-          className="mt-16 flex items-center gap-3 text-text-muted"
+          className="mt-10 flex items-center gap-3 text-text-muted"
         >
           <motion.div
             animate={{ y: [0, 8, 0] }}

@@ -3,9 +3,9 @@ import type { PersonInfo } from '@/types'
 export const person: PersonInfo = {
   name: 'Andrew Dumitru',
   title: 'UX / Product Designer',
-  tagline: 'UX / Product Designer with experience creating user-centered digital products through research, wireframing, prototyping, usability testing, and iterative design.',
+  tagline: 'UX / Product Designer building research-backed, accessible digital experiences.',
   bio: [
-    "A disciplined, detail-oriented approach shaped by military precision work and quality assurance informs how I approach every problem — structured, thorough, and focused on outcomes.",
+    "I design web and mobile products through user research, wireframing, prototyping, usability testing, and iterative design — with a detail-oriented approach shaped by military quality assurance and technical problem-solving.",
     "Focused on designing accessible, intuitive experiences and collaborating across teams to deliver clear, effective product solutions.",
   ],
   location: 'Chicago, Illinois',

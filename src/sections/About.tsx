@@ -11,7 +11,7 @@ const competencies = [
   },
   {
     label: 'Tools',
-    items: ['Figma', 'Adobe Creative Suite', 'Miro', 'Microsoft Office Suite'],
+    items: ['Figma', 'Adobe Creative Suite', 'Miro', 'Microsoft Office Suite', 'ChatGPT', 'Claude', 'GitHub Copilot/Codex'],
   },
   {
     label: 'Technical',
