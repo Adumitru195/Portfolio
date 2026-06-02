@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ArrowUpRight, DownloadSimple } from '@phosphor-icons/react'
+import { DownloadSimple, ArrowUpRight } from '@phosphor-icons/react'
 import { person } from '@/data/person'
 
 const navLinks = [
@@ -53,15 +53,15 @@ export default function Navbar() {
             Resume
             <DownloadSimple size={14} weight="bold" />
           </motion.a>
-          <motion.a
-            href={`mailto:${person.email}`}
+          <motion.button
+            onClick={() => scrollTo('contact')}
             className="flex items-center gap-1.5 text-sm font-medium text-white bg-accent hover:bg-accent-dim px-4 py-2 rounded-full transition-colors duration-200"
             whileHover={{ y: -2 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
           >
             Get in touch
             <ArrowUpRight size={14} weight="bold" />
-          </motion.a>
+          </motion.button>
         </div>
       </nav>
     </motion.header>

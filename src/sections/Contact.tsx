@@ -1,9 +1,36 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowUpRight, Envelope, LinkedinLogo, GithubLogo } from '@phosphor-icons/react'
+import { ArrowUpRight, Envelope, LinkedinLogo, GithubLogo, Check } from '@phosphor-icons/react'
 import { staggerContainer, fadeUp } from '@/lib/motion'
 import { person } from '@/data/person'
 
+function copyToClipboard(text: string): Promise<void> {
+  if (navigator.clipboard && window.isSecureContext) {
+    return navigator.clipboard.writeText(text)
+  }
+  return new Promise((resolve) => {
+    const textarea = document.createElement('textarea')
+    textarea.value = text
+    textarea.style.cssText = 'position:fixed;opacity:0;pointer-events:none;'
+    document.body.appendChild(textarea)
+    textarea.focus()
+    textarea.select()
+    document.execCommand('copy')
+    document.body.removeChild(textarea)
+    resolve()
+  })
+}
+
 export default function Contact() {
+  const [copied, setCopied] = useState(false)
+
+  function handleEmailCopy() {
+    copyToClipboard(person.email).then(() => {
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    })
+  }
+
   return (
     <section id="contact" className="px-6 md:px-10 pt-32 pb-24 md:pt-44 md:pb-32 border-t border-subtle">
       <div className="max-w-6xl mx-auto">
@@ -30,21 +57,20 @@ export default function Contact() {
             variants={fadeUp}
             className="flex flex-col sm:flex-row items-start sm:items-center gap-4"
           >
-            <motion.a
-              href={`mailto:${person.email}`}
+            {/* Email — copies to clipboard */}
+            <motion.button
+              onClick={handleEmailCopy}
               className="group flex items-center gap-3 bg-accent hover:bg-accent-dim text-white font-medium px-6 py-3.5 rounded-full transition-colors duration-200"
               whileHover={{ y: -2 }}
               transition={{ duration: 0.2, ease: 'easeOut' }}
             >
-              <Envelope size={18} weight="bold" />
-              {person.email}
-              <ArrowUpRight
-                size={16}
-                weight="bold"
-                className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
-            </motion.a>
+              {copied
+                ? <Check size={18} weight="bold" />
+                : <Envelope size={18} weight="bold" />}
+              {copied ? 'Email copied!' : person.email}
+            </motion.button>
 
+            {/* LinkedIn */}
             {person.socials
               .filter((s) => s.label === 'LinkedIn')
               .map((social) => (
@@ -66,6 +92,7 @@ export default function Contact() {
                 </motion.a>
               ))}
 
+            {/* GitHub */}
             {person.socials
               .filter((s) => s.label === 'GitHub')
               .map((social) => (
