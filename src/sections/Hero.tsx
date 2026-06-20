@@ -15,6 +15,9 @@ export default function Hero() {
         <HeroWaveBackground />
       </Suspense>
 
+      {/* Readability scrim: softens the wave behind the text */}
+      <div className="absolute inset-0 z-[5] pointer-events-none bg-gradient-to-t from-bg via-bg/65 to-transparent" />
+
       <motion.div
         className="relative z-10 max-w-6xl mx-auto w-full"
         variants={staggerContainer}

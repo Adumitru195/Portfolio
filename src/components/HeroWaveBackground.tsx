@@ -24,6 +24,9 @@ const SEGMENTS = 40
 const PLANE_WIDTH = 18
 const PLANE_HEIGHT = 12
 
+// Time scale for the animation — lower is slower / calmer.
+const SPEED = 0.45
+
 function usePrefersReducedMotion() {
   const [reduced, setReduced] = useState(false)
   useEffect(() => {
@@ -42,9 +45,9 @@ function displace(positions: THREE.BufferAttribute, base: Float32Array, t: numbe
     const y = base[i * 3 + 1]
     // Two overlapping waves on different axes/frequencies for an organic ripple.
     const z =
-      Math.sin(x * 0.5 + t) * 0.6 +
-      Math.sin(y * 0.4 + t * 0.8) * 0.5 +
-      Math.sin((x + y) * 0.3 + t * 0.6) * 0.4
+      Math.sin(x * 0.5 + t) * 0.42 +
+      Math.sin(y * 0.4 + t * 0.8) * 0.34 +
+      Math.sin((x + y) * 0.3 + t * 0.6) * 0.26
     positions.setZ(i, z)
   }
   positions.needsUpdate = true
@@ -90,7 +93,7 @@ function WaveMesh({ animate }: { animate: boolean }) {
 
   useFrame((_, delta) => {
     if (!animate || !meshRef.current || !groupRef.current) return
-    const t = performance.now() / 1000
+    const t = (performance.now() / 1000) * SPEED
     displace(meshRef.current.geometry.attributes.position as THREE.BufferAttribute, basePositions, t)
 
     // Ease the group toward a faint mouse-driven tilt.
@@ -108,7 +111,7 @@ function WaveMesh({ animate }: { animate: boolean }) {
           color={ACCENT}
           wireframe
           transparent
-          opacity={0.28}
+          opacity={0.16}
         />
       </mesh>
     </group>
