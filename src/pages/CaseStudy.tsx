@@ -1,13 +1,17 @@
 import { useParams, Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense, lazy } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowLeft, ArrowRight, X } from '@phosphor-icons/react'
 import { projects } from '@/data/projects'
 import Tag from '@/components/Tag'
 import AccentLine from '@/components/AccentLine'
 import ScrollProgress from '@/components/ScrollProgress'
-import { fadeUp, staggerContainer, lineReveal } from '@/lib/motion'
+import SheenCard from '@/components/SheenCard'
+import { fadeUp, staggerContainer, lineReveal, imageReveal } from '@/lib/motion'
 import type { CaseStudySection } from '@/types'
+
+// Lazy-loaded faint wave backdrop — same ambient layer used across the site.
+const HeroWaveBackground = lazy(() => import('@/components/HeroWaveBackground'))
 
 function FullGalleryImages({ section }: { section: CaseStudySection }) {
   const [expanded, setExpanded] = useState(false)
@@ -153,15 +157,22 @@ function FullGalleryImages({ section }: { section: CaseStudySection }) {
 function SectionImages({ section }: { section: CaseStudySection }) {
   if (!section.images || section.images.length === 0) return null
 
+  const revealProps = {
+    variants: imageReveal,
+    initial: 'hidden' as const,
+    whileInView: 'visible' as const,
+    viewport: { once: true, margin: '-10%' },
+  }
+
   if (section.imageLayout === 'single') {
     return (
-      <div className="mt-6 rounded-xl overflow-hidden border border-subtle">
+      <motion.div {...revealProps} className="mt-6 rounded-xl overflow-hidden border border-subtle">
         <img
           src={section.images[0]}
           alt={section.title}
           className="w-full object-contain bg-surface"
         />
-      </div>
+      </motion.div>
     )
   }
 
@@ -169,13 +180,13 @@ function SectionImages({ section }: { section: CaseStudySection }) {
     return (
       <div className="mt-6 flex flex-col gap-4">
         {section.images.map((src, i) => (
-          <div key={i} className="rounded-xl overflow-hidden border border-subtle">
+          <motion.div {...revealProps} key={i} className="rounded-xl overflow-hidden border border-subtle">
             <img
               src={src}
               alt={`${section.title} ${i + 1}`}
               className="w-full object-contain bg-surface"
             />
-          </div>
+          </motion.div>
         ))}
       </div>
     )
@@ -185,7 +196,8 @@ function SectionImages({ section }: { section: CaseStudySection }) {
     return (
       <div className="mt-6 grid grid-cols-2 gap-4">
         {section.images.map((src, i) => (
-          <img
+          <motion.img
+            {...revealProps}
             key={i}
             src={src}
             alt={`${section.title} ${i + 1}`}
@@ -200,13 +212,13 @@ function SectionImages({ section }: { section: CaseStudySection }) {
   return (
     <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-3">
       {section.images.map((src, i) => (
-        <div key={i} className="rounded-xl overflow-hidden border border-subtle">
+        <motion.div {...revealProps} key={i} className="rounded-xl overflow-hidden border border-subtle">
           <img
             src={src}
             alt={`${section.title} ${i + 1}`}
             className="w-full block"
           />
-        </div>
+        </motion.div>
       ))}
     </div>
   )
@@ -247,11 +259,19 @@ export default function CaseStudy() {
   }, [sectionIds.join(',')])
 
   return (
-    <div className="min-h-screen bg-bg">
+    <div className="relative min-h-screen bg-bg">
       <ScrollProgress />
 
+      {/* Ambient wave backdrop behind the header, fading into the page */}
+      <div className="absolute inset-x-0 top-0 h-[85vh] overflow-hidden pointer-events-none">
+        <Suspense fallback={null}>
+          <HeroWaveBackground opacity={0.08} />
+        </Suspense>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-bg/55 to-bg" />
+      </div>
+
       {/* Back nav */}
-      <nav className="px-6 md:px-10 py-6 border-b border-subtle">
+      <nav className="relative z-10 px-6 md:px-10 py-6 border-b border-subtle">
         <Link
           to="/"
           className="inline-flex items-center gap-2 text-text-secondary hover:text-text-primary transition-colors text-sm"
@@ -261,7 +281,7 @@ export default function CaseStudy() {
         </Link>
       </nav>
 
-      <main className="px-6 md:px-10 py-16 md:py-24 max-w-4xl mx-auto">
+      <main className="relative z-10 px-6 md:px-10 py-16 md:py-24 max-w-4xl mx-auto">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -325,22 +345,22 @@ export default function CaseStudy() {
               className={`mb-16 grid grid-cols-1 gap-6 ${project.solution ? 'md:grid-cols-3' : 'md:grid-cols-2'}`}
             >
               {project.problem && (
-                <div className="p-6 rounded-2xl border border-subtle bg-surface">
+                <SheenCard className="p-6 rounded-2xl border border-subtle bg-surface">
                   <p className="text-xs text-text-muted uppercase tracking-widest mb-3">Problem</p>
                   <p className="text-text-secondary text-sm leading-relaxed">{project.problem}</p>
-                </div>
+                </SheenCard>
               )}
               {project.goal && (
-                <div className="p-6 rounded-2xl border border-subtle bg-surface">
+                <SheenCard className="p-6 rounded-2xl border border-subtle bg-surface">
                   <p className="text-xs text-text-muted uppercase tracking-widest mb-3">Goal</p>
                   <p className="text-text-secondary text-sm leading-relaxed">{project.goal}</p>
-                </div>
+                </SheenCard>
               )}
               {project.solution && (
-                <div className="p-6 rounded-2xl border border-subtle bg-surface">
+                <SheenCard className="p-6 rounded-2xl border border-subtle bg-surface">
                   <p className="text-xs text-text-muted uppercase tracking-widest mb-3">Solution</p>
                   <p className="text-text-secondary text-sm leading-relaxed">{project.solution}</p>
-                </div>
+                </SheenCard>
               )}
             </motion.div>
           )}
@@ -413,11 +433,11 @@ export default function CaseStudy() {
                     const title = dashIdx >= 0 ? item.slice(0, dashIdx) : item
                     const body = dashIdx >= 0 ? item.slice(dashIdx + 3) : ''
                     return (
-                      <div key={i} className="p-6 rounded-2xl border border-subtle bg-surface">
+                      <SheenCard key={i} className="p-6 rounded-2xl border border-subtle bg-surface">
                         <p className="font-mono text-xs text-accent font-bold mb-3">0{i + 1}</p>
                         <h3 className="font-display font-semibold text-text-primary mb-2">{title}</h3>
                         {body && <p className="text-text-secondary text-sm leading-relaxed">{body}</p>}
-                      </div>
+                      </SheenCard>
                     )
                   })}
                 </div>
