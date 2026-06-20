@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Suspense, lazy } from 'react'
 import { ArrowDown } from '@phosphor-icons/react'
-import { staggerContainer, fadeUp, slideInLeft } from '@/lib/motion'
+import { staggerContainer, fadeUp, slideInLeft, lineMask, lineReveal } from '@/lib/motion'
 import { person } from '@/data/person'
 
 // Lazy-loaded so the Three.js bundle never blocks the hero's first paint.
@@ -32,16 +32,22 @@ export default function Hero() {
           </span>
         </motion.div>
 
-        {/* Main headline */}
+        {/* Main headline — per-line mask reveal */}
         <motion.h1
-          variants={fadeUp}
+          variants={lineMask}
           className="font-display font-black text-5xl md:text-7xl lg:text-8xl tracking-tightest text-text-primary leading-[0.92] mb-8 max-w-5xl"
         >
-          Designing products
-          <br />
-          that are <span className="text-gradient">clear, useful,</span>
-          <br />
-          and human.
+          <span className="block overflow-hidden pb-[0.12em] -mb-[0.12em]">
+            <motion.span variants={lineReveal} className="block">Designing products</motion.span>
+          </span>
+          <span className="block overflow-hidden pb-[0.12em] -mb-[0.12em]">
+            <motion.span variants={lineReveal} className="block">
+              that are <span className="text-gradient">clear, useful,</span>
+            </motion.span>
+          </span>
+          <span className="block overflow-hidden pb-[0.12em] -mb-[0.12em]">
+            <motion.span variants={lineReveal} className="block">and human.</motion.span>
+          </span>
         </motion.h1>
 
         {/* Meta row */}

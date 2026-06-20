@@ -53,7 +53,7 @@ function displace(positions: THREE.BufferAttribute, base: Float32Array, t: numbe
   positions.needsUpdate = true
 }
 
-function WaveMesh({ animate }: { animate: boolean }) {
+function WaveMesh({ animate, opacity }: { animate: boolean; opacity: number }) {
   const meshRef = useRef<THREE.Mesh>(null)
   const groupRef = useRef<THREE.Group>(null)
   const { invalidate } = useThree()
@@ -111,14 +111,14 @@ function WaveMesh({ animate }: { animate: boolean }) {
           color={ACCENT}
           wireframe
           transparent
-          opacity={0.16}
+          opacity={opacity}
         />
       </mesh>
     </group>
   )
 }
 
-export default function HeroWaveBackground() {
+export default function HeroWaveBackground({ opacity = 0.16 }: { opacity?: number }) {
   const reducedMotion = usePrefersReducedMotion()
   const containerRef = useRef<HTMLDivElement>(null)
   const [inView, setInView] = useState(true)
@@ -150,7 +150,7 @@ export default function HeroWaveBackground() {
         frameloop={reducedMotion ? 'demand' : inView ? 'always' : 'never'}
         style={{ background: 'transparent' }}
       >
-        <WaveMesh animate={animate} />
+        <WaveMesh animate={animate} opacity={opacity} />
       </Canvas>
     </div>
   )

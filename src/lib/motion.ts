@@ -45,6 +45,23 @@ export const scaleUp: Variants = {
   },
 }
 
+// Headline mask-reveal: a container that staggers its lines, each line
+// wiping up from behind an overflow-hidden clip.
+export const lineMask: Variants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.09, delayChildren: 0.05 },
+  },
+}
+
+export const lineReveal: Variants = {
+  hidden: { y: '115%' },
+  visible: {
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+}
+
 export const springConfig = {
   stiffness: 100,
   damping: 20,

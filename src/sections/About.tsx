@@ -3,6 +3,7 @@ import { staggerContainer, fadeUp, slideInLeft } from '@/lib/motion'
 import { person } from '@/data/person'
 import { experience } from '@/data/experience'
 import Tag from '@/components/Tag'
+import AccentLine from '@/components/AccentLine'
 
 const competencies = [
   {
@@ -46,7 +47,7 @@ export default function About() {
 
             <motion.div variants={slideInLeft} className="mb-10">
               <div className="flex items-center gap-3 mb-4">
-                <div className="h-px w-8 bg-accent" />
+                <AccentLine />
                 <span className="text-xs text-text-muted uppercase tracking-widest">About</span>
               </div>
               <h2 className="font-display font-black text-4xl md:text-5xl tracking-tightest text-text-primary leading-tight">

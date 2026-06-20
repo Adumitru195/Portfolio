@@ -1,8 +1,12 @@
-import { useState } from 'react'
+import { useState, Suspense, lazy } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowUpRight, Envelope, LinkedinLogo, GithubLogo, Check } from '@phosphor-icons/react'
-import { staggerContainer, fadeUp } from '@/lib/motion'
+import { staggerContainer, fadeUp, lineReveal } from '@/lib/motion'
 import { person } from '@/data/person'
+import AccentLine from '@/components/AccentLine'
+
+// Lazy-loaded faint echo of the hero wave to bookend the page.
+const HeroWaveBackground = lazy(() => import('@/components/HeroWaveBackground'))
 
 function copyToClipboard(text: string): Promise<void> {
   if (navigator.clipboard && window.isSecureContext) {
@@ -32,8 +36,14 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="px-6 md:px-10 pt-32 pb-24 md:pt-44 md:pb-32 border-t border-subtle">
-      <div className="max-w-6xl mx-auto">
+    <section id="contact" className="relative overflow-hidden px-6 md:px-10 pt-32 pb-24 md:pt-44 md:pb-32 border-t border-subtle">
+      {/* Faint wave echo + readability scrim */}
+      <Suspense fallback={null}>
+        <HeroWaveBackground opacity={0.1} />
+      </Suspense>
+      <div className="absolute inset-0 z-[5] pointer-events-none bg-gradient-to-b from-bg via-bg/70 to-transparent" />
+
+      <div className="relative z-10 max-w-6xl mx-auto">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -43,12 +53,16 @@ export default function Contact() {
           {/* Header */}
           <motion.div variants={fadeUp} className="mb-16 max-w-3xl">
             <div className="flex items-center gap-3 mb-4">
-              <div className="h-px w-8 bg-accent" />
+              <AccentLine />
               <span className="text-xs text-text-muted uppercase tracking-widest">Contact</span>
             </div>
             <h2 className="font-display font-black text-4xl md:text-6xl lg:text-7xl tracking-tightest text-text-primary leading-tight">
-              Let's make something{' '}
-              <span className="text-gradient">worth remembering.</span>
+              <span className="block overflow-hidden pb-[0.12em] -mb-[0.12em]">
+                <motion.span variants={lineReveal} className="block">
+                  Let's make something{' '}
+                  <span className="text-gradient">worth remembering.</span>
+                </motion.span>
+              </span>
             </h2>
           </motion.div>
 

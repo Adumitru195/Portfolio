@@ -1,16 +1,31 @@
+import { useRef, type MouseEvent as ReactMouseEvent } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowUpRight } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
 import { staggerContainer, fadeUp, scaleUp } from '@/lib/motion'
 import { projects } from '@/data/projects'
 import Tag from '@/components/Tag'
+import AccentLine from '@/components/AccentLine'
 import type { Project } from '@/types'
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const isEven = index % 2 === 0
+  const cardRef = useRef<HTMLElement>(null)
+
+  // Track the cursor within the card and expose it as CSS vars so the sheen
+  // overlay can follow it without triggering React re-renders.
+  function handleMove(e: ReactMouseEvent) {
+    const el = cardRef.current
+    if (!el) return
+    const rect = el.getBoundingClientRect()
+    el.style.setProperty('--mx', `${e.clientX - rect.left}px`)
+    el.style.setProperty('--my', `${e.clientY - rect.top}px`)
+  }
 
   return (
     <motion.article
+      ref={cardRef}
+      onMouseMove={handleMove}
       variants={scaleUp}
       className="group relative rounded-2xl overflow-hidden border border-subtle bg-surface hover:border-text-muted transition-colors duration-300"
       style={{ boxShadow: '0 12px 30px rgba(0,0,0,0.07)' }}
@@ -20,6 +35,14 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] },
       }}
     >
+      {/* Cursor-tracked indigo sheen */}
+      <div
+        className="pointer-events-none absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        style={{
+          background:
+            'radial-gradient(360px circle at var(--mx) var(--my), rgba(79,70,229,0.10), transparent 65%)',
+        }}
+      />
       <Link to={`/project/${project.id}`} className="block">
         {/* Thumbnail */}
         <div
@@ -93,7 +116,7 @@ export default function Work() {
           {/* Section header */}
           <motion.div variants={fadeUp} className="mb-6">
             <div className="flex items-center gap-3 mb-4">
-              <div className="h-px w-8 bg-accent" />
+              <AccentLine />
               <span className="text-xs text-text-muted uppercase tracking-widest">Selected Work</span>
             </div>
             <h2 className="font-display font-black text-4xl md:text-6xl tracking-tightest text-text-primary">
