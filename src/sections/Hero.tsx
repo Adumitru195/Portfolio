@@ -1,45 +1,22 @@
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { useEffect } from 'react'
+import { motion } from 'framer-motion'
+import { Suspense, lazy } from 'react'
 import { ArrowDown } from '@phosphor-icons/react'
 import { staggerContainer, fadeUp, slideInLeft } from '@/lib/motion'
 import { person } from '@/data/person'
 
+// Lazy-loaded so the Three.js bundle never blocks the hero's first paint.
+const HeroWaveBackground = lazy(() => import('@/components/HeroWaveBackground'))
+
 export default function Hero() {
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
-
-  const springX = useSpring(mouseX, { stiffness: 100, damping: 20 })
-  const springY = useSpring(mouseY, { stiffness: 100, damping: 20 })
-
-  const blobX = useTransform(springX, [-1, 1], ['-10%', '10%'])
-  const blobY = useTransform(springY, [-1, 1], ['-10%', '10%'])
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set((e.clientX / window.innerWidth) * 2 - 1)
-      mouseY.set((e.clientY / window.innerHeight) * 2 - 1)
-    }
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [mouseX, mouseY])
-
   return (
     <section className="relative min-h-[100dvh] flex flex-col justify-end px-6 md:px-10 pb-20 pt-32 overflow-hidden">
-      {/* Ambient background blob */}
-      <motion.div
-        className="absolute top-1/4 right-1/4 w-[600px] h-[600px] rounded-full pointer-events-none"
-        style={{
-          x: blobX,
-          y: blobY,
-          background: 'radial-gradient(circle, rgba(184,255,59,0.14) 0%, transparent 70%)',
-          filter: 'blur(60px)',
-        }}
-        animate={{ scale: [1, 1.06, 1], opacity: [0.8, 1, 0.8] }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-      />
+      {/* Ambient wireframe-wave backdrop */}
+      <Suspense fallback={null}>
+        <HeroWaveBackground />
+      </Suspense>
 
       <motion.div
-        className="max-w-6xl mx-auto w-full"
+        className="relative z-10 max-w-6xl mx-auto w-full"
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
