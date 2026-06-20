@@ -4,7 +4,9 @@ import { motion } from 'framer-motion'
 import { ArrowLeft, ArrowRight, X } from '@phosphor-icons/react'
 import { projects } from '@/data/projects'
 import Tag from '@/components/Tag'
-import { fadeUp, staggerContainer } from '@/lib/motion'
+import AccentLine from '@/components/AccentLine'
+import ScrollProgress from '@/components/ScrollProgress'
+import { fadeUp, staggerContainer, lineReveal } from '@/lib/motion'
 import type { CaseStudySection } from '@/types'
 
 function FullGalleryImages({ section }: { section: CaseStudySection }) {
@@ -246,6 +248,8 @@ export default function CaseStudy() {
 
   return (
     <div className="min-h-screen bg-bg">
+      <ScrollProgress />
+
       {/* Back nav */}
       <nav className="px-6 md:px-10 py-6 border-b border-subtle">
         <Link
@@ -266,11 +270,13 @@ export default function CaseStudy() {
           {/* Header */}
           <motion.div variants={fadeUp} className="mb-12">
             <div className="flex items-center gap-3 mb-4">
-              <div className="h-px w-8 bg-accent" />
+              <AccentLine />
               <span className="text-xs text-text-muted uppercase tracking-widest">{project.year} · {project.role}</span>
             </div>
             <h1 className="font-display font-black text-4xl md:text-6xl tracking-tightest text-text-primary mb-3">
-              {project.title}
+              <span className="block overflow-hidden pb-[0.12em] -mb-[0.12em]">
+                <motion.span variants={lineReveal} className="block">{project.title}</motion.span>
+              </span>
             </h1>
             <p className="text-text-secondary text-lg md:text-xl mb-6">{project.subtitle}</p>
             <div className="flex flex-wrap gap-2 mb-8">
@@ -360,15 +366,19 @@ export default function CaseStudy() {
               </div>
             </motion.div>
           )}
+        </motion.div>
 
-          {/* Sections */}
-          {project.sections?.map((section) => (
-            <motion.section
-              key={section.id}
-              id={section.id}
-              variants={fadeUp}
-              className="mb-24 scroll-mt-24"
-            >
+        {/* Sections — each reveals on scroll for a consistent feel across projects */}
+        {project.sections?.map((section) => (
+          <motion.section
+            key={section.id}
+            id={section.id}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-15%' }}
+            className="mb-24 scroll-mt-24"
+          >
               <div className="flex items-center gap-4 mb-8">
                 <div className="h-px flex-1 bg-subtle" />
                 <h2 className="font-display font-bold text-2xl md:text-3xl text-text-primary tracking-tight whitespace-nowrap">
@@ -418,8 +428,7 @@ export default function CaseStudy() {
                 : <SectionImages section={section} />
               }
             </motion.section>
-          ))}
-        </motion.div>
+        ))}
       </main>
     </div>
   )
