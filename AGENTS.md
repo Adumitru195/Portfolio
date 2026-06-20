@@ -98,3 +98,36 @@ Project thumbnails are copied to `public/projects/` and referenced in `src/data/
 8. **Keep `SKILL.md` in project root** — reference it when generating new UI
 9. **This is a UX portfolio** — tone is thoughtful, confident, design-focused
 10. **Do NOT use Backwater Journal** as a project case study
+
+## Common Tasks
+
+| Task | Command |
+|------|---------|
+| Start dev server | `npm run dev` |
+| Build for production | `npm run build` |
+| Deploy to GitHub Pages | `npm run deploy` |
+| Preview build locally | `npm run preview` |
+
+## Testing
+
+Currently this project has no test suite. If tests are added:
+- Use **Vitest** (matches Vite ecosystem)
+- Place tests alongside source files with `.test.ts` or `.test.tsx` suffix
+- Run tests with `npm run test`
+- Include unit tests for utility functions in `src/lib/`
+
+## Debugging
+
+**Common issues:**
+- **Blank page after deploy**: Check that base URL in `vite.config.ts` is set to `/Portfolio/`
+- **Missing images**: Ensure project thumbnails are in `public/projects/`, not `src/`
+- **TypeScript errors**: Run `npm run build` to see full error details
+- **Font not loading**: Verify Cabinet Grotesk and Geist are imported in `index.css`
+
+## Anti-patterns
+
+- Do NOT use `h-screen` — use `min-h-[100dvh]` for mobile viewport issues
+- Do NOT hardcode content in components — edit files in `src/data/` instead
+- Do NOT use placeholder comments like `// ...` or `// TODO`
+- Do NOT center hero sections — use asymmetric layouts per design variance rule
+- Do NOT use pure black shadows — use tinted shadows matching background hue
