@@ -2,6 +2,114 @@ import type { Project } from '@/types'
 
 export const projects: Project[] = [
   {
+    id: 'backwater-journal',
+    title: 'Backwater Journal',
+    subtitle: 'A mobile fishing journal, map, marketplace, and angler community',
+    description:
+      'A mobile app for anglers to log catches, discover nearby fishing activity, save fishing memories, and connect with other fishermen. I designed and shipped the full product — catch journaling, an Explore map, a Dock social feed, a gear marketplace, messaging, and Pro subscriptions — end to end as designer, researcher, and founder.',
+    problem:
+      'Fishing apps scatter the essentials across separate tools: logging catches, finding spots, posting updates, selling gear, and tracking progress each live somewhere different. Anglers need one place to document their fishing life, discover useful nearby information, and stay connected without switching between platforms.',
+    goal: 'Design a mobile-first fishing experience that feels practical, trustworthy, and easy to use outdoors — supporting quick catch logging, location-aware discovery, social sharing, gear listings, and future AI assistance, while staying simple enough for casual anglers.',
+    solution:
+      'A single fishing-focused product combining a catch Journal, an Explore map, a Dock community feed, a gear Market, messaging, and subscription-based Pro features — designed around the real actions anglers take, from first cast to post-trip.',
+    details: {
+      timeline: '2026',
+      tools: 'Figma, React Native / Expo, Supabase, RevenueCat, TestFlight',
+      platform: 'iOS Mobile App',
+    },
+    role: 'Product Designer, UX Researcher & Founder',
+    tags: ['Product Design', 'Mobile App', 'UX Strategy', 'iOS'],
+    year: '2026',
+    image: '/Portfolio/projects/backwater-journal/frame-01.jpg',
+    link: 'https://www.backwaterjournal.com/',
+    featured: true,
+    sections: [
+      {
+        id: 'overview',
+        title: 'Overview',
+        body: 'Backwater Journal is a mobile app for anglers who want to log catches, discover nearby fishing activity, save fishing memories, and connect with other fishermen through a community-driven experience. The app brings six pillars into one fishing-focused product — so the whole fishing life lives in a single place instead of across a dozen apps.',
+        sectionStyle: 'chips',
+        items: [
+          'Catch Journal',
+          'Explore Map',
+          'Dock Community Feed',
+          'Gear Market',
+          'Messaging',
+          'Pro Subscription',
+        ],
+      },
+      {
+        id: 'challenge',
+        title: 'The Problem',
+        body: 'Fishing apps often separate important tasks across different tools: logging catches, finding fishing spots, posting updates, selling gear, and tracking personal progress. Anglers need a simpler way to document their fishing life, discover useful nearby information, and stay connected with the fishing community without switching between multiple platforms.\n\nThe design question: how might we bring catch logging, discovery, community, and gear into one product that still feels simple enough to use standing on a dock?',
+      },
+      {
+        id: 'users',
+        title: 'Goal & Target Users',
+        body: 'The goal was to design a mobile-first fishing experience that feels practical, trustworthy, and easy to use outdoors — one that supports quick catch logging, location-aware discovery, social sharing, gear listings, and future AI-powered fishing assistance while remaining simple enough for casual anglers.\n\nThe primary users are recreational anglers, local fishing communities, and people who want to track their fishing progress over time. Secondary users include sellers listing fishing gear, beginners looking for nearby fishing spots, and experienced anglers who want a dedicated place to share catches.',
+      },
+      {
+        id: 'inside-the-app',
+        title: 'Inside the App',
+        body: 'Six core surfaces make up the product — each designed around a specific moment in an angler’s routine, from checking conditions before heading out to logging a catch, sharing it, exploring new water, tracking species, and trading gear.',
+        images: [
+          '/Portfolio/projects/backwater-journal/frame-01.jpg',
+          '/Portfolio/projects/backwater-journal/frame-03.jpg',
+          '/Portfolio/projects/backwater-journal/frame-02.jpg',
+          '/Portfolio/projects/backwater-journal/frame-04.jpg',
+          '/Portfolio/projects/backwater-journal/frame-05.jpg',
+          '/Portfolio/projects/backwater-journal/frame-06.jpg',
+        ],
+        captions: [
+          'Dock — fishing conditions and bite windows at a glance',
+          'Journal — log every catch with photos, species, size, and trip details',
+          'Dock — share catches and updates with the angler community',
+          'Explore — nearby water, likely species, and recent fishing activity',
+          'Journal — track your species collection and best catches over time',
+          'Market — list and browse rods, reels, lures, and tackle',
+        ],
+        previewImages: [
+          '/Portfolio/projects/backwater-journal/frame-01.jpg',
+          '/Portfolio/projects/backwater-journal/frame-03.jpg',
+          '/Portfolio/projects/backwater-journal/frame-04.jpg',
+          '/Portfolio/projects/backwater-journal/frame-06.jpg',
+        ],
+        imageLayout: 'full-gallery',
+      },
+      {
+        id: 'design-process',
+        title: 'Design Process',
+        body: 'I started by identifying the main actions anglers would need: logging a catch, exploring nearby fishing activity, posting to the community, saving memories, and browsing gear. From there I designed the navigation around the most important user flows and refined the app through multiple rounds of visual and functional improvement.\n\nThe product evolved through continuous testing and feedback. Beta testers surfaced issues like Explore map loading problems, marketplace photo compression, missing bookmark access, and unclear upgrade flows. Each of these became a design update and a development prompt to improve usability before launch.',
+      },
+      {
+        id: 'ux-decisions',
+        title: 'UX Decisions',
+        sectionStyle: 'numbered-cards',
+        items: [
+          'Explore — Designed to help users quickly understand fishing conditions, nearby activity, likely species, and public fishing access, so a glance at the map answers "is it worth going out?"',
+          'Dock — Built as a community space where anglers share posts and catches, using familiar social patterns to lower the barrier to posting.',
+          'Market — Included to support fishing-related buying and selling, but the payment flow was intentionally kept outside the app so users coordinate safely through messages.',
+          'Visual System — Clear hierarchy, large mobile-friendly cards, and bottom navigation reduce friction. Marketplace photos were redesigned to avoid compressed layouts and match the treatment used in Dock and Journal.',
+        ],
+      },
+      {
+        id: 'challenges',
+        title: 'Challenges',
+        body: 'One major challenge was balancing product ambition with launch readiness. The app spans subscriptions, marketplace listings, messaging, maps, profiles, legal pages, and support flows — so I had to decide which features were essential for launch and which should be improved after beta feedback.\n\nAnother challenge was trust. Because the app includes fishing spots, marketplace listings, and user-generated content, the design needed reporting tools, support access, disclaimers, blocked-user handling, and careful language around verified or restricted locations.',
+      },
+      {
+        id: 'results',
+        title: 'Results',
+        body: 'Backwater Journal reached a TestFlight-ready stage with core app sections designed and implemented, and a live marketing site at backwaterjournal.com. The project demonstrates end-to-end product thinking across UX strategy, interface design, feature prioritization, beta feedback, launch preparation, and product refinement.',
+      },
+      {
+        id: 'reflection',
+        title: 'What I Learned',
+        body: 'This project taught me how to think beyond screens and design for a full product ecosystem. I learned how to balance user needs, business goals, technical constraints, marketplace safety, subscription strategy, and App Store readiness. It also strengthened my ability to communicate design requirements clearly to developers and AI coding tools.',
+      },
+    ],
+  },
+  {
     id: 'aic-museum-experience',
     title: 'AIC Museum Experience Concept',
     subtitle: 'Academic Group Project · UXD 260: Research & Evaluation · DePaul University',

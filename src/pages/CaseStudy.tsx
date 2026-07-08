@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom'
 import { useState, useEffect, Suspense, lazy } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowLeft, ArrowRight, X } from '@phosphor-icons/react'
+import { ArrowLeft, ArrowRight, ArrowUpRight, X } from '@phosphor-icons/react'
 import { projects } from '@/data/projects'
 import Tag from '@/components/Tag'
 import AccentLine from '@/components/AccentLine'
@@ -299,10 +299,20 @@ export default function CaseStudy() {
               </span>
             </h1>
             <p className="text-text-secondary text-lg md:text-xl mb-6">{project.subtitle}</p>
-            <div className="flex flex-wrap gap-2 mb-8">
+            <div className="flex flex-wrap items-center gap-2 mb-8">
               {project.tags.map((tag) => (
                 <Tag key={tag} label={tag} />
               ))}
+              {project.link && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-surface bg-accent hover:bg-accent-dim px-4 py-1.5 rounded-full transition-colors duration-200"
+                >
+                  Visit website <ArrowUpRight size={14} weight="bold" />
+                </a>
+              )}
             </div>
             {project.details && (
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-subtle">
