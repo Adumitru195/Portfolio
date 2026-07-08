@@ -20,7 +20,7 @@ export const projects: Project[] = [
     role: 'Product Designer, UX Researcher & Founder',
     tags: ['Product Design', 'Mobile App', 'UX Strategy', 'iOS'],
     year: '2026',
-    image: '/Portfolio/projects/backwater-journal/frame-01.jpg',
+    image: '/Portfolio/projects/backwater-journal/cover.jpg',
     link: 'https://www.backwaterjournal.com/',
     featured: true,
     sections: [
