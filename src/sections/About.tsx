@@ -24,6 +24,17 @@ const competencies = [
   },
 ]
 
+const education = {
+  degree: 'Bachelor of Science in User Experience Research and Design',
+  school: 'DePaul University',
+  period: '2024 – Present',
+}
+
+const certifications = [
+  { name: 'Google UX Design Specialization', year: '2024' },
+  { name: 'Google Cloud Database Engineer Specialization', year: '2024' },
+]
+
 export default function About() {
   return (
     <section id="about" className="px-6 md:px-10 py-24 md:py-32 border-t border-subtle">
@@ -74,6 +85,31 @@ export default function About() {
                   </div>
                 </div>
               ))}
+            </motion.div>
+
+            <motion.div variants={fadeUp} className="mt-10 space-y-6">
+              <div>
+                <p className="text-xs text-text-muted uppercase tracking-widest mb-2">Education</p>
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-text-primary text-sm font-medium">{education.degree}</p>
+                    <p className="text-text-secondary text-sm">{education.school}</p>
+                  </div>
+                  <span className="shrink-0 text-xs text-text-muted font-mono mt-0.5">{education.period}</span>
+                </div>
+              </div>
+
+              <div>
+                <p className="text-xs text-text-muted uppercase tracking-widest mb-2">Certifications</p>
+                <ul className="space-y-1.5">
+                  {certifications.map((cert) => (
+                    <li key={cert.name} className="flex items-start justify-between gap-4">
+                      <span className="text-text-secondary text-sm">{cert.name}</span>
+                      <span className="shrink-0 text-xs text-text-muted font-mono mt-0.5">{cert.year}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </motion.div>
           </div>
 

@@ -17,7 +17,7 @@ export const projects: Project[] = [
       tools: 'Figma, React Native / Expo, Supabase, RevenueCat, TestFlight',
       platform: 'iOS Mobile App',
     },
-    role: 'Product Designer, UX Researcher & Founder',
+    role: 'Product Designer & Mobile App Developer',
     tags: ['Product Design', 'Mobile App', 'UX Strategy', 'iOS'],
     year: '2026',
     image: '/Portfolio/projects/backwater-journal/cover.jpg',
