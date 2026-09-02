@@ -8,11 +8,11 @@ import AccentLine from '@/components/AccentLine'
 const competencies = [
   {
     label: 'UX & Product',
-    items: ['User Research', 'UX Design', 'UI Design', 'Wireframing', 'Prototyping', 'User Flows', 'Information Architecture', 'Usability Testing', 'Accessibility', 'Interaction Design'],
+    items: ['User Research', 'Usability Testing', 'UX Design', 'UI Design', 'Interaction Design', 'Wireframing', 'Prototyping', 'User Flows', 'Information Architecture', 'Responsive Design', 'Accessibility (WCAG)', 'Developer Handoff'],
   },
   {
     label: 'Tools',
-    items: ['Figma', 'Adobe Creative Suite', 'Miro', 'Microsoft Office Suite', 'ChatGPT', 'Claude', 'GitHub Copilot/Codex'],
+    items: ['Figma', 'Adobe Creative Suite', 'Miro'],
   },
   {
     label: 'Technical',
@@ -24,11 +24,18 @@ const competencies = [
   },
 ]
 
-const education = {
-  degree: 'Bachelor of Science in User Experience Research and Design',
-  school: 'DePaul University',
-  period: '2024 – Present',
-}
+const education = [
+  {
+    degree: 'Bachelor of Science in User Experience Research and Design',
+    school: 'DePaul University',
+    period: '2024 – Present',
+  },
+  {
+    degree: 'Diploma',
+    school: 'Grayson High School',
+    period: '2014',
+  },
+]
 
 const certifications = [
   { name: 'Google UX Design Specialization', year: '2024' },
@@ -90,12 +97,16 @@ export default function About() {
             <motion.div variants={fadeUp} className="mt-10 space-y-6">
               <div>
                 <p className="text-xs text-text-muted uppercase tracking-widest mb-2">Education</p>
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="text-text-primary text-sm font-medium">{education.degree}</p>
-                    <p className="text-text-secondary text-sm">{education.school}</p>
-                  </div>
-                  <span className="shrink-0 text-xs text-text-muted font-mono mt-0.5">{education.period}</span>
+                <div className="space-y-3">
+                  {education.map((school) => (
+                    <div key={school.school} className="flex items-start justify-between gap-4">
+                      <div>
+                        <p className="text-text-primary text-sm font-medium">{school.degree}</p>
+                        <p className="text-text-secondary text-sm">{school.school}</p>
+                      </div>
+                      <span className="shrink-0 text-xs text-text-muted font-mono mt-0.5">{school.period}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
 
