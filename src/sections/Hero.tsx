@@ -52,7 +52,7 @@ export default function Hero() {
 
         {/* Meta row */}
         <motion.div variants={fadeUp}>
-          <p className="text-text-secondary text-base leading-relaxed max-w-md">
+          <p className="text-text-secondary text-base leading-relaxed max-w-2xl">
             {person.tagline}
           </p>
           <p className="text-text-muted text-sm mt-2">{person.location}</p>
