@@ -27,7 +27,7 @@ const PLANE_HEIGHT = 12
 // Time scale for the animation — lower is slower / calmer.
 const SPEED = 0.45
 
-function usePrefersReducedMotion() {
+export function usePrefersReducedMotion() {
   const [reduced, setReduced] = useState(false)
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -39,7 +39,7 @@ function usePrefersReducedMotion() {
   return reduced
 }
 
-function displace(positions: THREE.BufferAttribute, base: Float32Array, t: number) {
+export function displace(positions: THREE.BufferAttribute, base: Float32Array, t: number) {
   for (let i = 0; i < positions.count; i++) {
     const x = base[i * 3]
     const y = base[i * 3 + 1]

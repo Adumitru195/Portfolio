@@ -374,8 +374,28 @@ export const projects: Project[] = [
         id: 'homepage-iteration',
         title: 'Homepage Iteration',
         body: 'The first version of the homepage worked, but nothing on it led. Search had about the same visual weight as the paragraph above it, a dramatic glass house at dusk read as luxury architecture rather than a Charlotte rental, and every section used the same heading size and card grid.\n\nIn the refined version, a close crop of a covered front porch sits inside an arched, doorway-shaped frame with a soft warm glow behind it, the "porch light" the product is named for. Search moved into its own raised panel with a display-type prompt, and five competing "Popular" links became one quiet fallback: "Not sure yet? Browse all 11 rentals." Featured rentals now follow the hero with the largest section title, and the supporting principles shrank to a slim strip.',
-        images: ['/Portfolio/projects/porchlight/homepage-before-after.webp'],
-        imageLayout: 'single',
+      },
+      {
+        id: 'before-after',
+        title: 'Before & After',
+        body: 'The same homepage before and after the refinement pass, at desktop (1440px) and mobile (390px) widths.',
+        compareRows: [
+          {
+            label: 'Desktop · full page',
+            before: '/Portfolio/projects/porchlight/before-desktop.webp',
+            after: '/Portfolio/projects/porchlight/after-desktop.webp',
+            beforeAlt: 'Earlier Porchlight homepage on desktop with a glass house hero and an eleven-tile neighborhood list',
+            afterAlt: 'Refined Porchlight homepage on desktop with an arched porch photo, a raised search panel, and four neighborhood photo tiles',
+          },
+          {
+            label: 'Mobile · first screen',
+            before: '/Portfolio/projects/porchlight/before-mobile.webp',
+            after: '/Portfolio/projects/porchlight/after-mobile.webp',
+            beforeAlt: 'Earlier Porchlight homepage on mobile with search links wrapping onto two lines',
+            afterAlt: 'Refined Porchlight homepage on mobile with a search panel and a single browse link',
+            narrow: true,
+          },
+        ],
       },
       {
         id: 'visual-system',

@@ -8,10 +8,11 @@ import AccentLine from '@/components/AccentLine'
 import ScrollProgress from '@/components/ScrollProgress'
 import SheenCard from '@/components/SheenCard'
 import { fadeUp, staggerContainer, lineReveal, imageReveal } from '@/lib/motion'
-import type { CaseStudySection } from '@/types'
+import type { CaseStudySection, CompareRow } from '@/types'
 
-// Lazy-loaded faint wave backdrop — same ambient layer used across the site.
-const HeroWaveBackground = lazy(() => import('@/components/HeroWaveBackground'))
+// Lazy-loaded full-page Three.js backdrop: the site's wave layer, extended to
+// follow the reader through the whole case study.
+const CaseStudyBackdrop = lazy(() => import('@/components/CaseStudyBackdrop'))
 
 function FullGalleryImages({ section }: { section: CaseStudySection }) {
   const [expanded, setExpanded] = useState(false)
@@ -224,6 +225,48 @@ function SectionImages({ section }: { section: CaseStudySection }) {
   )
 }
 
+function CompareRows({ rows }: { rows: CompareRow[] }) {
+  const revealProps = {
+    variants: imageReveal,
+    initial: 'hidden' as const,
+    whileInView: 'visible' as const,
+    viewport: { once: true, margin: '-10%' },
+  }
+
+  return (
+    <div className="mt-8 flex flex-col gap-12">
+      {rows.map((row) => (
+        <div key={row.label}>
+          <p className="text-xs text-text-muted uppercase tracking-widest mb-4">{row.label}</p>
+          <div className={`grid grid-cols-2 gap-4 md:gap-6 items-start ${row.narrow ? 'max-w-xl' : ''}`}>
+            {[
+              { src: row.before, alt: row.beforeAlt, tag: 'Before', after: false },
+              { src: row.after, alt: row.afterAlt, tag: 'After', after: true },
+            ].map((item) => (
+              <motion.figure {...revealProps} key={item.tag} className="m-0">
+                <figcaption className="mb-2.5">
+                  <span
+                    className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold ${
+                      item.after
+                        ? 'bg-accent-highlight text-accent-dim'
+                        : 'bg-surface border border-subtle text-text-secondary'
+                    }`}
+                  >
+                    {item.tag}
+                  </span>
+                </figcaption>
+                <div className="rounded-xl overflow-hidden border border-subtle bg-surface">
+                  <img src={item.src} alt={item.alt} className="w-full block" loading="lazy" />
+                </div>
+              </motion.figure>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 export default function CaseStudy() {
   const { id } = useParams<{ id: string }>()
   const project = projects.find((p) => p.id === id)
@@ -262,13 +305,10 @@ export default function CaseStudy() {
     <div className="relative min-h-screen bg-bg">
       <ScrollProgress />
 
-      {/* Ambient wave backdrop behind the header, fading into the page */}
-      <div className="absolute inset-x-0 top-0 h-[85vh] overflow-hidden pointer-events-none">
-        <Suspense fallback={null}>
-          <HeroWaveBackground opacity={0.08} />
-        </Suspense>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-bg/55 to-bg" />
-      </div>
+      {/* Ambient Three.js backdrop, fixed behind the content for the whole page */}
+      <Suspense fallback={null}>
+        <CaseStudyBackdrop />
+      </Suspense>
 
       {/* Back nav */}
       <nav className="relative z-10 px-6 md:px-10 py-6 border-b border-subtle">
@@ -452,6 +492,8 @@ export default function CaseStudy() {
                   })}
                 </div>
               )}
+
+              {section.compareRows && <CompareRows rows={section.compareRows} />}
 
               {section.imageLayout === 'full-gallery'
                 ? <FullGalleryImages section={section} />

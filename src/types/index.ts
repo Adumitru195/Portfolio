@@ -1,3 +1,12 @@
+export interface CompareRow {
+  label: string
+  before: string
+  after: string
+  beforeAlt: string
+  afterAlt: string
+  narrow?: boolean
+}
+
 export interface CaseStudySection {
   id: string
   title: string
@@ -8,6 +17,7 @@ export interface CaseStudySection {
   previewImages?: string[]
   items?: string[]
   sectionStyle?: 'chips' | 'numbered-cards'
+  compareRows?: CompareRow[]
 }
 
 export interface ProjectDetails {
