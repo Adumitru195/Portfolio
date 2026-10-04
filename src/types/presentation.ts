@@ -116,3 +116,93 @@ export interface PorchlightPresentation {
     pdf: { href: string; label: string; detail: string }
   }
 }
+
+export interface ProblemResponse {
+  problem: string
+  response: string
+}
+
+export interface FlowStep {
+  title: string
+  body: string
+}
+
+export interface FeatureNote {
+  title: string
+  body: string
+}
+
+export interface ScreenFeature {
+  eyebrow: string
+  title: string
+  body: string
+  notes: FeatureNote[]
+  image: PresentationImage
+  caption: string
+}
+
+export interface AfterglowPresentation {
+  eyebrow: string
+  subtitle: string
+  meta: MetaItem[]
+  showcase: {
+    desktop: PresentationImage
+    mobile: PresentationImage
+    description: string
+    caption: string
+  }
+  artworkNote: string
+  brief: {
+    title: string
+    challenge: string
+    goal: string
+    priorities: Priority[]
+  }
+  origin: {
+    title: string
+    body: string
+    image: PresentationImage
+    caption: string
+    rows: ProblemResponse[]
+    note: string
+  }
+  structure: {
+    title: string
+    body: string
+    steps: FlowStep[]
+    principles: FeatureNote[]
+  }
+  identity: {
+    title: string
+    body: string
+    displayFont: { name: string; role: string }
+    bodyFont: { name: string; role: string; sample: string; paragraph: string }
+    swatches: Swatch[]
+    note: string
+  }
+  discovery: ScreenFeature
+  details: {
+    title: string
+    body: string
+    steps: JourneyStep[]
+  }
+  recovery: {
+    title: string
+    body: string
+    screens: { title: string; body: string; image: PresentationImage }[]
+    alternatives: string
+  }
+  responsive: {
+    title: string
+    body: string
+    screens: PhoneScreen[]
+    notes: PresentationNote[]
+  }
+  outcome: {
+    title: string
+    changed: string[]
+    learned: { title: string; body: string }
+    evidence: { title: string; body: string; measure: string }
+    pdf: { href: string; label: string; detail: string }
+  }
+}

@@ -1,93 +1,39 @@
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { MotionConfig, motion } from 'framer-motion'
-import { ArrowLeft, ArrowUpRight, Check, DownloadSimple, HourglassMedium, MagnifyingGlass, MapPin, X } from '@phosphor-icons/react'
+import { MotionConfig } from 'framer-motion'
+import { ArrowUpRight, Check, HourglassMedium, MagnifyingGlass, MapPin, X } from '@phosphor-icons/react'
 import '@fontsource-variable/fraunces'
 import '@fontsource-variable/fraunces/wght-italic.css'
 import '@fontsource-variable/instrument-sans'
 import { projects } from '@/data/projects'
 import { porchlight } from '@/data/porchlight'
 import PresentationSection from '@/components/presentation/PresentationSection'
-import ShowcaseStage from '@/components/presentation/ShowcaseStage'
+import PresentationOpening from '@/components/presentation/PresentationOpening'
+import PresentationActions from '@/components/presentation/PresentationActions'
 import ScreenImage from '@/components/presentation/ScreenImage'
 import ComparisonBlock from '@/components/presentation/ComparisonBlock'
 import PhoneLineup from '@/components/presentation/PhoneLineup'
-import { fadeUp, lineReveal, staggerContainer } from '@/lib/motion'
-
-const workLink = { pathname: '/' }
-const workState = { scrollTo: 'work' }
+import { PresentationThemeContext, porchlightTheme } from '@/lib/presentationTheme'
 
 const focusRing =
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#1A5FB4]'
 
 function Opening() {
   const project = projects.find((p) => p.id === 'porchlight')
-  const { showcase, meta, eyebrow } = porchlight
   return (
-    <section aria-labelledby="porchlight-title" className="bg-porch-cream text-porch-charcoal">
-      <nav aria-label="Case study" className="mx-auto max-w-[1280px] px-4 pt-6 sm:px-6 md:px-10">
-        <Link
-          to={workLink}
-          state={workState}
-          className={`inline-flex items-center gap-2 rounded text-sm font-medium text-porch-green hover:underline ${focusRing} focus-visible:ring-offset-porch-cream`}
-        >
-          <ArrowLeft size={16} aria-hidden="true" />
-          Back to work
-        </Link>
-      </nav>
-
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        animate="visible"
-        className="mx-auto max-w-[1280px] px-4 pb-16 pt-12 sm:px-6 md:px-10 md:pb-24 md:pt-20"
-      >
-        <div className="grid grid-cols-1 items-end gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <motion.p
-              variants={fadeUp}
-              className="mb-5 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.14em] text-porch-brass-text"
-            >
-              <span aria-hidden="true" className="block h-px w-8 bg-porch-brass" />
-              {eyebrow}
-            </motion.p>
-            <h1 id="porchlight-title" className="font-porch-display text-5xl font-semibold leading-[0.98] tracking-[-0.03em] md:text-7xl lg:text-8xl">
-              <span className="block overflow-hidden pb-[0.1em]">
-                <motion.span variants={lineReveal} className="block">
-                  {project?.title ?? 'Porchlight'}
-                </motion.span>
-              </span>
-            </h1>
-            <motion.p variants={fadeUp} className="mt-5 max-w-[34ch] font-porch-display text-xl italic leading-snug text-porch-green md:text-2xl">
-              {project?.subtitle}
-            </motion.p>
-          </div>
-          <motion.dl
-            variants={fadeUp}
-            className="grid grid-cols-2 gap-x-6 gap-y-5 border-t border-porch-border pt-6 lg:col-span-5"
-          >
-            {meta.map((item) => (
-              <div key={item.label}>
-                <dt className="mb-1 text-xs font-semibold uppercase tracking-[0.12em] text-porch-muted">{item.label}</dt>
-                <dd className="m-0 font-medium">{item.value}</dd>
-              </div>
-            ))}
-          </motion.dl>
-        </div>
-
-        <motion.figure variants={fadeUp} className="m-0 mt-12 md:mt-16">
-          <ShowcaseStage desktop={showcase.desktop} mobile={showcase.mobile} description={showcase.description} />
-          <figcaption className="mt-5 text-sm text-porch-muted">{showcase.caption}</figcaption>
-        </motion.figure>
-      </motion.div>
-    </section>
+    <PresentationOpening
+      title={project?.title ?? 'Porchlight'}
+      subtitle={project?.subtitle}
+      eyebrow={porchlight.eyebrow}
+      meta={porchlight.meta}
+      showcase={porchlight.showcase}
+    />
   )
 }
 
 function Challenge() {
   const { challenge } = porchlight
   return (
-    <PresentationSection id="challenge" tone="white" index="01" label="The challenge" title={challenge.title}>
+    <PresentationSection id="challenge" tone="alt" index="01" label="The challenge" title={challenge.title}>
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
         <div className="max-w-[65ch] lg:col-span-6">
           {challenge.body.map((paragraph) => (
@@ -119,7 +65,7 @@ function Wireframes() {
   return (
     <PresentationSection
       id="wireframes"
-      tone="cream"
+      tone="base"
       index="02"
       label="Structure and wireframes"
       title={wireframes.title}
@@ -198,7 +144,7 @@ function Development() {
   return (
     <PresentationSection
       id="development"
-      tone="white"
+      tone="alt"
       index="03"
       label="Design development"
       title={development.title}
@@ -220,7 +166,7 @@ function Identity() {
   return (
     <PresentationSection
       id="identity"
-      tone="green"
+      tone="accent"
       index="04"
       label="Visual identity"
       title={identity.title}
@@ -328,7 +274,7 @@ function Journey() {
   return (
     <PresentationSection
       id="journey"
-      tone="cream"
+      tone="base"
       index="05"
       label="The rental journey"
       title={journey.title}
@@ -397,7 +343,7 @@ function Responsive() {
   return (
     <PresentationSection
       id="responsive"
-      tone="white"
+      tone="alt"
       index="06"
       label="Responsive experience"
       title={responsive.title}
@@ -419,7 +365,7 @@ function Responsive() {
 function Outcome() {
   const { outcome } = porchlight
   return (
-    <PresentationSection id="outcome" tone="green" index="07" label="Outcome and reflection" title={outcome.title}>
+    <PresentationSection id="outcome" tone="accent" index="07" label="Outcome and reflection" title={outcome.title}>
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
         <ol className="m-0 list-none p-0 lg:col-span-6">
           {outcome.achieved.map((item, i) => (
@@ -441,25 +387,7 @@ function Outcome() {
               {paragraph}
             </p>
           ))}
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <a
-              href={outcome.pdf.href}
-              download
-              className={`inline-flex items-center justify-center gap-2 rounded-[10px] bg-porch-cream px-5 py-3.5 font-semibold text-porch-green transition-colors hover:bg-white ${focusRing} focus-visible:ring-offset-porch-green focus-visible:ring-porch-cream`}
-            >
-              <DownloadSimple size={18} aria-hidden="true" />
-              {outcome.pdf.label}
-              <span className="font-normal text-porch-muted">({outcome.pdf.detail})</span>
-            </a>
-            <Link
-              to={workLink}
-              state={workState}
-              className={`inline-flex items-center justify-center gap-2 rounded-[10px] border border-porch-cream/60 px-5 py-3.5 font-semibold text-porch-cream transition-colors hover:bg-porch-green-dark ${focusRing} focus-visible:ring-offset-porch-green focus-visible:ring-porch-cream`}
-            >
-              <ArrowLeft size={18} aria-hidden="true" />
-              Back to Work
-            </Link>
-          </div>
+          <PresentationActions pdf={outcome.pdf} />
         </div>
       </div>
     </PresentationSection>
@@ -478,18 +406,20 @@ export default function PorchlightCaseStudy() {
 
   return (
     <MotionConfig reducedMotion="user">
-      <div className="font-porch-body antialiased">
-        <main>
-          <Opening />
-          <Challenge />
-          <Wireframes />
-          <Development />
-          <Identity />
-          <Journey />
-          <Responsive />
-          <Outcome />
-        </main>
-      </div>
+      <PresentationThemeContext.Provider value={porchlightTheme}>
+        <div className="font-porch-body antialiased">
+          <main>
+            <Opening />
+            <Challenge />
+            <Wireframes />
+            <Development />
+            <Identity />
+            <Journey />
+            <Responsive />
+            <Outcome />
+          </main>
+        </div>
+      </PresentationThemeContext.Provider>
     </MotionConfig>
   )
 }

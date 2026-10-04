@@ -81,7 +81,7 @@ This is a **UX portfolio**. The following three case studies are featured (Backw
 | Project               | Assets folder                                                                           |
 |-----------------------|-----------------------------------------------------------------------------------------|
 | Porchlight            | `UX Projects/Porchlight/` — rental discovery redesign of Arcadian Homes; case study PDF, wireframe board, screenshots |
-| ReelHouse Cinemas     | `UX Projects/ReelHouse Cinemas/` — cinema booking UX                                    |
+| Afterglow Cinema      | `UX Projects/Afterglow Cinema/` — cinema redesign of ReelHouse; case study PDF, screenshots. Film artwork is unlicensed: see its `docs/ASSET-SOURCES.md` before publishing |
 | The Sustained Company | `UX Projects/The Sustained Company/` — persona, journey map, usability study, videos   |
 
 Project thumbnails are copied to `public/projects/` and referenced in `src/data/projects.ts`.

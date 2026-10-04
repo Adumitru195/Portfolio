@@ -10,8 +10,10 @@ import SheenCard from '@/components/SheenCard'
 import { fadeUp, staggerContainer, lineReveal, imageReveal } from '@/lib/motion'
 import type { CaseStudySection, CompareRow } from '@/types'
 
-// Porchlight has its own art-directed presentation, loaded only on its route.
+// Porchlight and Afterglow have their own art-directed presentations, each
+// loaded only on its route.
 const PorchlightCaseStudy = lazy(() => import('@/pages/PorchlightCaseStudy'))
+const AfterglowCaseStudy = lazy(() => import('@/pages/AfterglowCaseStudy'))
 
 // Lazy-loaded full-page Three.js backdrop: the site's wave layer, extended to
 // follow the reader through the whole case study.
@@ -276,6 +278,13 @@ export default function CaseStudy() {
     return (
       <Suspense fallback={<div className="min-h-[100dvh] bg-porch-cream" />}>
         <PorchlightCaseStudy />
+      </Suspense>
+    )
+  }
+  if (id === 'afterglow-cinema') {
+    return (
+      <Suspense fallback={<div className="min-h-[100dvh] bg-glow-charcoal" />}>
+        <AfterglowCaseStudy />
       </Suspense>
     )
   }

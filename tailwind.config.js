@@ -9,6 +9,9 @@ export default {
         // Porchlight case study only: the product's own typefaces.
         'porch-display': ['"Fraunces Variable"', 'Georgia', 'serif'],
         'porch-body': ['"Instrument Sans Variable"', 'system-ui', 'sans-serif'],
+        // Afterglow Cinema case study only: the product's own typefaces.
+        'glow-display': ['"Big Shoulders Display Variable"', '"Arial Narrow"', 'sans-serif'],
+        'glow-body': ['"Atkinson Hyperlegible Next Variable"', 'system-ui', 'sans-serif'],
       },
       colors: {
         // Porchlight case study only: tokens from the product's design system.
@@ -28,6 +31,22 @@ export default {
           pending: '#7A5200',
           'pending-bg': '#FBF0D6',
           'pending-border': '#E9CF93',
+        },
+        // Afterglow Cinema case study only: tokens from the product's styles.
+        glow: {
+          charcoal: '#1B1A19',
+          deep: '#151413',
+          surface: '#252321',
+          raised: '#2F2C29',
+          line: '#3D3833',
+          'line-strong': '#5A534B',
+          ivory: '#F4ECDD',
+          'ivory-muted': '#C4BAAA',
+          'ivory-faint': '#968C7E',
+          amber: '#F4A62A',
+          'amber-hover': '#FFBB4D',
+          ink: '#24201C',
+          'paper-muted': '#5E554A',
         },
         bg: '#F7F7F5',
         ink: {

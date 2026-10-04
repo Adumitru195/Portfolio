@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import type { CSSProperties } from 'react'
 import { DESKTOP, PHONE, STAGE, toStageRect } from '@/lib/showcaseLayout'
+import { usePresentationTheme } from '@/lib/presentationTheme'
 import type { PresentationImage } from '@/types/presentation'
 
 /**
@@ -61,6 +62,8 @@ export default function ShowcaseStage({ desktop, mobile, description }: Showcase
   const stageRef = useRef<HTMLDivElement>(null)
   const hostRef = useRef<HTMLDivElement>(null)
   const allowed = useEnhancementAllowed()
+  const theme = usePresentationTheme()
+  const colors = theme.showcase.colors
   const [enhanced, setEnhanced] = useState(false)
 
   useEffect(() => {
@@ -70,7 +73,7 @@ export default function ShowcaseStage({ desktop, mobile, description }: Showcase
     let cancelled = false
     let dispose: (() => void) | undefined
 
-    import('@/lib/porchlightShowcase')
+    import('@/lib/deviceShowcase')
       .then(({ mountShowcase }) => {
         if (cancelled) return
         const handle = mountShowcase({
@@ -79,6 +82,7 @@ export default function ShowcaseStage({ desktop, mobile, description }: Showcase
           desktopSrc: desktop.src,
           mobileSrc: mobile.src,
           tilt: window.matchMedia(FINE_POINTER_QUERY).matches,
+          colors,
           onReady: () => {
             if (!cancelled) setEnhanced(true)
           },
@@ -97,7 +101,7 @@ export default function ShowcaseStage({ desktop, mobile, description }: Showcase
       dispose?.()
       setEnhanced(false)
     }
-  }, [allowed, desktop.src, mobile.src])
+  }, [allowed, desktop.src, mobile.src, colors])
 
   return (
     <div
@@ -111,14 +115,14 @@ export default function ShowcaseStage({ desktop, mobile, description }: Showcase
         className={`absolute inset-0 transition-opacity duration-500 ${enhanced ? 'opacity-0' : 'opacity-100'}`}
       >
         <div
-          className="absolute flex flex-col overflow-hidden rounded-[1.4%/2.1%] bg-white shadow-[0_30px_70px_-30px_rgba(30,52,41,0.45)]"
+          className={`absolute flex flex-col overflow-hidden rounded-[1.4%/2.1%] ${theme.showcase.desktopFrame}`}
           style={desktopRect as CSSProperties}
         >
-          <div className="flex shrink-0 items-center gap-[0.9%] bg-porch-sunken px-[1.8%]" style={{ height: barHeight }}>
-            <span className="block aspect-square w-[0.9%] rounded-full bg-[#D9CFC0]" />
-            <span className="block aspect-square w-[0.9%] rounded-full bg-[#D9CFC0]" />
-            <span className="block aspect-square w-[0.9%] rounded-full bg-[#D9CFC0]" />
-            <span className="mx-auto block h-[46%] w-[27%] rounded-full bg-white" />
+          <div className={`flex shrink-0 items-center gap-[0.9%] px-[1.8%] ${theme.showcase.bar}`} style={{ height: barHeight }}>
+            <span className={`block aspect-square w-[0.9%] rounded-full ${theme.showcase.dot}`} />
+            <span className={`block aspect-square w-[0.9%] rounded-full ${theme.showcase.dot}`} />
+            <span className={`block aspect-square w-[0.9%] rounded-full ${theme.showcase.dot}`} />
+            <span className={`mx-auto block h-[46%] w-[27%] rounded-full ${theme.showcase.pill}`} />
           </div>
           <img
             src={desktop.src}
@@ -131,7 +135,7 @@ export default function ShowcaseStage({ desktop, mobile, description }: Showcase
           />
         </div>
         <div
-          className="absolute rounded-[13%/6.3%] bg-porch-charcoal shadow-[0_30px_60px_-24px_rgba(30,52,41,0.55)]"
+          className={`absolute rounded-[13%/6.3%] ${theme.showcase.phone}`}
           style={{ ...(phoneRect as CSSProperties), padding: phoneBezel }}
         >
           <img

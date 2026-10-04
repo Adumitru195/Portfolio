@@ -1,11 +1,12 @@
 import * as THREE from 'three'
 import { DESKTOP, PHONE, STAGE } from '@/lib/showcaseLayout'
+import type { ShowcaseColors } from '@/lib/presentationTheme'
 
 /**
- * Porchlight opening showcase: a shallow desktop browser panel and a phone
- * panel, each faced with a real Porchlight screenshot.
+ * Case study opening showcase: a shallow desktop browser panel and a phone
+ * panel, each faced with a real screenshot of the project.
  *
- * - Loaded with a dynamic import, only on the Porchlight route.
+ * - Loaded with a dynamic import, only on art-directed case study routes.
  * - Renders on demand: one frame when ready, then only while a pointer tilt
  *   is easing. No idle animation loop.
  * - Skips rendering while offscreen or while the tab is hidden.
@@ -19,6 +20,7 @@ export interface ShowcaseOptions {
   desktopSrc: string
   mobileSrc: string
   tilt: boolean
+  colors: ShowcaseColors
   onReady: () => void
   onFail: () => void
 }
@@ -27,14 +29,6 @@ export interface ShowcaseHandle {
   dispose: () => void
 }
 
-const COLORS = {
-  frame: '#FFFFFF',
-  bar: '#F4EFE7',
-  barDot: '#D9CFC0',
-  urlPill: '#FFFFFF',
-  phone: '#1D1B18',
-  shadow: 'rgb(30, 52, 41)',
-} as const
 
 const FOV = 22
 const MAX_DPR = 2
@@ -85,7 +79,7 @@ const SHADOW_BLUR = 8
 const SHADOW_INSET = 0.05
 const SHADOW_PAD = SHADOW_BLUR * 4
 
-function shadowTexture(aspect: number) {
+function shadowTexture(aspect: number, color: string) {
   const canvas = document.createElement('canvas')
   const w = 256
   const h = Math.round(w / aspect)
@@ -94,7 +88,7 @@ function shadowTexture(aspect: number) {
   const ctx = canvas.getContext('2d')
   if (ctx) {
     ctx.filter = `blur(${SHADOW_BLUR}px)`
-    ctx.fillStyle = COLORS.shadow
+    ctx.fillStyle = color
     const insetX = w * SHADOW_INSET
     const insetY = h * SHADOW_INSET
     ctx.fillRect(SHADOW_PAD + insetX, SHADOW_PAD + insetY, w - insetX * 2, h - insetY * 2)
@@ -111,7 +105,7 @@ function shadowTexture(aspect: number) {
 }
 
 export function mountShowcase(options: ShowcaseOptions): ShowcaseHandle {
-  const { host, pointerTarget, desktopSrc, mobileSrc, tilt, onReady, onFail } = options
+  const { host, pointerTarget, desktopSrc, mobileSrc, tilt, colors, onReady, onFail } = options
   let disposed = false
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' })
@@ -155,7 +149,7 @@ export function mountShowcase(options: ShowcaseOptions): ShowcaseHandle {
       bevelEnabled: false,
       curveSegments: 12,
     }),
-    new THREE.MeshStandardMaterial({ color: COLORS.frame, roughness: 0.9, metalness: 0 }),
+    new THREE.MeshStandardMaterial({ color: colors.frame, roughness: 0.9, metalness: 0 }),
   )
   desktopBody.position.z = -desktopDepth
   desktop.add(desktopBody)
@@ -168,13 +162,13 @@ export function mountShowcase(options: ShowcaseOptions): ShowcaseHandle {
   })
   const bar = new THREE.Mesh(
     new THREE.ShapeGeometry(barShape, 12),
-    new THREE.MeshBasicMaterial({ color: COLORS.bar }),
+    new THREE.MeshBasicMaterial({ color: colors.bar }),
   )
   bar.position.set(0, DESKTOP.height / 2 - DESKTOP.bar / 2, 0.002)
   desktop.add(bar)
 
   const dotGeometry = new THREE.CircleGeometry(0.055, 20)
-  const dotMaterial = new THREE.MeshBasicMaterial({ color: COLORS.barDot })
+  const dotMaterial = new THREE.MeshBasicMaterial({ color: colors.barDot })
   for (let i = 0; i < 3; i++) {
     const dot = new THREE.Mesh(dotGeometry, dotMaterial)
     dot.position.set(-DESKTOP.width / 2 + 0.3 + i * 0.19, DESKTOP.height / 2 - DESKTOP.bar / 2, 0.004)
@@ -182,7 +176,7 @@ export function mountShowcase(options: ShowcaseOptions): ShowcaseHandle {
   }
   const pill = new THREE.Mesh(
     new THREE.ShapeGeometry(roundedRect(3.4, 0.22, uniform(0.11)), 8),
-    new THREE.MeshBasicMaterial({ color: COLORS.urlPill }),
+    new THREE.MeshBasicMaterial({ color: colors.urlPill }),
   )
   pill.position.set(0, DESKTOP.height / 2 - DESKTOP.bar / 2, 0.004)
   desktop.add(pill)
@@ -214,7 +208,7 @@ export function mountShowcase(options: ShowcaseOptions): ShowcaseHandle {
       bevelEnabled: false,
       curveSegments: 16,
     }),
-    new THREE.MeshStandardMaterial({ color: COLORS.phone, roughness: 0.55, metalness: 0.1 }),
+    new THREE.MeshStandardMaterial({ color: colors.phone, roughness: 0.55, metalness: 0.1 }),
   )
   phoneBody.position.z = -phoneDepth
   phone.add(phoneBody)
@@ -233,7 +227,7 @@ export function mountShowcase(options: ShowcaseOptions): ShowcaseHandle {
 
   // --- Soft tinted shadows behind each panel ---
   const addShadow = (group: THREE.Group, width: number, height: number, opacity: number) => {
-    const { texture, padX, padY } = shadowTexture(width / height)
+    const { texture, padX, padY } = shadowTexture(width / height, colors.shadow)
     const mesh = new THREE.Mesh(
       new THREE.PlaneGeometry(width * padX, height * padY),
       new THREE.MeshBasicMaterial({ map: texture, transparent: true, opacity, depthWrite: false }),

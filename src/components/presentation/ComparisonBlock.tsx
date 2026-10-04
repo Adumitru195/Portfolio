@@ -1,13 +1,15 @@
 import ScreenImage from '@/components/presentation/ScreenImage'
+import { usePresentationTheme } from '@/lib/presentationTheme'
 import type { Comparison } from '@/types/presentation'
 
 function Label({ kind }: { kind: 'Before' | 'After' }) {
-  const styles =
-    kind === 'After'
-      ? 'bg-porch-green text-white'
-      : 'border border-porch-control bg-white text-porch-charcoal'
+  const theme = usePresentationTheme()
   return (
-    <span className={`mb-3 inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.1em] ${styles}`}>
+    <span
+      className={`mb-3 inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.1em] ${
+        kind === 'After' ? theme.labelAfter : theme.labelBefore
+      }`}
+    >
       {kind}
     </span>
   )
@@ -29,12 +31,13 @@ function Pair({ comparison, stackOnMobile }: { comparison: Comparison; stackOnMo
 }
 
 function Copy({ comparison, index }: { comparison: Comparison; index: number }) {
+  const theme = usePresentationTheme()
   return (
     <div className="max-w-[65ch]">
-      <p className="mb-3 font-porch-display text-lg italic text-porch-green">0{index + 1}</p>
-      <h3 className="mb-4 font-porch-display text-2xl font-semibold leading-tight md:text-3xl">{comparison.title}</h3>
+      <p className={`mb-3 text-lg text-[color:var(--pres-accent)] ${theme.number}`}>0{index + 1}</p>
+      <h3 className={`mb-4 text-2xl md:text-3xl ${theme.heading}`}>{comparison.title}</h3>
       {comparison.body.map((paragraph) => (
-        <p key={paragraph} className="mb-4 leading-relaxed text-porch-muted last:mb-0">
+        <p key={paragraph} className="mb-4 leading-relaxed text-[color:var(--pres-muted)] last:mb-0">
           {paragraph}
         </p>
       ))}
