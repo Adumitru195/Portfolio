@@ -6,8 +6,29 @@ export default {
       fontFamily: {
         display: ['Cabinet Grotesk', 'sans-serif'],
         body: ['Geist', 'sans-serif'],
+        // Porchlight case study only: the product's own typefaces.
+        'porch-display': ['"Fraunces Variable"', 'Georgia', 'serif'],
+        'porch-body': ['"Instrument Sans Variable"', 'system-ui', 'sans-serif'],
       },
       colors: {
+        // Porchlight case study only: tokens from the product's design system.
+        porch: {
+          cream: '#FBF8F3',
+          sunken: '#F4EFE7',
+          green: '#24563F',
+          'green-dark': '#1B4532',
+          'green-soft': '#E5EEE8',
+          brass: '#B8893A',
+          'brass-text': '#845D17',
+          'brass-soft': '#F6ECD8',
+          charcoal: '#1D1B18',
+          muted: '#5A544B',
+          border: '#E3DBCF',
+          control: '#8F8475',
+          pending: '#7A5200',
+          'pending-bg': '#FBF0D6',
+          'pending-border': '#E9CF93',
+        },
         bg: '#F7F7F5',
         ink: {
           DEFAULT: '#0a0a0a',

@@ -10,6 +10,9 @@ import SheenCard from '@/components/SheenCard'
 import { fadeUp, staggerContainer, lineReveal, imageReveal } from '@/lib/motion'
 import type { CaseStudySection, CompareRow } from '@/types'
 
+// Porchlight has its own art-directed presentation, loaded only on its route.
+const PorchlightCaseStudy = lazy(() => import('@/pages/PorchlightCaseStudy'))
+
 // Lazy-loaded full-page Three.js backdrop: the site's wave layer, extended to
 // follow the reader through the whole case study.
 const CaseStudyBackdrop = lazy(() => import('@/components/CaseStudyBackdrop'))
@@ -269,6 +272,17 @@ function CompareRows({ rows }: { rows: CompareRow[] }) {
 
 export default function CaseStudy() {
   const { id } = useParams<{ id: string }>()
+  if (id === 'porchlight') {
+    return (
+      <Suspense fallback={<div className="min-h-[100dvh] bg-porch-cream" />}>
+        <PorchlightCaseStudy />
+      </Suspense>
+    )
+  }
+  return <StandardCaseStudy key={id} id={id} />
+}
+
+function StandardCaseStudy({ id }: { id: string | undefined }) {
   const project = projects.find((p) => p.id === id)
 
   if (!project) {

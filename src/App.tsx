@@ -1,4 +1,5 @@
-import { HashRouter, Routes, Route } from 'react-router-dom'
+import { useEffect } from 'react'
+import { HashRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from '@/components/Navbar'
 import ScrollProgress from '@/components/ScrollProgress'
 import Footer from '@/components/Footer'
@@ -9,6 +10,16 @@ import Contact from '@/sections/Contact'
 import CaseStudy from '@/pages/CaseStudy'
 
 function Home() {
+  const location = useLocation()
+
+  // Pages can link back to a home section, e.g. "Back to Work".
+  useEffect(() => {
+    const target = (location.state as { scrollTo?: string } | null)?.scrollTo
+    if (!target) return
+    const frame = requestAnimationFrame(() => document.getElementById(target)?.scrollIntoView())
+    return () => cancelAnimationFrame(frame)
+  }, [location])
+
   return (
     <>
       <ScrollProgress />
