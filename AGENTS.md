@@ -80,7 +80,7 @@ This is a **UX portfolio**. The following three case studies are featured (Backw
 
 | Project               | Assets folder                                                                           |
 |-----------------------|-----------------------------------------------------------------------------------------|
-| Arcadian Homes        | `UX Projects/Arcadian Homes/` — persona, journey map, user research, wireframes, videos |
+| Porchlight            | `UX Projects/Porchlight/` — rental discovery redesign of Arcadian Homes; case study PDF, wireframe board, screenshots |
 | ReelHouse Cinemas     | `UX Projects/ReelHouse Cinemas/` — cinema booking UX                                    |
 | The Sustained Company | `UX Projects/The Sustained Company/` — persona, journey map, usability study, videos   |
 

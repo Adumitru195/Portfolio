@@ -1,6 +1,6 @@
 # Andrew Dumitru — UX Portfolio
 
-Personal UX design portfolio featuring case studies for Arcadian Homes, ReelHouse Cinemas, and The Sustained Company. Built with React, TypeScript, and Vite. Deployed to GitHub Pages.
+Personal UX design portfolio featuring case studies for Porchlight, ReelHouse Cinemas, and The Sustained Company. Built with React, TypeScript, and Vite. Deployed to GitHub Pages.
 
 **Live site:** [adumitru195.github.io/Portfolio](https://adumitru195.github.io/Portfolio/)
 
