@@ -48,9 +48,11 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         <div
           className="w-full aspect-[16/9] relative overflow-hidden"
           style={{
-            background: isEven
-              ? 'linear-gradient(135deg, #F2F2F0 0%, #EBEBEA 100%)'
-              : 'linear-gradient(135deg, #EBEBEA 0%, #E4E4E2 100%)',
+            background:
+              project.cardBackground ??
+              (isEven
+                ? 'linear-gradient(135deg, #F2F2F0 0%, #EBEBEA 100%)'
+                : 'linear-gradient(135deg, #EBEBEA 0%, #E4E4E2 100%)'),
           }}
         >
           {project.image ? (

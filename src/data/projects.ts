@@ -325,7 +325,8 @@ export const projects: Project[] = [
     role: 'UX & UI Designer',
     tags: ['UX Design', 'Responsive Web', 'Interaction Design', 'Accessibility'],
     year: '2026',
-    image: '/Portfolio/projects/afterglow-cinema/cover.webp',
+    image: '/Portfolio/projects/afterglow-cinema/afterglow-card-midnight-lavender.webp',
+    cardBackground: '#141827',
     featured: true,
   },
   {
