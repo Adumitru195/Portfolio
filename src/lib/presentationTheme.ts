@@ -88,43 +88,43 @@ export const porchlightTheme: PresentationTheme = {
 }
 
 const glowDarkVars =
-  '[--pres-muted:#C4BAAA] [--pres-eyebrow:#F4A62A] [--pres-border:#3D3833] [--pres-accent:#F4A62A]'
+  '[--pres-muted:#C0C5D4] [--pres-eyebrow:#B8A4EF] [--pres-border:#394158] [--pres-accent:#B8A4EF]'
 
 export const afterglowTheme: PresentationTheme = {
   tones: {
-    base: `bg-glow-charcoal text-glow-ivory ${glowDarkVars}`,
-    alt: `bg-glow-deep text-glow-ivory ${glowDarkVars}`,
+    base: `bg-glow-bg text-glow-text ${glowDarkVars}`,
+    alt: `bg-glow-deep text-glow-text ${glowDarkVars}`,
     accent:
-      'bg-glow-ivory text-glow-ink [--pres-muted:#5E554A] [--pres-eyebrow:#8A5A00] [--pres-border:#D8CCB8] [--pres-accent:#8A5A00]',
+      'bg-glow-paper text-glow-ink [--pres-muted:#545A72] [--pres-eyebrow:#5B45A8] [--pres-border:#D9D3C7] [--pres-accent:#5B45A8]',
   },
-  title: 'font-glow-display text-6xl font-extrabold leading-[0.92] md:text-8xl lg:text-9xl',
-  subtitle: 'font-glow-body text-xl leading-snug text-glow-ivory-muted md:text-2xl',
-  focusRing: 'focus-visible:ring-glow-amber focus-visible:ring-offset-glow-charcoal',
+  title: 'font-glow-display text-5xl font-semibold leading-[1.05] tracking-[-0.015em] md:text-7xl lg:text-8xl',
+  subtitle: 'font-glow-body text-xl leading-snug text-glow-muted md:text-2xl',
+  focusRing: 'focus-visible:ring-glow-text focus-visible:ring-offset-glow-bg',
   buttonPrimary:
-    'bg-glow-amber text-glow-charcoal hover:bg-glow-amber-hover focus-visible:ring-glow-charcoal focus-visible:ring-offset-glow-ivory',
+    'bg-glow-accent text-glow-ink hover:bg-glow-accent-hover motion-safe:hover:-translate-y-0.5 focus-visible:ring-glow-ink focus-visible:ring-offset-glow-paper',
   buttonSecondary:
-    'border border-glow-ink/60 text-glow-ink hover:bg-[#E9DFCC] focus-visible:ring-glow-charcoal focus-visible:ring-offset-glow-ivory',
-  heading: 'font-glow-display font-extrabold leading-[0.98] tracking-[-0.005em]',
-  number: 'font-glow-display font-extrabold',
-  screenFrame: 'border-glow-line bg-glow-deep shadow-[0_30px_60px_-30px_rgba(8,6,4,0.85)]',
+    'border border-glow-ink/60 text-glow-ink hover:bg-[#E9E4DA] motion-safe:hover:-translate-y-0.5 focus-visible:ring-glow-ink focus-visible:ring-offset-glow-paper',
+  heading: 'font-glow-display font-semibold leading-[1.1] tracking-[-0.01em]',
+  number: 'font-glow-display font-medium',
+  screenFrame: 'border-glow-line bg-glow-deep shadow-[0_30px_60px_-30px_rgba(4,6,14,0.85)]',
   chromeBar: 'border-glow-line bg-glow-surface',
   chromeDot: 'bg-glow-line-strong',
-  phoneFrame: 'bg-[#3A3632] shadow-[0_28px_50px_-26px_rgba(8,6,4,0.9)]',
-  labelBefore: 'border border-glow-line-strong bg-glow-surface text-glow-ivory',
-  labelAfter: 'bg-glow-amber text-glow-charcoal',
+  phoneFrame: 'bg-glow-raised shadow-[0_28px_50px_-26px_rgba(4,6,14,0.9)]',
+  labelBefore: 'border border-glow-line-strong bg-glow-surface text-glow-text',
+  labelAfter: 'bg-glow-accent text-glow-ink',
   showcase: {
-    desktopFrame: 'bg-[#2A2725] shadow-[0_30px_70px_-26px_rgba(8,6,4,0.9)]',
-    bar: 'bg-[#2A2725]',
+    desktopFrame: 'bg-glow-surface shadow-[0_30px_70px_-26px_rgba(4,6,14,0.9)]',
+    bar: 'bg-glow-surface',
     dot: 'bg-glow-line-strong',
     pill: 'bg-glow-raised',
-    phone: 'bg-[#3A3632] shadow-[0_30px_60px_-20px_rgba(8,6,4,0.95)]',
+    phone: 'bg-glow-raised shadow-[0_30px_60px_-20px_rgba(4,6,14,0.95)]',
     colors: {
-      frame: '#2A2725',
-      bar: '#2A2725',
-      barDot: '#5A534B',
-      urlPill: '#2F2C29',
-      phone: '#3A3632',
-      shadow: 'rgb(6, 5, 4)',
+      frame: '#1E2436',
+      bar: '#1E2436',
+      barDot: '#737C9C',
+      urlPill: '#282F45',
+      phone: '#282F45',
+      shadow: 'rgb(4, 6, 14)',
     },
   },
 }

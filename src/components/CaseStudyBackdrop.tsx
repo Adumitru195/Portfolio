@@ -1,7 +1,9 @@
-import { useEffect, useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
 import { displace, usePrefersReducedMotion } from '@/components/HeroWaveBackground'
+import WaveFallback from '@/components/WaveFallback'
+import { supportsWebGL } from '@/lib/webgl'
 
 /**
  * Full-page ambient backdrop for case study pages.
@@ -17,6 +19,7 @@ import { displace, usePrefersReducedMotion } from '@/components/HeroWaveBackgrou
  *  - Honors `prefers-reduced-motion`: one static frame, no loop, no scroll motion.
  *  - Uses requestAnimationFrame, which browsers suspend in hidden tabs.
  *  - Device pixel ratio capped; geometry is small and displaced on the CPU.
+ *  - Without WebGL, or if the context is lost, a static grid renders instead.
  */
 
 const ACCENT = '#4F46E5'
@@ -161,6 +164,10 @@ export default function CaseStudyBackdrop({
   pointOpacity?: number
 }) {
   const reducedMotion = usePrefersReducedMotion()
+  const [webgl] = useState(supportsWebGL)
+  const [contextLost, setContextLost] = useState(false)
+
+  if (!webgl || contextLost) return <BackdropFallback />
 
   return (
     <div className="fixed inset-0 pointer-events-none" aria-hidden="true">
@@ -170,9 +177,23 @@ export default function CaseStudyBackdrop({
         gl={{ alpha: true, antialias: true, powerPreference: 'low-power' }}
         frameloop={reducedMotion ? 'demand' : 'always'}
         style={{ background: 'transparent' }}
+        onCreated={({ gl }) => {
+          gl.domElement.addEventListener('webglcontextlost', (event) => {
+            event.preventDefault()
+            setContextLost(true)
+          })
+        }}
       >
         <Scene animate={!reducedMotion} waveOpacity={waveOpacity} pointOpacity={pointOpacity} />
       </Canvas>
+    </div>
+  )
+}
+
+export function BackdropFallback() {
+  return (
+    <div className="fixed inset-0 pointer-events-none" aria-hidden="true">
+      <WaveFallback opacity={0.14} />
     </div>
   )
 }

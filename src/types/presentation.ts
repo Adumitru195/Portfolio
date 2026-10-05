@@ -117,11 +117,6 @@ export interface PorchlightPresentation {
   }
 }
 
-export interface ProblemResponse {
-  problem: string
-  response: string
-}
-
 export interface FlowStep {
   title: string
   body: string
@@ -141,6 +136,11 @@ export interface ScreenFeature {
   caption: string
 }
 
+export interface MotionEffect {
+  title: string
+  body: string
+}
+
 export interface AfterglowPresentation {
   eyebrow: string
   subtitle: string
@@ -157,14 +157,6 @@ export interface AfterglowPresentation {
     challenge: string
     goal: string
     priorities: Priority[]
-  }
-  origin: {
-    title: string
-    body: string
-    image: PresentationImage
-    caption: string
-    rows: ProblemResponse[]
-    note: string
   }
   structure: {
     title: string
@@ -186,6 +178,19 @@ export interface AfterglowPresentation {
     body: string
     steps: JourneyStep[]
   }
+  motion: {
+    title: string
+    body: string
+    video: {
+      mp4: string
+      webm: string
+      poster: PresentationImage
+      caption: string
+      description: string
+    }
+    effects: MotionEffect[]
+    reducedMotion: string
+  }
   recovery: {
     title: string
     body: string
@@ -203,6 +208,5 @@ export interface AfterglowPresentation {
     changed: string[]
     learned: { title: string; body: string }
     evidence: { title: string; body: string; measure: string }
-    pdf: { href: string; label: string; detail: string }
   }
 }

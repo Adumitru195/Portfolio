@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import type { CSSProperties } from 'react'
 import { DESKTOP, PHONE, STAGE, toStageRect } from '@/lib/showcaseLayout'
 import { usePresentationTheme } from '@/lib/presentationTheme'
+import { supportsWebGL } from '@/lib/webgl'
 import type { PresentationImage } from '@/types/presentation'
 
 /**
@@ -20,18 +21,6 @@ interface ShowcaseStageProps {
 const WIDE_QUERY = '(min-width: 900px)'
 const REDUCED_QUERY = '(prefers-reduced-motion: reduce)'
 const FINE_POINTER_QUERY = '(pointer: fine)'
-
-function supportsWebGL() {
-  try {
-    const canvas = document.createElement('canvas')
-    const gl = canvas.getContext('webgl2') ?? canvas.getContext('webgl')
-    if (!gl) return false
-    gl.getExtension('WEBGL_lose_context')?.loseContext()
-    return true
-  } catch {
-    return false
-  }
-}
 
 function useEnhancementAllowed() {
   const [allowed, setAllowed] = useState(false)

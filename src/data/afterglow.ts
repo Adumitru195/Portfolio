@@ -14,9 +14,9 @@ export const afterglow: AfterglowPresentation = {
   showcase: {
     desktop: {
       src: `${base}/showcase-desktop.webp`,
-      alt: 'Afterglow homepage on desktop: a "What’s on" bar with cinema and seven-day date selectors, above a featured Interstellar banner with four showtimes and a View showtimes button',
-      width: 1440,
-      height: 900,
+      alt: 'Afterglow homepage on desktop: a "What’s on" bar with cinema and seven-day date selectors, above a featured Interstellar banner with four showtimes, a View showtimes button, and the Interstellar, Dune: Part Two and The Batman posters arranged in depth',
+      width: 2048,
+      height: 1280,
     },
     mobile: {
       src: `${base}/showcase-mobile.webp`,
@@ -50,40 +50,6 @@ export const afterglow: AfterglowPresentation = {
       },
     ],
   },
-  origin: {
-    title: 'Starting from ReelHouse.',
-    body: 'Afterglow redesigns ReelHouse Cinemas, an earlier mobile concept of mine. Reviewing its wireframes and high-fidelity screens surfaced the problems the new structure answers.',
-    image: {
-      src: `${base}/reelhouse-wireframes.webp`,
-      alt: 'Nine ReelHouse wireframes on phones: a home screen with a rotating hero and three poster rows, a slide-out menu, a profile, a movie list, film details with Details, Showings and More tabs, a showings tab with a date strip, a seat map, checkout and a Movie Booked confirmation',
-      width: 1313,
-      height: 771,
-    },
-    caption: 'The original ReelHouse wireframes, from home screen to booking confirmation.',
-    rows: [
-      {
-        problem: 'Cinema and date first appeared on a film’s Showings tab.',
-        response: 'Cinema and date sit at the top of the homepage and carry into every film page.',
-      },
-      {
-        problem: 'Showtimes were hidden behind a tab, next to Details and More.',
-        response: 'Showtimes sit on the film page itself, one scroll below a short introduction.',
-      },
-      {
-        problem: 'There was no title search, only three scrolling poster rows.',
-        response: 'Title search with a live result count, a Clear button and empty states that suggest a next step.',
-      },
-      {
-        problem: 'The hero rotated, so the featured film changed while you read.',
-        response: 'One fixed featured film, with its next four times as direct links.',
-      },
-      {
-        problem: 'Selected dates and times were marked by fill color alone, and the date strip clipped its last day.',
-        response: 'Selection adds a check, the word “Selected” and an underline bar. Seven days fit in a fixed grid.',
-      },
-    ],
-    note: 'These are observations from my earlier files, not usability findings.',
-  },
   structure: {
     title: 'From a film in mind to a showing that fits.',
     body: 'Each decision stays connected to the next.',
@@ -105,25 +71,26 @@ export const afterglow: AfterglowPresentation = {
     ],
   },
   identity: {
-    title: 'Cinema atmosphere. Clear information.',
-    body: 'A dark, warm identity lets film artwork lead while the controls stay consistent.',
+    title: 'Midnight, lavender and clear information.',
+    body: 'A deep midnight surface lets film artwork lead, while a single lavender accent marks every action and selection.',
     displayFont: {
-      name: 'Big Shoulders Display',
-      role: 'Display · headings and film titles, with a condensed marquee voice',
+      name: 'Space Grotesk',
+      role: 'Display · logo, headings, film titles, tabs and the ticket title',
     },
     bodyFont: {
-      name: 'Atkinson Hyperlegible Next',
-      role: 'Body and interface · descriptions, controls and metadata',
+      name: 'Inter',
+      role: 'Body and interface · descriptions, controls and metadata, with tabular figures for times and prices',
       sample: '2014 · PG-13 · 2 hr 49 min · Science fiction, Adventure, Drama',
       paragraph:
         'With Earth’s crops failing, a former pilot leaves his children to search for a new home for humanity on the far side of a wormhole.',
     },
     swatches: [
-      { name: 'Charcoal', hex: '#1B1A19', usage: 'Page background' },
-      { name: 'Warm ivory', hex: '#F4ECDD', usage: 'Text and the ticket summary' },
-      { name: 'Amber', hex: '#F4A62A', usage: 'Actions and selection only' },
+      { name: 'Midnight', hex: '#141827', usage: 'Page background' },
+      { name: 'Surface', hex: '#1E2436', usage: 'Controls, cards and time tiles' },
+      { name: 'Lavender', hex: '#B8A4EF', usage: 'Actions and selection only' },
+      { name: 'Ivory', hex: '#F5F2EB', usage: 'Text and the ticket summary' },
     ],
-    note: 'Amber identifies actions and selection, but labels and symbols carry the meaning too.',
+    note: 'Every selected state uses the same lavender, and a check, the word “Selected”, an underline bar or a dot carries the meaning too.',
   },
   discovery: {
     eyebrow: 'Homepage',
@@ -145,9 +112,9 @@ export const afterglow: AfterglowPresentation = {
     ],
     image: {
       src: `${base}/discovery-home.webp`,
-      alt: 'Full Afterglow homepage on desktop: the context bar, the featured Interstellar banner, Showing this week and Upcoming screenings tabs with a title search, and six film cards with posters, ratings, runtimes and next showing times',
-      width: 1440,
-      height: 1590,
+      alt: 'Full Afterglow homepage on desktop: the context bar, the featured Interstellar banner with three posters, Showing this week and Upcoming screenings tabs with a title search, and six film cards with posters, ratings, runtimes and next showing times',
+      width: 1600,
+      height: 1772,
     },
     caption: 'Every card answers “can I see this then?” with a count and the next showing.',
   },
@@ -163,8 +130,8 @@ export const afterglow: AfterglowPresentation = {
         image: {
           src: `${base}/film.webp`,
           alt: 'Interstellar film page: a backdrop banner with the poster, title, rating, runtime, genres and logline, then a Showtimes section with cinema and date selectors, format chips and times grouped by format',
-          width: 1440,
-          height: 1660,
+          width: 1600,
+          height: 1816,
         },
         caption: 'The logline, then the full schedule on one page. Cinema and date carry over.',
       },
@@ -172,16 +139,57 @@ export const afterglow: AfterglowPresentation = {
         eyebrow: 'Showing selection',
         title: 'Know exactly what you chose.',
         decision: 'Every field in the summary comes from one showing record.',
-        body: 'A ticket-shaped summary keeps date, time, estimated finish, cinema, screen and starting price together. The selected time shows a check and the word “Selected”. The prototype then stops honestly: seats are next, and nothing has been reserved.',
+        body: 'The selected time shows a check and the word “Selected”. A ticket-shaped summary keeps date, time, estimated finish, cinema, screen and starting price together. The prototype then stops honestly: seat selection is the next stage, and nothing has been reserved.',
         image: {
           src: `${base}/summary.webp`,
-          alt: 'Showtimes with 1:15 PM selected, marked with a check and the word Selected, beside a ticket-shaped summary of the showing and a note that seat selection is the next stage and nothing has been booked',
-          width: 1440,
-          height: 900,
+          alt: 'Showtimes with 11:40 AM selected, marked with a check and the word Selected, beside a ticket-shaped summary of the showing and a note that seat selection is the next stage and nothing has been booked',
+          width: 1600,
+          height: 1000,
         },
         caption: 'The selected time, its ticket summary, and a clear stopping point.',
       },
     ],
+  },
+  motion: {
+    title: 'Motion that points to the next choice.',
+    body: 'Animation is short and purposeful. It introduces the featured film once, confirms what responds to a pointer, and acknowledges each selection, so attention moves from the hero to the programme to the chosen showing.',
+    video: {
+      mp4: `${base}/motion-demo.mp4`,
+      webm: `${base}/motion-demo.webm`,
+      poster: {
+        src: `${base}/motion-poster.webp`,
+        alt: 'Afterglow homepage hero at rest, the first frame of the motion recording',
+        width: 1280,
+        height: 800,
+      },
+      caption: 'Recorded from the prototype at 1280 × 800, about 20 seconds, with no audio.',
+      description:
+        'The recording shows the homepage hero entrance, the poster composition tilting with the pointer, film cards lifting on hover, then the Interstellar film page as times, a format and a date are selected and the ticket summary updates.',
+    },
+    effects: [
+      {
+        title: 'Hero entrance',
+        body: 'Once per visit, the hero copy rises 12 px in short steps and the posters settle into place. On desktop the 3D scene plays it; elsewhere a CSS version does.',
+      },
+      {
+        title: 'Poster tilt',
+        body: 'With a mouse, the poster composition tilts a few degrees toward the pointer and eases back. Frames render only while it moves.',
+      },
+      {
+        title: 'Card hover and focus',
+        body: 'A film poster lifts 5 px, its image scales slightly inside the frame and a lavender edge appears. Keyboard focus gets the same lift; on touch, a brief press scale confirms the tap.',
+      },
+      {
+        title: 'Selection feedback',
+        body: 'Dates, formats and times change color over 180 ms. The date bar grows in, the check and dot pop in, and the ticket settles once per change.',
+      },
+      {
+        title: 'Scroll reveals',
+        body: 'Film cards and showtime groups that start below the fold rise 16 px once as they arrive. Nothing already on screen is hidden.',
+      },
+    ],
+    reducedMotion:
+      'With reduced motion, none of these play and the 3D scene isn’t loaded. Selection still shows its check, word, bar and dot.',
   },
   recovery: {
     title: 'A dead end should offer a next step.',
@@ -193,8 +201,8 @@ export const afterglow: AfterglowPresentation = {
         image: {
           src: `${base}/search-empty.webp`,
           alt: 'Homepage search for "zzz": "0 films match" above an empty state reading "Nothing showing this week matches zzz" with a Clear search button',
-          width: 800,
-          height: 380,
+          width: 1600,
+          height: 442,
         },
       },
       {
@@ -203,13 +211,13 @@ export const afterglow: AfterglowPresentation = {
         image: {
           src: `${base}/not-at-cinema.webp`,
           alt: 'Showtimes for Everything Everywhere All at Once at Afterglow Lakeside, stating it is not screening there this week and offering buttons to show times at South End or NoDa',
-          width: 800,
-          height: 380,
+          width: 1600,
+          height: 612,
         },
       },
     ],
     alternatives:
-      'Other paths considered: showtimes in tabs, hiding unavailable films, and a longer scrolling date strip. The redesign favours visible choices and explicit recovery.',
+      'Other paths considered: showtimes in tabs, hiding unavailable films, and a longer scrolling date strip. The design favours visible choices and explicit recovery.',
   },
   responsive: {
     title: 'Same task. Different composition.',
@@ -217,7 +225,7 @@ export const afterglow: AfterglowPresentation = {
     screens: [
       {
         image: {
-          src: `${base}/m-home.webp`,
+          src: `${base}/m-home-first.webp`,
           alt: 'Mobile homepage with cinema and a seven-day date grid above the featured film',
           width: 780,
           height: 1688,
@@ -227,7 +235,7 @@ export const afterglow: AfterglowPresentation = {
       {
         image: {
           src: `${base}/m-search.webp`,
-          alt: 'Mobile title search with a live result count',
+          alt: 'Mobile title search for "dune" with a result count and the matching film card',
           width: 780,
           height: 1688,
         },
@@ -235,7 +243,7 @@ export const afterglow: AfterglowPresentation = {
       },
       {
         image: {
-          src: `${base}/m-film.webp`,
+          src: `${base}/m-film-first.webp`,
           alt: 'Mobile Interstellar film page with the title and logline below the backdrop',
           width: 780,
           height: 1688,
@@ -244,12 +252,12 @@ export const afterglow: AfterglowPresentation = {
       },
       {
         image: {
-          src: `${base}/m-summary.webp`,
-          alt: 'Mobile ticket-shaped showing summary with the note that seat selection comes next',
+          src: `${base}/m-selected.webp`,
+          alt: 'Mobile showtimes with 11:40 AM selected and a fixed bottom bar showing the time and a Review showing button',
           width: 780,
           height: 1688,
         },
-        caption: 'The ticket summary stacks below the times.',
+        caption: 'A fixed bar keeps the chosen time in reach.',
       },
       {
         image: {
@@ -271,32 +279,27 @@ export const afterglow: AfterglowPresentation = {
         body: 'Long titles such as Spider-Man: Across the Spider-Verse wrap onto extra lines.',
       },
       {
-        title: 'The choice stays in reach',
-        body: 'On the film page, a fixed bar keeps the selected time available while you scroll.',
+        title: 'Touch-friendly feedback',
+        body: 'Hover effects are off on touch screens; a brief press scale confirms each tap instead.',
       },
     ],
   },
   outcome: {
-    title: 'A stronger foundation for the cinema journey.',
+    title: 'A connected route from browsing to a chosen showing.',
     changed: [
-      'Cinema and date move earlier.',
+      'Cinema and date come first and carry through.',
       'Films share one scannable information structure.',
-      'Showtimes stay visible.',
+      'Showtimes stay visible on the film page.',
       'A complete summary confirms the selection.',
     ],
     learned: {
       title: 'What the work taught me',
-      body: 'The most useful changes were structural: putting decisions in order, keeping context visible and explaining unavailable options. The visual identity supports that sequence without replacing it.',
+      body: 'The most useful decisions were structural: putting choices in order, keeping context visible and explaining unavailable options. The visual identity and motion support that sequence without replacing it.',
     },
     evidence: {
       title: 'What still needs evidence',
-      body: 'No usability study has been run yet. The next step is to watch people find a film and select a showing, including readers with different accessibility needs, then check screen readers, more browsers and real devices.',
+      body: 'No usability study has been run yet. The next step is to watch people find a film and select a showing, including readers with different accessibility needs, then check screen readers, more browsers and real devices. Seat selection and checkout are later stages and haven’t been built.',
       measure: 'Can someone choose the right cinema, date and time, then accurately explain their selection?',
-    },
-    pdf: {
-      href: `${base}/afterglow-cinema-case-study.pdf`,
-      label: 'Download the case study PDF',
-      detail: '11 pages · 8.6 MB',
     },
   },
 }

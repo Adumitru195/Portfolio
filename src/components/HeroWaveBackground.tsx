@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
+import WaveFallback from '@/components/WaveFallback'
+import { supportsWebGL } from '@/lib/webgl'
 
 /**
  * Ambient wireframe-wave backdrop for the hero.
@@ -14,6 +16,8 @@ import * as THREE from 'three'
  *  - Honors `prefers-reduced-motion`: renders a single static frame, no loop.
  *  - Pauses rendering when the hero scrolls out of view.
  *  - Device pixel ratio capped to keep GitHub Pages builds light.
+ *  - Without WebGL, or if the context is lost, a static grid renders instead.
+ *    Callers also wrap it in WebGLBoundary so renderer errors stay contained.
  */
 
 const ACCENT = '#4F46E5'
@@ -135,7 +139,12 @@ export default function HeroWaveBackground({ opacity = 0.16 }: { opacity?: numbe
     return () => observer.disconnect()
   }, [])
 
+  const [webgl] = useState(supportsWebGL)
+  const [contextLost, setContextLost] = useState(false)
+
   const animate = !reducedMotion && inView
+
+  if (!webgl || contextLost) return <WaveFallback />
 
   return (
     <div
@@ -149,6 +158,12 @@ export default function HeroWaveBackground({ opacity = 0.16 }: { opacity?: numbe
         gl={{ alpha: true, antialias: true }}
         frameloop={reducedMotion ? 'demand' : inView ? 'always' : 'never'}
         style={{ background: 'transparent' }}
+        onCreated={({ gl }) => {
+          gl.domElement.addEventListener('webglcontextlost', (event) => {
+            event.preventDefault()
+            setContextLost(true)
+          })
+        }}
       >
         <WaveMesh animate={animate} opacity={opacity} />
       </Canvas>

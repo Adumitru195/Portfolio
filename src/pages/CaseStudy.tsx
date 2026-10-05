@@ -7,6 +7,8 @@ import Tag from '@/components/Tag'
 import AccentLine from '@/components/AccentLine'
 import ScrollProgress from '@/components/ScrollProgress'
 import SheenCard from '@/components/SheenCard'
+import WebGLBoundary from '@/components/WebGLBoundary'
+import WaveFallback from '@/components/WaveFallback'
 import { fadeUp, staggerContainer, lineReveal, imageReveal } from '@/lib/motion'
 import type { CaseStudySection, CompareRow } from '@/types'
 
@@ -283,7 +285,7 @@ export default function CaseStudy() {
   }
   if (id === 'afterglow-cinema') {
     return (
-      <Suspense fallback={<div className="min-h-[100dvh] bg-glow-charcoal" />}>
+      <Suspense fallback={<div className="min-h-[100dvh] bg-glow-bg" />}>
         <AfterglowCaseStudy />
       </Suspense>
     )
@@ -329,9 +331,17 @@ function StandardCaseStudy({ id }: { id: string | undefined }) {
       <ScrollProgress />
 
       {/* Ambient Three.js backdrop, fixed behind the content for the whole page */}
-      <Suspense fallback={null}>
-        <CaseStudyBackdrop />
-      </Suspense>
+      <WebGLBoundary
+        fallback={
+          <div className="fixed inset-0 pointer-events-none" aria-hidden="true">
+            <WaveFallback opacity={0.14} />
+          </div>
+        }
+      >
+        <Suspense fallback={null}>
+          <CaseStudyBackdrop />
+        </Suspense>
+      </WebGLBoundary>
 
       {/* Back nav */}
       <nav className="relative z-10 px-6 md:px-10 py-6 border-b border-subtle">

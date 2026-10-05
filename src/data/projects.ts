@@ -321,7 +321,7 @@ export const projects: Project[] = [
     title: 'Afterglow Cinema',
     subtitle: 'Film discovery, with a clearer next step',
     description:
-      'A responsive cinema experience that redesigns my earlier ReelHouse Cinemas concept. Afterglow puts cinema and date first, keeps showtimes on the film page instead of behind a tab, and ends in a ticket-shaped summary of the selected showing, from browsing the programme to choosing a time.',
+      'A responsive cinema experience that brings film discovery, showtimes and a clear showing summary into one connected flow.',
     role: 'UX & UI Designer',
     tags: ['UX Design', 'Responsive Web', 'Interaction Design', 'Accessibility'],
     year: '2026',
