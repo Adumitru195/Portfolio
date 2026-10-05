@@ -15,6 +15,10 @@ export default {
         // Wovenward case study only: the product's own typefaces.
         'wove-display': ['"Newsreader Variable"', '"Iowan Old Style"', 'Georgia', 'serif'],
         'wove-body': ['"Manrope Variable"', '"Segoe UI"', 'system-ui', 'sans-serif'],
+        // Typography Systems case study only: a Didone display face, echoing the
+        // Didot and Bodoni titles in ONE-X, with a restrained sans for support.
+        'type-display': ['"Bodoni Moda Variable"', 'Didot', '"Bodoni 72"', 'Georgia', 'serif'],
+        'type-body': ['"Instrument Sans Variable"', 'system-ui', 'sans-serif'],
       },
       colors: {
         // Porchlight case study only: tokens from the product's design system.
@@ -70,6 +74,24 @@ export default {
           'clay-text': '#8C4E37',
           'clay-tint': '#F1E3DB',
           error: '#9B3426',
+        },
+        // Typography Systems case study only: warm paper, near-black ink and the
+        // burgundy sampled from the ONE-X cover. burgundy-light is for small
+        // accent text on the dark sections only.
+        type: {
+          paper: '#F4F0E8',
+          band: '#EAE3D7',
+          white: '#FFFFFF',
+          text: '#1A1716',
+          muted: '#5C544E',
+          rule: '#D2C9BB',
+          ink: '#121212',
+          raised: '#1E1B1A',
+          'rule-dark': '#3A3431',
+          'muted-dark': '#BDB4AB',
+          burgundy: '#7D1C24',
+          'burgundy-dark': '#64151C',
+          'burgundy-light': '#E5A3A9',
         },
         bg: '#F7F7F5',
         ink: {
