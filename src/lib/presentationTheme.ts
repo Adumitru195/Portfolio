@@ -129,6 +129,51 @@ export const afterglowTheme: PresentationTheme = {
   },
 }
 
+const woveLightVars =
+  '[--pres-muted:#5A5D56] [--pres-eyebrow:#8C4E37] [--pres-border:#DDD6CA] [--pres-accent:#344A64]'
+
+// Wovenward: porcelain and its deeper band for most sections, deep ink as the
+// accent band (like the product's footer). Clay is decorative; dark clay is
+// used for small accent text only on light surfaces (5.2:1 or better).
+export const wovenwardTheme: PresentationTheme = {
+  tones: {
+    base: `bg-wove-porcelain text-wove-ink ${woveLightVars}`,
+    alt: `bg-wove-band text-wove-ink ${woveLightVars}`,
+    accent:
+      'bg-wove-ink text-wove-porcelain [--pres-muted:#C9C5BC] [--pres-eyebrow:#C9C5BC] [--pres-border:#474A44] [--pres-accent:#F5F2EC]',
+  },
+  title: 'font-wove-display text-6xl font-light leading-[0.98] tracking-[-0.02em] md:text-8xl lg:text-9xl',
+  subtitle: 'font-wove-display text-xl italic leading-snug text-wove-clay-text md:text-2xl',
+  focusRing: 'focus-visible:ring-wove-indigo focus-visible:ring-offset-wove-porcelain',
+  buttonPrimary:
+    'bg-wove-porcelain text-wove-ink hover:bg-white motion-safe:hover:-translate-y-0.5 focus-visible:ring-wove-porcelain focus-visible:ring-offset-wove-ink',
+  buttonSecondary:
+    'border border-wove-porcelain/60 text-wove-porcelain hover:bg-white/10 motion-safe:hover:-translate-y-0.5 focus-visible:ring-wove-porcelain focus-visible:ring-offset-wove-ink',
+  heading: 'font-wove-display font-normal leading-[1.08] tracking-[-0.015em]',
+  number: 'font-wove-display italic',
+  screenFrame: 'border-wove-hairline bg-white shadow-[0_28px_60px_-34px_rgba(37,40,36,0.4)]',
+  chromeBar: 'border-wove-hairline bg-wove-band',
+  chromeDot: 'bg-wove-hairline',
+  phoneFrame: 'bg-wove-ink shadow-[0_28px_50px_-28px_rgba(37,40,36,0.55)]',
+  labelBefore: 'border border-wove-control bg-white text-wove-ink',
+  labelAfter: 'bg-wove-indigo text-white',
+  showcase: {
+    desktopFrame: 'bg-white shadow-[0_30px_70px_-30px_rgba(37,40,36,0.42)]',
+    bar: 'bg-wove-band',
+    dot: 'bg-wove-hairline',
+    pill: 'bg-white',
+    phone: 'bg-wove-ink shadow-[0_30px_60px_-24px_rgba(37,40,36,0.5)]',
+    colors: {
+      frame: '#FFFFFF',
+      bar: '#ECE6DC',
+      barDot: '#DDD6CA',
+      urlPill: '#FFFFFF',
+      phone: '#252824',
+      shadow: 'rgb(60, 52, 40)',
+    },
+  },
+}
+
 export const PresentationThemeContext = createContext<PresentationTheme>(porchlightTheme)
 
 export function usePresentationTheme() {

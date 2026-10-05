@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, Navigate } from 'react-router-dom'
 import { useState, useEffect, Suspense, lazy } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowLeft, ArrowRight, ArrowUpRight, X } from '@phosphor-icons/react'
@@ -12,10 +12,16 @@ import WaveFallback from '@/components/WaveFallback'
 import { fadeUp, staggerContainer, lineReveal, imageReveal } from '@/lib/motion'
 import type { CaseStudySection, CompareRow } from '@/types'
 
-// Porchlight and Afterglow have their own art-directed presentations, each
+// Porchlight, Afterglow and Wovenward have their own art-directed presentations, each
 // loaded only on its route.
 const PorchlightCaseStudy = lazy(() => import('@/pages/PorchlightCaseStudy'))
 const AfterglowCaseStudy = lazy(() => import('@/pages/AfterglowCaseStudy'))
+const WovenwardCaseStudy = lazy(() => import('@/pages/WovenwardCaseStudy'))
+
+// Old project routes that now point to their replacements.
+const REDIRECTS: Record<string, string> = {
+  'sustained-company': 'wovenward',
+}
 
 // Lazy-loaded full-page Three.js backdrop: the site's wave layer, extended to
 // follow the reader through the whole case study.
@@ -280,6 +286,16 @@ export default function CaseStudy() {
     return (
       <Suspense fallback={<div className="min-h-[100dvh] bg-porch-cream" />}>
         <PorchlightCaseStudy />
+      </Suspense>
+    )
+  }
+  if (id && REDIRECTS[id]) {
+    return <Navigate to={`/project/${REDIRECTS[id]}`} replace />
+  }
+  if (id === 'wovenward') {
+    return (
+      <Suspense fallback={<div className="min-h-[100dvh] bg-wove-porcelain" />}>
+        <WovenwardCaseStudy />
       </Suspense>
     )
   }

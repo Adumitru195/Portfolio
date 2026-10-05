@@ -82,7 +82,7 @@ This is a **UX portfolio**. The following three case studies are featured (Backw
 |-----------------------|-----------------------------------------------------------------------------------------|
 | Porchlight            | `UX Projects/Porchlight/` — rental discovery redesign of Arcadian Homes; case study PDF, wireframe board, screenshots |
 | Afterglow Cinema      | `UX Projects/Afterglow Cinema/` — midnight/lavender cinema app; screenshots and motion demo captured from it. The case study PDF still shows the old charcoal/amber theme, so its download link is removed until it is regenerated. Film artwork is unlicensed: see its `docs/ASSET-SOURCES.md` before publishing |
-| The Sustained Company | `UX Projects/The Sustained Company/` — persona, journey map, usability study, videos   |
+| Wovenward             | `UX Projects/Wovenward/` — responsive clothing shop (replaces The Sustained Company); case study PDF, supplied wireframe board (kept unchanged) and corrected wireframes from `scripts/wovenward-wireframes.py`. Old `/project/sustained-company` redirects to `/project/wovenward` |
 
 Project thumbnails are copied to `public/projects/` and referenced in `src/data/projects.ts`.
 

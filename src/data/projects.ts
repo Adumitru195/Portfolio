@@ -330,81 +330,19 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    id: 'sustained-company',
-    title: 'The Sustained Company',
-    subtitle: 'Eco friendly fashion made transparent and accessible',
+    id: 'wovenward',
+    title: 'Wovenward',
+    subtitle: 'E-commerce UX/UI',
     description:
-      'Customers are often unaware of the poor labor practices and harmful materials behind their clothing. The Sustained Company is an eco friendly fashion brand for users 18–47 who care about environmental impact. I designed the responsive website and app end to end, focusing on transparency, affordability, and size inclusivity.',
-    problem:
-      'Environmentally conscious shoppers want to make better purchasing decisions, but fashion brands make it nearly impossible — hiding material sourcing, labor practices, and environmental impact behind marketing language.',
-    goal: 'Design a responsive shopping experience that makes sustainability information easy to find and understand, while keeping the shopping flow fast and accessible to users of all body types and budgets.',
-    solution:
-      'A transparent product page system with material sourcing details, a dedicated sustainability impact page, and a size inclusive filtering system — paired with clear cart feedback so users always know where they are in the flow.',
-    details: {
-      timeline: '7 weeks',
-      tools: 'Figma, FigJam, User Interviews',
-      platform: 'Responsive Web + Mobile App',
-    },
-    role: 'UX Designer',
-    tags: ['UX Research', 'Product Design', 'Responsive Web', 'Accessibility'],
-    year: '2023',
-    image: '/Portfolio/projects/sustained-company/image-01.png',
-    featured: false,
-    sections: [
-      {
-        id: 'background',
-        title: 'Background',
-        body: 'The Sustained Company is a concept eco fashion brand targeting users aged 18–47 who factor environmental impact into their purchasing decisions. The brand differentiates itself through three commitments: sustainably sourced materials, transparent supply chain information, and fair employee treatment. The design challenge was to make those values tangible and visible throughout the shopping experience — not just on an "About" page.',
-        images: ['/Portfolio/projects/sustained-company/image-02.png'],
-        imageLayout: 'single',
-      },
-      {
-        id: 'role',
-        title: 'My Role',
-        body: 'I led the design from research through delivery across both the responsive website and the companion mobile app. The project required designing for three screen sizes simultaneously — mobile, tablet, and desktop — which meant every layout decision had to be validated across breakpoints. My responsibilities included user interviews, persona creation, journey mapping, paper and digital wireframes, usability testing, and accessibility iteration.',
-      },
-      {
-        id: 'user-research',
-        title: 'User Research',
-        body: 'I interviewed six participants who described themselves as sustainability conscious shoppers. Research artifacts included a persona and a journey map following Crosby — a 29-year old who wants to shop ethically but finds most sustainable brands too expensive or hard to navigate.\n\nKey finding: Participants couldn\'t find material or sourcing information on competitor sites without clicking through multiple pages. Insight: Sustainability details needed to be surfaced at the product level — not buried in a brand story section.\n\nKey finding: Three of six participants said they\'d abandoned a sustainable brand\'s checkout because size options were unclear or limited. Insight: Size inclusivity had to be visible upfront in filters and product pages — not discovered at the point of adding to cart.',
-        images: [
-          '/Portfolio/projects/sustained-company/image-03.png',
-          '/Portfolio/projects/sustained-company/image-04.png',
-        ],
-        imageLayout: 'gallery',
-      },
-      {
-        id: 'sketches',
-        title: 'Sketches',
-        body: 'Early sketches explored how to present sustainability information without making the shopping experience feel preachy or slow. Three main questions drove the sketch phase: Where does material sourcing information live on the product page? How do we design the dedicated sustainability/impact page? How does filtering by size and price work on mobile without hiding too much?\n\nI sketched multiple layout options for the product card, testing how much sustainability information could be surfaced in the grid view before it became cluttered.',
-        images: ['/Portfolio/projects/sustained-company/image-05.png'],
-        imageLayout: 'single',
-      },
-      {
-        id: 'wireframes',
-        title: 'Wireframes & Prototypes',
-        body: 'Wireframes covered five main areas of the experience across mobile, tablet, and desktop breakpoints.\n\nProduct Browsing — a filterable grid with size, price, and material filters accessible from a persistent side panel on desktop and a bottom sheet on mobile.\n\nProduct Detail — a page structure that surfaces material composition, sourcing origin, and care instructions alongside the standard size and color selectors.\n\nSustainability Page — a dedicated brand page using data visualization to communicate the company\'s environmental impact in plain language.\n\nCart & Checkout — a streamlined two step checkout with clear item confirmation and accessible form inputs.\n\nThe wireframes were tested at low fidelity before any visual design was applied.',
-        images: ['/Portfolio/projects/sustained-company/image-06.png'],
-        imageLayout: 'single',
-      },
-      {
-        id: 'usability-study',
-        title: 'Usability Study',
-        body: 'I conducted a moderated usability study with five participants using a clickable Figma prototype. Participants were asked to find a sustainable jacket under $120 in their size and add it to their bag.\n\nKey finding: Tapping "Add to Bag" gave no visual confirmation — all five participants were uncertain whether the action had worked. Design response: Added a bag counter in the top right corner that increments visibly on add, with a brief success toast message.\n\nKey finding: The "Sign In" and "Create Account" options blocked guest checkout — three participants attempted to close the modal and thought checkout was broken. Design response: Added a prominent "Continue as Guest" option as the primary CTA, with sign in as a secondary choice.\n\nKey finding: The sustainability page was well received — four of five participants said it made them more likely to trust the brand.',
-        images: ['/Portfolio/projects/sustained-company/image-07.png'],
-        imageLayout: 'single',
-      },
-      {
-        id: 'iterations',
-        title: 'Iterations',
-        body: 'The two most impactful iterations came directly from usability findings. The "Add to Bag" interaction was rebuilt with a visible counter increment and a confirmation toast — converting a silent action into a piece of clear feedback. The checkout entry screen was redesigned to lead with "Continue as Guest" rather than forcing account creation, reducing drop off friction significantly.\n\nA third iteration addressed button state clarity on mobile — the active size selection state was strengthened with a higher contrast border and filled background so the selected state was unambiguous at a glance.',
-      },
-      {
-        id: 'conclusion',
-        title: 'To Conclude',
-        body: 'What worked: Surfacing sustainability information at the product level — rather than only on a separate brand page — was well received in testing. Participants said it made the values feel integrated rather than performative. The size filtering system also tested well, with participants finding their size options quickly.\n\nWhat I would improve: The mobile navigation still requires too many taps to move between categories. A future iteration would introduce a persistent bottom navigation bar to reduce the path length for common tasks.\n\nFuture iterations: A "sustainability score" component on product cards would give users at a glance comparison across items. A wishlist feature and size profile storage would reduce friction for repeat visitors. Accessibility testing with a wider range of assistive technologies remains an open item.',
-      },
-    ],
+      'A responsive clothing shopping experience focused on available sizes, fit guidance and a clear path from browsing to bag.',
+    role: 'UX & UI Designer',
+    tags: ['E-commerce', 'Responsive Web', 'Interaction Design', 'Accessibility'],
+    year: '2026',
+    image: '/Portfolio/projects/wovenward/card-wovenward-home.webp',
+    imageAlt:
+      'Wovenward homepage: the serif headline "Clothes you’ll reach for first." beside a photo of a blush wool coat and an inset of an oat jumper, on a porcelain background',
+    cardBackground: '#F5F2EC',
+    featured: true,
   },
   {
     id: 'typography-systems',

@@ -41,6 +41,8 @@ export interface Project {
   link?: string
   caseStudyLink?: string
   image?: string
+  // Alt text for the homepage card thumbnail; falls back to the title.
+  imageAlt?: string
   // Optional thumbnail backdrop on the homepage card, matched to the image's own palette.
   cardBackground?: string
   featured: boolean

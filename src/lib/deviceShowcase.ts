@@ -21,6 +21,20 @@ export interface ShowcaseOptions {
   mobileSrc: string
   tilt: boolean
   colors: ShowcaseColors
+  /** Device pixel ratio cap. Defaults to 2. */
+  maxDpr?: number
+  /** Maximum pointer tilt in radians. Defaults to { x: 0.06, y: 0.04 }. */
+  tiltRange?: { x: number; y: number }
+  /**
+   * Extra movement for the foreground phone, as a fraction of the tilt
+   * (0 = moves with the desktop panel). Defaults to 0.
+   */
+  phoneParallax?: number
+  /**
+   * Play a short staggered settle the first time the scene is on screen.
+   * Defaults to false (panels start at rest).
+   */
+  entrance?: boolean
   onReady: () => void
   onFail: () => void
 }
@@ -34,6 +48,8 @@ const FOV = 22
 const MAX_DPR = 2
 const TILT_X = 0.06
 const TILT_Y = 0.04
+const ENTRANCE_MS = 760
+const PHONE_DELAY_MS = 140
 const EASE = 0.12
 
 function roundedRect(
@@ -105,11 +121,21 @@ function shadowTexture(aspect: number, color: string) {
 }
 
 export function mountShowcase(options: ShowcaseOptions): ShowcaseHandle {
-  const { host, pointerTarget, desktopSrc, mobileSrc, tilt, colors, onReady, onFail } = options
+  const { host, pointerTarget, desktopSrc, mobileSrc, tilt, colors, onReady } = options
+  const maxDpr = options.maxDpr ?? MAX_DPR
+  const tiltX = options.tiltRange?.x ?? TILT_X
+  const tiltY = options.tiltRange?.y ?? TILT_Y
+  const parallax = options.phoneParallax ?? 0
   let disposed = false
+  let failed = false
+  const onFail = () => {
+    if (failed || disposed) return
+    failed = true
+    options.onFail()
+  }
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' })
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, MAX_DPR))
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, maxDpr))
   renderer.outputColorSpace = THREE.SRGBColorSpace
   renderer.toneMapping = THREE.NoToneMapping
   renderer.setClearColor(0x000000, 0)
@@ -238,6 +264,24 @@ export function mountShowcase(options: ShowcaseOptions): ShowcaseHandle {
   addShadow(desktop, DESKTOP.width, DESKTOP.height, 0.34)
   addShadow(phone, PHONE.width, PHONE.height, 0.4)
 
+  // --- Entrance: each panel settles from a small offset, phone slightly later ---
+  const desktopRest = desktop.position.clone()
+  const phoneRest = phone.position.clone()
+  const desktopFrom = new THREE.Vector3(0, -0.45, -0.9)
+  const phoneFrom = new THREE.Vector3(0.5, -0.9, -0.6)
+  const easeOut = (t: number) => 1 - Math.pow(1 - t, 3)
+  // null: not started; number: performance.now() at start; -1: finished or skipped.
+  let entranceStart: number | null = options.entrance ? null : -1
+  const poseEntrance = (now: number) => {
+    const elapsed = entranceStart !== null && entranceStart >= 0 ? now - entranceStart : 0
+    const d = easeOut(THREE.MathUtils.clamp(elapsed / ENTRANCE_MS, 0, 1))
+    const p = easeOut(THREE.MathUtils.clamp((elapsed - PHONE_DELAY_MS) / ENTRANCE_MS, 0, 1))
+    desktop.position.copy(desktopRest).addScaledVector(desktopFrom, 1 - d)
+    phone.position.copy(phoneRest).addScaledVector(phoneFrom, 1 - p)
+    return elapsed >= ENTRANCE_MS + PHONE_DELAY_MS
+  }
+  if (options.entrance) poseEntrance(0)
+
   // --- Rendering on demand ---
   let raf = 0
   let onScreen = true
@@ -255,14 +299,40 @@ export function mountShowcase(options: ShowcaseOptions): ShowcaseHandle {
     camera.updateProjectionMatrix()
   }
 
-  const frame = () => {
+  const draw = () => {
+    try {
+      renderer.render(scene, camera)
+      return true
+    } catch {
+      onFail()
+      return false
+    }
+  }
+
+  const frame = (now: number) => {
     raf = 0
-    if (disposed || !ready || !onScreen || !pageVisible) return
+    if (disposed || failed || !ready || !onScreen || !pageVisible) return
+    let moving = false
+    if (entranceStart === null) entranceStart = now
+    if (entranceStart >= 0) {
+      if (poseEntrance(now)) {
+        entranceStart = -1
+        desktop.position.copy(desktopRest)
+        phone.position.copy(phoneRest)
+      } else moving = true
+    }
     current.x += (target.x - current.x) * EASE
     current.y += (target.y - current.y) * EASE
     root.rotation.set(current.y, current.x, 0)
-    renderer.render(scene, camera)
-    if (Math.abs(target.x - current.x) > 1e-4 || Math.abs(target.y - current.y) > 1e-4) request()
+    if (parallax) {
+      // The foreground phone turns and drifts a little further than the desktop.
+      phone.rotation.set(0.02 + current.y * parallax, -0.1 + current.x * parallax, 0)
+      if (entranceStart === -1) {
+        phone.position.set(phoneRest.x + current.x * 5 * parallax, phoneRest.y - current.y * 5 * parallax, phoneRest.z)
+      }
+    }
+    if (!draw()) return
+    if (moving || Math.abs(target.x - current.x) > 1e-4 || Math.abs(target.y - current.y) > 1e-4) request()
   }
 
   function request() {
@@ -301,8 +371,8 @@ export function mountShowcase(options: ShowcaseOptions): ShowcaseHandle {
     const rect = pointerTarget.getBoundingClientRect()
     const nx = ((event.clientX - rect.left) / rect.width) * 2 - 1
     const ny = ((event.clientY - rect.top) / rect.height) * 2 - 1
-    target.x = THREE.MathUtils.clamp(nx, -1, 1) * TILT_X
-    target.y = THREE.MathUtils.clamp(ny, -1, 1) * TILT_Y
+    target.x = THREE.MathUtils.clamp(nx, -1, 1) * tiltX
+    target.y = THREE.MathUtils.clamp(ny, -1, 1) * tiltY
     request()
   }
   const onPointerLeave = () => {
@@ -311,8 +381,8 @@ export function mountShowcase(options: ShowcaseOptions): ShowcaseHandle {
     request()
   }
   if (tilt) {
-    pointerTarget.addEventListener('pointermove', onPointerMove)
-    pointerTarget.addEventListener('pointerleave', onPointerLeave)
+    pointerTarget.addEventListener('pointermove', onPointerMove, { passive: true })
+    pointerTarget.addEventListener('pointerleave', onPointerLeave, { passive: true })
   }
 
   const onContextLost = (event: Event) => {
@@ -343,8 +413,9 @@ export function mountShowcase(options: ShowcaseOptions): ShowcaseHandle {
       phoneScreenMaterial.needsUpdate = true
       ready = true
       resize()
-      renderer.render(scene, camera)
+      if (!draw()) return
       onReady()
+      request()
     })
     .catch(() => {
       if (!disposed) onFail()

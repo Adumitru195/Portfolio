@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowLeft } from '@phosphor-icons/react'
 import ShowcaseStage from '@/components/presentation/ShowcaseStage'
+import type { ShowcaseStageOptions } from '@/components/presentation/ShowcaseStage'
 import { fadeUp, lineReveal, staggerContainer } from '@/lib/motion'
 import { usePresentationTheme } from '@/lib/presentationTheme'
 import type { MetaItem, PresentationImage } from '@/types/presentation'
@@ -18,13 +19,22 @@ interface PresentationOpeningProps {
     caption: string
   }
   note?: string
+  showcaseOptions?: ShowcaseStageOptions
 }
 
 export const workLink = { pathname: '/' }
 export const workState = { scrollTo: 'work' }
 
 // Title, metadata and the desktop/mobile showcase that open a presentation.
-export default function PresentationOpening({ title, subtitle, eyebrow, meta, showcase, note }: PresentationOpeningProps) {
+export default function PresentationOpening({
+  title,
+  subtitle,
+  eyebrow,
+  meta,
+  showcase,
+  note,
+  showcaseOptions,
+}: PresentationOpeningProps) {
   const theme = usePresentationTheme()
   return (
     <section aria-labelledby="presentation-title" className={theme.tones.base}>
@@ -83,7 +93,12 @@ export default function PresentationOpening({ title, subtitle, eyebrow, meta, sh
         </div>
 
         <motion.figure variants={fadeUp} className="m-0 mt-12 md:mt-16">
-          <ShowcaseStage desktop={showcase.desktop} mobile={showcase.mobile} description={showcase.description} />
+          <ShowcaseStage
+            desktop={showcase.desktop}
+            mobile={showcase.mobile}
+            description={showcase.description}
+            options={showcaseOptions}
+          />
           <figcaption className="mt-5 text-sm text-[color:var(--pres-muted)]">
             {showcase.caption}
             {note && <span className="mt-1 block text-xs">{note}</span>}

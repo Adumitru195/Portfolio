@@ -12,6 +12,9 @@ export default {
         // Afterglow Cinema case study only: the product's own typefaces.
         'glow-display': ['"Space Grotesk Variable"', 'system-ui', 'sans-serif'],
         'glow-body': ['"Inter Variable"', 'system-ui', 'sans-serif'],
+        // Wovenward case study only: the product's own typefaces.
+        'wove-display': ['"Newsreader Variable"', '"Iowan Old Style"', 'Georgia', 'serif'],
+        'wove-body': ['"Manrope Variable"', '"Segoe UI"', 'system-ui', 'sans-serif'],
       },
       colors: {
         // Porchlight case study only: tokens from the product's design system.
@@ -51,6 +54,23 @@ export default {
           'paper-muted': '#545A72',
           flag: '#5B45A8',
         },
+        // Wovenward case study only: tokens from the product's tokens.css.
+        wove: {
+          porcelain: '#F5F2EC',
+          band: '#ECE6DC',
+          surface: '#FFFFFF',
+          ink: '#252824',
+          muted: '#5A5D56',
+          secondary: '#474A44',
+          hairline: '#DDD6CA',
+          control: '#8A8377',
+          indigo: '#344A64',
+          'indigo-hover': '#283B52',
+          clay: '#B9785F',
+          'clay-text': '#8C4E37',
+          'clay-tint': '#F1E3DB',
+          error: '#9B3426',
+        },
         bg: '#F7F7F5',
         ink: {
           DEFAULT: '#0a0a0a',
@@ -83,6 +103,10 @@ export default {
         fadeUp: {
           from: { opacity: '0', transform: 'translateY(24px)' },
           to: { opacity: '1', transform: 'translateY(0)' },
+        },
+        zoomIn: {
+          from: { opacity: '0', transform: 'scale(0.97)' },
+          to: { opacity: '1', transform: 'scale(1)' },
         },
       },
     },

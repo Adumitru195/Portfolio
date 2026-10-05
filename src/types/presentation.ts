@@ -5,6 +5,8 @@ export interface PresentationImage {
   alt: string
   width: number
   height: number
+  /** Optional 800px-wide variant for responsive srcset. */
+  small?: string
 }
 
 export interface MetaItem {
@@ -208,5 +210,104 @@ export interface AfterglowPresentation {
     changed: string[]
     learned: { title: string; body: string }
     evidence: { title: string; body: string; measure: string }
+  }
+}
+
+export interface WovenwardPresentation {
+  eyebrow: string
+  subtitle: string
+  meta: MetaItem[]
+  showcase: {
+    desktop: PresentationImage
+    mobile: PresentationImage
+    description: string
+    caption: string
+  }
+  imageNote: string
+  overview: {
+    title: string
+    challenge: { heading: string; body: string }
+    goal: { heading: string; body: string }
+    contribution: { heading: string; body: string }
+    scope: { heading: string; body: string }
+  }
+  journey: {
+    title: string
+    body: string
+    steps: FlowStep[]
+    principles: FeatureNote[]
+  }
+  wireframes: {
+    title: string
+    body: string
+    corrected: PresentationImage
+    supplied: PresentationImage
+    suppliedNote: string
+    corrections: string[]
+    svgHref: string
+  }
+  identity: {
+    title: string
+    body: string
+    swatches: Swatch[]
+    displayFont: { name: string; role: string }
+    bodyFont: { name: string; role: string }
+    note: string
+  }
+  collection: {
+    title: string
+    body: string
+    hero: PresentationImage
+    heroNotes: FeatureNote[]
+    sections: PresentationImage
+    sectionsCaption: string
+    filtered: PresentationImage
+    filteredNotes: FeatureNote[]
+    empty: PresentationImage
+    emptyCaption: string
+  }
+  product: {
+    title: string
+    body: string
+    layout: PresentationImage
+    layoutCaption: string
+    required: PresentationImage
+    selected: PresentationImage
+    stateNotes: FeatureNote[]
+    guide: PresentationImage
+    guideNotes: FeatureNote[]
+  }
+  bag: {
+    title: string
+    body: string
+    added: PresentationImage
+    addedNotes: FeatureNote[]
+    bag: PresentationImage
+    bagNotes: FeatureNote[]
+  }
+  responsive: {
+    title: string
+    body: string
+    screens: PhoneScreen[]
+    notes: PresentationNote[]
+    reducedMotion: string
+  }
+  refinements: {
+    title: string
+    body: string
+    before: PresentationImage
+    after: PresentationImage
+    beforeCaption: string
+    afterCaption: string
+    items: FeatureNote[]
+  }
+  outcome: {
+    title: string
+    delivered: FeatureNote
+    lesson: FeatureNote
+    checks: FeatureNote
+    next: FeatureNote
+    limits: string
+    pdf: { href: string; label: string; detail: string }
   }
 }
