@@ -109,6 +109,12 @@ export default {
           dim: '#4338CA',
           highlight: '#E0E7FF',
         },
+        // Homepage hero tiles: warm white faces with a soft edge. The 3D scene
+        // uses the same values in src/components/hero/HeroTilesScene.tsx.
+        tile: {
+          face: '#FBF9F4',
+          edge: '#E7E3DA',
+        },
         text: {
           primary: '#1C1C1C',
           secondary: '#4B4B4B',

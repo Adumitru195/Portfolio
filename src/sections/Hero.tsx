@@ -1,28 +1,17 @@
 import { motion } from 'framer-motion'
-import { Suspense, lazy } from 'react'
+import { useRef } from 'react'
 import { ArrowDown } from '@phosphor-icons/react'
 import { staggerContainer, fadeUp, slideInLeft, lineMask, lineReveal } from '@/lib/motion'
 import { person } from '@/data/person'
-import WebGLBoundary from '@/components/WebGLBoundary'
-import WaveFallback from '@/components/WaveFallback'
-
-// Lazy-loaded so the Three.js bundle never blocks the hero's first paint.
-const HeroWaveBackground = lazy(() => import('@/components/HeroWaveBackground'))
+import HeroTilesBackdrop from '@/components/hero/HeroTilesBackdrop'
 
 export default function Hero() {
+  const contentRef = useRef<HTMLDivElement>(null)
+
   return (
     <section className="relative min-h-[100dvh] flex flex-col justify-end px-6 md:px-10 pb-20 pt-32 overflow-hidden">
-      {/* Ambient wireframe-wave backdrop */}
-      <WebGLBoundary fallback={<WaveFallback />}>
-        <Suspense fallback={null}>
-          <HeroWaveBackground />
-        </Suspense>
-      </WebGLBoundary>
-
-      {/* Readability scrim: softens the wave behind the text */}
-      <div className="absolute inset-0 z-[5] pointer-events-none bg-gradient-to-t from-bg via-bg/65 to-transparent" />
-
       <motion.div
+        ref={contentRef}
         className="relative z-10 max-w-6xl mx-auto w-full"
         variants={staggerContainer}
         initial="hidden"
@@ -100,6 +89,10 @@ export default function Hero() {
           <span className="text-xs tracking-widest uppercase">Scroll</span>
         </motion.div>
       </motion.div>
+
+      {/* Floating software tiles, kept clear of the text. Placed after the
+          content so the pause control comes last in the tab order. */}
+      <HeroTilesBackdrop contentRef={contentRef} />
     </section>
   )
 }
