@@ -1,0 +1,1 @@
+import{r as e,M as o,w as n,j as i,x}from"./index-D9uXIuLa.js";function M({children:r,isValidProp:s,...t}){s&&x(s),t={...e.useContext(o),...t},t.isStatic=n(()=>t.isStatic);const a=e.useMemo(()=>t,[JSON.stringify(t.transition),t.transformPagePoint,t.reducedMotion]);return i.jsx(o.Provider,{value:a,children:r})}export{M};
