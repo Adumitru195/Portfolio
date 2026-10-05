@@ -1,0 +1,1 @@
+import{r as e,M as o,u as n,j as i,t as u}from"./index-BUMjsF7W.js";function M({children:r,isValidProp:s,...t}){s&&u(s),t={...e.useContext(o),...t},t.isStatic=n(()=>t.isStatic);const a=e.useMemo(()=>t,[JSON.stringify(t.transition),t.transformPagePoint,t.reducedMotion]);return i.jsx(o.Provider,{value:a,children:r})}export{M};
