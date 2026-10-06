@@ -5,9 +5,9 @@ import ScrollProgress from '@/components/ScrollProgress'
 import Footer from '@/components/Footer'
 import Hero from '@/sections/Hero'
 import Work from '@/sections/Work'
-import About from '@/sections/About'
 import Contact from '@/sections/Contact'
 import CaseStudy from '@/pages/CaseStudy'
+import AboutPage from '@/pages/AboutPage'
 
 function Home() {
   const location = useLocation()
@@ -15,7 +15,11 @@ function Home() {
   // Pages can link back to a home section, e.g. "Back to Work".
   useEffect(() => {
     const target = (location.state as { scrollTo?: string } | null)?.scrollTo
-    if (!target) return
+    // Arriving from another page without a target starts at the top.
+    if (!target) {
+      window.scrollTo(0, 0)
+      return
+    }
     const frame = requestAnimationFrame(() => document.getElementById(target)?.scrollIntoView())
     return () => cancelAnimationFrame(frame)
   }, [location])
@@ -27,7 +31,6 @@ function Home() {
       <main>
         <Hero />
         <Work />
-        <About />
         <Contact />
       </main>
       <Footer />
@@ -40,6 +43,7 @@ export default function App() {
     <HashRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route path="/project/:id" element={<CaseStudy />} />
       </Routes>
     </HashRouter>

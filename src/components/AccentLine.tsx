@@ -11,7 +11,9 @@ export default function AccentLine({ className = '' }: { className?: string }) {
       className={`h-px w-8 bg-accent origin-left ${className}`}
       initial={{ scaleX: 0 }}
       whileInView={{ scaleX: 1 }}
-      viewport={{ once: true, margin: '-10%' }}
+      // Vertical margin only: the line starts zero-width at the left padding,
+      // which a horizontal inset would exclude on narrow screens.
+      viewport={{ once: true, margin: '-10% 0px' }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
     />
   )

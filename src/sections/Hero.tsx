@@ -60,13 +60,6 @@ export default function Hero() {
             View Work
             <ArrowDown size={14} weight="bold" />
           </button>
-          <a
-            href="/Portfolio/AndrewDumitruResume.pdf"
-            download
-            className="inline-flex items-center gap-2 border border-subtle hover:border-text-muted text-text-secondary hover:text-text-primary text-sm font-medium px-5 py-2.5 rounded-full transition-colors duration-200"
-          >
-            Resume
-          </a>
           <button
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             className="inline-flex items-center gap-2 border border-subtle hover:border-text-muted text-text-secondary hover:text-text-primary text-sm font-medium px-5 py-2.5 rounded-full transition-colors duration-200"
