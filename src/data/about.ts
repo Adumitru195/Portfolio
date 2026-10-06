@@ -167,7 +167,7 @@ export const aboutPage = {
   },
   beyond: {
     heading: 'Beyond the screen',
-    body: 'Outside of design, I enjoy fishing, exploring new places and a good game of Mario Kart. Fishing also inspired Backwater Journal, bringing something I enjoy into something I could design and build.',
+    body: 'Outside of design, I enjoy fishing and exploring new places. Fishing also inspired Backwater Journal, giving me a chance to turn a personal interest into an app I could design and build.',
   },
   closing: {
     heading: 'Let’s make something worth using.',
