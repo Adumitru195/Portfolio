@@ -115,6 +115,12 @@ export default {
           face: '#FBF9F4',
           edge: '#E7E3DA',
         },
+        // About page only: the warm paper of Backwater Journal's App Store frames,
+        // so its showcase band blends into the screenshots.
+        backwater: {
+          paper: '#F2EBD9',
+          edge: '#E3D9C0',
+        },
         text: {
           primary: '#1C1C1C',
           secondary: '#4B4B4B',
