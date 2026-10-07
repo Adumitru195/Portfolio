@@ -1,5 +1,4 @@
-import { useEffect } from 'react'
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import Navbar from '@/components/Navbar'
 import ScrollProgress from '@/components/ScrollProgress'
 import Footer from '@/components/Footer'
@@ -8,22 +7,11 @@ import Work from '@/sections/Work'
 import Contact from '@/sections/Contact'
 import CaseStudy from '@/pages/CaseStudy'
 import AboutPage from '@/pages/AboutPage'
+import ScrollManager from '@/components/ScrollManager'
 
+// Where the homepage starts (top, a section, or a restored position) is
+// decided by ScrollManager.
 function Home() {
-  const location = useLocation()
-
-  // Pages can link back to a home section, e.g. "Back to Work".
-  useEffect(() => {
-    const target = (location.state as { scrollTo?: string } | null)?.scrollTo
-    // Arriving from another page without a target starts at the top.
-    if (!target) {
-      window.scrollTo(0, 0)
-      return
-    }
-    const frame = requestAnimationFrame(() => document.getElementById(target)?.scrollIntoView())
-    return () => cancelAnimationFrame(frame)
-  }, [location])
-
   return (
     <>
       <ScrollProgress />
@@ -41,6 +29,7 @@ function Home() {
 export default function App() {
   return (
     <HashRouter>
+      <ScrollManager />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutPage />} />

@@ -64,7 +64,6 @@ export default function AboutPage() {
   const { opening, strengths, backwater, working, beyond, closing } = aboutPage
 
   useEffect(() => {
-    window.scrollTo(0, 0)
     const previous = document.title
     document.title = `About | ${person.name}`
     return () => {
