@@ -11,7 +11,6 @@ export const contact = {
   body: 'Have a website, app or redesign in mind? Tell me what you’re working on.',
   email: person.email,
   mailto: `mailto:${person.email}`,
-  discLabel: 'Email Andrew about a project',
   copiedLabel: 'Email address copied',
 }
 

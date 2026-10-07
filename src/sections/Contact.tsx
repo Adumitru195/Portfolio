@@ -4,7 +4,7 @@ import { Check, Copy, Envelope } from '@phosphor-icons/react'
 import { staggerContainer, fadeUp } from '@/lib/motion'
 import { contact } from '@/data/contact'
 import AccentLine from '@/components/AccentLine'
-import ArrowDisc from '@/components/contact/ArrowDisc'
+import DesignStack from '@/components/contact/DesignStack'
 
 const focusRing =
   'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
@@ -59,15 +59,15 @@ function CopyEmailButton({ className = '' }: { className?: string }) {
 
 export default function Contact() {
   return (
-    <section id="contact" className="px-6 md:px-10 pt-24 pb-20 md:pt-32 md:pb-28 border-t border-subtle bg-bg">
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-10% 0px' }}
-        className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-x-8 gap-y-10 items-center"
-      >
-        <div className="md:col-span-7 lg:col-span-8 min-w-0">
+    <section id="contact" className="px-6 md:px-10 pt-24 pb-16 md:pt-32 md:pb-24 border-t border-subtle bg-bg">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-x-8 lg:gap-x-12 gap-y-6 items-center">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-10% 0px' }}
+          className="md:col-span-7 min-w-0"
+        >
           <motion.div variants={fadeUp} className="flex items-center gap-3 mb-5">
             <AccentLine />
             <span className="text-xs text-text-muted uppercase tracking-widest">{contact.label}</span>
@@ -94,23 +94,13 @@ export default function Contact() {
               <Envelope size={18} weight="bold" aria-hidden="true" className="shrink-0" />
               <span className="min-w-0 break-all sm:break-normal select-text">{contact.email}</span>
             </motion.a>
-            <CopyEmailButton className="hidden md:inline-flex" />
-          </motion.div>
-
-          {/* Phones: the copy action and a smaller disc share one row */}
-          <div className="md:hidden mt-6 flex items-center justify-between gap-4">
             <CopyEmailButton />
-            <ArrowDisc href={contact.mailto} label={contact.discLabel} allowScene={false} className="w-24 sm:w-28" />
-          </div>
-        </div>
-
-        <motion.div
-          variants={fadeUp}
-          className="hidden md:flex md:col-span-5 lg:col-span-4 justify-center lg:justify-end"
-        >
-          <ArrowDisc href={contact.mailto} label={contact.discLabel} className="w-[15rem] lg:w-[19rem] xl:w-[21rem]" />
+          </motion.div>
         </motion.div>
-      </motion.div>
+
+        {/* Decorative: static on phones, Three.js on eligible desktops */}
+        <DesignStack className="md:col-span-5 w-full max-w-[17rem] sm:max-w-[20rem] md:max-w-none justify-self-center md:justify-self-end" />
+      </div>
     </section>
   )
 }

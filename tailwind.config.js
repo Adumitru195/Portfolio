@@ -121,8 +121,8 @@ export default {
           paper: '#F2EBD9',
           edge: '#E3D9C0',
         },
-        // Pale lavender tints of the indigo accent: the contact arrow disc and
-        // the footer panel. The 3D disc uses the same face value.
+        // Pale lavender tints of the indigo accent: the footer panel and its
+        // divider. The contact composition (src/lib/designStack.ts) uses DEFAULT.
         lavender: {
           DEFAULT: '#E4E1FA',
           soft: '#EEECFB',
