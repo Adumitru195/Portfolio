@@ -6,6 +6,7 @@ import { projects } from '@/data/projects'
 import Tag from '@/components/Tag'
 import AccentLine from '@/components/AccentLine'
 import ScrollProgress from '@/components/ScrollProgress'
+import Footer from '@/components/Footer'
 import SheenCard from '@/components/SheenCard'
 import WebGLBoundary from '@/components/WebGLBoundary'
 import WaveFallback from '@/components/WaveFallback'
@@ -281,7 +282,17 @@ function CompareRows({ rows }: { rows: CompareRow[] }) {
   )
 }
 
+// Every case study ends with the shared site footer, rendered once here.
 export default function CaseStudy() {
+  return (
+    <>
+      <CaseStudyPage />
+      <Footer />
+    </>
+  )
+}
+
+function CaseStudyPage() {
   const { id } = useParams<{ id: string }>()
   if (id === 'porchlight') {
     return (

@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
-import { displace, usePrefersReducedMotion } from '@/components/HeroWaveBackground'
+import { displace, usePrefersReducedMotion } from '@/lib/wave'
 import WaveFallback from '@/components/WaveFallback'
 import { supportsWebGL } from '@/lib/webgl'
 

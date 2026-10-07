@@ -121,6 +121,13 @@ export default {
           paper: '#F2EBD9',
           edge: '#E3D9C0',
         },
+        // Pale lavender tints of the indigo accent: the contact arrow disc and
+        // the footer panel. The 3D disc uses the same face value.
+        lavender: {
+          DEFAULT: '#E4E1FA',
+          soft: '#EEECFB',
+          line: '#D6D2F2',
+        },
         text: {
           primary: '#1C1C1C',
           secondary: '#4B4B4B',
