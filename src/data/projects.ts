@@ -6,15 +6,15 @@ export const projects: Project[] = [
     title: 'Backwater Journal',
     subtitle: 'A mobile fishing journal, map, marketplace, and angler community',
     description:
-      'A mobile app for anglers to log catches, discover nearby fishing activity, save fishing memories, and connect with other fishermen. I designed and shipped the full product — catch journaling, an Explore map, a Dock social feed, a gear marketplace, messaging, and Pro subscriptions — end to end as designer, researcher, and founder.',
+      'A mobile app for anglers to log catches, discover nearby fishing activity, save fishing memories, and connect with other fishermen. I designed and built it end to end as designer, researcher, and founder, and released it free on the App Store in July 2026 with catch journaling, an Explore map, a Dock social feed, a gear marketplace, and messaging.',
     problem:
       'Fishing apps scatter the essentials across separate tools: logging catches, finding spots, posting updates, selling gear, and tracking progress each live somewhere different. Anglers need one place to document their fishing life, discover useful nearby information, and stay connected without switching between platforms.',
     goal: 'Design a mobile-first fishing experience that feels practical, trustworthy, and easy to use outdoors — supporting quick catch logging, location-aware discovery, social sharing, gear listings, and future AI assistance, while staying simple enough for casual anglers.',
     solution:
-      'A single fishing-focused product combining a catch Journal, an Explore map, a Dock community feed, a gear Market, messaging, and subscription-based Pro features — designed around the real actions anglers take, from first cast to post-trip.',
+      'A single fishing-focused product combining a catch Journal, an Explore map, a Dock community feed, a gear Market, and messaging, designed around the real actions anglers take, from first cast to post-trip.',
     details: {
       timeline: '2026',
-      tools: 'Figma, React Native / Expo, Supabase, RevenueCat, TestFlight',
+      tools: 'Figma, React Native / Expo, Supabase, TestFlight',
       platform: 'iOS Mobile App',
     },
     role: 'Product Designer & Mobile App Developer',
@@ -27,7 +27,7 @@ export const projects: Project[] = [
       {
         id: 'overview',
         title: 'Overview',
-        body: 'Backwater Journal is a mobile app for anglers who want to log catches, discover nearby fishing activity, save fishing memories, and connect with other fishermen through a community-driven experience. The app brings six pillars into one fishing-focused product — so the whole fishing life lives in a single place instead of across a dozen apps.',
+        body: 'Backwater Journal is a mobile app for anglers who want to log catches, discover nearby fishing activity, save fishing memories, and connect with other fishermen through a community-driven experience. The app brings five pillars into one fishing-focused product, so the whole fishing life lives in a single place instead of across a dozen apps.',
         sectionStyle: 'chips',
         items: [
           'Catch Journal',
@@ -35,7 +35,6 @@ export const projects: Project[] = [
           'Dock Community Feed',
           'Gear Market',
           'Messaging',
-          'Pro Subscription',
         ],
       },
       {
@@ -79,7 +78,7 @@ export const projects: Project[] = [
       {
         id: 'design-process',
         title: 'Design Process',
-        body: 'I started by identifying the main actions anglers would need: logging a catch, exploring nearby fishing activity, posting to the community, saving memories, and browsing gear. From there I designed the navigation around the most important user flows and refined the app through multiple rounds of visual and functional improvement.\n\nThe product evolved through continuous testing and feedback. Beta testers surfaced issues like Explore map loading problems, marketplace photo compression, missing bookmark access, and unclear upgrade flows. Each of these became a design update and a development prompt to improve usability before launch.',
+        body: 'I started by identifying the main actions anglers would need: logging a catch, exploring nearby fishing activity, posting to the community, saving memories, and browsing gear. From there I designed the navigation around the most important user flows and refined the app through multiple rounds of visual and functional improvement.\n\nThe product evolved through continuous testing and feedback. Beta testers surfaced issues like Explore map loading problems, marketplace photo compression, and missing bookmark access. Each of these became a design update and a development prompt to improve usability before launch.',
       },
       {
         id: 'ux-decisions',
@@ -95,17 +94,17 @@ export const projects: Project[] = [
       {
         id: 'challenges',
         title: 'Challenges',
-        body: 'One major challenge was balancing product ambition with launch readiness. The app spans subscriptions, marketplace listings, messaging, maps, profiles, legal pages, and support flows — so I had to decide which features were essential for launch and which should be improved after beta feedback.\n\nAnother challenge was trust. Because the app includes fishing spots, marketplace listings, and user-generated content, the design needed reporting tools, support access, disclaimers, blocked-user handling, and careful language around verified or restricted locations.',
+        body: 'One major challenge was balancing product ambition with launch readiness. The app spans marketplace listings, messaging, maps, profiles, legal pages, and support flows, so I had to decide which features were essential for launch and which should be improved after beta feedback.\n\nAnother challenge was trust. Because the app includes fishing spots, marketplace listings, and user-generated content, the design needed reporting tools, support access, disclaimers, blocked-user handling, and careful language around verified or restricted locations.',
       },
       {
         id: 'results',
         title: 'Results',
-        body: 'Backwater Journal reached a TestFlight-ready stage with core app sections designed and implemented, and a live marketing site at backwaterjournal.com. The project demonstrates end-to-end product thinking across UX strategy, interface design, feature prioritization, beta feedback, launch preparation, and product refinement.',
+        body: 'Backwater Journal is live. I released it free on the App Store in July 2026, and it is available for iOS in the United States and Canada, with a marketing site at backwaterjournal.com. Beta testing before launch shaped that first release. Since then I have kept improving it: version 1.1.0, released in September 2026, rebuilt Explore and added Pin on Map for catch logging, offline catch drafts, and catch history export.\n\nThe project demonstrates end-to-end product thinking across UX strategy, interface design, feature prioritization, beta feedback, launch preparation, and product refinement.',
       },
       {
         id: 'reflection',
         title: 'What I Learned',
-        body: 'This project taught me how to think beyond screens and design for a full product ecosystem. I learned how to balance user needs, business goals, technical constraints, marketplace safety, subscription strategy, and App Store readiness. It also strengthened my ability to communicate design requirements clearly to developers and AI coding tools.',
+        body: 'This project taught me how to think beyond screens and design for a full product ecosystem. I learned how to balance user needs, business goals, technical constraints, marketplace safety, and App Store readiness. It also strengthened my ability to communicate design requirements clearly to developers and AI coding tools.',
       },
     ],
   },
@@ -114,7 +113,7 @@ export const projects: Project[] = [
     title: 'AIC Museum Experience Concept',
     subtitle: 'Academic Group Project · UXD 260: Research & Evaluation · DePaul University',
     description:
-      'A research-grounded group project exploring how the Art Institute of Chicago could better engage Gen Z through a mobile companion app. Conducted 12 user interviews, mapped the visitor emotional journey, and designed a Figma concept from research through prototype.',
+      'A research-grounded group project exploring how the Art Institute of Chicago could better engage Gen Z through a mobile companion app. Our team conducted 12 user interviews, mapped the visitor emotional journey, and designed a Figma concept from research through prototype.',
     problem:
       'Gen Z visitors found the museum experience passive and difficult to coordinate socially — leaving the building feeling uncertain whether the visit was worth their time and money.',
     goal: 'Research how Gen Z experiences the museum and design a mobile concept that reduces friction, creates active in-gallery engagement, and produces shareable moments that extend beyond the visit.',
@@ -144,6 +143,11 @@ export const projects: Project[] = [
           'Journey Mapping',
           'Concept Design',
         ],
+      },
+      {
+        id: 'my-contribution',
+        title: 'My Contribution',
+        body: 'I conducted interviews and reviewed responses to help identify what participants needed from the museum experience. I contributed to the visitor journey map, designed screens in Figma, and created presentation slides to communicate our research and proposed experience.',
       },
       {
         id: 'challenge',
