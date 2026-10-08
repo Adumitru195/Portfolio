@@ -64,7 +64,7 @@ export const book1Pages = bookPages('book-1', [
   },
   {
     kind: 'spread',
-    title: 'Rotated programme',
+    title: 'Rotated program',
     alt: 'Two-page spread: on the left an aligned layout with a dropped initial; on the right the description and lecture list rotated to run vertically beneath a horizontal title.',
   },
   {
@@ -95,7 +95,7 @@ export const book1Pages = bookPages('book-1', [
   {
     kind: 'spread',
     title: 'Black block and rotated columns',
-    alt: 'Two-page spread: a solid black block anchors the left page under a vertical department name; the right page sets the programme in rotated columns.',
+    alt: 'Two-page spread: a solid black block anchors the left page under a vertical department name; the right page sets the program in rotated columns.',
   },
   {
     kind: 'spread',
@@ -105,7 +105,7 @@ export const book1Pages = bookPages('book-1', [
   {
     kind: 'spread',
     title: 'Blue field and pink block',
-    alt: 'Two-page spread: a saturated blue page with light and yellow type and a vertical lecture list, beside a white page that gathers the programme inside a pale pink block.',
+    alt: 'Two-page spread: a saturated blue page with light and yellow type and a vertical lecture list, beside a white page that gathers the program inside a pale pink block.',
   },
   {
     kind: 'spread',
@@ -115,7 +115,7 @@ export const book1Pages = bookPages('book-1', [
   {
     kind: 'spread',
     title: 'Triangle and rotated list',
-    alt: 'Two-page spread: a pale green panel and triangle frame the programme on the left; the right page stacks the department name and sets the lecture list rotated.',
+    alt: 'Two-page spread: a pale green panel and triangle frame the program on the left; the right page stacks the department name and sets the lecture list rotated.',
   },
 ])
 
@@ -153,7 +153,7 @@ export const book2Pages = bookPages('book-2', [
   {
     kind: 'spread',
     title: 'Lyrics: I Hate Everything About You (11) · Animal I Have Become (12)',
-    alt: 'ONE-X lyrics spread on warm paper: two song titles set large in black and burgundy, each with a short description and centred lyric excerpt below a burgundy rule.',
+    alt: 'ONE-X lyrics spread on warm paper: two song titles set large in black and burgundy, each with a short description and centered lyric excerpt below a burgundy rule.',
   },
   {
     kind: 'spread',
@@ -234,7 +234,7 @@ export const typographySystems: TypographySystemsPresentation = {
       },
       {
         heading: 'Space as structure',
-        body: 'Separated groups give the title, programme and supporting details their own positions.',
+        body: 'Separated groups give the title, program and supporting details their own positions.',
         figure: singlePage(
           'b1-space',
           'Book 1 page with the lecture list at the top, the description in the middle, the series title below it and the department name at the bottom left, each group separated by open space.',
@@ -245,18 +245,18 @@ export const typographySystems: TypographySystemsPresentation = {
   },
   contrast: {
     title: 'Changing emphasis changes the page.',
-    intro: 'Across the book the content stays put while alignment, rotation, scale and colour move the centre of attention.',
+    intro: 'Across the book the content stays put while alignment, rotation, scale and color move the center of attention.',
     comparisons: [
-      { lever: 'Alignment', note: 'Two aligned compositions: the title, description and programme stay in one reading column.', page: book1Pages[1] },
+      { lever: 'Alignment', note: 'Two aligned compositions: the title, description and program stay in one reading column.', page: book1Pages[1] },
       { lever: 'Rotation', note: 'Vertical and diagonal text pull the eye across the page before it settles into the lecture list.', page: book1Pages[3] },
       { lever: 'Scale', note: 'An oversized vertical department name takes the lead, and the lectures become a secondary layer.', page: book1Pages[11] },
-      { lever: 'Colour', note: 'A saturated blue field and a pale block create two different centres of attention on facing pages.', page: book1Pages[10] },
+      { lever: 'Color', note: 'A saturated blue field and a pale block create two different centers of attention on facing pages.', page: book1Pages[10] },
     ],
     notes: [
       {
         eyebrow: 'Observation',
         heading: 'Two different kinds of contrast',
-        body: 'The blue composition uses light and yellow type against a saturated field. The adjacent layout keeps a white ground and gathers the programme inside a pale block.',
+        body: 'The blue composition uses light and yellow type against a saturated field. The adjacent layout keeps a white ground and gathers the program inside a pale block.',
       },
       {
         eyebrow: 'Trade-off',
@@ -268,7 +268,7 @@ export const typographySystems: TypographySystemsPresentation = {
   identity: {
     title: 'A voice that carries across the publication.',
     intro:
-      'Black, warm paper and burgundy form the recurring palette. Large serif titles and pale oversized numerals create a recognisable visual rhythm.',
+      'Black, warm paper and burgundy form the recurring palette. Large serif titles and pale oversized numerals create a recognizable visual rhythm.',
     cover: book2Pages[0],
     coverSpread: book2Pages[1],
     discography: book2Pages[8],
@@ -329,7 +329,7 @@ export const typographySystems: TypographySystemsPresentation = {
         figure: detail(
           'b2-pain-detail',
           { md: [1200, 899], lg: [1600, 1199] },
-          'Close-up of page 13: “Pain” in large burgundy capitals with a pale 13, the line “From One-X, 2006” and a burgundy rule with a diamond above a centred lyric excerpt.',
+          'Close-up of page 13: “Pain” in large burgundy capitals with a pale 13, the line “From One-X, 2006” and a burgundy rule with a diamond above a centered lyric excerpt.',
         ),
         caption: 'Detail, page 13. One word carries the page.',
       },
@@ -360,7 +360,7 @@ export const typographySystems: TypographySystemsPresentation = {
       {
         eyebrow: 'Consistency',
         heading: 'Repeat the visual vocabulary',
-        body: 'Pale numbers, burgundy markers and serif headlines recur across different page types. A recognisable system allows the composition to change.',
+        body: 'Pale numbers, burgundy markers and serif headlines recur across different page types. A recognizable system allows the composition to change.',
       },
     ],
   },

@@ -49,7 +49,7 @@ export const wovenward: WovenwardPresentation = {
     },
     scope: {
       heading: 'A concept store',
-      body: 'Homepage, collection, product details, size guidance and bag, with twelve sample products. There is no payment, fulfilment or completed purchase flow.',
+      body: 'Homepage, collection, product details, size guidance and bag, with twelve sample products. There is no payment, fulfillment or completed purchase flow.',
     },
   },
   journey: {
@@ -84,7 +84,7 @@ export const wovenward: WovenwardPresentation = {
     supplied: {
       src: `${base}/wireframe-board-supplied.webp`,
       small: `${base}/wireframe-board-supplied-800.webp`,
-      alt: 'The originally supplied wireframe board, with generic navigation, pound prices and several colour swatches',
+      alt: 'The originally supplied wireframe board, with generic navigation, pound prices and several color swatches',
       width: 1536,
       height: 1024,
     },
@@ -93,7 +93,7 @@ export const wovenward: WovenwardPresentation = {
     corrections: [
       'Navigation now uses the app’s links (Shop all, Coats & jackets, Knitwear, Shirts, Dresses and Bag) instead of Women, Men, Accessories and Journal.',
       'Prices are shown in US dollars, the app’s currency, instead of pounds.',
-      'Each product shows a single colourway, labelled “Available in Olive only.”, because every product currently has one colour.',
+      'Each product shows a single colorway, labeled “Available in Olive only.”, because every product currently has one color.',
       'The bag says “Checkout is unavailable” because this is a concept store, rather than “Please try again later”, which suggested a temporary fault.',
       'The homepage uses the real eyebrow, headline and actions: “Clothes you’ll reach for first.”, Shop the collection and Coats & jackets.',
     ],
@@ -117,7 +117,7 @@ export const wovenward: WovenwardPresentation = {
       name: 'Manrope',
       role: 'Interface · navigation, prices, available sizes and actions, with tabular figures for prices',
     },
-    note: 'Selected and sold-out sizes also use words, checks and distinct borders, so colour is never the only signal.',
+    note: 'Selected and sold-out sizes also use words, checks and distinct borders, so color is never the only signal.',
   },
   collection: {
     title: 'Give the collection a clear entrance.',
@@ -142,7 +142,7 @@ export const wovenward: WovenwardPresentation = {
     sections: {
       src: `${base}/home-sections.webp`,
       small: `${base}/home-sections-800.webp`,
-      alt: 'Featured pieces row of four product cards with names, prices, colours and available sizes, above a Shop by category row of five photo tiles',
+      alt: 'Featured pieces row of four product cards with names, prices, colors and available sizes, above a Shop by category row of five photo tiles',
       width: 1600,
       height: 1244,
     },
@@ -179,7 +179,7 @@ export const wovenward: WovenwardPresentation = {
     layout: {
       src: `${base}/product-layout.webp`,
       small: `${base}/product-layout-800.webp`,
-      alt: 'Funnel-Neck Utility Jacket product page: a vertical thumbnail rail labelled Full look and Detail, a large photo with a 1 / 2 counter, and a panel with price, the Olive colour, size options with M selected, a fit note, quantity and Add to bag',
+      alt: 'Funnel-Neck Utility Jacket product page: a vertical thumbnail rail labeled Full look and Detail, a large photo with a 1 / 2 counter, and a panel with price, the Olive color, size options with M selected, a fit note, quantity and Add to bag',
       width: 1600,
       height: 1087,
     },
@@ -199,7 +199,7 @@ export const wovenward: WovenwardPresentation = {
     stateNotes: [
       {
         title: 'Show every state',
-        body: 'Available, selected and sold-out sizes look different and carry non-colour cues: a check, a dashed strike and a small legend.',
+        body: 'Available, selected and sold-out sizes look different and carry non-color cues: a check, a dashed strike and a small legend.',
       },
       {
         title: 'Guide, don’t block',
@@ -209,14 +209,14 @@ export const wovenward: WovenwardPresentation = {
     guide: {
       src: `${base}/size-guide.webp`,
       small: `${base}/size-guide-800.webp`,
-      alt: 'Size guide dialog with a Centimetres and Inches toggle, a garment measurements table for chest, body length and sleeve, and a body measurements table for chest, waist and hip',
+      alt: 'Size guide dialog with a Centimeters and Inches toggle, a garment measurements table for chest, body length and sleeve, and a body measurements table for chest, waist and hip',
       width: 1473,
       height: 1622,
     },
     guideNotes: [
       {
         title: 'Make comparisons possible',
-        body: 'The guide separates garment and body measurements, says how each one is taken, and switches between centimetres and inches.',
+        body: 'The guide separates garment and body measurements, says how each one is taken, and switches between centimeters and inches.',
       },
       {
         title: 'Honest about models',
@@ -230,14 +230,14 @@ export const wovenward: WovenwardPresentation = {
     added: {
       src: `${base}/added-dialog.webp`,
       small: `${base}/added-dialog-800.webp`,
-      alt: 'Added to your bag dialog showing the jacket thumbnail, colour Olive, size M, quantity 2 and price $372, the bag count and subtotal, and View bag and Continue shopping buttons',
+      alt: 'Added to your bag dialog showing the jacket thumbnail, color Olive, size M, quantity 2 and price $372, the bag count and subtotal, and View bag and Continue shopping buttons',
       width: 1080,
       height: 844,
     },
     addedNotes: [
       {
         title: 'Repeat the exact choice',
-        body: 'The confirmation names the item, colour, size, quantity and price, then offers View bag or Continue shopping.',
+        body: 'The confirmation names the item, color, size, quantity and price, then offers View bag or Continue shopping.',
       },
       {
         title: 'Focus that follows',
@@ -247,14 +247,14 @@ export const wovenward: WovenwardPresentation = {
     bag: {
       src: `${base}/bag.webp`,
       small: `${base}/bag-800.webp`,
-      alt: 'Your bag with two items, each showing colour, size, unit price, a quantity stepper, Remove and stock left, beside a summary with the subtotal, a note that it excludes shipping and taxes, and a Checkout is unavailable notice',
+      alt: 'Your bag with two items, each showing color, size, unit price, a quantity stepper, Remove and stock left, beside a summary with the subtotal, a note that it excludes shipping and taxes, and a Checkout is unavailable notice',
       width: 1600,
       height: 833,
     },
     bagNotes: [
       {
         title: 'Keep the detail',
-        body: 'Item, colour, size, unit price and quantity stay together, and quantities respect stock limits.',
+        body: 'Item, color, size, unit price and quantity stay together, and quantities respect stock limits.',
       },
       {
         title: 'Be clear about scope',
@@ -351,11 +351,11 @@ export const wovenward: WovenwardPresentation = {
     items: [
       {
         title: 'Show more of the garment',
-        body: 'Six products moved to sharper photography, and their names, colours and descriptions were rewritten to match what the new images show.',
+        body: 'Six products moved to sharper photography, and their names, colors and descriptions were rewritten to match what the new images show.',
       },
       {
         title: 'Make card details easier to scan',
-        body: 'Names and prices use 16 px type; colour and available sizes use darker 14 px text. Long names wrap clear of the price.',
+        body: 'Names and prices use 16 px type; color and available sizes use darker 14 px text. Long names wrap clear of the price.',
       },
       {
         title: 'One current link at a time',
@@ -371,7 +371,7 @@ export const wovenward: WovenwardPresentation = {
       },
       {
         title: 'Resolve accessibility findings',
-        body: 'Struck-through sold-out sizes on cards failed contrast at 55% opacity and now use a muted colour plus the strike.',
+        body: 'Struck-through sold-out sizes on cards failed contrast at 55% opacity and now use a muted color plus the strike.',
       },
     ],
   },
@@ -383,7 +383,7 @@ export const wovenward: WovenwardPresentation = {
     },
     lesson: {
       title: 'Consistency is product information',
-      body: 'A photograph, name, colour and size need to agree across the card, product page and bag. A more polished image only helps when those details stay accurate.',
+      body: 'A photograph, name, color and size need to agree across the card, product page and bag. A more polished image only helps when those details stay accurate.',
     },
     checks: {
       title: 'Recorded checks',

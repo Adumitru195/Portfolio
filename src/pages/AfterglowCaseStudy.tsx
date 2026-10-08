@@ -385,7 +385,7 @@ function Responsive() {
       id="responsive"
       tone="base"
       index="08"
-      label="Responsive behaviour"
+      label="Responsive behavior"
       title={responsive.title}
       intro={responsive.body}
     >

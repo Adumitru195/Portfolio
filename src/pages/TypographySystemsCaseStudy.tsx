@@ -360,7 +360,7 @@ function Contrast() {
                 figure={comparison.page}
                 items={items}
                 index={i}
-                viewerLabel="Book 1 — Alignment, rotation, scale and colour"
+                viewerLabel="Book 1 — Alignment, rotation, scale and color"
                 title={`${comparison.lever}: ${comparison.page.title}`}
                 sizes="(min-width: 1024px) 620px, (min-width: 768px) 50vw, 100vw"
                 dark
@@ -425,7 +425,7 @@ function Identity() {
             title={identity.discography.title}
             sizes="(min-width: 1024px) 840px, 60vw"
           />
-          <Caption>Discography, printed page 15. The same burgundy and serif italics organise a timeline.</Caption>
+          <Caption>Discography, printed page 15. The same burgundy and serif italics organize a timeline.</Caption>
         </Reveal>
       </div>
 

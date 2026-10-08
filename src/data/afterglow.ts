@@ -33,7 +33,7 @@ export const afterglow: AfterglowPresentation = {
   brief: {
     title: 'Make the next decision easier.',
     challenge:
-      'Choosing a film means balancing the story, the location, the date and the times available. Afterglow brings those decisions into one clear sequence, from browsing the programme to reviewing a selected showing.',
+      'Choosing a film means balancing the story, the location, the date and the times available. Afterglow brings those decisions into one clear sequence, from browsing the program to reviewing a selected showing.',
     goal: 'Help someone find a film, compare available times and understand their selection without repeatedly searching for context.',
     priorities: [
       {
@@ -62,7 +62,7 @@ export const afterglow: AfterglowPresentation = {
     principles: [
       {
         title: 'Keep the context visible',
-        body: 'Cinema and date carry from the homepage into film details. Returning to the programme keeps those choices, so browsing never means starting over.',
+        body: 'Cinema and date carry from the homepage into film details. Returning to the program keeps those choices, so browsing never means starting over.',
       },
       {
         title: 'Give every state a way forward',
@@ -95,18 +95,18 @@ export const afterglow: AfterglowPresentation = {
   discovery: {
     eyebrow: 'Homepage',
     title: 'Start with what’s on.',
-    body: 'A fixed featured film leads into a compact, searchable programme.',
+    body: 'A fixed featured film leads into a compact, searchable program.',
     notes: [
       {
         title: 'Context before content',
-        body: 'A cinema selector and a seven-day date grid set the programme before anyone chooses a film.',
+        body: 'A cinema selector and a seven-day date grid set the program before anyone chooses a film.',
       },
       {
         title: 'One clear feature',
         body: 'The hero offers a short introduction, four upcoming times and a direct path to showtimes.',
       },
       {
-        title: 'A programme to browse',
+        title: 'A program to browse',
         body: 'Film cards repeat the same metadata order. This week and upcoming screenings stay distinct.',
       },
     ],
@@ -152,7 +152,7 @@ export const afterglow: AfterglowPresentation = {
   },
   motion: {
     title: 'Motion that points to the next choice.',
-    body: 'Animation is short and purposeful. It introduces the featured film once, confirms what responds to a pointer, and acknowledges each selection, so attention moves from the hero to the programme to the chosen showing.',
+    body: 'Animation is short and purposeful. It introduces the featured film once, confirms what responds to a pointer, and acknowledges each selection, so attention moves from the hero to the program to the chosen showing.',
     video: {
       mp4: `${base}/motion-demo.mp4`,
       webm: `${base}/motion-demo.webm`,
@@ -197,7 +197,7 @@ export const afterglow: AfterglowPresentation = {
     screens: [
       {
         title: 'No matching title',
-        body: 'The empty state keeps the query visible and offers a clear reset. When a match is in the other programme, a hint points there.',
+        body: 'The empty state keeps the query visible and offers a clear reset. When a match is in the other program, a hint points there.',
         image: {
           src: `${base}/search-empty.webp`,
           alt: 'Homepage search for "zzz": "0 films match" above an empty state reading "Nothing showing this week matches zzz" with a Clear search button',
@@ -217,7 +217,7 @@ export const afterglow: AfterglowPresentation = {
       },
     ],
     alternatives:
-      'Other paths considered: showtimes in tabs, hiding unavailable films, and a longer scrolling date strip. The design favours visible choices and explicit recovery.',
+      'Other paths considered: showtimes in tabs, hiding unavailable films, and a longer scrolling date strip. The design favors visible choices and explicit recovery.',
   },
   responsive: {
     title: 'Same task. Different composition.',
@@ -239,7 +239,7 @@ export const afterglow: AfterglowPresentation = {
           width: 780,
           height: 1688,
         },
-        caption: 'Search sits with the programme tabs.',
+        caption: 'Search sits with the program tabs.',
       },
       {
         image: {
