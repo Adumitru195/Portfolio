@@ -174,6 +174,24 @@ export const wovenwardTheme: PresentationTheme = {
   },
 }
 
+const aicLightVars = '[--pres-muted:#625B53] [--pres-eyebrow:#842C3B] [--pres-border:#DAD1C5] [--pres-accent:#842C3B]'
+
+export const aicTheme: PresentationTheme = {
+  ...wovenwardTheme,
+  tones: {
+    base: `bg-[#F6F2EB] text-[#24201D] ${aicLightVars}`,
+    alt: `bg-[#EDE5DA] text-[#24201D] ${aicLightVars}`,
+    accent: 'bg-[#542632] text-[#F6F2EB] [--pres-muted:#E8D9DA] [--pres-eyebrow:#F6F2EB] [--pres-border:#9D7780] [--pres-accent:#F6F2EB]',
+  },
+  title: 'font-wove-display text-5xl font-normal leading-[1.02] tracking-[-0.025em] md:text-7xl lg:text-8xl',
+  subtitle: 'font-type-body text-xl leading-relaxed text-[#625B53] md:text-2xl',
+  heading: 'font-wove-display font-normal leading-[1.08] tracking-[-0.015em]',
+  focusRing: 'focus-visible:ring-[#842C3B] focus-visible:ring-offset-[#F6F2EB]',
+  screenFrame: 'border-[#DAD1C5] bg-[#F6F2EB] shadow-[0_24px_50px_-30px_rgba(84,38,50,0.35)]',
+  buttonPrimary: 'bg-[#F6F2EB] text-[#542632] hover:bg-[#EDE5DA] focus-visible:ring-[#F6F2EB] focus-visible:ring-offset-[#542632]',
+  buttonSecondary: 'border border-[#F6F2EB] text-[#F6F2EB] hover:bg-[#693744] focus-visible:ring-[#F6F2EB] focus-visible:ring-offset-[#542632]',
+}
+
 export const PresentationThemeContext = createContext<PresentationTheme>(porchlightTheme)
 
 export function usePresentationTheme() {
