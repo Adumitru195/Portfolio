@@ -14,6 +14,10 @@ interface ZoomFigureProps {
   sizes?: string
   /** Source shown in the enlarged view; defaults to the image itself. */
   fullSrc?: string
+  /** Short label set above the caption, in the caption and in the enlarged view. */
+  captionLabel?: string
+  /** Tall phone screens: cap the enlarged width so the screen stays readable without filling a wide viewport. */
+  portrait?: boolean
 }
 
 /**
@@ -22,7 +26,7 @@ interface ZoomFigureProps {
  * Escape closes it. Focus returns to the trigger on close. The open/close
  * transition is skipped with reduced motion.
  */
-export default function ZoomFigure({ image, caption, chrome = false, className = '', sizes, fullSrc }: ZoomFigureProps) {
+export default function ZoomFigure({ image, caption, chrome = false, className = '', sizes, fullSrc, captionLabel, portrait = false }: ZoomFigureProps) {
   const theme = usePresentationTheme()
   const dialogRef = useRef<HTMLDialogElement>(null)
   const triggerRef = useRef<HTMLButtonElement>(null)
@@ -110,8 +114,16 @@ export default function ZoomFigure({ image, caption, chrome = false, className =
           <span className="sr-only">Enlarge: {image.alt}</span>
         </span>
       </button>
-      {caption && (
-        <figcaption className="mt-3 text-sm leading-snug text-[color:var(--pres-muted)]">{caption}</figcaption>
+      {(caption || captionLabel) && (
+        <figcaption className="mt-3 text-sm leading-snug text-[color:var(--pres-muted)]">
+          {captionLabel && (
+            <span className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--pres-eyebrow)]">
+              {captionLabel}
+              {caption && <span className="sr-only">: </span>}
+            </span>
+          )}
+          {caption}
+        </figcaption>
       )}
 
       <dialog
@@ -142,11 +154,14 @@ export default function ZoomFigure({ image, caption, chrome = false, className =
               alt={image.alt}
               width={image.width}
               height={image.height}
-              className="mx-auto block h-auto w-full max-w-[min(100%,1600px)]"
+              className={`mx-auto block h-auto w-full ${portrait ? 'max-w-[min(100%,560px)]' : 'max-w-[min(100%,1600px)]'}`}
             />
           </div>
-          {caption && (
-            <p className="mt-3 text-center text-sm text-white/80">{caption.replace(/\s*Select to enlarge\.?$/, '')}</p>
+          {(caption || captionLabel) && (
+            <p className="mt-3 text-center text-sm text-white/80">
+              {captionLabel && <span className="font-semibold text-white">{captionLabel}{caption ? ': ' : ''}</span>}
+              {caption?.replace(/\s*Select to enlarge\.?$/, '')}
+            </p>
           )}
         </div>
       </dialog>

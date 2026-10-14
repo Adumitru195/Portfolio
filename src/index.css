@@ -75,3 +75,194 @@
     border: 1px solid rgba(0, 0, 0, 0.06);
   }
 }
+
+/* Homepage Selected Work: folder cards (src/components/work/ProjectFolderCard.tsx).
+   Each tint sets the folder, pocket, edge, text and loose-sheet colours; the
+   3D paper layer reads the sheet colours from src/data/work-folders.ts. All
+   motion is transform or opacity, only for fine pointers, and only when the
+   visitor has not asked for reduced motion. */
+/* Tints sit outside @layer so Tailwind keeps them: the card builds the class
+   name from data (folder-tint-<tint>). */
+.folder-tint-sage {
+  --f-shade: rgba(46, 64, 52, 0.16);
+  --f-back: #D8E0D1; --f-front: #E6EBDF; --f-edge: #C2CCBA; --f-shadow: rgba(46, 64, 52, 0.42);
+  --f-text: #1C1C1C; --f-muted: #4A5148; --f-label: #3B5444; --f-cta: #4338CA;
+  --f-sheet-back: #E9EFE4; --f-sheet-front: #F6F4EC; --f-mat: #FBFAF6;
+}
+.folder-tint-stone {
+  --f-shade: rgba(74, 42, 48, 0.15);
+  --f-back: #E6D9CF; --f-front: #F1E8E0; --f-edge: #D3C2B5; --f-shadow: rgba(74, 42, 48, 0.4);
+  --f-text: #1C1C1C; --f-muted: #544A45; --f-label: #7A2836; --f-cta: #4338CA;
+  --f-sheet-back: #F1E6DF; --f-sheet-front: #FAF5F0; --f-mat: #FCF9F6;
+}
+.folder-tint-cream {
+  --f-shade: rgba(47, 59, 44, 0.15);
+  --f-back: #ECE3D1; --f-front: #F6F0E4; --f-edge: #DACDB5; --f-shadow: rgba(47, 59, 44, 0.4);
+  --f-text: #1C1C1C; --f-muted: #524C42; --f-label: #24563F; --f-cta: #4338CA;
+  --f-sheet-back: #F3ECDD; --f-sheet-front: #FCF9F2; --f-mat: #FDFBF6;
+}
+.folder-tint-midnight {
+  --f-shade: rgba(5, 7, 14, 0.42);
+  --f-back: #1E2436; --f-front: #262D43; --f-edge: #3B4460; --f-shadow: rgba(5, 7, 14, 0.6);
+  --f-text: #F5F2EB; --f-muted: #C0C5D4; --f-label: #CABAF5; --f-cta: #CABAF5;
+  --f-sheet-back: #323A55; --f-sheet-front: #434B68; --f-mat: #2E3550;
+}
+.folder-tint-porcelain {
+  --f-shade: rgba(44, 56, 70, 0.15);
+  --f-back: #DCE2E7; --f-front: #EBEEF1; --f-edge: #C6CFD7; --f-shadow: rgba(44, 56, 70, 0.4);
+  --f-text: #1C1C1C; --f-muted: #4A525B; --f-label: #344A64; --f-cta: #4338CA;
+  --f-sheet-back: #E7ECF0; --f-sheet-front: #F7F8F9; --f-mat: #FBFCFC;
+}
+.folder-tint-paper {
+  --f-shade: rgba(62, 34, 38, 0.15);
+  --f-back: #EBE0D4; --f-front: #F5EEE5; --f-edge: #D9C8B8; --f-shadow: rgba(62, 34, 38, 0.4);
+  --f-text: #1C1C1C; --f-muted: #534944; --f-label: #7A2531; --f-cta: #4338CA;
+  --f-sheet-back: #F1E7DC; --f-sheet-front: #FBF6EF; --f-mat: #FCF9F5;
+}
+
+@layer components {
+  /* The link is the whole folder. Its top padding reserves the tab's row, so
+     bodies and pockets line up across a row even when a long title wraps and
+     its tab grows upward into the row gap. */
+  .folder-card {
+    --tab-h: 3.25rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-top: var(--tab-h);
+    color: var(--f-text);
+    border-radius: 22px;
+  }
+  .folder-card:focus { outline: none; }
+  .folder-card:focus-visible {
+    outline: 3px solid #4F46E5;
+    outline-offset: 6px;
+  }
+
+  .folder-body {
+    position: absolute;
+    inset: var(--tab-h) 0 0 0;
+    z-index: 0;
+    border-radius: 0 22px 22px 22px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0) 38%),
+      var(--f-back);
+    box-shadow:
+      0 0 0 1px var(--f-edge),
+      0 22px 36px -28px var(--f-shadow),
+      0 6px 14px -10px var(--f-shadow);
+  }
+  /* A deeper shadow faded in on hover (opacity only). */
+  .folder-body::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: 0 34px 50px -30px var(--f-shadow);
+    opacity: 0;
+  }
+
+  .folder-tab {
+    position: absolute;
+    left: -1px;
+    bottom: calc(100% - var(--tab-h) - 1px);
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    min-height: calc(var(--tab-h) + 1px);
+    max-width: min(86%, 21rem);
+    padding: 0.55rem 1.15rem 0.45rem;
+    border: 1px solid var(--f-edge);
+    border-bottom: 0;
+    border-radius: 15px 15px 0 0;
+    background: var(--f-back);
+  }
+  /* Concave fillet joining the tab's right side to the folder's top edge. */
+  .folder-tab::after {
+    content: '';
+    position: absolute;
+    left: calc(100% - 1px);
+    bottom: 0;
+    width: 15px;
+    height: 14px;
+    background: radial-gradient(circle at 100% 0, transparent 13px, var(--f-edge) 13.5px, var(--f-edge) 14.4px, var(--f-back) 15px);
+  }
+
+  .folder-inner {
+    position: relative;
+    z-index: 20;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+
+  .folder-stage {
+    position: relative;
+    padding: 0.85rem 0.85rem 0;
+  }
+
+  /* Loose sheets behind the preview: the CSS version, hidden while the 3D
+     paper layer draws them instead. */
+  .folder-sheet {
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    box-shadow: 0 0 0 1px var(--f-edge), 0 6px 12px -9px var(--f-shade);
+  }
+  .folder-sheet-back { background: var(--f-sheet-back); transform: translate(-5px, -10px) rotate(-1.6deg); }
+  .folder-sheet-front { background: var(--f-sheet-front); transform: translate(6px, -6px) rotate(1.3deg); }
+  [data-paper='3d'] .folder-sheet { opacity: 0; }
+
+  .folder-paper {
+    position: relative;
+    border-radius: 12px;
+    padding: 5px;
+    background: var(--f-mat);
+    box-shadow: 0 0 0 1px var(--f-edge), 0 6px 12px -10px var(--f-shade);
+  }
+
+  .folder-pocket {
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    border-radius: 0 0 22px 22px;
+    background: var(--f-front);
+  }
+  .folder-lip {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: calc(100% - 1px);
+    width: 100%;
+    height: 20px;
+    overflow: visible;
+    color: var(--f-front);
+    transform-origin: 50% 100%;
+    filter: drop-shadow(0 -1px 1.5px var(--f-shade));
+  }
+  .folder-arrow { display: inline-block; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .folder-lift,
+    .folder-lip,
+    .folder-sheet,
+    .folder-arrow {
+      transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), opacity 320ms ease;
+    }
+    .folder-body::after { transition: opacity 320ms ease; }
+
+    .folder-card:focus-visible .folder-lift { transform: translateY(-8px); }
+    .folder-card:focus-visible .folder-arrow { transform: translateX(3px); }
+
+    @media (hover: hover) and (pointer: fine) {
+      .folder-card:hover .folder-lift { transform: translateY(-10px); }
+      .folder-card:hover .folder-lip { transform: perspective(420px) rotateX(-16deg); }
+      .folder-card:hover .folder-body::after { opacity: 1; }
+      .folder-card:hover .folder-sheet-back { transform: translate(-9px, -18px) rotate(-3deg); }
+      .folder-card:hover .folder-sheet-front { transform: translate(10px, -12px) rotate(2.4deg); }
+      .folder-card:hover .folder-arrow { transform: translateX(3px); }
+    }
+  }
+}
