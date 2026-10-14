@@ -174,22 +174,58 @@ export const wovenwardTheme: PresentationTheme = {
   },
 }
 
-const aicLightVars = '[--pres-muted:#625B53] [--pres-eyebrow:#842C3B] [--pres-border:#DAD1C5] [--pres-accent:#842C3B]'
+const aicLightVars = '[--pres-muted:#615A51] [--pres-eyebrow:#842C3B] [--pres-border:#D6CBBC] [--pres-accent:#842C3B]'
 
+// AIC Museum Experience: warm paper and stone sections with deep burgundy as
+// the accent band, following the case study PDF. Burgundy is the only accent.
 export const aicTheme: PresentationTheme = {
   ...wovenwardTheme,
   tones: {
-    base: `bg-[#F6F2EB] text-[#24201D] ${aicLightVars}`,
-    alt: `bg-[#EDE5DA] text-[#24201D] ${aicLightVars}`,
-    accent: 'bg-[#542632] text-[#F6F2EB] [--pres-muted:#E8D9DA] [--pres-eyebrow:#F6F2EB] [--pres-border:#9D7780] [--pres-accent:#F6F2EB]',
+    base: `bg-[#F6F2EB] text-[#27231F] ${aicLightVars}`,
+    alt: `bg-[#E9E0D4] text-[#27231F] ${aicLightVars}`,
+    accent:
+      'bg-[#512632] text-[#F6F2EB] [--pres-muted:#E6D6D5] [--pres-eyebrow:#EBC9CD] [--pres-border:#7D5560] [--pres-accent:#F6F2EB]',
   },
-  title: 'font-wove-display text-5xl font-normal leading-[1.02] tracking-[-0.025em] md:text-7xl lg:text-8xl',
-  subtitle: 'font-type-body text-xl leading-relaxed text-[#625B53] md:text-2xl',
-  heading: 'font-wove-display font-normal leading-[1.08] tracking-[-0.015em]',
+  title: 'font-wove-display text-6xl font-normal leading-[0.95] tracking-[-0.03em] md:text-8xl lg:text-[8.5rem]',
+  subtitle: 'font-wove-display text-2xl leading-snug text-[#842C3B] md:text-3xl',
+  heading: 'font-wove-display font-normal leading-[1.06] tracking-[-0.02em]',
+  number: 'font-wove-display',
   focusRing: 'focus-visible:ring-[#842C3B] focus-visible:ring-offset-[#F6F2EB]',
-  screenFrame: 'border-[#DAD1C5] bg-[#F6F2EB] shadow-[0_24px_50px_-30px_rgba(84,38,50,0.35)]',
-  buttonPrimary: 'bg-[#F6F2EB] text-[#542632] hover:bg-[#EDE5DA] focus-visible:ring-[#F6F2EB] focus-visible:ring-offset-[#542632]',
-  buttonSecondary: 'border border-[#F6F2EB] text-[#F6F2EB] hover:bg-[#693744] focus-visible:ring-[#F6F2EB] focus-visible:ring-offset-[#542632]',
+  screenFrame: 'border-[#D6CBBC] bg-white shadow-[0_26px_50px_-30px_rgba(81,38,50,0.4)]',
+  buttonPrimary:
+    'bg-[#F6F2EB] text-[#512632] hover:bg-[#E9E0D4] focus-visible:ring-[#F6F2EB] focus-visible:ring-offset-[#512632]',
+  buttonSecondary:
+    'border border-[#F6F2EB]/70 text-[#F6F2EB] hover:bg-[#633241] focus-visible:ring-[#F6F2EB] focus-visible:ring-offset-[#512632]',
+}
+
+// Backwater Journal: paper and stone with forest-green emphasis sections and a
+// brass accent. Small brass text uses #8A5E12 (5.0:1 on paper, 4.5:1 on stone);
+// #A87318 is kept for large numerals and rules, and #D9A441 for forest sections.
+// Muted text is #5A665E so it passes on stone as well as paper.
+const backwaterLightVars = '[--pres-muted:#5A665E] [--pres-eyebrow:#8A5E12] [--pres-border:#DDD6C8] [--pres-accent:#20382F]'
+
+export const backwaterTheme: PresentationTheme = {
+  ...wovenwardTheme,
+  tones: {
+    base: `bg-[#F4F1EA] text-[#1F2A24] ${backwaterLightVars}`,
+    alt: `bg-[#EAE5DA] text-[#1F2A24] ${backwaterLightVars}`,
+    accent:
+      'bg-[#20382F] text-[#F4F1EA] [--pres-muted:#C9D3CC] [--pres-eyebrow:#D9A441] [--pres-border:#3E5A4E] [--pres-accent:#D9A441]',
+  },
+  title: 'font-wove-display text-[3.4rem] font-normal leading-[0.95] tracking-[-0.03em] sm:text-7xl md:text-8xl lg:text-[7.5rem]',
+  subtitle: 'font-wove-display text-2xl italic leading-snug text-[#20382F] md:text-3xl',
+  heading: 'font-wove-display font-normal leading-[1.06] tracking-[-0.02em]',
+  number: 'font-wove-display',
+  focusRing: 'focus-visible:ring-[#20382F] focus-visible:ring-offset-[#F4F1EA]',
+  // The product-tour screens are transparent and include their own phone
+  // frame, so the trigger adds no border or background, only a soft shadow
+  // that follows the phone's outline.
+  screenFrame:
+    'border-transparent bg-transparent shadow-none [filter:drop-shadow(0_26px_30px_rgba(23,40,32,0.2))]',
+  buttonPrimary:
+    'bg-[#D9A441] text-[#172820] hover:bg-[#E4B862] focus-visible:ring-[#F4F1EA] focus-visible:ring-offset-[#20382F]',
+  buttonSecondary:
+    'border border-[#F4F1EA]/70 text-[#F4F1EA] hover:bg-[#2B473B] focus-visible:ring-[#F4F1EA] focus-visible:ring-offset-[#20382F]',
 }
 
 export const PresentationThemeContext = createContext<PresentationTheme>(porchlightTheme)
