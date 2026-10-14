@@ -13,12 +13,13 @@ import WaveFallback from '@/components/WaveFallback'
 import { fadeUp, staggerContainer, lineReveal, imageReveal } from '@/lib/motion'
 import type { CaseStudySection, CompareRow } from '@/types'
 
-// Porchlight, Afterglow, Wovenward and Typography Systems have their own art-directed
+// AIC, Porchlight, Afterglow, Wovenward and Typography Systems have their own art-directed
 // presentations, each loaded only on its route.
 const PorchlightCaseStudy = lazy(() => import('@/pages/PorchlightCaseStudy'))
 const AfterglowCaseStudy = lazy(() => import('@/pages/AfterglowCaseStudy'))
 const WovenwardCaseStudy = lazy(() => import('@/pages/WovenwardCaseStudy'))
 const TypographySystemsCaseStudy = lazy(() => import('@/pages/TypographySystemsCaseStudy'))
+const AicCaseStudy = lazy(() => import('@/pages/AicCaseStudy'))
 
 // Old project routes that now point to their replacements.
 const REDIRECTS: Record<string, string> = {
@@ -294,6 +295,13 @@ export default function CaseStudy() {
 
 function CaseStudyPage() {
   const { id } = useParams<{ id: string }>()
+  if (id === 'aic-museum-experience') {
+    return (
+      <Suspense fallback={<div className="min-h-[100dvh] bg-[#F6F2EB]" />}>
+        <AicCaseStudy />
+      </Suspense>
+    )
+  }
   if (id === 'porchlight') {
     return (
       <Suspense fallback={<div className="min-h-[100dvh] bg-porch-cream" />}>
