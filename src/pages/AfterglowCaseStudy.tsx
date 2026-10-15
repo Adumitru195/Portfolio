@@ -329,14 +329,7 @@ function Motion() {
     >
       <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-14">
         <div className="lg:col-span-7">
-          <DemoVideo
-            mp4={section.video.mp4}
-            webm={section.video.webm}
-            poster={section.video.poster}
-            caption={section.video.caption}
-            description={section.video.description}
-            label="motion demo"
-          />
+          <DemoVideo video={section.video} />
         </div>
         <div className="lg:col-span-5">
           <motion.ul {...revealList} className="m-0 list-none p-0">

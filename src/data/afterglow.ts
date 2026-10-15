@@ -162,6 +162,8 @@ export const afterglow: AfterglowPresentation = {
         width: 1280,
         height: 800,
       },
+      label: 'motion demo',
+      duration: 20,
       caption: 'Recorded from the prototype at 1280 × 800, about 20 seconds, with no audio.',
       description:
         'The recording shows the homepage hero entrance, the poster composition tilting with the pointer, film cards lifting on hover, then the Interstellar film page as times, a format and a date are selected and the ticket summary updates.',

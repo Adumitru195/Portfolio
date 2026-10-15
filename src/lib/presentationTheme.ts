@@ -35,6 +35,12 @@ export interface PresentationTheme {
   phoneFrame: string
   labelBefore: string
   labelAfter: string
+  /** Walkthrough player: letterbox, play badge and button colors. */
+  video: {
+    surface: string
+    badge: string
+    control: string
+  }
   showcase: {
     desktopFrame: string
     bar: string
@@ -70,6 +76,11 @@ export const porchlightTheme: PresentationTheme = {
   phoneFrame: 'bg-porch-charcoal shadow-[0_28px_50px_-28px_rgba(30,52,41,0.6)]',
   labelBefore: 'border border-porch-control bg-white text-porch-charcoal',
   labelAfter: 'bg-porch-green text-white',
+  video: {
+    surface: 'bg-porch-sunken',
+    badge: 'bg-porch-green text-porch-cream shadow-[0_12px_30px_-10px_rgba(30,52,41,0.55)]',
+    control: 'rounded-[10px] border-porch-control hover:border-porch-green hover:text-porch-green',
+  },
   showcase: {
     desktopFrame: 'bg-white shadow-[0_30px_70px_-30px_rgba(30,52,41,0.45)]',
     bar: 'bg-porch-sunken',
@@ -112,6 +123,11 @@ export const afterglowTheme: PresentationTheme = {
   phoneFrame: 'bg-glow-raised shadow-[0_28px_50px_-26px_rgba(4,6,14,0.9)]',
   labelBefore: 'border border-glow-line-strong bg-glow-surface text-glow-text',
   labelAfter: 'bg-glow-accent text-glow-ink',
+  video: {
+    surface: 'bg-glow-deep',
+    badge: 'bg-glow-accent text-glow-ink shadow-[0_12px_30px_-10px_rgba(4,6,14,0.8)]',
+    control: 'rounded-[10px] border-glow-line-strong hover:border-glow-accent hover:text-glow-accent',
+  },
   showcase: {
     desktopFrame: 'bg-glow-surface shadow-[0_30px_70px_-26px_rgba(4,6,14,0.9)]',
     bar: 'bg-glow-surface',
@@ -157,6 +173,11 @@ export const wovenwardTheme: PresentationTheme = {
   phoneFrame: 'bg-wove-ink shadow-[0_28px_50px_-28px_rgba(37,40,36,0.55)]',
   labelBefore: 'border border-wove-control bg-white text-wove-ink',
   labelAfter: 'bg-wove-indigo text-white',
+  video: {
+    surface: 'bg-wove-band',
+    badge: 'bg-wove-ink text-wove-porcelain shadow-[0_12px_30px_-10px_rgba(37,40,36,0.5)]',
+    control: 'rounded-[10px] border-wove-control hover:border-wove-indigo hover:text-wove-indigo',
+  },
   showcase: {
     desktopFrame: 'bg-white shadow-[0_30px_70px_-30px_rgba(37,40,36,0.42)]',
     bar: 'bg-wove-band',

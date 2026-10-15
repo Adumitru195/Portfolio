@@ -303,6 +303,25 @@ export const porchlight: PorchlightPresentation = {
       },
     },
   },
+  walkthrough: {
+    eyebrow: 'Walkthrough',
+    title: 'See the rental journey.',
+    body: 'The working prototype, recorded in one pass: search, filter, open a home and request a tour. The request is submitted and stays pending until it’s confirmed.',
+    video: {
+      mp4: `${base}/walkthrough.mp4`,
+      poster: {
+        src: `${base}/walkthrough-poster.webp`,
+        alt: 'Porchlight homepage with the location search, the first frame of the walkthrough',
+        width: 1600,
+        height: 1000,
+      },
+      label: 'rental journey walkthrough',
+      duration: 39,
+      caption: 'Recorded from the working prototype at 1280 × 800, about 39 seconds, with no audio.',
+      description:
+        'The recording starts on the Porchlight homepage, types Charlotte into the location search and opens the results. It sets a maximum rent of $2,500 a month, two or more bedrooms and dogs allowed, narrowing 11 homes to 3, then opens the craftsman bungalow in Plaza Midwood and scrolls to its rent summary. Request a tour opens the three-step form, where it chooses an in-person tour on Friday, October 16 at 11:00 AM, enters a demo name and an example.com email, and reviews the request, including the note that this demo request won’t contact an agent. After Submit tour request, it ends on “Tour request received.” with the Pending confirmation status and a summary of the requested appointment.',
+    },
+  },
   responsive: {
     title: 'A smaller screen gets its own rhythm.',
     body: 'Mobile is composed for the phone rather than squeezed from desktop.',

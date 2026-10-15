@@ -1,0 +1,17 @@
+{
+  "name": "portfolio-walkthroughs",
+  "private": true,
+  "type": "module",
+  "description": "Recording, poster and player-check tools for the case-study walkthrough videos. Kept separate so the site build never installs Playwright.",
+  "scripts": {
+    "record:porchlight": "node record-porchlight.mjs",
+    "record:wovenward": "node record-wovenward.mjs",
+    "record:typography": "python record-typography.py",
+    "poster": "node poster.mjs",
+    "sheet": "node contact-sheet.mjs",
+    "verify": "node verify-players.mjs"
+  },
+  "dependencies": {
+    "playwright": "1.64.1"
+  }
+}

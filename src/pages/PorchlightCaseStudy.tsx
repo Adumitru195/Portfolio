@@ -12,6 +12,7 @@ import PresentationActions from '@/components/presentation/PresentationActions'
 import ScreenImage from '@/components/presentation/ScreenImage'
 import ComparisonBlock from '@/components/presentation/ComparisonBlock'
 import PhoneLineup from '@/components/presentation/PhoneLineup'
+import WalkthroughBlock from '@/components/presentation/WalkthroughBlock'
 import { PresentationThemeContext, porchlightTheme } from '@/lib/presentationTheme'
 
 const focusRing =
@@ -334,6 +335,7 @@ function Journey() {
           )
         })}
       </div>
+      <WalkthroughBlock walkthrough={porchlight.walkthrough} className="mt-20 md:mt-28" />
     </PresentationSection>
   )
 }

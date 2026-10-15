@@ -7,6 +7,7 @@ import '@fontsource-variable/bodoni-moda/opsz-italic.css'
 import '@fontsource-variable/instrument-sans'
 import { typographySystems as content } from '@/data/typography-systems'
 import PageViewer, { useViewer } from '@/components/typography/PageViewer'
+import DemoVideo, { type DemoVideoStyles } from '@/components/presentation/DemoVideo'
 import type { BookGallery, BookPage, EditorialNote, PrintFigure, ViewerItem } from '@/types/typography'
 
 type Tone = 'paper' | 'band' | 'white' | 'ink'
@@ -702,6 +703,37 @@ function GalleryTile({ page, index, items, viewerLabel }: { page: BookPage; inde
   )
 }
 
+// The walkthrough sits on the band tone, so the player borrows its paper, rule and burgundy.
+const walkthroughStyles: DemoVideoStyles = {
+  frame: 'border border-[color:var(--t-rule)] bg-type-white shadow-[0_30px_60px_-34px_rgba(74,52,38,0.45)]',
+  surface: 'bg-type-band',
+  badge: 'bg-type-ink text-type-paper shadow-[0_12px_30px_-10px_rgba(74,52,38,0.55)]',
+  control: 'border-type-text/50 hover:border-type-burgundy hover:text-type-burgundy',
+  focusRing: 'focus-visible:ring-[color:var(--t-accent)] focus-visible:ring-offset-type-band',
+  muted,
+}
+
+function Walkthrough() {
+  const { walkthrough } = content
+  return (
+    <article
+      aria-labelledby="publication-walkthrough-title"
+      className={`mb-20 grid grid-cols-1 gap-8 border-t ${rule} pt-10 md:mb-28 lg:grid-cols-12 lg:gap-14`}
+    >
+      <Reveal className="lg:col-span-4">
+        <p className={`${eyebrow} mb-4 ${accent}`}>{walkthrough.eyebrow}</p>
+        <h3 id="publication-walkthrough-title" className={`${display} m-0 mb-5 text-3xl leading-tight md:text-4xl`}>
+          {walkthrough.title}
+        </h3>
+        <p className={`m-0 max-w-[58ch] leading-relaxed ${muted}`}>{walkthrough.body}</p>
+      </Reveal>
+      <div className="lg:col-span-8">
+        <DemoVideo video={walkthrough.video} styles={walkthroughStyles} />
+      </div>
+    </article>
+  )
+}
+
 function ExploreBooks() {
   const [book1, book2] = content.books
   return (
@@ -713,6 +745,7 @@ function ExploreBooks() {
       title="Explore the books"
       intro={`Every page of both books, in its original order. Select a page to enlarge it. ${content.pageCountNote}`}
     >
+      <Walkthrough />
       <Gallery book={book1} download={content.downloads[1]} />
       <Gallery book={book2} download={content.downloads[2]} />
     </Section>

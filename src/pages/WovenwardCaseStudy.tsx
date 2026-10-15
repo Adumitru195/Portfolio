@@ -11,6 +11,7 @@ import PresentationActions from '@/components/presentation/PresentationActions'
 import PresentationSection from '@/components/presentation/PresentationSection'
 import PhoneLineup from '@/components/presentation/PhoneLineup'
 import ZoomFigure from '@/components/presentation/ZoomFigure'
+import WalkthroughBlock from '@/components/presentation/WalkthroughBlock'
 import { fadeUp, staggerContainer } from '@/lib/motion'
 import { PresentationThemeContext, wovenwardTheme } from '@/lib/presentationTheme'
 import type { FeatureNote } from '@/types/presentation'
@@ -329,6 +330,7 @@ function Bag() {
       <div className="mt-8">
         <Notes notes={bag.bagNotes} columns={2} />
       </div>
+      <WalkthroughBlock walkthrough={wovenward.walkthrough} className="mt-20 md:mt-28" />
     </PresentationSection>
   )
 }

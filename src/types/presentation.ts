@@ -9,6 +9,31 @@ export interface PresentationImage {
   small?: string
 }
 
+/** A silent screen recording or publication walkthrough with its poster. */
+export interface WalkthroughVideo {
+  /** H.264 MP4, the primary source. */
+  mp4: string
+  /** Optional WebM fallback, offered after the MP4. */
+  webm?: string
+  poster: PresentationImage
+  /** Names the recording in button labels, e.g. "Play rental journey walkthrough". */
+  label: string
+  /** Length in seconds, shown before the file has loaded. */
+  duration: number
+  /** What it shows, its approximate length, and whether it has audio. */
+  caption: string
+  /** Text alternative describing the full sequence. */
+  description: string
+}
+
+/** A titled walkthrough block placed after the flow it demonstrates. */
+export interface WalkthroughSection {
+  eyebrow: string
+  title: string
+  body: string
+  video: WalkthroughVideo
+}
+
 export interface MetaItem {
   label: string
   value: string
@@ -105,6 +130,7 @@ export interface PorchlightPresentation {
       avoided: { label: string; items: string[] }
     }
   }
+  walkthrough: WalkthroughSection
   responsive: {
     title: string
     body: string
@@ -183,13 +209,7 @@ export interface AfterglowPresentation {
   motion: {
     title: string
     body: string
-    video: {
-      mp4: string
-      webm: string
-      poster: PresentationImage
-      caption: string
-      description: string
-    }
+    video: WalkthroughVideo
     effects: MotionEffect[]
     reducedMotion: string
   }
@@ -285,6 +305,7 @@ export interface WovenwardPresentation {
     bag: PresentationImage
     bagNotes: FeatureNote[]
   }
+  walkthrough: WalkthroughSection
   responsive: {
     title: string
     body: string

@@ -262,6 +262,25 @@ export const wovenward: WovenwardPresentation = {
       },
     ],
   },
+  walkthrough: {
+    eyebrow: 'Walkthrough',
+    title: 'From browsing to bag.',
+    body: 'The shop prototype, recorded in one pass: filter by an available size, check the fit, choose that size and review it in the bag.',
+    video: {
+      mp4: `${base}/walkthrough.mp4`,
+      poster: {
+        src: `${base}/walkthrough-poster.webp`,
+        alt: 'Wovenward All clothing page with category and size filters, the first frame of the walkthrough',
+        width: 1600,
+        height: 1000,
+      },
+      label: 'shopping walkthrough',
+      duration: 27,
+      caption: 'Recorded from the working prototype at 1280 × 800, about 27 seconds, with no audio.',
+      description:
+        'The recording starts on All clothing and checks size L under Size in stock, which narrows 12 pieces to 10 by leaving out pieces where L is sold out. It opens the Mock-Neck Jumper, then the size guide, scrolling through the garment and body measurements in centimeters before closing it. It selects size L and adds the jumper to the bag, and the Added to your bag dialog confirms color, size, quantity and price. View bag ends on the bag page: one Mock-Neck Jumper in Oat, size L, at $128, with the note that checkout is unavailable in this concept store.',
+    },
+  },
   responsive: {
     title: 'Clear decisions on smaller screens.',
     body: 'The collection stays scannable, while product actions remain close to the selection.',

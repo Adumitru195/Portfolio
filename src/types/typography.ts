@@ -1,5 +1,7 @@
 // Shapes for the Typography Systems presentation: print artwork rendered from PDFs.
 
+import type { WalkthroughSection } from '@/types/presentation'
+
 /** A piece of print artwork with an inline (md) source and a larger source for the enlarged view. */
 export interface PrintFigure {
   src: string
@@ -143,5 +145,6 @@ export interface TypographySystemsPresentation {
   }
   books: BookGallery[]
   pageCountNote: string
+  walkthrough: WalkthroughSection
   downloads: DownloadLink[]
 }

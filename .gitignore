@@ -5,3 +5,6 @@ dist
 .DS_Store
 *.local
 .claude/settings.local.json
+
+# Walkthrough tools: frames, reviews and player-check reports
+scripts/walkthroughs/.output/

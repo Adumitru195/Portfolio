@@ -401,6 +401,25 @@ export const typographySystems: TypographySystemsPresentation = {
       pages: book2Pages,
     },
   ],
+  walkthrough: {
+    eyebrow: 'Publication walkthrough',
+    title: 'Explore the editorial system.',
+    body: 'A paced look through original spreads from both books, then close views where the type can be read.',
+    video: {
+      mp4: `${base}/walkthrough.mp4`,
+      poster: {
+        src: `${base}/walkthrough-poster.webp`,
+        alt: 'Book 1 spread with the department name set vertically and the description on a diagonal, the poster for the publication walkthrough',
+        width: 1600,
+        height: 1000,
+      },
+      label: 'publication walkthrough',
+      duration: 35,
+      caption: 'Publication walkthrough built from the original book PDFs, about 35 seconds, with no audio. It is a paced view of the printed pages, not an interactive product demo.',
+      description:
+        'The walkthrough shows full compositions first. From Book 1, the Sekisui House Kuma Lab lecture series: the cover, the spread of two aligned compositions, the spread with diagonal and vertical type, and the blue-field spread with its pink block. From ONE-X: the front cover, the Adam Gontier and Barry Stock spread, the Matt Walst and The Five Voices spread, and the lyric spread for “I Hate Everything About You” and “Animal I Have Become.” It closes with three readable detail views: Book 1’s diagonal description beside its vertical department name, the “I Hate Everything About You” title and lyric introduction, and The Five Voices title with its numbered list of members and roles. Pages change with gentle crossfades, with no pans or zooms.',
+    },
+  },
   pageCountNote:
     'Counts refer to pages in each PDF. Most PDF pages are two-page spreads, so they do not match the printed page numbers.',
   downloads: [
