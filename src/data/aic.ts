@@ -49,6 +49,18 @@ export interface JourneyStage {
   body: string
 }
 
+export interface MockupCard {
+  label: string
+  title: string
+  body: string
+}
+
+export interface EvaluationRow {
+  measure: string
+  initial: string
+  revised: string
+}
+
 export interface DirectionRow {
   theme: string
   response: string
@@ -237,25 +249,93 @@ export const aic = {
     framing: 'For this case study, warm paper, fine rules and generous spacing frame the original work. Burgundy marks important ideas without competing with the screenshots.',
   },
 
+  // Individual follow-up to the team project. The mockups are rebuilt in HTML
+  // from the case study PDF so they stay sharp and readable.
+  revised: {
+    label: 'Revised concept',
+    kicker: 'Individual follow-up exploration',
+    title: 'A clearer path into the visit.',
+    body: 'Follow-up mockups explore clearer access, event discovery and optional collecting. These revisions are design hypotheses; they have not been tested.',
+    brand: 'AIC / Museum experience',
+    access: {
+      label: 'Guest access',
+      title: 'Your visit, your way.',
+      body: 'Discover events and keep a memory of your visit.',
+      primary: 'Continue as guest',
+      secondary: 'Log in / Sign up',
+      note: 'Explore first. An account is optional.',
+    },
+    events: {
+      label: 'Event discovery',
+      title: 'Upcoming events',
+      filters: ['Today', 'This week', 'All events'],
+      items: [
+        { date: 'Mar 05, 2026 / 2:00 PM', title: 'Gallery highlights' },
+        { date: 'Mar 12, 2026 / 5:00 PM', title: 'Art after hours' },
+      ],
+      action: 'View details',
+      nav: ['Events', 'Explore', 'My visit'],
+    },
+    keepsake: {
+      label: 'Optional collecting',
+      title: 'A memory to keep.',
+      body: 'Save a digital keepsake from your visit. Browse the museum without collecting anything.',
+      primary: 'Explore keepsakes',
+      secondary: 'Skip for now',
+      note: 'Concept content / not a live service',
+    },
+    rationale: [
+      { title: 'Make entry visible', body: 'I brought guest access forward and reduced the introduction so visitors can reach useful content earlier.' },
+      { title: 'Separate navigation roles', body: 'I grouped date filters with events, labeled primary navigation and placed text on a quiet background.' },
+      { title: 'Explain the value first', body: 'I explored a simpler keepsake instead of leading with NFTs. Whether visitors want this still needs testing.' },
+    ] satisfies AicPoint[],
+  },
+
+  // Fictional practice data from the PDF. Every place it appears must say so.
+  evaluation: {
+    label: 'Simulated evaluation',
+    kicker: 'Personal practice / not observed results',
+    title: 'How the revision could be evaluated.',
+    banner: 'Simulated practice data: fictional results, not observed user testing.',
+    method: 'Hypothetical rounds: 10 participants per version. No sessions were conducted for this exercise.',
+    caption: 'Simulated results for the initial and revised concepts',
+    columns: { measure: 'Measure', initial: 'Initial concept', revised: 'Revised concept' },
+    rows: [
+      { measure: 'Find an event and identify its date without help', initial: '6/10 (60%)', revised: '9/10 (90%)' },
+      { measure: 'Median time to find an event', initial: '95 seconds', revised: '52 seconds' },
+      { measure: 'Enter through guest access without help', initial: '7/10 (70%)', revised: '9/10 (90%)' },
+      { measure: 'Correctly explain digital collecting', initial: '4/10 (40%)', revised: '8/10 (80%)' },
+      { measure: 'Average task-ease rating (1–7)', initial: '4.1/7', revised: '5.8/7' },
+    ] satisfies EvaluationRow[],
+    highlights: [
+      { value: '+30 percentage points', label: 'Simulated event-finding success: 60% to 90%.' },
+      { value: '45% less time', label: 'Simulated median task time: 95 to 52 seconds.' },
+    ],
+    note: 'Illustrative reporting only. These figures do not establish conversion, attendance, revenue or adoption gains. No statistical significance or causal effect is claimed. Replace them with observed results after testing.',
+  },
+
   nextIteration: {
     label: 'Next iteration',
     kicker: 'A more focused next step',
-    title: 'Polish the decisions, then test the experience.',
+    title: 'Test the decisions against real behavior.',
     items: [
-      { title: 'Reduce competing navigation', body: 'The screens show a top category row and bottom icon navigation. I would clarify their separate roles and make the current location explicit.' },
-      { title: 'Improve reading contrast', body: 'Sculpture imagery sits behind interface text. I would test quieter image treatment, text contrast and readable type sizes.' },
-      { title: 'Check content accuracy', body: 'The event list includes February 29, 2026, which is not a valid date. I would audit dates, labels, spelling and sample data before testing.' },
-      { title: 'Test the core value first', body: 'I would ask people to find an event, explain guest access and share a visit. Collecting would be tested as an optional extension.' },
+      { title: 'Evaluate event discovery', body: 'Ask visitors to find an event and identify its date without help. Define success before testing, and record independent completion separately from completion with assistance.' },
+      { title: 'Check guest access', body: 'Ask visitors to enter without creating an account. Observe whether the revised entry screen makes the option clear, and record wrong turns or requests for help.' },
+      { title: 'Check collecting comprehension', body: 'Ask visitors to explain digital collecting in their own words. Test whether the keepsake framing is understandable and whether it adds value to a museum visit.' },
+      { title: 'Measure consistently', body: 'Use comparable tasks and conditions across versions. Time tasks consistently, then ask for an ease rating from 1 (very difficult) to 7 (very easy). Record comments and problems.' },
     ] satisfies AicPoint[],
-    note: 'These are proposed next steps. No usability testing or adoption results are part of this project.',
+    note: 'Follow-up mockups are complete. Real usability testing and observed outcome measurements remain the next step.',
   },
 
   outcome: {
     label: 'Outcome + reflection',
     kicker: 'What I take forward',
     title: 'Useful technology starts with a clear need.',
-    lead: 'I contributed interviews, response review, journey mapping, Figma screens and presentation slides to a team research and concept project.',
-    body: 'The strongest part of the work is the research story: time, cost and coordination can shape the visit before anyone reaches a gallery. The next step is to test whether our concept actually reduces that friction.',
+    lead: 'I contributed interviews, response review, journey mapping, Figma screens and presentation slides to the original team research and concept project.',
+    body: [
+      'Time, cost and coordination shaped the research story. In this follow-up, I explored clearer guest access, event browsing and an optional keepsake experience.',
+      'The simulated evaluation helps me practice defining and reporting measures. Actual testing is still needed to understand whether the changes reduce friction.',
+    ],
     closing: ['Research informs the direction.', 'Testing has to earn the claims.'],
     recordLabel: 'Project record',
     record: ['Academic group project', 'DePaul University', 'UXD 260: Research & Evaluation', 'Spring 2026'],
@@ -264,11 +344,11 @@ export const aic = {
       'Our team’s research presentation: method, journey, principles and interface rationale.',
       'The original 26-page screen export, which includes light and dark versions of the same flows.',
     ],
-    affiliation: 'Screen artwork and institutional branding are shown as part of the original academic concept. No official affiliation is implied.',
+    affiliation: 'Original artwork and branding are shown as academic concept work. No official affiliation is implied. Follow-up mockups and simulated data are a personal practice extension.',
     pdf: {
       href: `${base}/aic-museum-experience-case-study.pdf`,
       label: 'Download case study PDF',
-      detail: '12 pages · 4.7 MB',
+      detail: '14 pages · 4.7 MB',
     },
   },
 }

@@ -439,10 +439,131 @@ function Visual() {
   )
 }
 
+// The follow-up mockups, drawn in HTML as quiet paper cards. Buttons are
+// rendered as static shapes: these are pictures of a concept, not controls.
+const mockButton = 'flex min-h-10 items-center justify-center rounded-md px-4 text-sm'
+const mockPrimary = `${mockButton} bg-[#842C3B] text-[#F6F2EB]`
+
+function Mockup({ index, name, children }: { index: number; name: string; children: ReactNode }) {
+  return (
+    <figure className="m-0">
+      <figcaption className={`${label} mb-4`}>{number(index)} / {name}</figcaption>
+      <div className="flex min-h-[19rem] flex-col rounded-2xl border border-[#27231F]/40 bg-[#F6F2EB] p-5 shadow-[0_26px_50px_-34px_rgba(81,38,50,0.45)] sm:p-6">
+        <p className="mb-5 mt-0 text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-[#842C3B]">{aic.revised.brand}</p>
+        {children}
+      </div>
+    </figure>
+  )
+}
+
+function Revised() {
+  const { revised } = aic
+  const { access, events, keepsake } = revised
+  return (
+    <Section id="revised" index={9} name={revised.label} kicker={revised.kicker} title={revised.title} tone="alt">
+      <Reveal><p className={`${body} m-0 text-[#27231F]`}>{revised.body}</p></Reveal>
+      <div className="mt-14 grid grid-cols-1 gap-x-8 gap-y-16 md:grid-cols-2 lg:grid-cols-3">
+        {[
+          <Mockup key="access" index={0} name={access.label}>
+            <h3 className={`${serif} m-0 text-3xl leading-tight`}>{access.title}</h3>
+            <p className="mb-6 mt-3 leading-relaxed text-[#615A51]">{access.body}</p>
+            <div className="mt-auto space-y-3">
+              <span className={mockPrimary}>{access.primary}</span>
+              <span className={`${mockButton} border border-[#D6CBBC] bg-white/60`}>{access.secondary}</span>
+              <p className="m-0 pt-1 text-xs text-[#615A51]">{access.note}</p>
+            </div>
+          </Mockup>,
+          <Mockup key="events" index={1} name={events.label}>
+            <h3 className={`${serif} m-0 text-3xl leading-tight`}>{events.title}</h3>
+            <ul aria-label="Date filters" className="m-0 mt-4 flex list-none flex-wrap items-center gap-2 p-0 text-xs">
+              {events.filters.map((filter, index) => (
+                <li key={filter} className={index === 0 ? 'rounded bg-[#842C3B] px-2.5 py-1.5 text-[#F6F2EB]' : 'px-1.5 py-1.5 text-[#615A51]'}>{filter}</li>
+              ))}
+            </ul>
+            <ul className="m-0 mt-4 list-none space-y-4 p-0">
+              {events.items.map((item) => (
+                <li key={item.title} className="grid grid-cols-[1fr_auto] items-end gap-x-3">
+                  <span className="col-span-2 text-[0.6875rem] uppercase tracking-[0.08em] text-[#842C3B]">{item.date}</span>
+                  <span className={`${serif} text-2xl leading-tight`}>{item.title}</span>
+                  <span className="pb-1 text-xs text-[#842C3B]">{events.action}</span>
+                </li>
+              ))}
+            </ul>
+            <ul aria-label="Primary navigation" className="m-0 mt-auto flex list-none gap-5 border-t border-[#D6CBBC] p-0 pt-3 text-sm text-[#842C3B]">
+              {events.nav.map((item) => <li key={item}>{item}</li>)}
+            </ul>
+          </Mockup>,
+          <Mockup key="keepsake" index={2} name={keepsake.label}>
+            <h3 className={`${serif} m-0 text-3xl leading-tight`}>{keepsake.title}</h3>
+            <p className="mb-6 mt-3 leading-relaxed text-[#615A51]">{keepsake.body}</p>
+            <div className="mt-auto space-y-2">
+              <span className={mockPrimary}>{keepsake.primary}</span>
+              <span className={`${mockButton} text-[#842C3B]`}>{keepsake.secondary}</span>
+              <p className="m-0 pt-1 text-xs text-[#615A51]">{keepsake.note}</p>
+            </div>
+          </Mockup>,
+        ].map((mockup, index) => {
+          const reason = revised.rationale[index]
+          return (
+            <Reveal key={reason.title} className={index === 1 ? 'lg:mt-10' : ''}>
+              {mockup}
+              <h4 className={`${serif} mb-2 mt-8 text-2xl leading-tight`}>{reason.title}</h4>
+              <p className="m-0 max-w-[44ch] leading-relaxed text-[#615A51]">{reason.body}</p>
+            </Reveal>
+          )
+        })}
+      </div>
+    </Section>
+  )
+}
+
+function Evaluation() {
+  const { evaluation } = aic
+  const { columns } = evaluation
+  return (
+    <Section id="evaluation" index={10} name={evaluation.label} kicker={evaluation.kicker} title={evaluation.title} tone="base">
+      <Reveal>
+        <p className="m-0 rounded-md bg-[#842C3B]/10 px-4 py-4 text-lg font-medium text-[#842C3B] md:px-6">{evaluation.banner}</p>
+        <p className="mb-0 mt-4 text-[#615A51]">{evaluation.method}</p>
+      </Reveal>
+      <Reveal className="mt-10">
+        <table className="w-full table-fixed border-collapse text-left">
+          <caption className="sr-only">{evaluation.caption}</caption>
+          <thead>
+            <tr className={`${label} border-b border-[color:var(--pres-border)]`}>
+              <th scope="col" className="w-[46%] pb-3 pr-3 font-semibold md:w-[56%]">{columns.measure}</th>
+              <th scope="col" className="pb-3 pr-3 font-semibold">{columns.initial}</th>
+              <th scope="col" className="pb-3 font-semibold">{columns.revised}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {evaluation.rows.map((row) => (
+              <tr key={row.measure} className="border-b border-[color:var(--pres-border)] align-top">
+                <th scope="row" className="py-4 pr-3 font-normal leading-snug md:text-lg">{row.measure}</th>
+                <td className="py-4 pr-3 leading-snug md:text-lg">{row.initial}</td>
+                <td className="py-4 leading-snug text-[#842C3B] md:text-lg">{row.revised}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </Reveal>
+      <dl className="m-0 mt-12 grid grid-cols-1 gap-10 md:grid-cols-2">
+        {evaluation.highlights.map((item) => (
+          <Reveal key={item.value} className="flex flex-col-reverse">
+            <dt className="mt-2 text-[#615A51]">{item.label}</dt>
+            <dd className={`${serif} m-0 text-4xl leading-tight text-[#842C3B] md:text-5xl`}>{item.value}</dd>
+          </Reveal>
+        ))}
+      </dl>
+      <Note>{evaluation.note}</Note>
+    </Section>
+  )
+}
+
 function NextIteration() {
   const { nextIteration } = aic
   return (
-    <Section id="next-iteration" index={9} name={nextIteration.label} kicker={nextIteration.kicker} title={nextIteration.title} tone="alt">
+    <Section id="next-iteration" index={11} name={nextIteration.label} kicker={nextIteration.kicker} title={nextIteration.title} tone="alt">
       <NumberedPoints items={nextIteration.items} columns="md:grid-cols-2" />
       <Note>{nextIteration.note}</Note>
     </Section>
@@ -452,11 +573,13 @@ function NextIteration() {
 function Outcome() {
   const { outcome } = aic
   return (
-    <Section id="outcome" index={10} name={outcome.label} kicker={outcome.kicker} title={outcome.title} tone="accent">
+    <Section id="outcome" index={12} name={outcome.label} kicker={outcome.kicker} title={outcome.title} tone="accent">
       <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-10">
         <Reveal className="lg:col-span-7">
           <p className="m-0 max-w-[40ch] text-2xl leading-snug">{outcome.lead}</p>
-          <p className="mb-0 mt-8 max-w-[58ch] text-lg leading-relaxed text-[#E6D6D5]">{outcome.body}</p>
+          {outcome.body.map((paragraph) => (
+            <p key={paragraph} className="mb-0 mt-8 max-w-[58ch] text-lg leading-relaxed text-[#E6D6D5]">{paragraph}</p>
+          ))}
           <p className={`${serif} mb-0 mt-14 text-3xl leading-snug md:text-4xl`}>
             {outcome.closing.map((line) => <span key={line} className="block">{line}</span>)}
           </p>
@@ -502,6 +625,8 @@ export default function AicCaseStudy() {
           <Discovery />
           <Collecting />
           <Visual />
+          <Revised />
+          <Evaluation />
           <NextIteration />
           <Outcome />
         </main>
