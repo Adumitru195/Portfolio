@@ -9,14 +9,17 @@ import type { HeroGeometry } from '@/lib/heroTilesLayout'
 
 /**
  * Three.js scene for the homepage hero: softly rounded software tiles that
- * drift right to left in three loose streams beside the headline.
+ * drift slowly left to right in four loose lanes around the headline, with
+ * a gentle bob and tilt.
  *
  * Positions come from `laneTiles`, the same layout the static composition
  * uses, so the hand-off from the still frame is seamless.
  *
  * Performance:
- *  - Renders on demand at ~30 fps, and only while `running` is true. When it
- *    is false no animation frames are requested at all.
+ *  - Movement follows elapsed time, so speed is the same at any frame rate.
+ *  - Renders on demand at ~30 fps, only while `running` is true (hero on
+ *    screen, tab visible, no reduced-motion preference). Otherwise no
+ *    animation frames are requested; a resize still redraws once.
  *  - One shared tile geometry, small canvas textures, Lambert shading and a
  *    pre-blurred shadow sprite instead of real-time shadow maps.
  *  - Device pixel ratio capped at 1.5.
@@ -40,7 +43,7 @@ const TILE_DEPTH = 0.12
 const BEVEL = 0.05
 const CORNER = 0.24
 
-const ICON_IDS: HeroTileIconId[] = ['figma', 'illustrator', 'photoshop', 'vscode', 'react']
+const ICON_IDS: HeroTileIconId[] = ['figma', 'illustrator', 'photoshop', 'vscode', 'react', 'github', 'expo']
 
 type IconTextures = Record<HeroTileIconId, THREE.Texture>
 
@@ -135,7 +138,7 @@ function Tiles({ geometry, textures, clock, onFirstFrame }: TilesProps) {
   const geometryRef = useRef(geometry)
   geometryRef.current = geometry
 
-  // Re-render once when the measured layout changes, even while paused.
+  // Re-render once when the measured layout changes, even while stopped.
   useEffect(() => invalidate(), [geometry, invalidate])
 
   const tileGeometry = useMemo(createTileGeometry, [])
@@ -269,8 +272,9 @@ function Tiles({ geometry, textures, clock, onFirstFrame }: TilesProps) {
   )
 }
 
-// Drives on-demand rendering at ~30 fps. While `running` is false the loop
-// is cancelled, so no frames are requested.
+// Drives on-demand rendering at ~30 fps, advancing the scene clock by the
+// real time elapsed. While `running` is false the loop is cancelled, no
+// frames are requested, and the tiles wait where they are.
 function Driver({ running, clock }: { running: boolean; clock: MutableRefObject<number> }) {
   const invalidate = useThree((state) => state.invalidate)
   useEffect(() => {
@@ -317,8 +321,11 @@ export default function HeroTilesScene({ geometry, running, onReady, onFail }: H
           list.forEach((texture) => texture.dispose())
           return
         }
-        const [figma, illustrator, photoshop, vscode, react] = list
-        setTextures({ figma, illustrator, photoshop, vscode, react })
+        const textures = {} as IconTextures
+        ICON_IDS.forEach((id, i) => {
+          textures[id] = list[i]
+        })
+        setTextures(textures)
       })
       .catch(() => {
         if (!controller.signal.aborted) callbacks.current.onFail()

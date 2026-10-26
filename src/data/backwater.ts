@@ -70,7 +70,7 @@ export const backwater = {
     eyebrow: 'A personal interest. A released product.',
     title: 'Backwater Journal',
     tagline: 'Every catch has a story.',
-    lede: 'An independent iOS app I designed, built and released. It connects personal catch records, nearby discovery and an angler community.',
+    lede: 'An independent iOS app I shaped, designed, built and released. It connects trip preparation, catch records, nearby discovery and an angler community.',
     roleLabel: 'My role',
     role: 'Founder, product designer and mobile app developer',
     meta: [
@@ -95,12 +95,12 @@ export const backwater = {
     kicker: 'From fishing interest to product',
     title: 'I took the idea beyond the mockup.',
     body: [
-      'Fishing gave me a reason to build something of my own. I designed and developed Backwater Journal as an iOS product, bringing its screens, navigation and supporting services into a working app.',
-      'Owning the whole product meant every design decision also had to be built, released and maintained. That made me think about the experience as a set of connected jobs rather than a collection of screens.',
+      'Fishing gave me a reason to build something of my own. Backwater Journal brings a trip together: checking conditions before going out, recording catches, finding places nearby and sharing with other anglers.',
+      'I shaped the product, designed the interface, developed the iOS app and released it. Because every design decision also had to be built and maintained, I treated the app as connected jobs rather than separate screens.',
     ],
     roles: [
       { title: 'Product direction', body: 'I shaped the experience around logging, discovery, community and fishing gear, and decided how those parts relate to each other.' },
-      { title: 'Interface + implementation', body: 'I worked across visual design and mobile development rather than stopping at static screens.' },
+      { title: 'Interface + implementation', body: 'I took the design through to a working mobile app rather than stopping at static screens.' },
       { title: 'Release + refinement', body: 'I released the app on the App Store and continued it through a documented update that rebuilt Explore.' },
     ] satisfies BwPoint[],
     facts: [
@@ -191,7 +191,7 @@ export const backwater = {
       label: 'Explore',
       kicker: 'The map as the main workspace',
       title: 'Make discovery easier to act on.',
-      intro: 'Explore was rebuilt in version 1.1.0. The current screen leads with the map, then places search, species filters and saved access above it.',
+      intro: 'The current Explore screen leads with the map, then places search, species filters and saved access above it.',
       screens: [
         { label: 'Explore / current', caption: 'Map-first, with a Fishing spots panel above the navigation.', image: backwaterScreens.explore },
       ],
@@ -202,7 +202,6 @@ export const backwater = {
       ],
       evidence: [
         'The Fishing spots panel shows Skokie Lagoon with a distance, the species listed for it, and Public access and Community spot labels, while the surrounding map stays visible behind it.',
-        'The 1.1.0 notes describe Explore as rebuilt with improved fishing spot discovery, catch activity, saved fishing spots, weather and fishing conditions, and better map interactions.',
       ],
       next: 'Can someone find, open and save a spot on their first try? And how do people interpret labels like Public access?',
     },
@@ -225,7 +224,7 @@ export const backwater = {
         'Species illustrations are labelled in the app as AI artwork, with species data credited to FishBase.',
       ],
       next: 'Does the Uncaught view give people a reason to keep logging, or does it add clutter for casual anglers?',
-      note: 'The counts belong to an example account. They are not evidence of app adoption or product performance.',
+      note: 'As in the Dock, these counts come from an example account.',
     },
     {
       id: 'market',
@@ -263,14 +262,14 @@ export const backwater = {
       image: backwaterScreens.explore,
     },
     changes: [
-      { title: 'Search scope', body: 'The search field changed from “Search lakes, rivers, spots, @angle…” (truncated in the screenshot) to “Search waters, spots and catches”.' },
-      { title: 'Filters', body: 'Icon-only filter and layer buttons beside the search became labelled Species, Filters and Saved chips, with map controls stacked on the map.' },
-      { title: 'Selected spot', body: 'A bottom sheet with All, Fish Activity, Conditions and Species chips became a Fishing spots panel listing distance, species and access labels.' },
+      { title: 'Search scope', body: 'The search field changed from “Search lakes, rivers, spots, @angle…” to “Search waters, spots and catches”.' },
+      { title: 'Filters', body: 'Icon-only buttons beside search, plus a row of chips at the bottom (All, Fish Activity, Conditions, Species and more), became labelled Species, Filters and Saved chips directly under search.' },
+      { title: 'Selected spot', body: 'The bottom sheet became a compact Fishing spots panel listing distance, species and access labels.' },
     ] satisfies BwPoint[],
     reasonLabel: 'Documented reason',
     reason: '“Explore has been rebuilt with improved fishing spot discovery, catch activity, saved fishing spots, weather and fishing conditions, and better map interactions.”',
     reasonSource: 'Version 1.1.0 release notes, App Store',
-    reading: 'My reading, as design intent: naming the filters and putting Saved in view makes the main ways to narrow the map visible without opening a menu. The release notes do not record a measured outcome for this change.',
+    reading: 'A July 2026 development audit documented the earlier Explore controls. With the rebuild, I wanted the main ways to narrow the map in one place, under search, named rather than shown as icons. No user feedback is documented for this change, and it is untested with people.',
   },
 
   marketBoundary: {
@@ -293,7 +292,7 @@ export const backwater = {
       { title: 'Reliability', body: 'Privacy, performance and reliability improvements.' },
     ] satisfies BwPoint[],
     verified: 'Checked against the App Store version history on October 14, 2026: 1.1.0 is the latest version.',
-    note: 'These are documented release changes. They do not establish improved task completion, retention or user satisfaction.',
+    note: 'These are documented release changes, not measured improvements.',
   },
 
   visual: {
@@ -318,13 +317,13 @@ export const backwater = {
 
   trust: {
     label: 'Trust + evaluation',
-    kicker: 'Trust is part of the product',
-    title: 'Sensitive places. Shared content. Real people.',
+    kicker: 'The tradeoff I designed around',
+    title: 'Useful to others. Careful with places.',
     items: [
-      { title: 'Location deserves care', body: 'The published privacy policy describes location-based features and says location permissions are controlled in device settings. It also warns that sharing exact catch locations can be sensitive, so clear sharing choices matter.' },
-      { title: 'Personal records and public posts', body: 'A catch log is a personal record; a Dock post shares it with others. The privacy policy says what other people can see depends on app settings and feature design, which is why I want to test whether people understand what a post reveals.' },
-      { title: 'Community needs controls', body: 'Published support describes in-app reporting and blocking for listings, messages and accounts.' },
-      { title: 'Support needs a clear path', body: 'Public support covers bug reports, account questions, privacy and deletion requests, and marketplace safety concerns.' },
+      { title: 'The tension', body: 'Shared catches make Explore more useful by showing what is being caught nearby. But the privacy policy warns that sharing exact catch locations can be sensitive.' },
+      { title: 'Map sharing, as built', body: 'Checked against the 1.1.0 source, not the App Store build: a catch appears on the Explore map only if it is Public and its angler turns on Show on Explore map, which starts off. The map then shows it rounded to about 1 km.' },
+      { title: 'What still needs evidence', body: 'Photo metadata and place labels can point to a spot too. My source changes for both since 1.1.0 are not in a verified release and do not alter photos already uploaded. I also want to test what people think a shared post reveals.' },
+      { title: 'Controls and support', body: 'Published support describes reporting and blocking for listings, messages and accounts, and a path for privacy and deletion requests.' },
     ] satisfies BwPoint[],
     tasksLabel: 'Proposed evaluation tasks',
     tasks: [
@@ -335,16 +334,16 @@ export const backwater = {
     ],
     checksLabel: 'Also on real devices',
     checks: 'Readability outdoors in bright light, VoiceOver and larger text sizes.',
-    note: 'No usability testing has been reported for this case study. No tester counts, usability scores, adoption figures or measured outcomes are included.',
+    note: 'No usability testing has been done yet, so this case study includes no tester counts, scores or measured outcomes.',
   },
 
   outcome: {
     label: 'Outcome + reflection',
     kicker: 'From idea to an ongoing product',
     title: 'Shipping the app was a beginning.',
-    delivered: 'I brought Backwater Journal through product design and mobile development into a released iOS app, then continued it through an update that rebuilt Explore and strengthened catch logging.',
-    next: 'The product connects records, maps, community and marketplace tools to different parts of fishing. My next step is to evaluate how clearly people can move between those experiences, starting with the tasks above.',
-    closing: ['Keep the product useful.', 'Let evidence guide the next change.'],
+    delivered: 'I took Backwater Journal from an idea to a released iOS app, then rebuilt Explore and strengthened catch logging in 1.1.0.',
+    next: 'Explore taught me the most. The earlier screen split its filters between unlabelled icons at the top and chips at the bottom. Gathering them under search, with plain names, showed me that clarity often comes from placing a choice beside what it changes. Testing that with people, starting with the tasks above, comes next.',
+    closing: ['Name the choices.', 'Then test them with people.'],
     sourcesLabel: 'Source record · October 14, 2026',
     sources: [
       { label: 'Website', detail: 'Current product descriptions and screens', href: sources.website },
@@ -355,7 +354,7 @@ export const backwater = {
     pdf: {
       href: `${base}/backwater-journal-case-study.pdf`,
       label: 'Download case study PDF',
-      detail: '12 pages · 3.9 MB',
+      detail: '13 pages · 4.4 MB',
     },
   },
 }

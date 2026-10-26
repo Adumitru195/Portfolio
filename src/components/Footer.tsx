@@ -2,9 +2,48 @@ import { ArrowUpRight } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
 import { footer } from '@/data/contact'
 import { useSiteNavigation } from '@/hooks/useSiteNavigation'
+import { useSystemReduceMotion, useUserReduceMotion } from '@/hooks/useReducedMotionPreference'
+import { setUserReduceMotion } from '@/lib/motionPreference'
 
 const focusRing =
   'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
+
+/**
+ * Stops the site's decorative motion (floating tiles, 3D illustrations,
+ * entrance movement) and remembers the choice on this device. When the
+ * system already asks for reduced motion it shows as on and can't be
+ * turned off here.
+ */
+function ReduceMotionToggle() {
+  const user = useUserReduceMotion()
+  const system = useSystemReduceMotion()
+  const on = user || system
+
+  return (
+    <button
+      type="button"
+      aria-pressed={on}
+      disabled={system}
+      onClick={() => setUserReduceMotion(!user)}
+      className={`group inline-flex items-center gap-2.5 py-3 sm:py-1.5 text-sm text-text-secondary enabled:hover:text-text-primary transition-colors duration-200 rounded-sm disabled:cursor-default ${focusRing}`}
+    >
+      <span
+        aria-hidden="true"
+        className={`relative h-4 w-7 shrink-0 rounded-full border transition-colors duration-200 ${
+          on ? 'border-accent bg-accent' : 'border-lavender-line bg-white'
+        }`}
+      >
+        <span
+          className={`absolute left-0.5 top-1/2 h-2.5 w-2.5 -translate-y-1/2 rounded-full transition-transform duration-200 ${
+            on ? 'translate-x-3 bg-white' : 'translate-x-0 bg-text-muted'
+          }`}
+        />
+      </span>
+      {footer.reduceMotion.label}
+      {system && <span className="text-text-muted">({footer.reduceMotion.systemNote})</span>}
+    </button>
+  )
+}
 
 /**
  * The site-wide footer: an inset lavender panel with the wordmark, a short
@@ -56,7 +95,7 @@ export default function Footer() {
           </nav>
         </div>
 
-        {/* Reading order on phones: contact links, then the copyright */}
+        {/* Reading order on phones: contact links, the copyright, then the motion toggle */}
         <div className="mt-8 md:mt-10 pt-5 border-t border-lavender-line flex flex-col sm:flex-row-reverse sm:items-center sm:justify-between gap-2 sm:gap-4">
           <ul className="flex flex-wrap gap-x-6 gap-y-2">
             {footer.links.map((link) => (
@@ -77,9 +116,12 @@ export default function Footer() {
               </li>
             ))}
           </ul>
-          <p className="text-sm text-text-secondary">
-            &copy; {year} {footer.copyrightName}
-          </p>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-x-6 gap-y-1">
+            <p className="text-sm text-text-secondary">
+              &copy; {year} {footer.copyrightName}
+            </p>
+            <ReduceMotionToggle />
+          </div>
         </div>
       </div>
     </footer>

@@ -217,6 +217,9 @@ function Context() {
           </div>
         </Reveal>
       </div>
+      {/* The Explore before-and-after sits here, ahead of the structure, as the
+          clearest example of a design decision changing after release. */}
+      <ExploreComparison />
     </Section>
   )
 }
@@ -513,9 +516,7 @@ export default function BackwaterCaseStudy() {
           <Structure />
           <ExperienceSection experience={dock} index={2} tone="base" reverse={false} />
           <ExperienceSection experience={catchLogging} index={3} tone="alt" reverse />
-          <ExperienceSection experience={explore} index={4} tone="base" reverse={false}>
-            <ExploreComparison />
-          </ExperienceSection>
+          <ExperienceSection experience={explore} index={4} tone="base" reverse={false} />
           <ExperienceSection experience={species} index={5} tone="alt" reverse />
           <ExperienceSection experience={market} index={6} tone="base" reverse={false}>
             <MarketBoundary />

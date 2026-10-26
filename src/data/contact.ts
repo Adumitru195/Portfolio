@@ -18,6 +18,10 @@ export const footer = {
   wordmark: person.name.split(' ')[0],
   tagline: 'Independent UX/UI designer · Chicago',
   copyrightName: person.name,
+  reduceMotion: {
+    label: 'Reduce motion',
+    systemNote: 'On in your system settings',
+  },
   links: [
     ...(linkedIn ? [{ label: 'LinkedIn', href: linkedIn.url, external: true }] : []),
     { label: 'Email', href: `mailto:${person.email}`, external: false },

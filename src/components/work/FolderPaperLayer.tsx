@@ -1,6 +1,7 @@
 import { Suspense, lazy, useCallback, useEffect, useState, type MutableRefObject, type RefObject } from 'react'
 import WebGLBoundary from '@/components/WebGLBoundary'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
+import { useReducedMotionPreference } from '@/hooks/useReducedMotionPreference'
 import { folderPaper, offsetWithin } from '@/lib/folderPaper'
 import { supportsWebGL } from '@/lib/webgl'
 import type { FolderTint } from '@/data/work-folders'
@@ -28,7 +29,7 @@ function FailSignal({ onFail }: { onFail: () => void }) {
  * only while the grid is on screen. Without it, the CSS folders are complete.
  */
 export default function FolderPaperLayer({ gridRef, slots, cards, onActiveChange }: FolderPaperLayerProps) {
-  const reducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)')
+  const reducedMotion = useReducedMotionPreference()
   const finePointer = useMediaQuery('(hover: hover) and (pointer: fine)')
   const [webgl] = useState(supportsWebGL)
   const [near, setNear] = useState(false)

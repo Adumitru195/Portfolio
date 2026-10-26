@@ -105,6 +105,9 @@ export default function AboutPage() {
                 <motion.p variants={fadeUp} className="text-lg leading-relaxed text-text-secondary">
                   {opening.supporting}
                 </motion.p>
+                <motion.p variants={fadeUp} className="text-lg leading-relaxed text-text-secondary">
+                  {opening.background}
+                </motion.p>
               </div>
 
               <motion.div variants={fadeUp} className="mt-10 flex flex-wrap items-center gap-3">

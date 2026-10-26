@@ -76,6 +76,8 @@ export const aboutPage = {
       'I’m Andrew, a UX/UI designer based in Chicago. I design and build websites and apps, with an eye for the details that make them feel clear, useful and worth spending time with.',
     supporting:
       'I enjoy taking an idea beyond the first mockup, working through how it looks, how it behaves and how it comes together in a browser or an app.',
+    background:
+      'Before studying UX design, I spent six years in the U.S. Air Force working in aircraft maintenance. That experience shaped how I approach design: pay attention to details, ask questions, and check the work.',
     location: 'Based in Chicago',
     workLabel: 'See my work',
     contactLabel: 'Let’s talk',
