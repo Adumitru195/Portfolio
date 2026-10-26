@@ -7,6 +7,7 @@ import AccentLine from '@/components/AccentLine'
 import ProjectFolderCard from '@/components/work/ProjectFolderCard'
 import FolderPaperLayer from '@/components/work/FolderPaperLayer'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
+import { useReducedMotionPreference } from '@/hooks/useReducedMotionPreference'
 
 // Projects with folder copy, in projects.ts order.
 const folders = projects.flatMap((project) => {
@@ -19,7 +20,7 @@ export default function Work() {
   const gridRef = useRef<HTMLDivElement>(null)
   const slots = useRef(new Map<string, HTMLElement>())
   const [paper3d, setPaper3d] = useState(false)
-  const reducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)')
+  const reducedMotion = useReducedMotionPreference()
   const finePointer = useMediaQuery('(hover: hover) and (pointer: fine)')
 
   const registerSlot = useCallback((id: string, element: HTMLElement | null) => {

@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
-import { displace, usePrefersReducedMotion } from '@/lib/wave'
+import { displace } from '@/lib/wave'
+import { useReducedMotionPreference } from '@/hooks/useReducedMotionPreference'
 import WaveFallback from '@/components/WaveFallback'
 import { supportsWebGL } from '@/lib/webgl'
 
@@ -163,7 +164,7 @@ export default function CaseStudyBackdrop({
   waveOpacity?: number
   pointOpacity?: number
 }) {
-  const reducedMotion = usePrefersReducedMotion()
+  const reducedMotion = useReducedMotionPreference()
   const [webgl] = useState(supportsWebGL)
   const [contextLost, setContextLost] = useState(false)
 

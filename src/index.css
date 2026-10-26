@@ -52,6 +52,19 @@
   }
 }
 
+/* The footer's "Reduce motion" toggle (src/lib/motionPreference.ts): CSS
+   animations and transitions finish at once, as with the system setting. */
+:root[data-reduce-motion] {
+  scroll-behavior: auto;
+}
+:root[data-reduce-motion] *,
+:root[data-reduce-motion] *::before,
+:root[data-reduce-motion] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
 @layer utilities {
   .font-display {
     font-family: var(--font-display);

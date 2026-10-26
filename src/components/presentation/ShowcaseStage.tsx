@@ -3,6 +3,7 @@ import type { CSSProperties } from 'react'
 import { DESKTOP, PHONE, STAGE, toStageRect } from '@/lib/showcaseLayout'
 import { usePresentationTheme } from '@/lib/presentationTheme'
 import { supportsWebGL } from '@/lib/webgl'
+import { useUserReduceMotion } from '@/hooks/useReducedMotionPreference'
 import type { PresentationImage } from '@/types/presentation'
 
 /**
@@ -43,8 +44,9 @@ const DESKTOP_POINTER_QUERY = '(hover: hover) and (pointer: fine)'
 
 function useEnhancementAllowed(enabled: boolean, requireFinePointer: boolean) {
   const [allowed, setAllowed] = useState(false)
+  const userReduce = useUserReduceMotion()
   useEffect(() => {
-    if (!enabled) {
+    if (!enabled || userReduce) {
       setAllowed(false)
       return
     }
@@ -64,7 +66,7 @@ function useEnhancementAllowed(enabled: boolean, requireFinePointer: boolean) {
       reduced.removeEventListener('change', update)
       pointer.removeEventListener('change', update)
     }
-  }, [enabled, requireFinePointer])
+  }, [enabled, requireFinePointer, userReduce])
   return allowed
 }
 

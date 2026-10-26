@@ -1,11 +1,12 @@
 import { Suspense, lazy, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { MapPin } from '@phosphor-icons/react'
 import type { Photo } from '@/data/about'
 import { PHOTO_EASE, SCENE_BLEED, photoMotion } from '@/lib/aboutPhotoMotion'
 import type { PanelRect, StageLayout } from '@/lib/aboutPhotoMotion'
 import { supportsWebGL } from '@/lib/webgl'
 import WebGLBoundary from '@/components/WebGLBoundary'
+import { useReducedMotionPreference } from '@/hooks/useReducedMotionPreference'
 
 // Loaded only on desktops that will use it, so other devices never fetch Three.js.
 const AboutPhotoScene = lazy(() => import('@/components/about/AboutPhotoScene'))
@@ -90,7 +91,7 @@ export default function AboutPhotoStage({ main, support, location }: AboutPhotoS
   const supportRef = useRef<HTMLDivElement>(null)
   const entranceStart = useRef(performance.now())
 
-  const reduceMotion = useReducedMotion()
+  const reduceMotion = useReducedMotionPreference()
   const desktop = useMediaQuery('(min-width: 1024px)')
   const finePointer = useMediaQuery('(hover: hover) and (pointer: fine)')
   const pageVisible = usePageVisible()

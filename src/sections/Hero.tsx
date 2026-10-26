@@ -3,10 +3,12 @@ import { useRef } from 'react'
 import { ArrowDown } from '@phosphor-icons/react'
 import { staggerContainer, fadeUp, slideInLeft, lineMask, lineReveal } from '@/lib/motion'
 import { person } from '@/data/person'
+import { useReducedMotionPreference } from '@/hooks/useReducedMotionPreference'
 import HeroTilesBackdrop from '@/components/hero/HeroTilesBackdrop'
 
 export default function Hero() {
   const contentRef = useRef<HTMLDivElement>(null)
+  const reducedMotion = useReducedMotionPreference()
 
   return (
     <section className="relative min-h-[100dvh] flex flex-col justify-end px-6 md:px-10 pb-20 pt-32 overflow-hidden">
@@ -20,7 +22,8 @@ export default function Hero() {
         {/* Status badge */}
         <motion.div variants={slideInLeft} className="mb-10">
           <span className="inline-flex items-center gap-2 text-xs font-medium text-text-secondary border border-subtle rounded-full px-3 py-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+            {/* Two pulses (4s), then steady */}
+            <span className="w-1.5 h-1.5 rounded-full bg-accent motion-safe:animate-pulse motion-safe:[animation-iteration-count:2]" />
             Available for freelance &amp; collaboration
           </span>
         </motion.div>
@@ -45,7 +48,7 @@ export default function Hero() {
 
         {/* Meta row */}
         <motion.div variants={fadeUp}>
-          <p className="text-text-secondary text-base leading-relaxed max-w-2xl">
+          <p className="text-text-secondary text-base leading-relaxed max-w-2xl text-pretty">
             {person.tagline}
           </p>
           <p className="text-text-muted text-sm mt-2">{person.location}</p>
@@ -73,9 +76,10 @@ export default function Hero() {
           variants={fadeUp}
           className="mt-10 flex items-center gap-3 text-text-muted"
         >
+          {/* Three nudges (4.8s), then still */}
           <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+            animate={reducedMotion ? undefined : { y: [0, 8, 0] }}
+            transition={{ duration: 1.6, repeat: 2, ease: 'easeInOut' }}
           >
             <ArrowDown size={14} />
           </motion.div>
@@ -83,8 +87,7 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Floating software tiles, kept clear of the text. Placed after the
-          content so the pause control comes last in the tab order. */}
+      {/* Floating software tiles, kept clear of the text. */}
       <HeroTilesBackdrop contentRef={contentRef} />
     </section>
   )

@@ -1,8 +1,8 @@
 import { Suspense, lazy, useCallback, useEffect, useRef, useState } from 'react'
-import { useReducedMotion } from 'framer-motion'
 import { BLEED, PERSPECTIVE, PIECES, STAGE_RATIO, faceDataUrl } from '@/lib/designStack'
 import { supportsWebGL } from '@/lib/webgl'
 import WebGLBoundary from '@/components/WebGLBoundary'
+import { useReducedMotionPreference } from '@/hooks/useReducedMotionPreference'
 
 // Fetched only for eligible desktops, and only once the stage is near view.
 const DesignStackScene = lazy(() => import('@/components/contact/DesignStackScene'))
@@ -99,7 +99,7 @@ function StaticStack({ hidden }: { hidden: boolean }) {
  */
 export default function DesignStack({ className = '' }: { className?: string }) {
   const stageRef = useRef<HTMLDivElement>(null)
-  const reduceMotion = useReducedMotion()
+  const reduceMotion = useReducedMotionPreference()
   const desktop = useMediaQuery('(min-width: 768px)')
   const finePointer = useMediaQuery('(hover: hover) and (pointer: fine)')
   const pageVisible = usePageVisible()

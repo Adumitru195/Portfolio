@@ -1,8 +1,8 @@
 /**
  * Content for the homepage hero's floating software tiles.
  *
- * The icons are the tools used across the case studies. They are decorative
- * only: no links, no claims of certification or partnership.
+ * The icons are tools from the design and build workflow. They are decorative
+ * only: no links, no claims of certification, partnership or expertise.
  *
  * Source: devicon v2.17.0 (MIT), https://github.com/devicons/devicon,
  * stored locally in `public/brand-icons/`. See `public/brand-icons/SOURCES.md`.
@@ -15,7 +15,7 @@
  */
 export const HERO_TILES_ANIMATION_ENABLED = true
 
-export type HeroTileIconId = 'figma' | 'illustrator' | 'photoshop' | 'vscode' | 'react'
+export type HeroTileIconId = 'figma' | 'illustrator' | 'photoshop' | 'vscode' | 'react' | 'github' | 'expo'
 
 export interface HeroTileIcon {
   id: HeroTileIconId
@@ -30,6 +30,8 @@ export const heroTileIcons: Record<HeroTileIconId, HeroTileIcon> = {
   photoshop: { id: 'photoshop', name: 'Adobe Photoshop', file: 'brand-icons/photoshop.svg' },
   vscode: { id: 'vscode', name: 'Visual Studio Code', file: 'brand-icons/vscode.svg' },
   react: { id: 'react', name: 'React', file: 'brand-icons/react.svg' },
+  github: { id: 'github', name: 'GitHub', file: 'brand-icons/github.svg' },
+  expo: { id: 'expo', name: 'Expo', file: 'brand-icons/expo.svg' },
 }
 
 export function heroTileIconUrl(id: HeroTileIconId): string {
