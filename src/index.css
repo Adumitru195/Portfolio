@@ -143,8 +143,35 @@
     max-width: 72rem;
     margin-inline: auto;
   }
-  @media (min-width: 1024px) {
-    .content-wide { max-width: min(92vw, 1600px); }
+  @media (min-width: 64rem) {
+    .content-wide { max-width: min(92vw, 100rem); }
+  }
+
+  /* Vertical space inside a section: grows smoothly with the viewport
+     (80px on phones, 128px on wide screens) instead of jumping at a breakpoint. */
+  .section-space {
+    padding-block: clamp(5rem, 3rem + 5vw, 8rem);
+  }
+
+  /* Selected Work gallery (src/sections/Work.tsx). One column, capped at
+     34rem so a lone folder never stretches across a tablet. Two columns
+     start at 52rem, the width where two folders of about 22rem fit beside
+     each other with the page padding and a gap. Each column is capped at
+     30rem and space-between spreads the pair across wide containers. */
+  .folder-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 34rem);
+    row-gap: clamp(3.5rem, 2rem + 4vw, 5rem);
+    column-gap: clamp(2.5rem, 5vw, 6rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  @media (min-width: 52rem) {
+    .folder-grid {
+      grid-template-columns: repeat(2, minmax(0, 30rem));
+      justify-content: space-between;
+    }
   }
 
   /* The link is the whole folder. Its top padding reserves the tab's row, so

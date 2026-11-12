@@ -22,7 +22,9 @@ export const backwaterScreens = {
     'New Catch form: a Catch Basics group with Add Photos (up to 10), a required Primary Species field, weight and length fields side by side, and a prefilled date and time with a Change link, followed by Trip Details.'),
   explore: screen('explore.webp', 640, 1325,
     'Current Explore screen: a full-width map with a search field for waters, spots and catches, Species, Filters and Saved chips, three stacked map controls, and a Fishing spots panel showing Skokie Lagoon with distance, species, Public access and Community spot labels.'),
-  exploreBefore: screen('explore-before-1-1-0.jpg', 808, 1688,
+  // Cut out of the earlier App Store screenshot along the phone's outer rim
+  // (transparent outside it), so it matches the other framed screens.
+  exploreBefore: screen('explore-before-1-1-0.webp', 808, 1688,
     'Earlier Explore screen: a search field with separate filter and layer buttons, a zoomed-in map with pins, and a bottom sheet for Skokie Lagoon with a Search this area button and All, Fish Activity, Conditions and Species chips.'),
   species: screen('species.webp', 640, 1325,
     'Species collection in the Journal: Caught, Uncaught and All tabs, Freshwater, Saltwater and Hybrid filters, and species cards showing catch counts, best catch and the month last caught.'),

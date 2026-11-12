@@ -31,7 +31,7 @@ export default function Hero() {
         {/* Main headline — per-line mask reveal */}
         <motion.h1
           variants={lineMask}
-          className="font-display font-black text-5xl md:text-7xl lg:text-[5.25rem] xl:text-[5.75rem] tracking-[-0.03em] text-text-primary leading-[0.98] lg:leading-[1.02] mb-10 max-w-5xl"
+          className="font-display font-black text-[clamp(2.75rem,1.6rem+4.6vw,5.75rem)] tracking-[-0.03em] text-text-primary leading-[0.98] lg:leading-[1.02] mb-10 max-w-5xl"
         >
           <span className="block overflow-hidden pb-[0.12em] -mb-[0.12em]">
             <motion.span variants={lineReveal} className="block">Designing products</motion.span>

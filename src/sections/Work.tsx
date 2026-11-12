@@ -29,7 +29,7 @@ export default function Work() {
   }, [])
 
   return (
-    <section id="work" className="px-6 md:px-10 py-24 md:py-28 lg:py-32">
+    <section id="work" className="px-6 md:px-10 section-space">
       {/* Below 1280px the header sits above the folders; from 1280px it becomes
           a narrow column beside them, like "How I can help". */}
       <div className="content-wide grid grid-cols-1 xl:grid-cols-12 xl:gap-x-12">
@@ -61,11 +61,11 @@ export default function Work() {
 
         {/* The folders render immediately as HTML and CSS. The decorative 3D
             paper layer, when it loads, sits between the folder backs and their
-            contents, so the grid is its own stacking context. Each folder is
-            capped at 30rem and the two columns spread across the space. */}
+            contents, so the grid is its own stacking context. Column count
+            and spacing come from .folder-grid in index.css. */}
         <div ref={gridRef} className="relative isolate xl:col-span-9" data-paper={paper3d ? '3d' : 'css'}>
           <FolderPaperLayer gridRef={gridRef} slots={slots} cards={sceneCards} onActiveChange={setPaper3d} />
-          <ul className="m-0 grid list-none grid-cols-1 gap-y-14 p-0 sm:gap-y-16 md:grid-cols-2 md:gap-x-10 md:gap-y-20 lg:grid-cols-[repeat(2,minmax(0,30rem))] lg:justify-between lg:gap-x-16 xl:gap-y-20">
+          <ul className="folder-grid">
             {folders.map(({ project, folder }) => (
               <li key={project.id}>
                 <ProjectFolderCard

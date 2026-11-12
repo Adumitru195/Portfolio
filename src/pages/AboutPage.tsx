@@ -87,18 +87,18 @@ export default function AboutPage() {
               <Label tone="ink">{opening.label}</Label>
               <motion.h1
                 variants={lineMask}
-                className="font-display font-black text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[3.75rem] xl:text-[4.5rem] tracking-tightest leading-[0.94] text-text-primary mb-10"
+                className="font-display font-black text-[clamp(2.75rem,1.5rem+3.4vw,4.5rem)] tracking-tightest leading-[0.94] text-text-primary mb-10"
               >
                 {opening.headline.map((line, i) => (
                   <span key={line} className="block overflow-hidden pb-[0.1em] -mb-[0.1em]">
-                    <motion.span variants={lineReveal} className={`block ${i === 1 ? 'text-accent md:pl-[12%] lg:pl-0' : ''}`}>
+                    <motion.span variants={lineReveal} className={`block ${i === 1 ? 'text-accent' : ''}`}>
                       {line}
                     </motion.span>
                   </span>
                 ))}
               </motion.h1>
 
-              <div className="max-w-[36rem] space-y-5">
+              <div className="max-w-[36rem] flex flex-col gap-5">
                 <motion.p variants={fadeUp} className="text-xl md:text-[1.375rem] leading-relaxed text-text-primary">
                   {opening.intro}
                 </motion.p>
@@ -141,7 +141,7 @@ export default function AboutPage() {
         </section>
 
         {/* 2. What I bring: three rows, each pairing a strength with a detail from a project */}
-        <section className="px-6 md:px-10 py-24 md:py-32 border-t border-subtle">
+        <section className="px-6 md:px-10 section-space border-t border-subtle">
           <div className="content-wide">
             <motion.h2
               {...reveal}
@@ -151,15 +151,15 @@ export default function AboutPage() {
               {strengths.heading}
             </motion.h2>
 
-            <ol className="m-0 list-none p-0 space-y-20 md:space-y-24 lg:space-y-28">
+            <ol className="m-0 list-none p-0 flex flex-col gap-[clamp(4.5rem,2rem+6vw,7rem)]">
               {strengths.items.map((item, i) => (
                 <motion.li
                   key={item.title}
                   {...reveal}
                   variants={fadeUp}
-                  className="grid grid-cols-1 md:grid-cols-12 gap-x-10 gap-y-8 md:items-center"
+                  className="grid grid-cols-1 min-[960px]:grid-cols-12 gap-x-10 gap-y-8 min-[960px]:items-center"
                 >
-                  <figure className="m-0 md:col-span-7 lg:col-span-6 xl:col-span-5 lg:max-w-[40rem]">
+                  <figure className="m-0 max-w-[40rem] min-[960px]:col-span-6 xl:col-span-5">
                     {item.detail.presentation === 'phone' ? (
                       <div className="md:flex md:aspect-[4/3] md:items-center md:justify-center md:overflow-hidden md:rounded-2xl md:border md:border-subtle md:bg-porch-sunken">
                         <div className="overflow-hidden rounded-2xl border border-subtle bg-surface aspect-[390/365] w-full md:h-[86%] md:w-auto md:rounded-xl md:border-porch-border md:shadow-[0_18px_36px_-24px_rgba(90,84,75,0.45)]">
@@ -198,7 +198,7 @@ export default function AboutPage() {
                       </Link>
                     </figcaption>
                   </figure>
-                  <div className="md:col-span-5 lg:col-span-5 lg:col-start-8 xl:col-span-4 xl:col-start-8 max-w-[30rem]">
+                  <div className="min-[960px]:col-span-5 min-[960px]:col-start-8 xl:col-span-4 max-w-[30rem]">
                     <span aria-hidden="true" className="block font-display font-bold text-sm tracking-widest text-accent mb-4">
                       {String(i + 1).padStart(2, '0')}
                     </span>
@@ -212,7 +212,7 @@ export default function AboutPage() {
         </section>
 
         {/* 3. Backwater Journal: the shipped proof point, on the app's own paper */}
-        <section className="px-6 md:px-10 py-24 md:py-32 bg-backwater-paper border-y border-backwater-edge">
+        <section className="px-6 md:px-10 section-space bg-backwater-paper border-y border-backwater-edge">
           <div className="content-wide grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-16 items-center">
             <motion.div {...reveal} className="lg:col-span-5 max-w-[34rem]">
               <Label tone="ink">{backwater.label}</Label>
@@ -245,7 +245,7 @@ export default function AboutPage() {
         </section>
 
         {/* 4. Working with me */}
-        <section className="px-6 md:px-10 py-24 md:py-32">
+        <section className="px-6 md:px-10 section-space">
           <motion.div {...reveal} className="content-wide grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-10">
             <motion.h2
               variants={fadeUp}
@@ -269,7 +269,7 @@ export default function AboutPage() {
         </section>
 
         {/* 5. Beyond the screen: a large photograph beside a short personal note */}
-        <section className="px-6 md:px-10 py-24 md:py-32 border-t border-subtle">
+        <section className="px-6 md:px-10 section-space border-t border-subtle">
           <div className="content-wide grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-12 items-center">
             <motion.figure
               initial={{ opacity: 0 }}
