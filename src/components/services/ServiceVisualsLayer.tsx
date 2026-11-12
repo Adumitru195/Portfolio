@@ -36,7 +36,7 @@ function FailSignal({ onFail }: { onFail: () => void }) {
 
 /**
  * Loads the Three.js versions of the service visuals on screens wide enough
- * for the three-column layout, with no reduced-motion preference and working
+ * for the row layout, with no reduced-motion preference and working
  * WebGL. Phones, reduced motion and any failure keep the static SVGs, with
  * no animation loop at all. The canvas never takes pointer or keyboard input.
  */

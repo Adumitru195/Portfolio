@@ -11,10 +11,10 @@ export default function Hero() {
   const reducedMotion = useReducedMotionPreference()
 
   return (
-    <section className="relative min-h-[100dvh] flex flex-col justify-end px-6 md:px-10 pb-20 pt-32 overflow-hidden">
+    <section className="relative min-h-[100dvh] lg:min-h-[86dvh] flex flex-col justify-end px-6 md:px-10 pb-16 pt-32 lg:pb-16 lg:pt-36 overflow-hidden">
       <motion.div
         ref={contentRef}
-        className="relative z-10 max-w-6xl mx-auto w-full"
+        className="relative z-10 content-wide"
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
@@ -31,7 +31,7 @@ export default function Hero() {
         {/* Main headline — per-line mask reveal */}
         <motion.h1
           variants={lineMask}
-          className="font-display font-black text-5xl md:text-7xl lg:text-8xl tracking-tightest text-text-primary leading-[0.92] mb-8 max-w-5xl"
+          className="font-display font-black text-[clamp(2.75rem,1.6rem+4.6vw,5.75rem)] tracking-[-0.03em] text-text-primary leading-[0.98] lg:leading-[1.02] mb-10 max-w-5xl"
         >
           <span className="block overflow-hidden pb-[0.12em] -mb-[0.12em]">
             <motion.span variants={lineReveal} className="block">Designing products</motion.span>
@@ -48,10 +48,10 @@ export default function Hero() {
 
         {/* Meta row */}
         <motion.div variants={fadeUp}>
-          <p className="text-text-secondary text-base leading-relaxed max-w-2xl text-pretty">
+          <p className="text-text-secondary text-base md:text-lg leading-relaxed max-w-[36rem] text-pretty">
             {person.tagline}
           </p>
-          <p className="text-text-muted text-sm mt-2">{person.location}</p>
+          <p className="text-text-muted text-sm mt-3">{person.location}</p>
         </motion.div>
 
         {/* CTA row */}

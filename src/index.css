@@ -134,6 +134,46 @@
 }
 
 @layer components {
+  /* Content width for homepage and About sections. Phones and tablets keep
+     the navigation's 72rem column; desktops widen to 92% of the viewport,
+     capped at 1600px. The nav and footer keep max-w-6xl. Text inside keeps
+     its own max-width, so wider sections never mean longer lines. */
+  .content-wide {
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+  }
+  @media (min-width: 64rem) {
+    .content-wide { max-width: min(92vw, 100rem); }
+  }
+
+  /* Vertical space inside a section: grows smoothly with the viewport
+     (80px on phones, 128px on wide screens) instead of jumping at a breakpoint. */
+  .section-space {
+    padding-block: clamp(5rem, 3rem + 5vw, 8rem);
+  }
+
+  /* Selected Work gallery (src/sections/Work.tsx). One column, capped at
+     34rem so a lone folder never stretches across a tablet. Two columns
+     start at 52rem, the width where two folders of about 22rem fit beside
+     each other with the page padding and a gap. Each column is capped at
+     30rem and space-between spreads the pair across wide containers. */
+  .folder-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 34rem);
+    row-gap: clamp(3.5rem, 2rem + 4vw, 5rem);
+    column-gap: clamp(2.5rem, 5vw, 6rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  @media (min-width: 52rem) {
+    .folder-grid {
+      grid-template-columns: repeat(2, minmax(0, 30rem));
+      justify-content: space-between;
+    }
+  }
+
   /* The link is the whole folder. Its top padding reserves the tab's row, so
      bodies and pockets line up across a row even when a long title wraps and
      its tab grows upward into the row gap. */
@@ -163,8 +203,8 @@
       var(--f-back);
     box-shadow:
       0 0 0 1px var(--f-edge),
-      0 22px 36px -28px var(--f-shadow),
-      0 6px 14px -10px var(--f-shadow);
+      0 18px 32px -28px var(--f-shadow),
+      0 4px 10px -9px var(--f-shade);
   }
   /* A deeper shadow faded in on hover (opacity only). */
   .folder-body::after {
@@ -172,7 +212,7 @@
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    box-shadow: 0 34px 50px -30px var(--f-shadow);
+    box-shadow: 0 28px 44px -30px var(--f-shadow);
     opacity: 0;
   }
 
@@ -214,6 +254,10 @@
     position: relative;
     padding: 0.85rem 0.85rem 0;
   }
+  @media (min-width: 1024px) {
+    .folder-tab { padding: 0.55rem 1.3rem 0.45rem; }
+    .folder-stage { padding: 1rem 1rem 0; }
+  }
 
   /* Loose sheets behind the preview: the CSS version, hidden while the 3D
      paper layer draws them instead. */
@@ -221,10 +265,10 @@
     position: absolute;
     inset: 0;
     border-radius: 12px;
-    box-shadow: 0 0 0 1px var(--f-edge), 0 6px 12px -9px var(--f-shade);
+    box-shadow: 0 0 0 1px var(--f-edge), 0 4px 10px -8px var(--f-shade);
   }
-  .folder-sheet-back { background: var(--f-sheet-back); transform: translate(-5px, -10px) rotate(-1.6deg); }
-  .folder-sheet-front { background: var(--f-sheet-front); transform: translate(6px, -6px) rotate(1.3deg); }
+  .folder-sheet-back { background: var(--f-sheet-back); transform: translate(-3px, -7px) rotate(-1deg); }
+  .folder-sheet-front { background: var(--f-sheet-front); transform: translate(4px, -4px) rotate(0.8deg); }
   [data-paper='3d'] .folder-sheet { opacity: 0; }
 
   .folder-paper {
@@ -232,7 +276,7 @@
     border-radius: 12px;
     padding: 5px;
     background: var(--f-mat);
-    box-shadow: 0 0 0 1px var(--f-edge), 0 6px 12px -10px var(--f-shade);
+    box-shadow: 0 0 0 1px var(--f-edge), 0 4px 10px -9px var(--f-shade);
   }
 
   .folder-pocket {
@@ -273,8 +317,8 @@
       .folder-card:hover .folder-lift { transform: translateY(-10px); }
       .folder-card:hover .folder-lip { transform: perspective(420px) rotateX(-16deg); }
       .folder-card:hover .folder-body::after { opacity: 1; }
-      .folder-card:hover .folder-sheet-back { transform: translate(-9px, -18px) rotate(-3deg); }
-      .folder-card:hover .folder-sheet-front { transform: translate(10px, -12px) rotate(2.4deg); }
+      .folder-card:hover .folder-sheet-back { transform: translate(-6px, -14px) rotate(-2deg); }
+      .folder-card:hover .folder-sheet-front { transform: translate(7px, -9px) rotate(1.6deg); }
       .folder-card:hover .folder-arrow { transform: translateX(3px); }
     }
   }

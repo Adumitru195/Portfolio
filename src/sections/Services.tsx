@@ -9,10 +9,10 @@ import ServiceVisualsLayer from '@/components/services/ServiceVisualsLayer'
 import type { ServiceColumn } from '@/components/services/ServiceVisualsScene'
 
 /**
- * "How I can help": three services in open columns, each with a small
- * decorative visual above its heading. The text is plain HTML and never
- * waits on the visuals; the static SVGs show first and the Three.js layer
- * takes over on eligible screens.
+ * "How I can help": a narrow heading column beside three service rows, each
+ * pairing a small decorative visual with its heading and description. The
+ * text is plain HTML and never waits on the visuals; the static SVGs show
+ * first and the Three.js layer takes over on eligible screens.
  */
 export default function Services() {
   const gridRef = useRef<HTMLDivElement>(null)
@@ -31,8 +31,8 @@ export default function Services() {
   }, [])
 
   return (
-    <section aria-labelledby="services-heading" className="px-6 md:px-10 pt-16 md:pt-24">
-      <div className="max-w-6xl mx-auto">
+    <section aria-labelledby="services-heading" className="px-6 md:px-10 pt-12 md:pt-16">
+      <div className="content-wide">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -42,39 +42,43 @@ export default function Services() {
             if (definition === 'visible') setRevealed(true)
           }}
         >
-          <motion.div variants={fadeUp} className="flex items-center gap-3 mb-10 md:mb-14">
-            <AccentLine />
-            <h2 id="services-heading" className="text-xs font-medium text-text-secondary uppercase tracking-widest">
-              {services.label}
-            </h2>
-          </motion.div>
+          <div className="grid grid-cols-1 gap-y-10 lg:grid-cols-12 lg:gap-x-12">
+            <motion.div variants={fadeUp} className="lg:col-span-3">
+              <div className="flex items-center gap-3 lg:sticky lg:top-28">
+                <AccentLine />
+                <h2 id="services-heading" className="text-xs font-medium text-text-secondary uppercase tracking-widest">
+                  {services.label}
+                </h2>
+              </div>
+            </motion.div>
 
-          <div ref={gridRef} className="relative">
-            <ServiceVisualsLayer gridRef={gridRef} columns={columns} revealed={revealed} onActiveChange={setScene3d} />
-            <ul
-              className="m-0 grid list-none grid-cols-1 p-0 divide-y divide-[#E6E6E6] md:grid-cols-3 md:divide-y-0 md:divide-x"
-            >
-              {services.items.map((service) => (
-                <motion.li
-                  key={service.id}
-                  ref={(el: HTMLLIElement | null) => registerColumn(service.id, el)}
-                  variants={fadeUp}
-                  className="min-w-0 py-9 first:pt-0 last:pb-0 md:py-0 md:px-8 md:first:pl-0 md:last:pr-0 lg:px-10"
-                >
-                  <div
-                    data-visual-slot
-                    aria-hidden="true"
-                    className="relative mb-7 aspect-[8/5] w-full max-w-[12rem] [container-type:inline-size] md:max-w-[15rem]"
+            <div ref={gridRef} className="relative lg:col-span-9">
+              <ServiceVisualsLayer gridRef={gridRef} columns={columns} revealed={revealed} onActiveChange={setScene3d} />
+              <ul className="m-0 list-none p-0 divide-y divide-[#E6E6E6] border-y border-[#E6E6E6]">
+                {services.items.map((service) => (
+                  <motion.li
+                    key={service.id}
+                    ref={(el: HTMLLIElement | null) => registerColumn(service.id, el)}
+                    variants={fadeUp}
+                    className="grid min-w-0 grid-cols-1 gap-y-6 py-9 sm:grid-cols-[minmax(0,11rem)_minmax(0,1fr)] sm:items-center sm:gap-x-10 md:py-10 lg:grid-cols-[minmax(0,12rem)_minmax(0,1fr)] lg:gap-x-14 xl:grid-cols-[minmax(0,12rem)_minmax(0,15rem)_minmax(0,1fr)] xl:gap-x-16 2xl:gap-x-24"
                   >
-                    <ServiceVisualStatic id={service.id} hidden={scene3d} />
-                  </div>
-                  <h3 className="font-display font-bold text-xl md:text-2xl tracking-tight text-text-primary mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-text-secondary leading-relaxed max-w-[34ch]">{service.body}</p>
-                </motion.li>
-              ))}
-            </ul>
+                    <div
+                      data-visual-slot
+                      aria-hidden="true"
+                      className="relative aspect-[8/5] w-full max-w-[12rem] [container-type:inline-size] sm:max-w-none"
+                    >
+                      <ServiceVisualStatic id={service.id} hidden={scene3d} />
+                    </div>
+                    <div className="min-w-0 xl:contents">
+                      <h3 className="font-display font-bold text-xl md:text-2xl tracking-tight text-text-primary mb-3 xl:mb-0">
+                        {service.title}
+                      </h3>
+                      <p className="text-text-secondary leading-relaxed max-w-[44ch] md:text-[1.0625rem]">{service.body}</p>
+                    </div>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
           </div>
         </motion.div>
       </div>

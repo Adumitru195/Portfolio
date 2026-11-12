@@ -60,7 +60,7 @@ function CopyEmailButton({ className = '' }: { className?: string }) {
 export default function Contact() {
   return (
     <section id="contact" className="px-6 md:px-10 pt-24 pb-16 md:pt-32 md:pb-24 border-t border-subtle bg-bg">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-x-8 lg:gap-x-12 gap-y-6 items-center">
+      <div className="content-wide grid grid-cols-1 md:grid-cols-12 gap-x-8 lg:gap-x-12 gap-y-6 items-center">
         <motion.div
           variants={staggerContainer}
           initial="hidden"

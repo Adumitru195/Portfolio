@@ -52,6 +52,12 @@ export interface ProjectDetail {
   height: number
   /** CSS object-position that frames the relevant detail. */
   focus: string
+  /**
+   * How the detail sits in its 4:3 frame. 'cover' (default) fills the frame.
+   * 'phone' is for tall mobile screenshots: a near-square crop, set on a
+   * cream panel from tablet up, so the whole detail stays readable.
+   */
+  presentation?: 'cover' | 'phone'
   alt: string
   caption: string
   projectId: string
@@ -118,7 +124,9 @@ export const aboutPage = {
           src: `${base}projects/porchlight/mobile-tour-validation.webp`,
           width: 390,
           height: 844,
-          focus: '50% 80%',
+          // Frames "Request a tour" through the end of the validation summary.
+          focus: '50% 70%',
+          presentation: 'phone',
           alt: 'Porchlight mobile tour form showing inline validation messages',
           caption: 'Porchlight · mobile form states',
           projectId: 'porchlight',

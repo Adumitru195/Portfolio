@@ -19,8 +19,8 @@ interface SceneCard {
 
 // Rest and hover poses, matching the CSS fallback in index.css. Offsets are
 // CSS px (x right, y down); angles are CSS degrees (clockwise positive).
-const BACK = { rest: [-5, -10, -1.6], hover: [-9, -18, -3] }
-const FRONT = { rest: [6, -6, 1.3], hover: [10, -12, 2.4] }
+const BACK = { rest: [-3, -7, -1], hover: [-6, -14, -2] }
+const FRONT = { rest: [4, -4, 0.8], hover: [7, -9, 1.6] }
 const LIFT = 10
 const TILT_Y = THREE.MathUtils.degToRad(4)
 const TILT_X = THREE.MathUtils.degToRad(3)
@@ -98,7 +98,7 @@ function placeSheet(
     meshes.shadow.rotation.set(0, 0, angle)
     meshes.shadow.visible = true
     const material = meshes.shadow.material as THREE.MeshBasicMaterial
-    material.opacity = 0.16 + 0.14 * lift
+    material.opacity = 0.1 + 0.1 * lift
   }
 }
 
