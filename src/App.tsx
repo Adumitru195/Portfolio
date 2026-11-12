@@ -19,7 +19,7 @@ function Home() {
     <>
       <ScrollProgress />
       <Navbar />
-      <main>
+      <main className="overflow-x-clip">
         <Hero />
         <Services />
         <Work />

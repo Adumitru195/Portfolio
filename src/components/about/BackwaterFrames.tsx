@@ -45,7 +45,7 @@ function FrameImage({ frame, sizes }: { frame: Frame; sizes: string }) {
 }
 
 /** Three Backwater Journal App Store frames, fanned like cards in a hand. */
-export default function BackwaterFrames({ frames }: { frames: Frame[] }) {
+export default function BackwaterFrames({ frames, className = 'mx-auto' }: { frames: Frame[]; className?: string }) {
   const [left, centre, right] = frames
   if (!left || !centre || !right) return null
 
@@ -54,16 +54,16 @@ export default function BackwaterFrames({ frames }: { frames: Frame[] }) {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-15% 0px' }}
-      className="relative mx-auto w-full max-w-[34rem] pt-[4%] pb-[8%]"
+      className={`relative w-full max-w-[30rem] lg:max-w-[28rem] xl:max-w-[30rem] pt-[4%] pb-[8%] ${className}`}
     >
       <motion.div variants={fan.left} className="absolute left-[4%] sm:left-0 top-[12%] w-[33%] sm:w-[36%] origin-bottom-right">
-        <FrameImage frame={left} sizes="(min-width: 1024px) 190px, 34vw" />
+        <FrameImage frame={left} sizes="(min-width: 1024px) 170px, 34vw" />
       </motion.div>
       <motion.div variants={fan.right} className="absolute right-[4%] sm:right-0 top-[12%] w-[33%] sm:w-[36%] origin-bottom-left">
-        <FrameImage frame={right} sizes="(min-width: 1024px) 190px, 34vw" />
+        <FrameImage frame={right} sizes="(min-width: 1024px) 170px, 34vw" />
       </motion.div>
       <motion.div variants={fan.centre} className="relative z-10 mx-auto w-[44%]">
-        <FrameImage frame={centre} sizes="(min-width: 1024px) 240px, 42vw" />
+        <FrameImage frame={centre} sizes="(min-width: 1024px) 215px, 42vw" />
       </motion.div>
     </motion.div>
   )

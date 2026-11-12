@@ -42,15 +42,15 @@ export interface TilePose {
 export const LAYOUT_START_TIME = 14
 
 // Space kept clear under the fixed nav and above the hero's bottom edge.
-const NAV_CLEARANCE = 80
-const BOTTOM_CLEARANCE = 40
+const NAV_CLEARANCE = 104
+const BOTTOM_CLEARANCE = 56
 // Gap between the widest line of text and the free column for the lanes.
-const TEXT_GAP = 64
+const TEXT_GAP = 96
 // Clear space between text at a lane's height and any tile in that lane,
 // even while the tile is still transparent.
-const TILE_CLEARANCE = 32
+const TILE_CLEARANCE = 56
 // Extra height checked above and below a lane's tiles for text.
-const TEXT_MARGIN = 14
+const TEXT_MARGIN = 44
 // Distance over which a tile fades in as it passes a lane's left boundary.
 const FEATHER = 160
 // Height of the gentle vertical bob, each way.
@@ -249,7 +249,7 @@ const COMPACT_SLOTS: CompactSlot[] = [
   { fx: 0.9, fy: 0.42, size: 44, icon: 'illustrator', roll: -0.04 },
   { fx: 0.97, fy: 0.08, size: 38, icon: 'photoshop', roll: 0.06 },
 ]
-const COMPACT_MARGIN = 16
+const COMPACT_MARGIN = 24
 const COMPACT_MAX = 4
 
 function intersects(a: Rect, b: Rect) {

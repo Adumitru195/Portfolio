@@ -29,37 +29,43 @@ export default function Work() {
   }, [])
 
   return (
-    <section id="work" className="px-6 md:px-10 py-24 md:py-32">
-      <div className="max-w-6xl mx-auto">
+    <section id="work" className="px-6 md:px-10 py-24 md:py-28 lg:py-32">
+      {/* Below 1280px the header sits above the folders; from 1280px it becomes
+          a narrow column beside them, like "How I can help". */}
+      <div className="content-wide grid grid-cols-1 xl:grid-cols-12 xl:gap-x-12">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-10%' }}
+          className="xl:col-span-3"
         >
-          {/* Section header */}
-          <motion.div variants={fadeUp} className="mb-6">
-            <div className="flex items-center gap-3 mb-4">
-              <AccentLine />
-              <span className="text-xs text-text-muted uppercase tracking-widest">Selected Work</span>
-            </div>
-            <h2 className="font-display font-black text-4xl md:text-6xl tracking-tightest text-text-primary">
-              Selected Work
-            </h2>
-          </motion.div>
+          <div className="xl:sticky xl:top-28">
+            {/* Section header */}
+            <motion.div variants={fadeUp} className="mb-6">
+              <div className="flex items-center gap-3 mb-4">
+                <AccentLine />
+                <span className="text-xs text-text-muted uppercase tracking-widest">Selected Work</span>
+              </div>
+              <h2 className="font-display font-black text-4xl md:text-6xl tracking-tightest text-text-primary">
+                Selected Work
+              </h2>
+            </motion.div>
 
-          <motion.p variants={fadeUp} className="text-text-secondary leading-relaxed max-w-2xl mb-12 md:mb-14">
-            A collection of UX, product design, visual design, and academic projects exploring research,
-            interaction design, prototyping, and visual systems.
-          </motion.p>
+            <motion.p variants={fadeUp} className="text-text-secondary leading-relaxed max-w-2xl xl:max-w-[22rem] mb-14 md:mb-16 xl:mb-0">
+              A collection of UX, product design, visual design, and academic projects exploring research,
+              interaction design, prototyping, and visual systems.
+            </motion.p>
+          </div>
         </motion.div>
 
         {/* The folders render immediately as HTML and CSS. The decorative 3D
             paper layer, when it loads, sits between the folder backs and their
-            contents, so the grid is its own stacking context. */}
-        <div ref={gridRef} className="relative isolate" data-paper={paper3d ? '3d' : 'css'}>
+            contents, so the grid is its own stacking context. Each folder is
+            capped at 30rem and the two columns spread across the space. */}
+        <div ref={gridRef} className="relative isolate xl:col-span-9" data-paper={paper3d ? '3d' : 'css'}>
           <FolderPaperLayer gridRef={gridRef} slots={slots} cards={sceneCards} onActiveChange={setPaper3d} />
-          <ul className="m-0 grid list-none grid-cols-1 gap-x-8 gap-y-12 p-0 sm:gap-y-14 md:grid-cols-2 md:gap-x-10 md:gap-y-16 lg:grid-cols-3 lg:gap-x-10 lg:gap-y-20">
+          <ul className="m-0 grid list-none grid-cols-1 gap-y-14 p-0 sm:gap-y-16 md:grid-cols-2 md:gap-x-10 md:gap-y-20 lg:grid-cols-[repeat(2,minmax(0,30rem))] lg:justify-between lg:gap-x-16 xl:gap-y-20">
             {folders.map(({ project, folder }) => (
               <li key={project.id}>
                 <ProjectFolderCard

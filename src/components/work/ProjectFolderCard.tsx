@@ -110,12 +110,12 @@ export default function ProjectFolderCard({ project, folder, interactive, regist
               vectorEffect="non-scaling-stroke"
             />
           </svg>
-          <div className="flex flex-1 flex-col px-5 pb-5 pt-2.5 sm:px-6">
+          <div className="flex flex-1 flex-col px-5 pb-6 pt-3 sm:px-6 sm:pb-6 lg:px-7 lg:pb-7 lg:pt-3.5">
             <p className="m-0 text-xs font-semibold uppercase tracking-[0.12em] text-[color:var(--f-label)]">{folder.label}</p>
-            <p id={summaryId} className="m-0 mt-2 text-[0.95rem] leading-relaxed text-[color:var(--f-muted)]">
+            <p id={summaryId} className="m-0 mt-2.5 max-w-[46ch] text-[0.95rem] leading-relaxed text-[color:var(--f-muted)]">
               {folder.summary}
             </p>
-            <span id={actionId} className="mt-auto inline-flex items-center gap-2 pt-3.5 font-semibold text-[color:var(--f-cta)]">
+            <span id={actionId} className="mt-auto inline-flex items-center gap-2 pt-5 font-semibold text-[color:var(--f-cta)]">
               View case study
               <ArrowRight size={16} weight="bold" aria-hidden="true" className="folder-arrow" />
             </span>
