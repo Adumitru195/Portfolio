@@ -1,4 +1,5 @@
 import type { PresentationImage } from '@/types/presentation'
+import { backwaterRelease } from '@/data/backwater-release'
 
 const base = '/Portfolio/projects/backwater-journal'
 
@@ -59,7 +60,7 @@ export interface Experience {
 
 export const sources = {
   website: 'https://www.backwaterjournal.com/',
-  appStore: 'https://apps.apple.com/us/app/backwater-journal/id6761636518',
+  appStore: backwaterRelease.appStoreUrl,
   privacy: 'https://www.backwaterjournal.com/privacy/',
   support: 'https://www.backwaterjournal.com/support/',
 }
@@ -77,8 +78,8 @@ export const backwater = {
     role: 'Founder, product designer and mobile app developer',
     meta: [
       { label: 'Platform', value: 'iOS / iPhone' },
-      { label: 'Released', value: 'July 14, 2026' },
-      { label: 'Latest update', value: '1.1.0 · September 27, 2026' },
+      { label: 'Released', value: backwaterRelease.released },
+      { label: 'Latest update', value: `${backwaterRelease.latest.version} · ${backwaterRelease.latest.date}` },
       { label: 'Available in', value: 'United States and Canada' },
     ],
     links: [
@@ -107,10 +108,10 @@ export const backwater = {
     ] satisfies BwPoint[],
     facts: [
       { label: 'Platform', value: 'iOS / iPhone' },
-      { label: 'Initial release', value: 'July 14, 2026' },
-      { label: 'Latest verified update', value: '1.1.0 · September 27, 2026' },
+      { label: 'Initial release', value: backwaterRelease.released },
+      { label: 'Latest verified update', value: `${backwaterRelease.latest.version} · ${backwaterRelease.latest.date}` },
       { label: 'Available regions', value: 'United States and Canada' },
-      { label: 'Price', value: 'Free on the App Store' },
+      { label: 'Price', value: backwaterRelease.price },
       { label: 'Tools', value: 'Figma, React Native / Expo, Supabase, TestFlight' },
     ],
     factsNote: 'An independent product available on the App Store.',
@@ -284,7 +285,7 @@ export const backwater = {
     kicker: 'A product that continued after launch',
     title: 'The latest verified update changed the experience.',
     versions: [
-      { date: 'July 14, 2026', name: 'Initial release / 1.0', body: 'The App Store version history records the first public release.' },
+      { date: backwaterRelease.released, name: 'Initial release / 1.0', body: 'The App Store version history records the first public release.' },
       { date: 'September 27, 2026', name: 'Refinement / 1.1.0', body: 'Explore was rebuilt, with additions to catch capture, portability and reliability.' },
     ],
     changes: [
@@ -293,7 +294,7 @@ export const backwater = {
       { title: 'Ownership', body: 'Catch history export.' },
       { title: 'Reliability', body: 'Privacy, performance and reliability improvements.' },
     ] satisfies BwPoint[],
-    verified: 'Checked against the App Store version history on October 14, 2026: 1.1.0 is the latest version.',
+    verified: `Checked against the App Store version history on ${backwaterRelease.verifiedOn}: ${backwaterRelease.latest.version} is the latest version.`,
     note: 'These are documented release changes, not measured improvements.',
   },
 

@@ -3,37 +3,12 @@ import { BLEED, PERSPECTIVE, PIECES, STAGE_RATIO, faceDataUrl } from '@/lib/desi
 import { supportsWebGL } from '@/lib/webgl'
 import WebGLBoundary from '@/components/WebGLBoundary'
 import { useReducedMotionPreference } from '@/hooks/useReducedMotionPreference'
+import WebGLFailSignal from '@/components/WebGLFailSignal'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
+import { usePageVisible } from '@/hooks/usePageVisible'
 
 // Fetched only for eligible desktops, and only once the stage is near view.
 const DesignStackScene = lazy(() => import('@/components/contact/DesignStackScene'))
-
-function useMediaQuery(query: string) {
-  const [matches, setMatches] = useState(() => window.matchMedia(query).matches)
-  useEffect(() => {
-    const mq = window.matchMedia(query)
-    const onChange = () => setMatches(mq.matches)
-    onChange()
-    mq.addEventListener('change', onChange)
-    return () => mq.removeEventListener('change', onChange)
-  }, [query])
-  return matches
-}
-
-function usePageVisible() {
-  const [visible, setVisible] = useState(() => !document.hidden)
-  useEffect(() => {
-    const onChange = () => setVisible(!document.hidden)
-    document.addEventListener('visibilitychange', onChange)
-    return () => document.removeEventListener('visibilitychange', onChange)
-  }, [])
-  return visible
-}
-
-// Rendered by the error boundary when the scene throws or its chunk fails.
-function FailSignal({ onFail }: { onFail: () => void }) {
-  useEffect(() => onFail(), [onFail])
-  return null
-}
 
 // The resting composition in CSS 3D, using the camera distance of the
 // Three.js scene as its perspective. Lengths are in `cqw` (stage widths).
@@ -116,6 +91,7 @@ export default function DesignStack({ className = '' }: { className?: string }) 
   useEffect(() => {
     const el = stageRef.current
     if (!el) return
+    if (!('IntersectionObserver' in window)) return
     const nearObserver = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) setNear(true)
@@ -156,7 +132,7 @@ export default function DesignStack({ className = '' }: { className?: string }) 
           className={`absolute pointer-events-none ${showScene ? 'opacity-100' : 'opacity-0'}`}
           style={{ inset: `${-BLEED * 100}cqw` }}
         >
-          <WebGLBoundary fallback={<FailSignal onFail={handleFail} />}>
+          <WebGLBoundary fallback={<WebGLFailSignal onFail={handleFail} />}>
             <Suspense fallback={null}>
               <DesignStackScene
                 stageRef={stageRef}

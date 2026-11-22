@@ -7,37 +7,12 @@ import type { PanelRect, StageLayout } from '@/lib/aboutPhotoMotion'
 import { supportsWebGL } from '@/lib/webgl'
 import WebGLBoundary from '@/components/WebGLBoundary'
 import { useReducedMotionPreference } from '@/hooks/useReducedMotionPreference'
+import WebGLFailSignal from '@/components/WebGLFailSignal'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
+import { usePageVisible } from '@/hooks/usePageVisible'
 
 // Loaded only on desktops that will use it, so other devices never fetch Three.js.
 const AboutPhotoScene = lazy(() => import('@/components/about/AboutPhotoScene'))
-
-function useMediaQuery(query: string) {
-  const [matches, setMatches] = useState(() => window.matchMedia(query).matches)
-  useEffect(() => {
-    const mq = window.matchMedia(query)
-    const onChange = () => setMatches(mq.matches)
-    onChange()
-    mq.addEventListener('change', onChange)
-    return () => mq.removeEventListener('change', onChange)
-  }, [query])
-  return matches
-}
-
-function usePageVisible() {
-  const [visible, setVisible] = useState(() => !document.hidden)
-  useEffect(() => {
-    const onChange = () => setVisible(!document.hidden)
-    document.addEventListener('visibilitychange', onChange)
-    return () => document.removeEventListener('visibilitychange', onChange)
-  }, [])
-  return visible
-}
-
-// Rendered by the error boundary when the scene throws or its chunk fails.
-function FailSignal({ onFail }: { onFail: () => void }) {
-  useEffect(() => onFail(), [onFail])
-  return null
-}
 
 // Layout box of a panel, ignoring the entrance transform.
 function rectOf(el: HTMLElement): PanelRect {
@@ -126,6 +101,7 @@ export default function AboutPhotoStage({ main, support, location }: AboutPhotoS
   useEffect(() => {
     const stage = stageRef.current
     if (!stage) return
+    if (!('IntersectionObserver' in window)) return
     const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting))
     observer.observe(stage)
     return () => observer.disconnect()
@@ -194,7 +170,7 @@ export default function AboutPhotoStage({ main, support, location }: AboutPhotoS
           className={`absolute pointer-events-none ${showScene ? 'opacity-100' : 'opacity-0'}`}
           style={{ inset: -SCENE_BLEED }}
         >
-          <WebGLBoundary fallback={<FailSignal onFail={handleFail} />}>
+          <WebGLBoundary fallback={<WebGLFailSignal onFail={handleFail} />}>
             <Suspense fallback={null}>
               <AboutPhotoScene
                 stageRef={stageRef}

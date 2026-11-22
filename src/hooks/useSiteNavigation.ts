@@ -40,6 +40,7 @@ export function useActiveHomeSection(enabled: boolean) {
       setActive(null)
       return
     }
+    if (!('IntersectionObserver' in window)) return
     const visible = new Set<HomeSection>()
     const observer = new IntersectionObserver(
       (entries) => {

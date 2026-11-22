@@ -20,7 +20,7 @@ export const PERSPECTIVE = 2.8
 /** Extra canvas room on every side, in stage widths, so tilts aren't clipped. */
 export const BLEED = 0.12
 
-// Colours: the accent, lavender and tile tokens from tailwind.config.js.
+// Colours: the accent and lavender tokens from tailwind.config.js, plus a warm ivory.
 const ACCENT = '#4F46E5'
 const IVORY = '#FBF9F4'
 const INK = '#1C1C1C'

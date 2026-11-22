@@ -109,29 +109,46 @@ export default {
           dim: '#4338CA',
           highlight: '#E0E7FF',
         },
-        // Homepage hero tiles: warm white faces with a soft edge. The 3D scene
-        // uses the same values in src/components/hero/HeroTilesScene.tsx.
-        tile: {
-          face: '#FBF9F4',
-          edge: '#E7E3DA',
+        // Homepage hero workspace: the work surface under the composition.
+        desk: {
+          DEFAULT: '#F1F0EC',
+          line: '#E4E2DC',
+          dot: '#CFCBC2',
+        },
+        // Wireframe greys inside the service illustrations (sketch state).
+        sketch: {
+          DEFAULT: '#E6E3DC',
+          line: '#CFCBC2',
         },
         // About page only: the warm paper of Backwater Journal's App Store frames,
         // so its showcase band blends into the screenshots.
         backwater: {
           paper: '#F2EBD9',
           edge: '#E3D9C0',
+          // Homepage featured presentation: the app's own palette
+          // (src/data/backwater.ts: Paper, Forest, Ink, Brass).
+          stage: '#F4F1EA',
+          line: '#E2DCCB',
+          forest: '#20382F',
+          'forest-dim': '#172A23',
+          ink: '#1F2A24',
+          brass: '#D9A441',
         },
         // Pale lavender tints of the indigo accent: the footer panel and its
         // divider. The contact composition (src/lib/designStack.ts) uses DEFAULT.
         lavender: {
           DEFAULT: '#E4E1FA',
+          mid: '#C7C1F6',
           soft: '#EEECFB',
           line: '#D6D2F2',
         },
         text: {
           primary: '#1C1C1C',
           secondary: '#4B4B4B',
-          muted: '#9A9A9A',
+          // AA for small text: 4.97:1 on the page background, 4.5:1 on the
+          // lavender footer (was #9A9A9A, 2.6:1). Same grey the gradient
+          // headlines end on.
+          muted: '#6B6B6B',
         },
       },
       letterSpacing: {

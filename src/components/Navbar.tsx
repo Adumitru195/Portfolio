@@ -10,20 +10,20 @@ type NavItem =
   | { label: string; kind: 'section'; id: HomeSection }
   | { label: string; kind: 'page'; to: string }
 
-// Contact is reached through the "Get in touch" button, so it isn't repeated here.
+// Contact is reached through the "Start a project" button, so it isn't repeated here.
 const navItems: NavItem[] = [
   { label: 'Work', kind: 'section', id: 'work' },
   { label: 'About', kind: 'page', to: '/about' },
 ]
 
-const ctaLabel = 'Get in touch'
+const ctaLabel = 'Start a project'
 
 const focusRing =
   'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
 
 /**
  * The shared header for the homepage and the About page. Its content box
- * matches the hero's (`px-6 md:px-10` around a `max-w-6xl` column), so the
+ * matches the page sections' (`px-6 md:px-10` around a `content-wide` column), so the
  * wordmark sits on the same left edge as the headline.
  */
 export default function Navbar() {
@@ -96,7 +96,7 @@ export default function Navbar() {
   return (
     <MotionConfig reducedMotion="user">
       <header className="fixed top-0 inset-x-0 z-50 px-6 md:px-10 bg-bg/85 backdrop-blur-md border-b border-black/[0.06]">
-        <nav aria-label="Main" className="max-w-6xl mx-auto h-16 flex items-center justify-between gap-6">
+        <nav aria-label="Main" className="content-wide h-16 flex items-center justify-between gap-6">
           <Link
             to="/"
             onClick={(e) => {

@@ -3,7 +3,11 @@
 
 export type FolderTint = 'sage' | 'stone' | 'cream' | 'midnight' | 'porcelain' | 'paper'
 
+/** What kind of work a project is, as its own case study states it. */
+export type WorkKind = 'Released product' | 'Personal concept' | 'Academic project'
+
 export interface WorkFolder {
+  kind: WorkKind
   /** Concise category or role line shown above the description. */
   label: string
   /** One or two sentences that fit a card; the full description stays in projects.ts. */
@@ -17,6 +21,7 @@ export interface WorkFolder {
 
 export const workFolders: Record<string, WorkFolder> = {
   'backwater-journal': {
+    kind: 'Released product',
     label: 'iOS product · Design + development',
     summary: 'A released iOS fishing app for catch logging, map discovery, community, and gear trading.',
     tint: 'sage',
@@ -26,6 +31,7 @@ export const workFolders: Record<string, WorkFolder> = {
     },
   },
   'aic-museum-experience': {
+    kind: 'Academic project',
     label: 'Academic group project · UX research',
     summary: 'An academic museum companion concept shaped by twelve visitor interviews and journey mapping.',
     tint: 'stone',
@@ -35,6 +41,7 @@ export const workFolders: Record<string, WorkFolder> = {
     },
   },
   porchlight: {
+    kind: 'Personal concept',
     label: 'Responsive web · UX + UI',
     summary: 'A rental discovery redesign with practical search, clear costs, and an honest tour request flow.',
     tint: 'cream',
@@ -42,16 +49,19 @@ export const workFolders: Record<string, WorkFolder> = {
     imagePosition: 'object-top',
   },
   'afterglow-cinema': {
+    kind: 'Personal concept',
     label: 'Responsive web · UX + UI',
     summary: 'A cinema experience connecting film discovery, showtimes, and a clear showing summary.',
     tint: 'midnight',
   },
   wovenward: {
+    kind: 'Personal concept',
     label: 'E-commerce · UX + UI',
     summary: 'A clothing shop concept with in-stock size filtering, fit guidance, and bag review.',
     tint: 'porcelain',
   },
   'typography-systems': {
+    kind: 'Academic project',
     label: 'Editorial design · Typography',
     summary: 'Two editorial studies exploring typography, hierarchy, and composition.',
     tint: 'paper',

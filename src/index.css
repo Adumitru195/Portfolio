@@ -1,5 +1,5 @@
-@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&display=swap');
+/* Cabinet Grotesk and Geist are linked from index.html, so they load in
+   parallel with this file instead of after it. */
 
 @tailwind base;
 @tailwind components;
@@ -134,10 +134,11 @@
 }
 
 @layer components {
-  /* Content width for homepage and About sections. Phones and tablets keep
-     the navigation's 72rem column; desktops widen to 92% of the viewport,
-     capped at 1600px. The nav and footer keep max-w-6xl. Text inside keeps
-     its own max-width, so wider sections never mean longer lines. */
+  /* The site's content width, shared by the navigation, every homepage and
+     About section, and the footer so their edges line up. Phones and tablets
+     get a 72rem column; desktops widen to 92% of the viewport, capped at
+     1600px. Text inside keeps its own max-width, so wider sections never
+     mean longer lines. */
   .content-wide {
     width: 100%;
     max-width: 72rem;
@@ -145,6 +146,20 @@
   }
   @media (min-width: 64rem) {
     .content-wide { max-width: min(92vw, 100rem); }
+  }
+
+  /* Hero workspace (src/components/hero/HeroWorkspace.tsx): the work surface
+     under the composition, a quiet dot grid like a cutting mat that fades out
+     toward its edges. */
+  .desk-grid {
+    background-color: theme('colors.desk.DEFAULT');
+    background-image: radial-gradient(circle at 1px 1px, theme('colors.desk.dot') 1px, transparent 0);
+    background-size: 18px 18px;
+    background-position: 9px 9px;
+  }
+  .desk-fade {
+    -webkit-mask-image: radial-gradient(closest-side, #000 45%, transparent 100%);
+    mask-image: radial-gradient(closest-side, #000 45%, transparent 100%);
   }
 
   /* Vertical space inside a section: grows smoothly with the viewport
@@ -172,6 +187,19 @@
       grid-template-columns: repeat(2, minmax(0, 30rem));
       justify-content: space-between;
     }
+  }
+  /* Three columns once each can still hold a 22rem folder comfortably. The
+     gallery's intro takes the first cell, so five folders fill two rows. */
+  @media (min-width: 84rem) {
+    .folder-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: clamp(2rem, 3vw, 4rem);
+    }
+  }
+  /* The intro lines up with the top of the folder bodies beside it (below
+     the tab row), once it shares a row with them. */
+  @media (min-width: 52rem) {
+    .folder-grid-intro { padding-top: 3.25rem; }
   }
 
   /* The link is the whole folder. Its top padding reserves the tab's row, so
@@ -321,5 +349,14 @@
       .folder-card:hover .folder-sheet-front { transform: translate(7px, -9px) rotate(1.6deg); }
       .folder-card:hover .folder-arrow { transform: translateX(3px); }
     }
+  }
+}
+
+/* Printing never triggers scroll reveals: show everything they hold. */
+@media print {
+  main [style*='opacity'],
+  footer [style*='opacity'] {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

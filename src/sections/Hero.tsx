@@ -1,94 +1,111 @@
-import { motion } from 'framer-motion'
 import { useRef } from 'react'
-import { ArrowDown } from '@phosphor-icons/react'
+import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
+import { ArrowDown, ArrowRight } from '@phosphor-icons/react'
 import { staggerContainer, fadeUp, slideInLeft, lineMask, lineReveal } from '@/lib/motion'
+import { heroCopy } from '@/data/hero'
 import { person } from '@/data/person'
-import { useReducedMotionPreference } from '@/hooks/useReducedMotionPreference'
-import HeroTilesBackdrop from '@/components/hero/HeroTilesBackdrop'
+import { useSiteNavigation } from '@/hooks/useSiteNavigation'
+import HeroWorkspace from '@/components/hero/HeroWorkspace'
 
+const focusRing =
+  'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
+
+/**
+ * The homepage opening: copy on the left, the workspace composition on the
+ * right (below the copy on phones and tablets). The copy never waits on the
+ * composition, and the composition never covers the copy or its links.
+ */
 export default function Hero() {
-  const contentRef = useRef<HTMLDivElement>(null)
-  const reducedMotion = useReducedMotionPreference()
+  const heroRef = useRef<HTMLElement>(null)
+  const { goToSection } = useSiteNavigation()
 
   return (
-    <section className="relative min-h-[100dvh] lg:min-h-[86dvh] flex flex-col justify-end px-6 md:px-10 pb-16 pt-32 lg:pb-16 lg:pt-36 overflow-hidden">
-      <motion.div
-        ref={contentRef}
-        className="relative z-10 content-wide"
-        variants={staggerContainer}
-        initial="hidden"
-        animate="visible"
-      >
-        {/* Status badge */}
-        <motion.div variants={slideInLeft} className="mb-10">
-          <span className="inline-flex items-center gap-2 text-xs font-medium text-text-secondary border border-subtle rounded-full px-3 py-1.5">
-            {/* Two pulses (4s), then steady */}
-            <span className="w-1.5 h-1.5 rounded-full bg-accent motion-safe:animate-pulse motion-safe:[animation-iteration-count:2]" />
-            Available for freelance &amp; collaboration
-          </span>
-        </motion.div>
-
-        {/* Main headline — per-line mask reveal */}
-        <motion.h1
-          variants={lineMask}
-          className="font-display font-black text-[clamp(2.75rem,1.6rem+4.6vw,5.75rem)] tracking-[-0.03em] text-text-primary leading-[0.98] lg:leading-[1.02] mb-10 max-w-5xl"
-        >
-          <span className="block overflow-hidden pb-[0.12em] -mb-[0.12em]">
-            <motion.span variants={lineReveal} className="block">Designing products</motion.span>
-          </span>
-          <span className="block overflow-hidden pb-[0.12em] -mb-[0.12em]">
-            <motion.span variants={lineReveal} className="block">
-              that are <span className="text-gradient">clear, useful,</span>
-            </motion.span>
-          </span>
-          <span className="block overflow-hidden pb-[0.12em] -mb-[0.12em]">
-            <motion.span variants={lineReveal} className="block">and human.</motion.span>
-          </span>
-        </motion.h1>
-
-        {/* Meta row */}
-        <motion.div variants={fadeUp}>
-          <p className="text-text-secondary text-base md:text-lg leading-relaxed max-w-[36rem] text-pretty">
-            {person.tagline}
-          </p>
-          <p className="text-text-muted text-sm mt-3">{person.location}</p>
-        </motion.div>
-
-        {/* CTA row */}
-        <motion.div variants={fadeUp} className="mt-10 flex flex-wrap items-center gap-4">
-          <button
-            onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
-            className="inline-flex items-center gap-2 bg-accent hover:bg-accent-dim text-white text-sm font-medium px-5 py-2.5 rounded-full transition-colors duration-200"
-          >
-            View Work
-            <ArrowDown size={14} weight="bold" />
-          </button>
-          <button
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="inline-flex items-center gap-2 border border-subtle hover:border-text-muted text-text-secondary hover:text-text-primary text-sm font-medium px-5 py-2.5 rounded-full transition-colors duration-200"
-          >
-            Contact Me
-          </button>
-        </motion.div>
-
-        {/* Scroll indicator */}
+    <section
+      ref={heroRef}
+      aria-labelledby="hero-heading"
+      className="relative overflow-hidden px-6 md:px-10 pt-28 pb-20 md:pt-32 lg:min-h-[100dvh] lg:flex lg:items-center lg:pt-24 lg:pb-14"
+    >
+      <div className="content-wide grid grid-cols-1 items-center gap-y-14 md:gap-y-16 lg:grid-cols-12 lg:gap-x-12">
         <motion.div
-          variants={fadeUp}
-          className="mt-10 flex items-center gap-3 text-text-muted"
+          className="relative z-10 lg:col-span-6"
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
         >
-          {/* Three nudges (4.8s), then still */}
-          <motion.div
-            animate={reducedMotion ? undefined : { y: [0, 8, 0] }}
-            transition={{ duration: 1.6, repeat: 2, ease: 'easeInOut' }}
-          >
-            <ArrowDown size={14} />
+          <motion.div variants={slideInLeft} className="mb-8 md:mb-10">
+            <span className="inline-flex items-center gap-2 text-xs font-medium text-text-secondary border border-subtle rounded-full px-3 py-1.5 bg-bg">
+              {/* Two pulses (4s), then steady */}
+              <span className="w-1.5 h-1.5 rounded-full bg-accent motion-safe:animate-pulse motion-safe:[animation-iteration-count:2]" />
+              {heroCopy.badge}
+            </span>
           </motion.div>
-          <span className="text-xs tracking-widest uppercase">Scroll</span>
-        </motion.div>
-      </motion.div>
 
-      {/* Floating software tiles, kept clear of the text. */}
-      <HeroTilesBackdrop contentRef={contentRef} />
+          {/* Per-line mask reveal */}
+          <motion.h1
+            id="hero-heading"
+            variants={lineMask}
+            className="font-display font-black text-[clamp(2.75rem,1.1rem+5.4vw,4.5rem)] lg:text-[clamp(3.5rem,0.9rem+4.1vw,5.5rem)] tracking-[-0.03em] text-text-primary leading-[1.02] mb-9 md:mb-11"
+          >
+            {heroCopy.headline.map((line, i) => (
+              <span key={line} className="block overflow-hidden pb-[0.12em] -mb-[0.12em]">
+                <motion.span
+                  variants={lineReveal}
+                  className={`block ${i === heroCopy.headline.length - 1 ? 'text-gradient' : ''}`}
+                >
+                  {line}
+                </motion.span>
+              </span>
+            ))}
+          </motion.h1>
+
+          <motion.div variants={fadeUp}>
+            <p className="text-text-secondary text-base md:text-lg leading-relaxed max-w-[34rem] text-pretty">
+              {person.tagline}
+            </p>
+            <p className="mt-4 flex flex-wrap items-center gap-x-2 text-sm text-text-secondary">
+              <span>{heroCopy.location}</span>
+              <span aria-hidden="true">·</span>
+              <span>{heroCopy.locationNote}</span>
+            </p>
+          </motion.div>
+
+          <motion.div variants={fadeUp} className="mt-9 md:mt-10 flex flex-wrap items-center gap-3 sm:gap-4">
+            <Link
+              to="/"
+              state={{ scrollTo: 'work' }}
+              onClick={(e) => goToSection(e, 'work')}
+              className={`group inline-flex min-h-[44px] items-center gap-2 bg-accent hover:bg-accent-dim text-white text-sm font-medium px-5 rounded-full transition-colors duration-200 ${focusRing}`}
+            >
+              {heroCopy.primaryCta}
+              <ArrowDown
+                size={14}
+                weight="bold"
+                aria-hidden="true"
+                className="transition-transform duration-200 group-hover:translate-y-0.5 motion-reduce:transition-none motion-reduce:transform-none"
+              />
+            </Link>
+            <Link
+              to="/"
+              state={{ scrollTo: 'contact' }}
+              onClick={(e) => goToSection(e, 'contact')}
+              className={`group inline-flex min-h-[44px] items-center gap-2 border border-subtle bg-bg hover:border-text-muted text-text-primary text-sm font-medium px-5 rounded-full transition-colors duration-200 ${focusRing}`}
+            >
+              {heroCopy.secondaryCta}
+              <ArrowRight
+                size={14}
+                weight="bold"
+                aria-hidden="true"
+                className="transition-transform duration-200 group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:transform-none"
+              />
+            </Link>
+          </motion.div>
+        </motion.div>
+
+        <div className="lg:col-span-6 w-full max-w-[38rem] md:ml-auto lg:max-w-none">
+          <HeroWorkspace interactionRef={heroRef} />
+        </div>
+      </div>
     </section>
   )
 }

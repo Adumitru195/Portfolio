@@ -185,3 +185,20 @@ export const aboutPage = {
     buttonLabel: 'Let’s talk',
   },
 }
+
+/** The compact About preview on the homepage, linking to #/about. */
+export const aboutPreview = {
+  label: 'Behind the design',
+  heading: ['Curious by nature.', 'Intentional by design.'],
+  body: [
+    'I’m a Chicago-based UX/UI designer, Air Force veteran, and UX design student at DePaul University.',
+    'I enjoy figuring out how things work, why people use them, and how they could be better. My background in research, design, and development helps me approach projects from both a creative and practical perspective.',
+  ],
+  cta: 'More about me',
+  /** Three roles in one line each: what I do, where I'm learning, what I've built. */
+  roles: [
+    { label: 'Independent', value: 'UX/UI designer' },
+    { label: 'Studying', value: 'UX design, DePaul University' },
+    { label: 'Built and released', value: 'Backwater Journal for iOS' },
+  ],
+}

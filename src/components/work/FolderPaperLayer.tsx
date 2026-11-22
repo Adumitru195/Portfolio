@@ -5,6 +5,8 @@ import { useReducedMotionPreference } from '@/hooks/useReducedMotionPreference'
 import { folderPaper, offsetWithin } from '@/lib/folderPaper'
 import { supportsWebGL } from '@/lib/webgl'
 import type { FolderTint } from '@/data/work-folders'
+import WebGLFailSignal from '@/components/WebGLFailSignal'
+import { usePageVisible } from '@/hooks/usePageVisible'
 
 const FolderPaperScene = lazy(() => import('@/components/work/FolderPaperScene'))
 
@@ -16,12 +18,6 @@ interface FolderPaperLayerProps {
   onActiveChange: (active: boolean) => void
 }
 
-// Rendered by the error boundary when the scene throws or its chunk fails.
-function FailSignal({ onFail }: { onFail: () => void }) {
-  useEffect(() => onFail(), [onFail])
-  return null
-}
-
 /**
  * Loads the decorative 3D paper layer for the folder grid, only when it can
  * add something: a fine pointer (hover exists), no reduced-motion preference,
@@ -31,6 +27,7 @@ function FailSignal({ onFail }: { onFail: () => void }) {
 export default function FolderPaperLayer({ gridRef, slots, cards, onActiveChange }: FolderPaperLayerProps) {
   const reducedMotion = useReducedMotionPreference()
   const finePointer = useMediaQuery('(hover: hover) and (pointer: fine)')
+  const pageVisible = usePageVisible()
   const [webgl] = useState(supportsWebGL)
   const [near, setNear] = useState(false)
   const [inView, setInView] = useState(false)
@@ -42,6 +39,7 @@ export default function FolderPaperLayer({ gridRef, slots, cards, onActiveChange
   useEffect(() => {
     const grid = gridRef.current
     if (!grid || !enabled) return
+    if (!('IntersectionObserver' in window)) return
     const approach = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) setNear(true)
     }, { rootMargin: '600px 0px' })
@@ -96,9 +94,9 @@ export default function FolderPaperLayer({ gridRef, slots, cards, onActiveChange
   if (!enabled || !near) return null
   return (
     <div className="pointer-events-none absolute inset-0 z-10" aria-hidden="true">
-      <WebGLBoundary fallback={<FailSignal onFail={handleFail} />}>
+      <WebGLBoundary fallback={<WebGLFailSignal onFail={handleFail} />}>
         <Suspense fallback={null}>
-          <FolderPaperScene cards={cards} running={inView} onReady={handleReady} onFail={handleFail} />
+          <FolderPaperScene cards={cards} running={inView && pageVisible} onReady={handleReady} onFail={handleFail} />
         </Suspense>
       </WebGLBoundary>
     </div>

@@ -29,6 +29,7 @@ export default function ProjectFolderCard({ project, folder, interactive, regist
   const titleId = `folder-${project.id}-title`
   const actionId = `folder-${project.id}-action`
   const summaryId = `folder-${project.id}-summary`
+  const kindId = `folder-${project.id}-kind`
   const rotateX = useMotionValue(0)
   const rotateY = useMotionValue(0)
   const tiltX = useSpring(rotateX, spring)
@@ -61,7 +62,7 @@ export default function ProjectFolderCard({ project, folder, interactive, regist
     <Link
       to={`/project/${project.id}`}
       aria-labelledby={`${titleId} ${actionId}`}
-      aria-describedby={summaryId}
+      aria-describedby={`${kindId} ${summaryId}`}
       onPointerEnter={onPointerEnter}
       onPointerMove={onPointerMove}
       onPointerLeave={settle}
@@ -115,10 +116,19 @@ export default function ProjectFolderCard({ project, folder, interactive, regist
             <p id={summaryId} className="m-0 mt-2.5 max-w-[46ch] text-[0.95rem] leading-relaxed text-[color:var(--f-muted)]">
               {folder.summary}
             </p>
-            <span id={actionId} className="mt-auto inline-flex items-center gap-2 pt-5 font-semibold text-[color:var(--f-cta)]">
-              View case study
-              <ArrowRight size={16} weight="bold" aria-hidden="true" className="folder-arrow" />
-            </span>
+            {/* The action, with what kind of work this is opposite it */}
+            <div className="mt-auto flex flex-wrap items-center justify-between gap-x-4 gap-y-2 pt-5">
+              <span id={actionId} className="inline-flex items-center gap-2 font-semibold text-[color:var(--f-cta)]">
+                View case study
+                <ArrowRight size={16} weight="bold" aria-hidden="true" className="folder-arrow" />
+              </span>
+              <span
+                id={kindId}
+                className="rounded-full border border-[color:var(--f-edge)] px-2.5 py-0.5 text-[0.75rem] font-medium text-[color:var(--f-muted)]"
+              >
+                {folder.kind}
+              </span>
+            </div>
           </div>
         </div>
       </div>

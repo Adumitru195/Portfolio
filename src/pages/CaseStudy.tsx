@@ -349,10 +349,15 @@ function StandardCaseStudy({ id }: { id: string | undefined }) {
 
   if (!project) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center gap-4">
-        <p className="text-text-secondary">Project not found.</p>
-        <Link to="/" className="text-accent hover:underline text-sm">← Back home</Link>
-      </div>
+      <main className="min-h-[100dvh] flex flex-col items-center justify-center gap-4 px-6">
+        <h1 className="font-display text-2xl font-bold text-text-primary">Project not found</h1>
+        <Link
+          to="/"
+          className="inline-flex min-h-[44px] items-center rounded-sm text-sm text-accent hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+        >
+          ← Back home
+        </Link>
+      </main>
     )
   }
 
@@ -362,6 +367,7 @@ function StandardCaseStudy({ id }: { id: string | undefined }) {
 
   useEffect(() => {
     if (sectionIds.length === 0) return
+    if (!('IntersectionObserver' in window)) return
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -378,7 +384,7 @@ function StandardCaseStudy({ id }: { id: string | undefined }) {
   }, [sectionIds.join(',')])
 
   return (
-    <div className="relative min-h-screen bg-bg">
+    <div className="relative min-h-[100dvh] bg-bg">
       <ScrollProgress />
 
       {/* Ambient Three.js backdrop, fixed behind the content for the whole page */}

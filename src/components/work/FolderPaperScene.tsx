@@ -244,7 +244,8 @@ export default function FolderPaperScene({ cards, running, onReady, onFail }: Fo
     <Canvas
       orthographic
       flat
-      frameloop="demand"
+      // No frames at all while offscreen or the tab is hidden, even mid-animation.
+      frameloop={running ? 'demand' : 'never'}
       dpr={[1, 1.5]}
       camera={{ position: [0, 0, 100], near: 1, far: 200, zoom: 1 }}
       gl={{ alpha: true, antialias: true, powerPreference: 'low-power' }}
