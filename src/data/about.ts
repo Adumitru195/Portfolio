@@ -69,9 +69,10 @@ export interface Strength {
   detail: ProjectDetail
 }
 
-export interface WorkingNote {
+export interface Certification {
+  /** Exact title, as written by Andrew. */
   title: string
-  body: string
+  year: string
 }
 
 export const aboutPage = {
@@ -79,21 +80,24 @@ export const aboutPage = {
     label: 'Andrew Dumitru · Independent UX/UI designer',
     headline: ['A designer’s eye.', 'A builder’s mindset.'],
     intro:
-      'I’m Andrew, a UX/UI designer based in Chicago. I design and build websites and apps, with an eye for the details that make them feel clear, useful and worth spending time with.',
-    supporting:
-      'I enjoy taking an idea beyond the first mockup, working through how it looks, how it behaves and how it comes together in a browser or an app.',
-    background:
-      'Before studying UX design, I spent six years in the U.S. Air Force working in aircraft maintenance. That experience shaped how I approach design: pay attention to details, ask questions, and check the work.',
+      'I’m Andrew, a UX/UI designer based in Chicago. I design and build websites and digital products, combining creative thinking with a practical approach to how things work.',
+    supporting: [
+      'I’m currently studying User Experience Research and Design at DePaul University, where I continue exploring user research, interaction design, and the details that make digital experiences easier to use.',
+      'What I enjoy most is taking an idea beyond the first mockup, refining how it looks, how it works, and how everything comes together.',
+    ],
     location: 'Based in Chicago',
-    workLabel: 'See my work',
-    contactLabel: 'Let’s talk',
+    workLabel: 'View my work',
+    contactLabel: 'Start a project',
   },
   strengths: {
-    heading: 'What I bring to a project',
+    label: 'How I approach design',
+    heading: 'Thoughtful design, from concept to execution.',
+    intro:
+      'I approach projects by understanding what needs to work, finding a clear visual direction, and considering how the experience comes together beyond the design files.',
     items: [
       {
-        title: 'A clear direction',
-        body: 'I work through what the experience needs to do, then organize the content and interactions around it.',
+        title: 'Start with the problem',
+        body: 'Before focusing on how something looks, I think about what people need to accomplish. Research, user flows, and clear information help me understand where to begin.',
         detail: {
           src: `${base}projects/porchlight/wf-listing.webp`,
           width: 654,
@@ -105,8 +109,8 @@ export const aboutPage = {
         },
       },
       {
-        title: 'A considered visual identity',
-        body: 'Typography, color and layout should give the work character while keeping it easy to understand.',
+        title: 'Give ideas a visual identity',
+        body: 'Typography, color, layout, and interaction all influence how an experience feels. I enjoy developing visual systems that give projects personality without making them harder to use.',
         detail: {
           src: `${base}projects/wovenward/home-hero-800.webp`,
           width: 800,
@@ -118,8 +122,8 @@ export const aboutPage = {
         },
       },
       {
-        title: 'Attention beyond the mockup',
-        body: 'I build interfaces too, so I think about responsive layouts, interaction states and how the design behaves when someone actually uses it.',
+        title: 'Think beyond the mockup',
+        body: 'Because I also build interfaces, I consider how designs respond to different screens, how interactions behave, and what happens when someone actually uses them.',
         detail: {
           src: `${base}projects/porchlight/mobile-tour-validation.webp`,
           width: 390,
@@ -134,12 +138,33 @@ export const aboutPage = {
       },
     ] satisfies Strength[],
   },
+  education: {
+    label: 'Education & Certifications',
+    heading: 'Always learning. Always building.',
+    intro:
+      'My education and technical training help me connect design decisions with the practical side of creating digital products.',
+    degree: {
+      kind: 'Education',
+      school: 'DePaul University',
+      title: 'Bachelor of Science in User Experience Research and Design',
+      dates: '2024–Present',
+      status: 'Degree in progress',
+    },
+    certificationKind: 'Certification',
+    certifications: [
+      { title: 'Google UX Design Specialization', year: '2024' },
+      { title: 'Google Cloud Database Engineer Specialization', year: '2024' },
+    ] satisfies Certification[],
+  },
   backwater: {
-    label: 'Backwater Journal · iOS app',
-    heading: 'From an interest to a working app',
+    label: 'The story behind Backwater Journal',
+    heading: 'From a personal interest to a working app.',
     body: [
       'Fishing gave me a reason to build something of my own.',
-      'With Backwater Journal, I took an idea through design and development into a working app. It brought together the parts of the work I enjoy most: shaping an experience, giving it a visual identity and making it function.',
+      'I wanted to create a place where anglers could record their catches, explore fishing spots, and connect with others who share the same interest.',
+      'That idea became Backwater Journal, an iOS app I designed, developed, and released.',
+      'Building it taught me a lot about the decisions that happen after the first design is finished. From refining interactions to working through technical challenges, I learned how much thought goes into making an experience work beyond the screen.',
+      'It’s a project that brings together two things I genuinely enjoy: fishing and creating digital products.',
     ],
     linkLabel: 'Explore the Backwater Journal case study',
     projectId: 'backwater-journal',
@@ -158,31 +183,27 @@ export const aboutPage = {
       ],
     })),
   },
-  working: {
-    heading: 'Working with me',
-    notes: [
-      {
-        title: 'Direct communication',
-        body: 'You’ll work directly with me, with space to ask questions and talk through decisions.',
-      },
-      {
-        title: 'Room to explore',
-        body: 'We can compare directions and refine the details before settling on what fits.',
-      },
-      {
-        title: 'A clear next step',
-        body: 'We’ll agree on the scope and what you need at the end, whether that’s design files, a working website or a focused set of improvements.',
-      },
-    ] satisfies WorkingNote[],
-  },
   beyond: {
-    heading: 'Beyond the screen',
-    body: 'Outside of design, I enjoy fishing and exploring new places. Fishing also inspired Backwater Journal, giving me a chance to turn a personal interest into an app I could design and build.',
+    label: 'Beyond the screen',
+    /** The three interests named in the copy below. */
+    interests: ['Fishing', 'Exploring new places', 'Technology'],
+    heading: 'There’s more to me than pixels and prototypes.',
+    body: [
+      'Outside of design, I enjoy fishing, exploring new places, and spending time with technology.',
+      'I’ve always been curious about how things work, whether it’s something I’m building, an experience I’m designing, or a new interest I’m exploring.',
+      'That curiosity is a big part of what keeps me creating.',
+    ],
   },
   closing: {
-    heading: 'Let’s make something worth using.',
-    body: 'Have an idea, an existing website or something that needs a fresh direction? Tell me what you’re working on.',
-    buttonLabel: 'Let’s talk',
+    label: 'Let’s work together',
+    heading: 'Have something in mind? Let’s talk.',
+    body: [
+      'Whether you’re starting a new website, improving an existing experience, or exploring an idea for a digital product, I’d like to hear what you’re working on.',
+      'I like keeping projects straightforward, with clear communication, room to explore ideas, and an agreed scope before the work begins.',
+    ],
+    opportunities: 'I’m also open to UX/UI design opportunities and collaborations.',
+    buttonLabel: 'Start a project',
+    workLabel: 'View my work',
   },
 }
 

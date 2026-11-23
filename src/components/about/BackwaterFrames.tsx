@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import type { ImageSource } from '@/data/about'
+import { useReveal } from '@/hooks/useReveal'
 
 interface Frame {
   id: string
@@ -46,14 +47,14 @@ function FrameImage({ frame, sizes }: { frame: Frame; sizes: string }) {
 
 /** Three Backwater Journal App Store frames, fanned like cards in a hand. */
 export default function BackwaterFrames({ frames, className = 'mx-auto' }: { frames: Frame[]; className?: string }) {
+  // Shown fanned out straight away under reduced motion or without IntersectionObserver.
+  const reveal = useReveal({ once: true, margin: '-15% 0px' })
   const [left, centre, right] = frames
   if (!left || !centre || !right) return null
 
   return (
     <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-15% 0px' }}
+      {...reveal}
       className={`relative w-full max-w-[30rem] lg:max-w-[28rem] xl:max-w-[30rem] pt-[4%] pb-[8%] ${className}`}
     >
       <motion.div variants={fan.left} className="absolute left-[4%] sm:left-0 top-[12%] w-[33%] sm:w-[36%] origin-bottom-right">

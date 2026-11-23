@@ -18,6 +18,8 @@ const inquiryBody = [
   '',
 ].join('\n')
 
+const inquirySubject = 'Project inquiry'
+
 export const contact = {
   label: 'Let’s connect',
   headline: 'Something in mind?',
@@ -27,7 +29,8 @@ export const contact = {
   email: person.email,
   mailto: `mailto:${person.email}`,
   /** The "Start a project" email: a subject line and the optional brief. */
-  inquiryMailto: `mailto:${person.email}?subject=${encodeURIComponent('Project inquiry')}&body=${encodeURIComponent(inquiryBody)}`,
+  inquirySubject,
+  inquiryMailto: `mailto:${person.email}?subject=${encodeURIComponent(inquirySubject)}&body=${encodeURIComponent(inquiryBody)}`,
   emailPrefix: 'Or email me directly at',
   copy: {
     label: 'Copy email',
