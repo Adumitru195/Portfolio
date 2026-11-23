@@ -6,7 +6,7 @@ export const projects: Project[] = [
     title: 'Backwater Journal',
     subtitle: 'A released iOS fishing journal, map, marketplace and angler community',
     description:
-      'An independent iOS app I designed, built and released in July 2026. It connects structured catch logs and journal entries, map-first discovery, a community Dock and a gear Market. The case study follows the product through its 1.1.0 update, which rebuilt Explore and added offline catch drafts and catch history export.',
+      'An independent iOS app I designed, built and released in July 2026. It connects structured catch logs and journal entries, map-first discovery, a community Dock and a gear Market. The case study follows the product through version 1.2.0, including the 1.1.0 update that rebuilt Explore.',
     role: 'Founder, Product Designer & Mobile App Developer',
     tags: ['Product Design', 'Mobile App', 'UX Strategy', 'iOS'],
     year: '2026',

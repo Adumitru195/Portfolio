@@ -3,10 +3,15 @@ import { backwaterRelease } from '@/data/backwater-release'
 
 const base = '/Portfolio/projects/backwater-journal'
 
-// The six current product-tour screens are the official website assets
-// (backwaterjournal.com/images/app/), pixel-identical to the screens in the
-// case study PDF. Each is a transparent PNG-style webp that already includes
-// its phone frame, so it is shown without another device frame.
+// The six product-tour screens are byte-identical to the website's assets
+// (backwaterjournal-site: images/app/). Each already includes its phone frame.
+// Capture dates, from the evidence:
+//  - dock, communityPost, newCatch, species, market: the same captures as the
+//    July 2026 App Store frames; the New Catch form shows "Mon, Jul 6 at
+//    10:58 PM". They show the build before the 1.0 public release.
+//  - explore: recaptured after the 1.1.0 Explore redesign; added to the
+//    website on October 14, 2026, before 1.2.0.
+// None of them shows version 1.2.0.
 const screen = (file: string, width: number, height: number, alt: string): PresentationImage => ({
   src: `${base}/${file}`,
   width,
@@ -33,37 +38,18 @@ export const backwaterScreens = {
     'Market screen: Saved and My Listings buttons, a List Your Gear banner, gear search, category chips, and an empty state reading No gear listed yet with a List Your Gear button.'),
 }
 
-export interface BwPoint {
-  title: string
-  body: string
-}
-
 export interface BwScreen {
   label: string
   caption: string
   image: PresentationImage
 }
 
-export interface Experience {
-  id: string
-  label: string
-  kicker: string
-  title: string
-  intro: string
-  screens: BwScreen[]
-  task: string
-  decision: string[]
-  evidence: string[]
-  next: string
-  note?: string
-}
-
 export const sources = {
   website: 'https://www.backwaterjournal.com/',
   appStore: backwaterRelease.appStoreUrl,
-  privacy: 'https://www.backwaterjournal.com/privacy/',
-  support: 'https://www.backwaterjournal.com/support/',
 }
+
+const latestRelease = `Version ${backwaterRelease.latest.version} · ${backwaterRelease.latest.date}`
 
 export const backwater = {
   documentTitle: 'Backwater Journal · Andrew Dumitru',
@@ -73,14 +59,14 @@ export const backwater = {
     eyebrow: 'A personal interest. A released product.',
     title: 'Backwater Journal',
     tagline: 'Every catch has a story.',
-    lede: 'An independent iOS app I shaped, designed, built and released. It connects trip preparation, catch records, nearby discovery and an angler community.',
+    lede: 'An independent fishing app I designed, developed, and released for iOS. Backwater Journal brings trip planning, catch records, fishing spot discovery, and an angler community into one connected experience.',
     roleLabel: 'My role',
-    role: 'Founder, product designer and mobile app developer',
+    role: 'Founder, Product Designer & Mobile App Developer',
     meta: [
       { label: 'Platform', value: 'iOS / iPhone' },
-      { label: 'Released', value: backwaterRelease.released },
-      { label: 'Latest update', value: `${backwaterRelease.latest.version} · ${backwaterRelease.latest.date}` },
-      { label: 'Available in', value: 'United States and Canada' },
+      { label: 'Initial release', value: backwaterRelease.released },
+      { label: 'Latest release', value: latestRelease },
+      { label: 'Tools', value: 'Figma, React Native, Expo, Supabase' },
     ],
     links: [
       { label: 'Visit the website', href: sources.website },
@@ -90,274 +76,210 @@ export const backwater = {
       { label: 'Dock', caption: 'Conditions and catch statistics', image: backwaterScreens.dock },
       { label: 'Explore', caption: 'The map-first discovery screen', image: backwaterScreens.explore },
     ] satisfies BwScreen[],
-    caption: 'Current website product-tour screens.',
+    caption: 'Website product-tour screens: Dock captured before the 1.0 release, Explore after the 1.1.0 redesign. Neither shows version 1.2.0.',
   },
 
-  context: {
-    label: 'Context + ownership',
-    kicker: 'From fishing interest to product',
-    title: 'I took the idea beyond the mockup.',
+  // 01
+  // Product walkthrough between the opening and section 01. Not a numbered
+  // section. Source: "UX Projects/Backwater Journal/Walkthrough Video 1.2.0/
+  // draft-v2" (approved). Recorded from the 1.2.0 development build on an
+  // Android emulator; other people's names and photos in the Activity scene
+  // are redacted in the edit.
+  walkthrough: {
+    eyebrow: 'Product walkthrough',
+    title: 'See Backwater Journal in action.',
+    body: 'A short walkthrough of the Dock, Explore, catch logging, Fishing Outlook, and Activity center, recorded from the running Android development build.',
+    disclosure: 'Recorded from the running app on an Android emulator · Version 1.2.0 · 30 seconds, no sound',
+    label: 'Backwater Journal walkthrough',
+    playLabel: 'Play the Backwater Journal walkthrough (30 seconds, no sound)',
+    playText: 'Play walkthrough · 0:30',
+    descriptionLabel: 'What the walkthrough shows',
+    duration: 30,
+    landscape: {
+      mp4: `${base}/walkthrough/backwater-journal-1.2.0-walkthrough-landscape-1920x1080.mp4`,
+      poster: `${base}/walkthrough/backwater-journal-1.2.0-walkthrough-landscape-poster.webp`,
+      width: 1920,
+      height: 1080,
+    },
+    vertical: {
+      mp4: `${base}/walkthrough/backwater-journal-1.2.0-walkthrough-vertical-1080x1920.mp4`,
+      poster: `${base}/walkthrough/backwater-journal-1.2.0-walkthrough-vertical-poster.webp`,
+      width: 1080,
+      height: 1920,
+    },
+    description:
+      'What the walkthrough shows, in order: the Dock with catch statistics and today’s fishing conditions; Explore, where the map key opens and a public fishing spot’s card is shown; the New Catch form scrolled from Catch Basics through trip details, conditions and visibility, without saving; the Fishing Outlook with current conditions, upcoming fishing windows and a 5-day forecast; and the Activity center’s All and Unread filters. Other people’s names and photos are hidden.',
+  },
+  idea: {
+    name: 'From an idea to a real product',
+    title: 'Fishing gave me a reason to build something of my own.',
     body: [
-      'Fishing gave me a reason to build something of my own. Backwater Journal brings a trip together: checking conditions before going out, recording catches, finding places nearby and sharing with other anglers.',
-      'I shaped the product, designed the interface, developed the iOS app and released it. Because every design decision also had to be built and maintained, I treated the app as connected jobs rather than separate screens.',
+      'I wanted a place where anglers could prepare for a trip, record what they caught, discover fishing spots, and share their experiences without treating each activity as a separate task.',
+      'That idea became Backwater Journal.',
+      'I was responsible for shaping the product, designing its interface, developing the app, and bringing it to the App Store.',
     ],
-    roles: [
-      { title: 'Product direction', body: 'I shaped the experience around logging, discovery, community and fishing gear, and decided how those parts relate to each other.' },
-      { title: 'Interface + implementation', body: 'I took the design through to a working mobile app rather than stopping at static screens.' },
-      { title: 'Release + refinement', body: 'I released the app on the App Store and continued it through a documented update that rebuilt Explore.' },
-    ] satisfies BwPoint[],
-    facts: [
-      { label: 'Platform', value: 'iOS / iPhone' },
-      { label: 'Initial release', value: backwaterRelease.released },
-      { label: 'Latest verified update', value: `${backwaterRelease.latest.version} · ${backwaterRelease.latest.date}` },
-      { label: 'Available regions', value: 'United States and Canada' },
-      { label: 'Price', value: backwaterRelease.price },
-      { label: 'Tools', value: 'Figma, React Native / Expo, Supabase, TestFlight' },
-    ],
-    factsNote: 'An independent product available on the App Store.',
+    challenge:
+      'The challenge wasn’t just designing individual screens. It was making several different activities feel connected while keeping each one straightforward to use.',
   },
 
+  // 02
   structure: {
-    label: 'Experience structure',
-    kicker: 'One product, several connected jobs',
-    title: 'Keep the fishing experience connected.',
-    intro: 'My design intent is to connect the moments before, during and after a trip without making every task feel the same.',
+    name: 'Designing around the fishing experience',
+    title: 'One app. Several connected activities.',
+    intro: 'I organized the product around four parts of the fishing experience.',
     steps: [
-      { name: 'Prepare', parts: 'Dock + Explore', body: 'Conditions and nearby discovery.' },
-      { name: 'Record', parts: 'Catch Log + Journal', body: 'Structured records and personal stories.' },
-      { name: 'Revisit', parts: 'Species + catch history', body: 'A record that becomes useful over time.' },
-      { name: 'Connect', parts: 'Community + Market', body: 'Share experiences and coordinate gear trades.' },
+      { name: 'Prepare', body: 'Check fishing conditions and explore nearby waters.' },
+      { name: 'Record', body: 'Log catches, measurements, photos, and trip details.' },
+      { name: 'Revisit', body: 'Review catch history and track species.' },
+      { name: 'Connect', body: 'Share experiences and coordinate fishing gear trades with other anglers.' },
     ],
-    navLabel: 'Where it lives in the app',
-    nav: 'The bottom navigation has four tabs: Dock, Journal, Explore and Market. Community posts appear in the Dock, and the species collection sits in the Journal, so each tab holds more than one related job.',
-    recordsLabel: 'Two kinds of records',
-    records: [
-      { title: 'Catch log', body: 'A structured record of a single catch: photos, species, weight, length, date and time, lure or bait, and trip details.' },
-      { title: 'Journal entry', body: 'Stories, notes and updates from time on the water that do not fit into those fields.' },
-    ] satisfies BwPoint[],
-    principleLabel: 'Design principle',
-    principle: 'Keep structure where it helps people remember details; leave room for expression where the experience is personal.',
+    body: [
+      'These activities shaped the app’s navigation, content hierarchy, and interaction patterns.',
+      'I wanted anglers to move between practical information and personal records without feeling as though they were using unrelated features.',
+    ],
   },
 
-  experienceLabels: {
-    task: 'The task',
-    decision: 'The design decision',
-    evidence: 'The visible evidence',
-    next: 'Next question',
-  },
-
-  experiences: [
-    {
-      id: 'dock',
-      label: 'Dock + community',
-      kicker: 'Planning and sharing have different jobs',
-      title: 'A useful starting point. A place to connect.',
-      intro: 'The Dock is the first tab. It holds two different kinds of content: practical information for planning a trip, and catches other anglers have chosen to share.',
-      screens: [
-        { label: 'Dock / conditions', caption: 'Conditions sit below the personal statistics row.', image: backwaterScreens.dock },
-        { label: 'Dock / shared catch', caption: 'A shared post tagged Catch Log, with like, comment and share actions.', image: backwaterScreens.communityPost },
-      ],
-      task: 'Before a trip, an angler wants to know whether conditions look worth going out for. After a trip, they may want to share a catch and see what others have caught.',
-      decision: [
-        'Conditions and statistics answer different questions, so I kept them visually separate. Statistics describe your own record: catches, this week, best weight and day streak. Conditions describe the water right now: a rating, the bite window, wind, sunrise, sunset, pressure and rain.',
-        'Shared catches pair a photograph with the key fishing details, so a post reads as a catch story rather than a plain status update.',
-      ],
-      evidence: [
-        'The conditions card leads with a plain-language summary (“Prime Bite”, “Calm in Northfield this evening”) before the detail grid, and ends with a View Conditions action.',
-        'The shared post carries a Catch Log tag, species, weight, length and a location chip naming a lake and county.',
-      ],
-      next: 'Do people read the conditions rating as a summary to plan with rather than a guarantee? And does seeing practical information and community posts in one tab feel clear, or crowded?',
-      note: 'The statistics shown belong to an example account. They are not adoption or performance figures.',
-    },
-    {
-      id: 'catch-logging',
-      label: 'Catch logging',
-      kicker: 'The details worth remembering',
-      title: 'Turn a catch into a useful record.',
-      intro: 'A catch log is the product’s core record. The form has to work at the water, often one-handed, sometimes with a weak signal.',
-      screens: [
-        { label: 'New Catch', caption: 'Catch Basics first, then Trip Details.', image: backwaterScreens.newCatch },
-      ],
-      task: 'Record a catch while the details are fresh, without having to fill in everything at once.',
-      decision: [
-        'The form opens with a Catch Basics group: photos, then the species, then measurements, then date and time. Trip details such as lure or bait come after. Photos and fields do different jobs: the image remembers the moment, while the data supports later review.',
-        'Weight and length sit side by side with their units in the labels, and the date and time are filled in already with a Change link, so the time of the catch usually needs no typing.',
-      ],
-      evidence: [
-        'Primary Species is the only field marked required in the visible form, and Add Photos states its limit: up to 10 photos.',
-        'Version 1.1.0 added Pin on Map for catch logging, offline catch drafts, measurement improvements and catch history export.',
-      ],
-      next: 'How long does it take to log a catch outdoors, and do people understand when a catch is saved as an offline draft rather than posted?',
-    },
-    {
-      id: 'explore',
-      label: 'Explore',
-      kicker: 'The map as the main workspace',
-      title: 'Make discovery easier to act on.',
-      intro: 'The current Explore screen leads with the map, then places search, species filters and saved access above it.',
-      screens: [
-        { label: 'Explore / current', caption: 'Map-first, with a Fishing spots panel above the navigation.', image: backwaterScreens.explore },
-      ],
-      task: 'Find a place to fish, narrow it by species, and understand a spot without losing track of where it is.',
-      decision: [
-        'Search stays at the top and names its scope: waters, spots and catches. Species, Filters and Saved sit directly beneath it as labelled chips, and three round map controls, including layers and locate, stack on the right edge of the map.',
-        'A selected spot opens a compact panel above the bottom navigation rather than replacing the map, so its distance and species stay connected to its place.',
-      ],
-      evidence: [
-        'The Fishing spots panel shows Skokie Lagoon with a distance, the species listed for it, and Public access and Community spot labels, while the surrounding map stays visible behind it.',
-      ],
-      next: 'Can someone find, open and save a spot on their first try? And how do people interpret labels like Public access?',
-    },
-    {
-      id: 'species',
-      label: 'Species + personal progress',
-      kicker: 'Give the record a reason to grow',
-      title: 'From individual catches to a personal collection.',
-      intro: 'The species collection lives in the Journal tab. It is a second way into the same catch history.',
-      screens: [
-        { label: 'Species', caption: 'Caught species with counts and best catches.', image: backwaterScreens.species },
-      ],
-      task: 'Look back at what you have caught without scrolling through every individual catch, and see which species you have not caught yet.',
-      decision: [
-        'Caught, Uncaught and All tabs change what the collection shows, and water-type chips (Freshwater, Saltwater, Hybrid) narrow it further.',
-        'Each card summarises a species from your own records: how many times you caught it, your best catch, and when you last caught one.',
-      ],
-      evidence: [
-        'The cards show “3x caught”, “Best Catch 3 lbs” and “Last May 2026”, with a Top badge on the White Crappie card and a “7 caught” total for the collection.',
-        'Species illustrations are labelled in the app as AI artwork, with species data credited to FishBase.',
-      ],
-      next: 'Does the Uncaught view give people a reason to keep logging, or does it add clutter for casual anglers?',
-      note: 'As in the Dock, these counts come from an example account.',
-    },
-    {
-      id: 'market',
-      label: 'Market',
-      kicker: 'A marketplace with clear boundaries',
-      title: 'Help people coordinate. State what the app handles.',
-      intro: 'Market supports gear search, categories, saved listings and creating a listing. Buyers and sellers message each other to arrange the transaction.',
-      screens: [
-        { label: 'Market / empty state', caption: 'No listings yet, with one clear next action.', image: backwaterScreens.market },
-      ],
-      task: 'Find fishing gear from other anglers, or list your own, and then arrange the details with the other person.',
-      decision: [
-        'Saved and My Listings sit in the header, keeping saved gear and your own listings one step away. A List Your Gear banner, search and category chips (Rods, Reels, Lures, Tackle, Apparel) come next.',
-        'When nothing is listed, the empty state explains the situation and offers one action: List Your Gear. It turns an empty screen into a starting point instead of a dead end.',
-      ],
-      evidence: [
-        'The empty state reads “No gear listed yet” and repeats the List Your Gear action as the screen’s main button.',
-      ],
-      next: 'Do people understand who handles payment, pickup and shipping before they message a seller?',
-      note: 'The screenshot shows the empty state. It does not imply a populated marketplace.',
-    },
-  ] satisfies Experience[],
-
-  exploreComparison: {
-    label: 'Before and after 1.1.0',
-    title: 'What changed in Explore',
+  // 03
+  explore: {
+    name: 'Rethinking Explore',
+    title: 'Making discovery easier to understand.',
+    body: [
+      'Explore became one of the most important areas I revisited after launch.',
+      'The earlier design separated its controls between icon buttons near the search field and filter chips along the bottom of the map. The layout offered several ways to explore, but the relationship between search, filters, and the map wasn’t as clear as I wanted.',
+      'For version 1.1.0, I redesigned Explore around a more direct interaction.',
+      'Search remained at the top, with clearly labeled Species, Filters, and Saved controls grouped directly beneath it.',
+      'I also refined the selected-spot panel so anglers could view a location’s details while keeping the surrounding map visible.',
+    ],
+    goal: 'The goal was to make the next action more obvious without taking attention away from the map.',
     before: {
       label: 'Earlier Explore',
       caption: 'Cropped from the earlier App Store screenshot, added to this portfolio on July 7, 2026, before the 1.1.0 update.',
       image: backwaterScreens.exploreBefore,
-    },
+    } satisfies BwScreen,
     after: {
-      label: 'Current Explore',
-      caption: 'The current website product-tour screen, matching the App Store screenshot after 1.1.0.',
+      label: 'Redesigned Explore',
+      caption: 'Captured after the 1.1.0 redesign, before version 1.2.0. From the website’s product tour.',
       image: backwaterScreens.explore,
-    },
+    } satisfies BwScreen,
+    changesLabel: 'What changed',
     changes: [
-      { title: 'Search scope', body: 'The search field changed from “Search lakes, rivers, spots, @angle…” to “Search waters, spots and catches”.' },
-      { title: 'Filters', body: 'Icon-only buttons beside search, plus a row of chips at the bottom (All, Fish Activity, Conditions, Species and more), became labelled Species, Filters and Saved chips directly under search.' },
-      { title: 'Selected spot', body: 'The bottom sheet became a compact Fishing spots panel listing distance, species and access labels.' },
-    ] satisfies BwPoint[],
-    reasonLabel: 'Documented reason',
-    reason: '“Explore has been rebuilt with improved fishing spot discovery, catch activity, saved fishing spots, weather and fishing conditions, and better map interactions.”',
-    reasonSource: 'Version 1.1.0 release notes, App Store',
-    reading: 'A July 2026 development audit documented the earlier Explore controls. With the rebuild, I wanted the main ways to narrow the map in one place, under search, named rather than shown as icons. No user feedback is documented for this change, and it is untested with people.',
+      'Clearer labels for primary filtering actions.',
+      'Related controls grouped near search.',
+      'A more compact selected-spot panel.',
+      'A stronger connection between map locations and their details.',
+    ],
+    validateLabel: 'Still to validate',
+    validate: 'Can someone find, open and save a spot on their first try? How do people read labels such as Public access?',
+    note: 'The updated interface shipped in version 1.1.0. Formal usability testing is still needed to establish how these changes affect task completion and comprehension.',
   },
 
-  marketBoundary: {
-    label: 'Product boundary',
-    body: 'Backwater Journal does not process marketplace payments or provide buyer protection. Buyers and sellers arrange payment, pickup and shipping directly, and listings, messages and accounts can be reported or blocked in the app.',
+  // 04
+  beyond: {
+    name: 'Building an experience beyond the map',
+    title: 'Making each interaction useful.',
+    body: [
+      'Explore was only one part of the product.',
+      'For catch logging, I organized the form around the details anglers would want to remember: photos, species, measurements, date and time, followed by additional trip information.',
+      'For personal progress, I designed the species collection as another way to revisit catch history without opening individual records.',
+      'The Dock combines fishing conditions with shared community activity, while the Market gives anglers a place to list and discover fishing gear.',
+      'These features serve different needs, but I wanted them to feel like parts of the same product.',
+    ],
+    closing: 'The design balances structured records with room for personal stories and community interaction.',
+    // Two larger phones. Slot 1: species collection. Slot 2: the Dock.
+    // These are the pre-1.0 captures until authentic 1.2.0 screenshots replace
+    // them (see docs/backwater-1.2.0-screenshot-guide.md).
+    screens: [
+      { label: 'Species', caption: 'Caught species with counts and best catches.', image: backwaterScreens.species },
+      { label: 'Dock / shared catch', caption: 'A shared post in the Dock.', image: backwaterScreens.communityPost },
+    ] satisfies BwScreen[],
+    catchLogging: {
+      label: 'Catch logging',
+      screen: {
+        label: 'New Catch',
+        caption: 'Captured July 6, 2026, before the 1.0 release.',
+        image: backwaterScreens.newCatch,
+      } satisfies BwScreen,
+      rows: [
+        {
+          label: 'The problem',
+          body: 'Anglers log catches at the water, often one-handed and sometimes with a weak signal, while the details are still fresh.',
+        },
+        {
+          label: 'The design decision',
+          body: 'Catch Basics come first, in the order people remember them: photos, species, measurements, then date and time. Trip details follow. The date and time are filled in already, with a Change link.',
+        },
+        {
+          label: 'The evidence',
+          body: 'In the form, Primary Species is the only required field, and Add Photos states its limit of 10. Version 1.1.0 added offline catch drafts and map-based catch locations, as its release notes record.',
+        },
+        {
+          label: 'Still to validate',
+          body: 'How long logging takes outdoors, and whether people understand when a catch is saved as an offline draft rather than posted.',
+        },
+      ],
+    },
+    note: 'These screens were captured before the 1.0 release, so they don’t show later changes such as the updated species artwork in 1.2.0. Their statistics and counts belong to an example account. They are not adoption or performance figures.',
   },
 
+  // 05
   release: {
-    label: 'Release + iteration',
-    kicker: 'A product that continued after launch',
-    title: 'The latest verified update changed the experience.',
+    name: 'Continuing to improve after launch',
+    title: 'Releasing the app was the beginning.',
+    intro: 'Backwater Journal continued evolving after its initial release.',
     versions: [
-      { date: backwaterRelease.released, name: 'Initial release / 1.0', body: 'The App Store version history records the first public release.' },
-      { date: 'September 27, 2026', name: 'Refinement / 1.1.0', body: 'Explore was rebuilt, with additions to catch capture, portability and reliability.' },
+      {
+        name: 'Version 1.0',
+        date: backwaterRelease.released,
+        body: 'The first public release established the foundation for catch logging, journaling, discovery, community activity, and the fishing gear marketplace.',
+      },
+      {
+        name: 'Version 1.1.0',
+        date: 'September 27, 2026',
+        body: 'I rebuilt Explore and introduced improvements to catch capture, including offline catch drafts, map-based catch locations, measurement refinements, and catch history export.',
+      },
+      {
+        name: `Version ${backwaterRelease.latest.version}`,
+        date: backwaterRelease.latest.date,
+        body: 'The next update focused on how anglers stay connected and personalize their experience. It introduced an Activity center and configurable push notifications, four profile colors, improvements to Fishing Conditions and Fishing Outlook, updated species artwork, and dark-mode refinements.',
+      },
     ],
-    changes: [
-      { title: 'Explore', body: 'Discovery, saved places, catch activity, conditions and map interactions.' },
-      { title: 'Capture', body: 'Pin on Map, offline catch drafts and measurement improvements.' },
-      { title: 'Ownership', body: 'Catch history export.' },
-      { title: 'Reliability', body: 'Privacy, performance and reliability improvements.' },
-    ] satisfies BwPoint[],
+    closing:
+      'Working through these releases gave me experience with the decisions that happen after launch, from refining existing interactions to maintaining a growing product.',
     verified: `Checked against the App Store version history on ${backwaterRelease.verifiedOn}: ${backwaterRelease.latest.version} is the latest version.`,
-    note: 'These are documented release changes, not measured improvements.',
   },
 
-  visual: {
-    label: 'Visual system',
-    kicker: 'A field-journal feel',
-    title: 'Warm surfaces. Clear hierarchy. Room for the catch.',
-    paletteLabel: 'Presentation palette',
-    swatches: [
-      { name: 'Paper', hex: '#F4F1EA' },
-      { name: 'Forest', hex: '#20382F' },
-      { name: 'Brass', hex: '#D9A441' },
-      { name: 'Ink', hex: '#1F2A24' },
-    ],
-    typeTitle: 'Typography sets the pace.',
-    typeBody: 'Editorial serif headings bring character to this presentation. A quiet sans-serif keeps decisions, captions and product facts easy to scan.',
-    inAppLabel: 'Inside the app',
-    inApp: 'The screens use the same idea: serif titles such as “Prime Bite”, “White Crappie” and “Market” sit above a plain sans-serif for fields, labels and data. A deep green marks primary actions such as View Conditions and List Your Gear.',
-    approachLabel: 'My presentation approach',
-    approach: 'Large phone showcases, generous margins and subtle contour lines echo time on the water. Forest green anchors important sections; brass stays a restrained accent.',
-    note: 'The palette is drawn from the current marketing site. Presentation typography is not a specification of every font used inside the app.',
-  },
-
+  // 06
   trust: {
-    label: 'Trust + evaluation',
-    kicker: 'The tradeoff I designed around',
-    title: 'Useful to others. Careful with places.',
-    items: [
-      { title: 'The tension', body: 'Shared catches make Explore more useful by showing what is being caught nearby. But the privacy policy warns that sharing exact catch locations can be sensitive.' },
-      { title: 'Map sharing, as built', body: 'Checked against the 1.1.0 source, not the App Store build: a catch appears on the Explore map only if it is Public and its angler turns on Show on Explore map, which starts off. The map then shows it rounded to about 1 km.' },
-      { title: 'What still needs evidence', body: 'Photo metadata and place labels can point to a spot too. My source changes for both since 1.1.0 are not in a verified release and do not alter photos already uploaded. I also want to test what people think a shared post reveals.' },
-      { title: 'Controls and support', body: 'Published support describes reporting and blocking for listings, messages and accounts, and a path for privacy and deletion requests.' },
-    ] satisfies BwPoint[],
-    tasksLabel: 'Proposed evaluation tasks',
-    tasks: [
-      'Log a catch with a photo, species and measurements.',
-      'Find a fishing spot for a chosen species and save it.',
-      'Explain what other people will see in a shared catch post.',
-      'Create a Market listing and say who handles payment.',
+    name: 'Trust, privacy, and product boundaries',
+    title: 'Useful information still needs thoughtful boundaries.',
+    body: [
+      'Fishing locations can be personal, especially when anglers choose to share their catches.',
+      'That creates an important design consideration: helping people discover useful information while making it understandable what they are sharing with others.',
+      'The app includes different content visibility options, and its marketplace allows users to communicate directly rather than processing transactions inside the app.',
+      'Privacy, reporting, and clear expectations remain important parts of the product.',
     ],
-    checksLabel: 'Also on real devices',
-    checks: 'Readability outdoors in bright light, VoiceOver and larger text sizes.',
-    note: 'No usability testing has been done yet, so this case study includes no tester counts, scores or measured outcomes.',
+    next: 'I want to evaluate these experiences more closely with real users, especially whether anglers understand location visibility and marketplace responsibilities.',
+    sources:
+      'Sources: in-app reporting and blocking, and the marketplace’s user-to-user payments, are described on the support page published in July 2026. The privacy policy published in September 2026 says content may be visible to others depending on app settings. Its October 30, 2026 update describes private and followers-only sharing and removing photo location metadata; that update came after version 1.2.0, so this case study doesn’t attribute those details to a specific release.',
   },
 
-  outcome: {
-    label: 'Outcome + reflection',
-    kicker: 'From idea to an ongoing product',
-    title: 'Shipping the app was a beginning.',
-    delivered: 'I took Backwater Journal from an idea to a released iOS app, then rebuilt Explore and strengthened catch logging in 1.1.0.',
-    next: 'Explore taught me the most. The earlier screen split its filters between unlabelled icons at the top and chips at the bottom. Gathering them under search, with plain names, showed me that clarity often comes from placing a choice beside what it changes. Testing that with people, starting with the tasks above, comes next.',
-    closing: ['Name the choices.', 'Then test them with people.'],
-    sourcesLabel: 'Source record · October 14, 2026',
-    sources: [
-      { label: 'Website', detail: 'Current product descriptions and screens', href: sources.website },
-      { label: 'App Store', detail: 'Release history: 1.0 and 1.1.0', href: sources.appStore },
-      { label: 'Privacy policy', detail: 'Last updated September 2026', href: sources.privacy },
-      { label: 'Support', detail: 'Last updated July 2026', href: sources.support },
+  // 07
+  learned: {
+    name: 'What I learned',
+    title: 'What building Backwater taught me.',
+    body: [
+      'Backwater Journal gave me the opportunity to take responsibility for an entire digital product rather than one design deliverable.',
+      'I worked through the relationship between user flows, interface design, implementation, technical constraints, and release decisions.',
     ],
-    pdf: {
-      href: `${base}/backwater-journal-case-study.pdf`,
-      label: 'Download case study PDF',
-      detail: '13 pages · 4.4 MB',
-    },
+    lesson:
+      'One of my biggest lessons came from redesigning Explore: making an interface clearer doesn’t always require adding more features. Sometimes it means reorganizing what already exists and making the choices easier to understand.',
+    after: [
+      'The product has now reached three public versions, but releasing updates alone doesn’t prove that every design decision is successful.',
+      'The next step is more structured usability evaluation, particularly around catch logging, Explore, location-sharing expectations, and overall accessibility.',
+      'Backwater Journal continues to be a project where I can apply what I learn, test new ideas, and improve a product beyond its first release.',
+    ],
+    closingLabel: 'Closing thought',
+    contactLabel: 'Start a project',
+    closing: ['Design it. Build it.', 'Learn from it. Keep improving.'],
   },
 }
