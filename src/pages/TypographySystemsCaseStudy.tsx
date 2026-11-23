@@ -1,6 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
-import { MotionConfig, motion, useReducedMotion } from 'framer-motion'
+import { motion } from 'framer-motion'
+import { useReducedMotionPreference } from '@/hooks/useReducedMotionPreference'
 import { ArrowDown, ArrowLeft, ArrowsOut, DownloadSimple } from '@phosphor-icons/react'
 import '@fontsource-variable/bodoni-moda/opsz.css'
 import '@fontsource-variable/bodoni-moda/opsz-italic.css'
@@ -59,14 +60,14 @@ function pageItem(page: BookPage): ViewerItem {
  * hidden starting state, so it can never be left invisible.
  */
 function Reveal({ children, className = '', delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
-  const reduce = useReducedMotion()
+  const reduce = useReducedMotionPreference()
   const canObserve = typeof window !== 'undefined' && 'IntersectionObserver' in window
   const animate = !reduce && canObserve
   return (
     <motion.div
       className={className}
       initial={animate ? { opacity: 0, y: 28 } : false}
-      whileInView={{ opacity: 1, y: 0 }}
+      whileInView={animate ? { opacity: 1, y: 0 } : undefined}
       viewport={{ once: true, margin: '0px 0px -8% 0px' }}
       transition={{
         y: { type: 'spring', stiffness: 100, damping: 20, delay },
@@ -832,7 +833,7 @@ export default function TypographySystemsCaseStudy() {
   }, [])
 
   return (
-    <MotionConfig reducedMotion="user">
+    <>
       <OpenViewerContext.Provider value={openViewer}>
         <div className="font-type-body antialiased">
           <main>
@@ -856,6 +857,6 @@ export default function TypographySystemsCaseStudy() {
           label={request.label}
         />
       </OpenViewerContext.Provider>
-    </MotionConfig>
+    </>
   )
 }

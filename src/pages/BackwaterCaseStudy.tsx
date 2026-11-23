@@ -1,6 +1,6 @@
 import { useEffect, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
-import { MotionConfig, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { ArrowLeft, ArrowUpRight } from '@phosphor-icons/react'
 import '@fontsource-variable/newsreader'
 import '@fontsource-variable/instrument-sans'
@@ -10,6 +10,7 @@ import ZoomFigure from '@/components/presentation/ZoomFigure'
 import { workLink, workState } from '@/components/presentation/PresentationOpening'
 import { fadeUp } from '@/lib/motion'
 import { backwaterTheme, PresentationThemeContext, type SectionTone } from '@/lib/presentationTheme'
+import { useReveal } from '@/hooks/useReveal'
 
 const container = 'mx-auto max-w-[1280px] px-4 sm:px-6 md:px-10'
 const label = 'text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--pres-eyebrow)]'
@@ -18,11 +19,12 @@ const serif = 'font-wove-display font-normal tracking-[-0.015em]'
 const number = (index: number) => String(index + 1).padStart(2, '0')
 const focus = `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${backwaterTheme.focusRing}`
 
-// A short fade and lift as content enters the viewport; MotionConfig drops the
-// movement for visitors who prefer reduced motion.
+// A short fade and lift as content enters the viewport. Shown straight away
+// under reduced motion (system or footer toggle) or without IntersectionObserver.
 function Reveal({ children, className = '' }: { children: ReactNode; className?: string }) {
+  const reveal = useReveal({ once: true, margin: '-8%' })
   return (
-    <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-8%' }} className={className}>
+    <motion.div variants={fadeUp} {...reveal} className={className}>
       {children}
     </motion.div>
   )
@@ -508,7 +510,7 @@ export default function BackwaterCaseStudy() {
 
   const [dock, catchLogging, explore, species, market] = backwater.experiences
   return (
-    <MotionConfig reducedMotion="user">
+    <>
       <PresentationThemeContext.Provider value={backwaterTheme}>
         <main className="min-h-[100dvh] bg-[#F4F1EA] font-type-body text-[#1F2A24] antialiased">
           <Opening />
@@ -527,6 +529,6 @@ export default function BackwaterCaseStudy() {
           <Outcome index={10} />
         </main>
       </PresentationThemeContext.Provider>
-    </MotionConfig>
+    </>
   )
 }

@@ -69,6 +69,7 @@ Services illustrations are deliberately CSS 3D, not WebGL: `src/components/servi
 - The featured Backwater Journal presentation (`src/components/work/FeaturedProject.tsx`, copy in `src/data/work.ts`) is CSS perspective only; its release facts and App Store link come from `src/data/backwater-release.ts`, the single source shared with the case study. Folder types (`kind` in `src/data/work-folders.ts`) come from each case study's own eyebrow.
 - Shared poses live in `src/lib/` so the HTML and 3D versions match exactly at hand-off. The hero workspace (`src/components/hero/HeroWorkspace*.tsx`, `src/lib/heroWorkspace.ts`) paints each panel once into a `<canvas>` that both versions display.
 - Respect both `prefers-reduced-motion` and the footer's "Reduce motion" toggle via `useReducedMotionPreference()`.
+- `App.tsx` owns the only `MotionConfig` (`'always'` when the footer toggle is on, otherwise `'user'` for the system setting). Pages and components must not add their own `MotionConfig`: it overrides the toggle.
 - Scroll reveals use `useReveal()` (`src/hooks/useReveal.ts`): content is shown from the start under reduced motion or without IntersectionObserver, and print CSS forces it visible. Never leave essential content dependent on an animation firing.
 - Guard every `new IntersectionObserver` with `'IntersectionObserver' in window`.
 

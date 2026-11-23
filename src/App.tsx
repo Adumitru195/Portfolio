@@ -38,11 +38,13 @@ function Home() {
 }
 
 export default function App() {
-  // The footer's "Reduce motion" toggle: Framer Motion then skips transform
-  // animations everywhere, keeping only opacity fades.
+  // Reduced motion for the whole site: the footer's "Reduce motion" toggle
+  // forces it ('always'); otherwise the system setting decides ('user').
+  // Framer Motion then skips transform animations, keeping only opacity
+  // fades. Pages must not add their own MotionConfig: it would override this.
   const reduceMotion = useUserReduceMotion()
   return (
-    <MotionConfig reducedMotion={reduceMotion ? 'always' : 'never'}>
+    <MotionConfig reducedMotion={reduceMotion ? 'always' : 'user'}>
       <HashRouter>
         <ScrollManager />
         <Suspense fallback={null}>

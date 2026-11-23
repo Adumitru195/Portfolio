@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { ArrowsOut, X } from '@phosphor-icons/react'
 import { imageReveal } from '@/lib/motion'
 import { usePresentationTheme } from '@/lib/presentationTheme'
+import { useReveal } from '@/hooks/useReveal'
 import type { PresentationImage } from '@/types/presentation'
 
 interface ZoomFigureProps {
@@ -28,6 +29,9 @@ interface ZoomFigureProps {
  */
 export default function ZoomFigure({ image, caption, chrome = false, className = '', sizes, fullSrc, captionLabel, portrait = false }: ZoomFigureProps) {
   const theme = usePresentationTheme()
+  // Fades in on scroll; shown straight away under reduced motion (system or
+  // footer toggle) or without IntersectionObserver.
+  const reveal = useReveal({ once: true, margin: '-10%' })
   const dialogRef = useRef<HTMLDialogElement>(null)
   const triggerRef = useRef<HTMLButtonElement>(null)
   const closeRef = useRef<HTMLButtonElement>(null)
@@ -76,13 +80,7 @@ export default function ZoomFigure({ image, caption, chrome = false, className =
   const srcSet = image.small ? `${image.small} 800w, ${image.src} ${image.width}w` : undefined
 
   return (
-    <motion.figure
-      variants={imageReveal}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-10%' }}
-      className={`m-0 ${className}`}
-    >
+    <motion.figure variants={imageReveal} {...reveal} className={`m-0 ${className}`}>
       <button
         ref={triggerRef}
         type="button"

@@ -1,6 +1,6 @@
 import { useEffect, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
-import { MotionConfig, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { ArrowLeft } from '@phosphor-icons/react'
 import '@fontsource-variable/newsreader'
 import '@fontsource-variable/instrument-sans'
@@ -612,7 +612,7 @@ export default function AicCaseStudy() {
   }, [])
 
   return (
-    <MotionConfig reducedMotion="user">
+    <>
       <PresentationThemeContext.Provider value={aicTheme}>
         <main className="min-h-[100dvh] bg-[#F6F2EB] font-type-body text-[#27231F] antialiased">
           <Opening />
@@ -631,6 +631,6 @@ export default function AicCaseStudy() {
           <Outcome />
         </main>
       </PresentationThemeContext.Provider>
-    </MotionConfig>
+    </>
   )
 }

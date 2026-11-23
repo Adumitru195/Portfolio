@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { AnimatePresence, MotionConfig, motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowUpRight, List, X } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
 import { footer } from '@/data/contact'
@@ -94,7 +94,7 @@ export default function Navbar() {
   }
 
   return (
-    <MotionConfig reducedMotion="user">
+    <>
       <header className="fixed top-0 inset-x-0 z-50 px-6 md:px-10 bg-bg/85 backdrop-blur-md border-b border-black/[0.06]">
         <nav aria-label="Main" className="content-wide h-16 flex items-center justify-between gap-6">
           <Link
@@ -191,7 +191,7 @@ export default function Navbar() {
           )}
         </AnimatePresence>
       </header>
-    </MotionConfig>
+    </>
   )
 }
 

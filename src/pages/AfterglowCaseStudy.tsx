@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { MotionConfig, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { ArrowRight, Check } from '@phosphor-icons/react'
 import '@fontsource-variable/space-grotesk'
 import '@fontsource-variable/inter'
@@ -438,7 +438,7 @@ export default function AfterglowCaseStudy() {
   }, [])
 
   return (
-    <MotionConfig reducedMotion="user">
+    <>
       <PresentationThemeContext.Provider value={afterglowTheme}>
         <div className="font-glow-body antialiased [color-scheme:dark]">
           <main>
@@ -455,6 +455,6 @@ export default function AfterglowCaseStudy() {
           </main>
         </div>
       </PresentationThemeContext.Provider>
-    </MotionConfig>
+    </>
   )
 }

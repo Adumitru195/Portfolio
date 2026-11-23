@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { MotionConfig, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { ArrowUpRight, Check } from '@phosphor-icons/react'
 import '@fontsource-variable/newsreader/opsz.css'
 import '@fontsource-variable/newsreader/opsz-italic.css'
@@ -413,7 +413,7 @@ export default function WovenwardCaseStudy() {
   }, [])
 
   return (
-    <MotionConfig reducedMotion="user">
+    <>
       <PresentationThemeContext.Provider value={wovenwardTheme}>
         <div className="font-wove-body antialiased">
           <main>
@@ -431,6 +431,6 @@ export default function WovenwardCaseStudy() {
           </main>
         </div>
       </PresentationThemeContext.Provider>
-    </MotionConfig>
+    </>
   )
 }

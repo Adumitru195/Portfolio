@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import { MotionConfig } from 'framer-motion'
 import { ArrowUpRight, Check, HourglassMedium, MagnifyingGlass, MapPin, X } from '@phosphor-icons/react'
 import '@fontsource-variable/fraunces'
 import '@fontsource-variable/fraunces/wght-italic.css'
@@ -407,7 +406,7 @@ export default function PorchlightCaseStudy() {
   }, [])
 
   return (
-    <MotionConfig reducedMotion="user">
+    <>
       <PresentationThemeContext.Provider value={porchlightTheme}>
         <div className="font-porch-body antialiased">
           <main>
@@ -422,6 +421,6 @@ export default function PorchlightCaseStudy() {
           </main>
         </div>
       </PresentationThemeContext.Provider>
-    </MotionConfig>
+    </>
   )
 }
