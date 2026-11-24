@@ -147,11 +147,14 @@ export default function ZoomFigure({ image, caption, chrome = false, className =
             </button>
           </div>
           <div className="min-h-0 flex-1 overflow-auto rounded-lg" tabIndex={0} aria-label="Enlarged image, scrollable">
+            {/* Lazy: the closed dialog is hidden, so this loads only when it opens. */}
             <img
               src={fullSrc ?? image.src}
               alt={image.alt}
               width={image.width}
               height={image.height}
+              loading="lazy"
+              decoding="async"
               className={`mx-auto block h-auto w-full ${portrait ? 'max-w-[min(100%,560px)]' : 'max-w-[min(100%,1600px)]'}`}
             />
           </div>

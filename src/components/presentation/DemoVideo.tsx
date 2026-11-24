@@ -22,6 +22,8 @@ interface DemoVideoProps {
   video: WalkthroughVideo
   /** Defaults to the surrounding presentation theme. */
   styles?: DemoVideoStyles
+  /** When set, the text description is collapsed behind a disclosure with this label. */
+  descriptionSummary?: string
 }
 
 // Vendor-prefixed fullscreen APIs that the DOM typings leave out.
@@ -54,7 +56,7 @@ function formatTime(seconds: number) {
  * repeat play/pause and fullscreen for keyboard and screen-reader users, and
  * "Open video" links the file directly when fullscreen or playback fails.
  */
-export default function DemoVideo({ video, styles }: DemoVideoProps) {
+export default function DemoVideo({ video, styles, descriptionSummary }: DemoVideoProps) {
   const theme = usePresentationTheme()
   const s: DemoVideoStyles = styles ?? {
     frame: `rounded-xl border ${theme.screenFrame}`,
@@ -247,9 +249,23 @@ export default function DemoVideo({ video, styles }: DemoVideoProps) {
           video.caption
         )}
       </figcaption>
-      <p id={descriptionId} className={`mt-3 max-w-[70ch] text-sm leading-relaxed ${s.muted}`}>
-        {video.description}
-      </p>
+      {descriptionSummary ? (
+        // Collapsed text alternative; the video still points to it with aria-describedby.
+        <details className="mt-3 max-w-[70ch]">
+          <summary
+            className={`inline-flex min-h-[44px] cursor-pointer items-center rounded text-sm font-semibold underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${s.focusRing}`}
+          >
+            {descriptionSummary}
+          </summary>
+          <p id={descriptionId} className={`mb-0 mt-1 text-sm leading-relaxed ${s.muted}`}>
+            {video.description}
+          </p>
+        </details>
+      ) : (
+        <p id={descriptionId} className={`mt-3 max-w-[70ch] text-sm leading-relaxed ${s.muted}`}>
+          {video.description}
+        </p>
+      )}
     </figure>
   )
 }

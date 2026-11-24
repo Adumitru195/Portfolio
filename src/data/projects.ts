@@ -33,7 +33,7 @@ export const projects: Project[] = [
     title: 'Porchlight',
     subtitle: 'Find a home, understand the details, and know what happens next',
     description:
-      'A responsive rental discovery experience for Charlotte, NC. Porchlight is my redesign of an earlier real estate concept, Arcadian Homes. It narrows the product to rentals and focuses on three things: practical search, clear monthly costs, and a tour request flow that is honest about its status. I took it from a critique of the original through wireframes, visual design, and a working interactive prototype.',
+      'A responsive rental discovery experience for Charlotte, NC, redesigned from my earlier real estate concept, Arcadian Homes. It narrows the product to rentals and focuses on practical search, clear monthly costs, and a tour request flow that is honest about its status. I led the product direction, UX/UI and interaction design, and reviewed and refined a working responsive prototype against those goals.',
     role: 'UX & UI Designer',
     tags: ['UX Design', 'Responsive Web', 'Interaction Design', 'Accessibility'],
     year: '2026',

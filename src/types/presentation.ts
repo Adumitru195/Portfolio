@@ -87,64 +87,6 @@ export interface PresentationNote {
   body: string
 }
 
-export interface PorchlightPresentation {
-  eyebrow: string
-  meta: MetaItem[]
-  showcase: {
-    desktop: PresentationImage
-    mobile: PresentationImage
-    description: string
-    caption: string
-  }
-  challenge: {
-    title: string
-    body: string[]
-    priorities: Priority[]
-  }
-  wireframes: {
-    title: string
-    body: string
-    studies: WireframeStudy[]
-    board: { href: string; label: string; detail: string }
-  }
-  development: {
-    title: string
-    body: string
-    comparisons: Comparison[]
-  }
-  identity: {
-    title: string
-    body: string
-    displayFont: { name: string; role: string; sample: string; accent: string }
-    bodyFont: { name: string; role: string; sample: string; paragraph: string }
-    swatches: Swatch[]
-    note: string
-  }
-  journey: {
-    title: string
-    body: string
-    steps: JourneyStep[]
-    status: {
-      title: string
-      shown: { label: string; items: string[] }
-      avoided: { label: string; items: string[] }
-    }
-  }
-  walkthrough: WalkthroughSection
-  responsive: {
-    title: string
-    body: string
-    screens: PhoneScreen[]
-    notes: PresentationNote[]
-  }
-  outcome: {
-    title: string
-    achieved: PresentationNote[]
-    untested: { title: string; body: string[] }
-    pdf: { href: string; label: string; detail: string }
-  }
-}
-
 export interface FlowStep {
   title: string
   body: string
