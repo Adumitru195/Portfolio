@@ -79,7 +79,7 @@ export const projects: Project[] = [
     year: '2026',
     image: '/Portfolio/projects/typography-systems/card-typography-systems.webp',
     imageAlt:
-      'The ONE-X cover, a tall black and burgundy serif title on warm paper, beside a member spread with portraits and the names Adam Gontier and Barry Stock',
+      'The ONE-X cover, a tall black and burgundy serif title on warm paper, beside the introduction spread with the stacked title The Sound of Three Days Grace',
     cardBackground: '#211616',
     featured: false,
   },
