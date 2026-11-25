@@ -14,15 +14,21 @@ const shots = `${base}/case-study`
 //    Microsoft Edge at 390 x 844 and 1440 x 900.
 //  - Test results were re-run on November 23, 2026 with the prototype's own
 //    suites in docs/verification/: browser-check 74/74, 74/74, 73/73; axe-audit
-//    0 violations in 14 states; artwork-contrast 27/27, lowest 5.31:1;
+//    0 violations in 14 states; artwork-contrast 27/27, lowest 5.25:1;
 //    motion-check 61/61; showcase-check 43/43. Bundle sizes are from a fresh
 //    production build.
 //  - Contrast ratios are computed with the WCAG 2.x formula from the tokens.
 //  - motion-demo.mp4/.webm is the October 4, 2026 recording with its first two
 //    frames (blank white page-load frames) removed on November 23, 2026; the
 //    originals are archived in Afterglow Cinema/docs/portfolio-archive-2026-11-23/.
-//  - Film artwork belongs to its studios and is unlicensed for this project
-//    (Afterglow Cinema/docs/ASSET-SOURCES.md).
+//  - Films are fictional and their artwork is original to the prototype
+//    (scripts/generate-artwork.py there; Afterglow Cinema/docs/ASSET-SOURCES.md).
+//    On November 24, 2026 they replaced unlicensed studio artwork; captures,
+//    card, poster and recording were remade then (clock fixed to November 23,
+//    so the sample schedule is unchanged). Re-verified the same day:
+//    browser-check 74/74, 74/74, 73/73; axe 14 states clean; artwork-contrast
+//    27/27, lowest 5.25:1; motion 61/61; showcase 43/43. Showtimes now begins
+//    at 575 px (1440 x 900) and 664 px (390 x 844).
 //  - Provenance: the prototype's code was written with Claude Code under the
 //    owner's product direction, UX/UI and interaction design, and review
 //    (Afterglow Cinema/docs/DESIGN-LOG.md). The public page names the owner's
@@ -50,7 +56,7 @@ export const afterglow: AfterglowCaseStudy = {
     hero: {
       image: desktop(
         'd-home.webp',
-        'Afterglow homepage on desktop: a What’s on bar with the cinema selector set to Afterglow South End and a seven-day date grid with Tuesday the 24th selected, above the featured Interstellar banner with four showtimes, a View showtimes button and three film posters.',
+        'Afterglow homepage on desktop: a What’s on bar with the cinema selector set to Afterglow South End and a seven-day date grid with Tuesday the 24th selected, above the featured Halcyon Drift banner with four showtimes, a View showtimes button and three film posters.',
         1500,
       ),
       label: 'Homepage, 1440 px',
@@ -61,28 +67,28 @@ export const afterglow: AfterglowCaseStudy = {
       { problem: 'Showtime selection', stat: { value: '0', label: 'tabs between a film and its showtimes', detail: '', kind: 'verified' } },
       { problem: 'Understanding the selection', stat: { value: '1 click', label: 'from the homepage to a complete showing summary', detail: '', kind: 'verified' } },
     ],
-    note: 'Cinemas, schedules and prices are sample data, and no tickets are sold. Film posters and stills belong to their studios and appear in this design mockup only. Afterglow isn’t affiliated with any studio, distributor or cinema.',
+    note: 'Cinemas, schedules and prices are sample data, and no tickets are sold. The films are fictional, and their posters are original artwork made for the prototype. Afterglow isn’t affiliated with any studio, distributor or cinema.',
   },
 
   journey: {
-    title: 'The whole journey in 20 seconds.',
+    title: 'The whole journey in 23 seconds.',
     intro: 'The working prototype on desktop, from the program to a chosen showing.',
     video: {
       mp4: `${base}/motion-demo.mp4`,
       webm: `${base}/motion-demo.webm`,
       poster: { src: `${base}/motion-poster.webp`, alt: 'Afterglow homepage hero at rest, the first frame of the recording', width: 1280, height: 800 },
       label: 'Afterglow journey recording',
-      duration: 20,
-      caption: 'Recorded from the working prototype · 20 seconds · No audio',
+      duration: 23,
+      caption: 'Recorded from the working prototype · 23 seconds · No audio',
       description:
-        'The recording starts on the Afterglow homepage, where the featured Interstellar banner and its posters settle into place below the cinema and date controls. It scrolls to the Showing this week program and moves the pointer across the film cards, which lift on hover. It opens Interstellar, whose page shows the film details and then the showtimes, grouped by format. Selecting 11:40 AM marks the time with a check and the word Selected, and a ticket-shaped summary of the showing appears. Selecting 5:20 PM updates the ticket. Choosing the IMAX format clears the selection; after picking Wednesday, selecting 12:30 PM shows a new summary for IMAX, screen 4, from $18.75, with its note that seat selection is the next stage and nothing has been booked or reserved.',
+        'The recording starts on the Afterglow homepage, where the featured Halcyon Drift banner and its posters settle into place below the cinema and date controls. It scrolls to the Showing this week program and moves the pointer across the film cards, which lift on hover. It opens Halcyon Drift, whose page shows the film details and then the showtimes, grouped by format. Selecting 11:40 AM marks the time with a check and the word Selected, and a ticket-shaped summary of the showing appears. Selecting 2:30 PM updates the ticket. Choosing the IMAX format clears the selection; after picking Wednesday, selecting 12:30 PM shows a new summary for IMAX, screen 4, from $18.75, with its note that seat selection is the next stage and nothing has been booked or reserved.',
     },
     descriptionSummary: 'What the recording shows',
     chapters: [
       { time: '0:00', title: 'Set the context' },
-      { time: '0:07', title: 'Browse the program' },
-      { time: '0:12', title: 'Compare showtimes' },
-      { time: '0:14', title: 'Review the choice' },
+      { time: '0:05', title: 'Browse the program' },
+      { time: '0:11', title: 'Compare showtimes' },
+      { time: '0:13', title: 'Review the choice' },
     ],
   },
 
@@ -113,13 +119,13 @@ export const afterglow: AfterglowCaseStudy = {
     ],
     states: [
       {
-        image: desktop('d-search-hint.webp', 'Search for spirited in Showing this week: 0 films match. The empty state reads Nothing showing this week matches “spirited”, notes Spirited Away is in Upcoming screenings, and offers Show upcoming screenings and Clear search.', 712),
+        image: desktop('d-search-hint.webp', 'Search for kite in Showing this week: 0 films match. The empty state reads Nothing showing this week matches “kite”, notes Kitebound is in Upcoming screenings, and offers Show upcoming screenings and Clear search.', 712),
         label: 'Match in the other list',
       },
     ],
     phones: [
       phone('m-home.webp', 'Afterglow homepage on a phone: What’s on, the cinema selector, all seven dates in one row with Tuesday the 24th selected, then the featured film.', 'Phone homepage'),
-      phone('m-search.webp', 'Phone search for dune: 1 film matches “dune” in Showing this week, with the Dune: Part Two card showing 7 showings, next at 11:40 AM.', 'Phone search'),
+      phone('m-search.webp', 'Phone search for sand: 1 film matches “sand” in Showing this week, with the Sandglass card showing 7 showings, next at 11:40 AM.', 'Phone search'),
     ],
   },
 
@@ -131,13 +137,13 @@ export const afterglow: AfterglowCaseStudy = {
     question: 'How do people compare formats, times and cinemas without losing their place?',
     stats: [
       { value: '0', label: 'tabs between details and times', detail: '', kind: 'verified' },
-      { value: '643 px', label: 'where Showtimes begins on a 900 px screen', detail: '716 px on an 844 px phone', kind: 'measured' },
+      { value: '575 px', label: 'where Showtimes begins on a 900 px screen', detail: '664 px on an 844 px phone', kind: 'measured' },
       { value: '2', label: 'other cinemas offered when a film isn’t on', detail: '“Show times at South End / NoDa”', kind: 'verified' },
     ],
     primary: {
       image: desktop(
         'd-showtimes.webp',
-        'Interstellar showtimes on desktop: cinema Afterglow South End and the date grid carried from the homepage, format chips for All formats, Standard, IMAX and Dolby Cinema, then times grouped under Standard, IMAX and Dolby Cinema with a description and starting price for each; 5:20 PM and 3:45 PM are marked Sold out. A Your showing panel invites choosing a time.',
+        'Halcyon Drift showtimes on desktop: cinema Afterglow South End and the date grid carried from the homepage, format chips for All formats, Standard, IMAX and Dolby Cinema, then times grouped under Standard, IMAX and Dolby Cinema with a description and starting price for each; 5:20 PM and 3:45 PM are marked Sold out. A Your showing panel invites choosing a time.',
         1413,
       ),
       label: 'Showtimes, 1440 px',
@@ -150,13 +156,13 @@ export const afterglow: AfterglowCaseStudy = {
     ],
     states: [
       {
-        image: desktop('d-not-at-cinema.webp', 'Showtimes for Everything Everywhere All at Once at Afterglow Lakeside: Not screening at Lakeside this week, it is screening at these Afterglow cinemas instead, with buttons Show times at South End and Show times at NoDa.', 847),
+        image: desktop('d-not-at-cinema.webp', 'Showtimes for The Infinite Afternoon of Mabel Ortiz at Afterglow Lakeside: Not screening at Lakeside this week, it is screening at these Afterglow cinemas instead, with buttons Show times at South End and Show times at NoDa.', 847),
         label: 'Not at this cinema',
       },
     ],
     phones: [
-      phone('m-film.webp', 'Interstellar film page on a phone: the backdrop, then the title, year, rating, runtime, genres, logline and Read full synopsis below the image, with Showtimes starting at the bottom of the screen.', 'Phone film page'),
-      phone('m-not-at-cinema.webp', 'Phone showtimes at Afterglow Lakeside for Everything Everywhere All at Once: Not screening at Lakeside this week, with buttons to show times at South End and at NoDa.', 'Phone, not at this cinema'),
+      phone('m-film.webp', 'Halcyon Drift film page on a phone: the backdrop, then the title, year, rating, runtime, genres, logline and Read full synopsis below the image, with Showtimes starting at the bottom of the screen.', 'Phone film page'),
+      phone('m-not-at-cinema.webp', 'Phone showtimes at Afterglow Lakeside for The Infinite Afternoon of Mabel Ortiz: Not screening at Lakeside this week, with buttons to show times at South End and at NoDa.', 'Phone, not at this cinema'),
     ],
   },
 
@@ -174,7 +180,7 @@ export const afterglow: AfterglowCaseStudy = {
     primary: {
       image: desktop(
         'd-selected.webp',
-        'Interstellar showtimes with 11:40 AM selected, marked with a check and the word Selected, beside a ticket-shaped Your showing summary: Tuesday, November 24, 11:40 AM, film ends about 2:49 PM, Afterglow South End, 1400 Camden Yard Way, Standard, screen 5, from $12.50 each. Below it: Next: choose your seats. Seat selection is the next stage of this prototype and hasn’t been built yet. Nothing has been booked or reserved. Then a Choose a different time link.',
+        'Halcyon Drift showtimes with 11:40 AM selected, marked with a check and the word Selected, beside a ticket-shaped Your showing summary: Tuesday, November 24, 11:40 AM, film ends about 2:49 PM, Afterglow South End, 1400 Camden Yard Way, Standard, screen 5, from $12.50 each. Below it: Next: choose your seats. Seat selection is the next stage of this prototype and hasn’t been built yet. Nothing has been booked or reserved. Then a Choose a different time link.',
         1413,
       ),
       label: 'A selected showing, 1440 px',
@@ -188,7 +194,7 @@ export const afterglow: AfterglowCaseStudy = {
     states: [],
     phones: [
       phone('m-selected.webp', 'Phone showtimes with 11:40 AM selected, showing a check and Selected, sold-out times labelled, and a fixed bottom bar with 11:40 AM, Tuesday, November 24, Standard and a Review showing button.', 'Phone selection'),
-      phone('m-summary.webp', 'Phone Your showing summary: the Interstellar ticket with date, time and end time, cinema and address, format and screen, and price, then Next: choose your seats, nothing has been booked or reserved, and Choose a different time.', 'Phone summary'),
+      phone('m-summary.webp', 'Phone Your showing summary: the Halcyon Drift ticket with date, time and end time, cinema and address, format and screen, and price, then Next: choose your seats, nothing has been booked or reserved, and Choose a different time.', 'Phone summary'),
     ],
   },
 
@@ -225,7 +231,7 @@ export const afterglow: AfterglowCaseStudy = {
     checks: [
       { value: '74 / 74 / 73', label: 'browser checks pass', detail: 'Full journey at 390, 768 and 1440 px.', kind: 'verified' },
       { value: '0', label: 'accessibility violations', detail: 'axe, WCAG 2.2 A/AA, 14 states.', kind: 'verified' },
-      { value: '5.31:1', label: 'lowest contrast of text over artwork', detail: '27 of 27 measurements pass.', kind: 'verified' },
+      { value: '5.25:1', label: 'lowest contrast of text over artwork', detail: '27 of 27 measurements pass.', kind: 'verified' },
       { value: '61 / 61', label: 'motion and reduced-motion checks', detail: 'Including 0 frames drawn at rest.', kind: 'verified' },
       { value: '94.8 kB', label: 'app code, gzipped', detail: 'The 132 kB 3D scene loads only on desktop.', kind: 'measured' },
     ],

@@ -2,8 +2,8 @@
 //
 // Every image comes from the working prototype (UX Projects/Afterglow Cinema),
 // not from a mock-up. Cinemas, schedules, availability and prices are the
-// prototype's fictional sample data. Film artwork belongs to its studios; see
-// that project's docs/ASSET-SOURCES.md before publishing anything new.
+// prototype's fictional sample data. The films and their artwork are fictional
+// and original to the prototype (see that project's docs/ASSET-SOURCES.md).
 //
 // Run the prototype, then this script, with Playwright available without adding
 // it to package.json:
@@ -16,7 +16,9 @@
 // public/projects/afterglow-cinema/case-study/ and deletes this folder.
 //
 // Captures use tomorrow's date so no showing is marked "Started", and reduced
-// motion so no entrance or reveal is caught mid-animation.
+// motion so no entrance or reveal is caught mid-animation. Set CAPTURE_NOW
+// (e.g. 2026-11-23T10:00:00) to fix the browser clock, so the sample schedule,
+// which depends on the date, matches an earlier capture exactly.
 
 import { mkdirSync } from 'node:fs'
 import { resolve } from 'node:path'
@@ -33,7 +35,8 @@ try {
   process.exit(1)
 }
 
-const d = new Date()
+const now = process.env.CAPTURE_NOW ? new Date(process.env.CAPTURE_NOW) : new Date()
+const d = new Date(now)
 d.setDate(d.getDate() + 1)
 const date = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
 
@@ -68,13 +71,14 @@ const firstOpenTime = '.time-option:not(.is-disabled):not(.is-limited) input'
 
 // Desktop: 1440 x 900 CSS px at 2x.
 const desk = await browser.newContext({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 2, reducedMotion: 'reduce' })
+if (process.env.CAPTURE_NOW) await desk.clock.setFixedTime(now)
 let p = await desk.newPage()
 
 await go(p, `/?date=${date}`)
 await p.screenshot({ path: `${out}/d-home.png` })
 await p.locator('section.listings').screenshot({ path: `${out}/d-program.png` })
 
-for (const [query, name] of [['spirited', 'd-search-hint']]) {
+for (const [query, name] of [['kite', 'd-search-hint']]) {
   await go(p, `/?date=${date}`)
   await p.getByRole('searchbox').fill(query)
   await settle(p)
@@ -93,13 +97,14 @@ await desk.close()
 
 // Phone: 390 x 844 CSS px at 2x.
 const phone = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, reducedMotion: 'reduce' })
+if (process.env.CAPTURE_NOW) await phone.clock.setFixedTime(now)
 p = await phone.newPage()
 
 await go(p, `/?date=${date}`)
 await p.screenshot({ path: `${out}/m-home.png` })
 
 await go(p, `/?date=${date}`)
-await p.getByRole('searchbox').fill('dune')
+await p.getByRole('searchbox').fill('sand')
 await settle(p)
 await p.locator('.listings__head').evaluate((el) => window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - 16))
 await settle(p)
