@@ -1,7 +1,13 @@
 """Builds the Typography Systems publication walkthrough from the original book
-PDFs in public/projects/typography-systems: full compositions first, then
-readable detail views. Slides change with gentle crossfades only (no pans or
-zooms). This is a paced view of printed pages, not an interactive demo.
+PDFs, which are kept privately in UX Projects/Typography Systems/originals/
+(override with TYPOGRAPHY_SOURCE). Full compositions first, then readable
+detail views. Slides change with gentle crossfades only (no pans or zooms).
+This is a paced view of printed pages, not an interactive demo.
+
+Only artwork cleared for the public case study is used: no member portraits,
+no quotations attributed to band members, no song lyrics. ONE-X pages that
+carry them appear only as crops taken from above the omitted material, the
+same crops the case study labels (scripts/typography-systems-assets.py).
 
 Requires: pip install pymupdf pillow imageio-ffmpeg (or ffmpeg on PATH / FFMPEG_PATH).
 
@@ -18,26 +24,32 @@ import pymupdf
 from PIL import Image, ImageFilter
 
 ROOT = Path(__file__).resolve().parents[2]
-SRC = ROOT / "public" / "projects" / "typography-systems"
+SRC = Path(os.environ.get("TYPOGRAPHY_SOURCE", ROOT.parent / "Typography Systems" / "originals"))
+PUBLIC = ROOT / "public" / "projects" / "typography-systems"
 OUT = Path(os.environ.get("WALKTHROUGH_OUTPUT", ROOT / "scripts" / "walkthroughs" / ".output")) / "typography-systems"
 W, H, FPS, FADE = 1920, 1200, 30, 0.6
 BG = (234, 227, 215)  # type-band, the case study's band tone
 
 B1, B2 = "book-1-typography.pdf", "book-2-one-x.pdf"
-# (book, page index, hold seconds, detail clip in PDF points or None)
+# (book, page index, hold seconds, clip in PDF points or None, framed)
+# Spreads are 1152 x 792 pt; a printed page is 576 pt wide. Framed slides show
+# a page or a labelled crop on the band colour with a shadow; unframed slides
+# are close-ups that fill the frame.
 SLIDES = [
-    (B1, 0, 2.0, None),   # Book 1 cover
-    (B1, 1, 2.4, None),   # Two aligned compositions
-    (B1, 3, 2.4, None),   # Diagonal and vertical type
-    (B1, 10, 2.4, None),  # Blue field and pink block
-    (B2, 0, 2.0, None),   # ONE-X front cover
-    (B2, 3, 2.4, None),   # Adam Gontier (05) · Barry Stock (06)
-    (B2, 5, 2.4, None),   # Matt Walst (09) · The five voices (10)
-    (B2, 6, 2.4, None),   # Lyrics (11) · (12)
+    (B1, 0, 1.8, None, True),   # Book 1 cover
+    (B1, 1, 2.0, None, True),   # Two aligned compositions
+    (B1, 3, 2.0, None, True),   # Diagonal and vertical type
+    (B1, 10, 2.0, None, True),  # Blue field and pink block
+    (B2, 0, 1.8, None, True),   # ONE-X front cover
+    (B2, 2, 2.2, None, True),   # Introduction · The sound of Three Days Grace (04)
+    (B2, 4, 2.4, (0, 0, 576, 404), True),    # Page 07, cropped above the portrait
+    (B2, 5, 2.4, (0, 0, 576, 546), True),    # Page 09, cropped above the portrait and quotation
+    (B2, 5, 2.0, (576, 0, 1152, 792), True),  # Page 10, The Five Voices
+    (B2, 6, 2.4, (0, 0, 1152, 465), True),   # Pages 11-12, titles only, lyrics omitted
+    (B2, 8, 2.0, None, True),   # Discography (15)
     # Readable detail views.
-    (B1, 3, 3.4, (0, 300, 576, 660)),     # Diagonal description block
-    (B2, 6, 3.4, (0, 140, 576, 500)),     # "I Hate Everything About You"
-    (B2, 5, 3.8, (576, 150, 1152, 510)),  # The Five Voices and member list
+    (B1, 3, 3.2, (0, 300, 576, 660), False),     # Diagonal description block
+    (B2, 5, 3.4, (576, 150, 1152, 510), False),  # The Five Voices and member list
 ]
 
 
@@ -52,16 +64,16 @@ def ffmpeg_path():
     return imageio_ffmpeg.get_ffmpeg_exe()
 
 
-def render(book, index, clip):
+def render(book, index, clip, framed):
     page = pymupdf.open(SRC / book)[index]
     rect = pymupdf.Rect(*clip) if clip else page.rect
-    margin = 0 if clip else 64
+    margin = 64 if framed else 0
     scale = min((W - 2 * margin) / rect.width, (H - 2 * margin) / rect.height)
     pix = page.get_pixmap(matrix=pymupdf.Matrix(scale, scale), clip=rect, alpha=False)
     art = Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
     frame = Image.new("RGB", (W, H), BG)
     x, y = (W - art.width) // 2, (H - art.height) // 2
-    if not clip:
+    if framed:
         # Soft warm shadow under the printed page, tinted to the background.
         shadow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
         shadow.paste(Image.new("RGBA", art.size, (92, 72, 52, 70)), (x, y + 14))
@@ -75,7 +87,7 @@ def main():
     shutil.rmtree(OUT, ignore_errors=True)
     frames_dir = OUT / "frames"
     frames_dir.mkdir(parents=True)
-    slides = [(render(b, i, c), hold) for b, i, hold, c in SLIDES]
+    slides = [(render(b, i, c, f), hold) for b, i, hold, c, f in SLIDES]
     entries = []
 
     def emit(img, duration):
@@ -109,7 +121,7 @@ def main():
     )
     print(f"typography-systems: {total:.1f} s\n  recording: {mp4}")
     if "--publish" in sys.argv:
-        target = SRC / "walkthrough.mp4"
+        target = PUBLIC / "walkthrough.mp4"
         shutil.copyfile(mp4, target)
         print(f"  published: {target}")
     else:

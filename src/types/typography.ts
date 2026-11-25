@@ -15,21 +15,28 @@ export interface PrintFigure {
   smallWidth?: number
 }
 
-/** One page of a book PDF. A PDF page may be a single printed page or a two-page spread. */
-export interface BookPage extends PrintFigure {
-  id: string
-  kind: 'single' | 'spread'
-  title: string
-  /** Position in the PDF, e.g. "PDF page 4 of 9". */
-  label: string
-  small: string
-  smallWidth: number
-}
-
 /** An image in the enlarged viewer. */
 export interface ViewerItem extends PrintFigure {
   title?: string
   label?: string
+  /** The two printed pages of a spread, shown one at a time on narrow screens. */
+  halves?: [ViewerItem, ViewerItem]
+}
+
+/**
+ * Published artwork from one of the books: a whole PDF page, one printed page
+ * from a spread, or a labelled crop.
+ */
+export interface PrintPage extends ViewerItem {
+  id: string
+  kind: 'single' | 'spread' | 'crop'
+  title: string
+  /** Where it sits in the original, e.g. "PDF page 4 of 13 · Two-page spread". */
+  label: string
+  small: string
+  smallWidth: number
+  /** Present whenever the published image is not the whole original page, and says what is left out. */
+  adaptation?: string
 }
 
 export interface MetaItem {
@@ -48,40 +55,20 @@ export interface StudySummary {
   name: string
   heading: string
   body: string
-  image: BookPage
-}
-
-export interface ReadingPath {
-  heading: string
-  body: string
-  figure: PrintFigure
-  source: string
+  image: PrintPage
 }
 
 export interface Comparison {
   lever: string
   note: string
-  page: BookPage
+  page: PrintPage
 }
 
-export interface CaptionedFigure {
-  figure: PrintFigure
-  caption: string
-}
-
-export interface BookGallery {
+export interface BookSelection {
   id: string
   title: string
   description: string
-  pages: BookPage[]
-}
-
-export interface DownloadLink {
-  href: string
-  label: string
-  /** Actual file size, shown in the link label. */
-  size: string
-  description: string
+  pages: PrintPage[]
 }
 
 export interface TypographySystemsPresentation {
@@ -90,61 +77,57 @@ export interface TypographySystemsPresentation {
     title: string
     lede: string
     meta: MetaItem[]
-    cover: BookPage
+    notice: string
+    cover: PrintPage
   }
-  overview: {
+  publications: {
     title: string
-    context: string
+    intro: string
     studies: StudySummary[]
-    question: string
+    walkthrough: WalkthroughSection & { descriptionSummary: string }
   }
-  readingPaths: {
+  hierarchy: {
     title: string
     intro: string
-    items: ReadingPath[]
-  }
-  contrast: {
-    title: string
-    intro: string
-    comparisons: Comparison[]
-    notes: EditorialNote[]
+    contentNote: EditorialNote
+    pages: Comparison[]
+    spreads: Comparison[]
+    typefaceNote: string
   }
   identity: {
     title: string
     intro: string
-    cover: BookPage
-    coverSpread: BookPage
-    discography: BookPage
-    note: EditorialNote
+    coverSpread: PrintPage
+    coverSpreadCaption: string
     swatches: { name: string; hex: string }[]
     swatchNote: string
     typefaces: string[]
+    typefaceNote: string
     elements: string[]
-  }
-  members: {
-    title: string
-    intro: string
-    spread: BookPage
-    detail: PrintFigure
-    detailCaption: string
-    principles: { heading: string; body: string }[]
-    secondSpread: BookPage
-    secondDetail: PrintFigure
-    secondDetailCaption: string
   }
   rhythm: {
     title: string
-    lead: BookPage
-    supporting: CaptionedFigure[]
+    intro: string
+    names: [PrintPage, PrintPage]
+    namesNote: string
+    sequence: { page: PrintPage; caption: string }[]
     notes: EditorialNote[]
   }
   reflection: {
     title: string
+    analysisNote: string
     notes: EditorialNote[]
     refinements: string[]
   }
-  books: BookGallery[]
-  pageCountNote: string
-  walkthrough: WalkthroughSection
-  downloads: DownloadLink[]
+  selection: {
+    title: string
+    intro: string
+    toggle: string
+    phoneNote: string
+    books: BookSelection[]
+  }
+  sources: {
+    title: string
+    items: string[]
+  }
 }
