@@ -1,271 +1,81 @@
-import type { WovenwardPresentation } from '@/types/presentation'
+import type { WoveFigure, WovenwardCaseStudy } from '@/types/wovenward'
 
 const base = '/Portfolio/projects/wovenward'
+const shots = `${base}/case-study`
 
-// Set to false to show only the static desktop/mobile composition in the opening.
-export const WOVENWARD_SHOWCASE_ENABLED = true
+// Evidence behind this page (checked November 23, 2026):
+//  - Screens in case-study/ are captures of the working storefront
+//    (UX Projects/Wovenward) made by scripts/wovenward-captures.mjs at 2x on
+//    November 23, 2026. Products, prices, measurements and stock are the
+//    storefront's sample data.
+//  - Measured or verified in the running storefront (Microsoft Edge, 390 x 844
+//    and 1440 x 900): size L narrows 12 pieces to 10; the size guide's cm and
+//    inch tables (104 cm chest = 41.0 in, rounded to the nearest half inch);
+//    the stock cap ("That's all 2 in stock in size XS"); on a phone, Add to bag
+//    with no size scrolls the size options (419-600 px) into view above the
+//    fixed bar (from 771 px) and focuses the first available size.
+//  - Re-run on November 23, 2026 with the storefront's own suites:
+//    docs/verification/flow-check.cjs 76/76, axe-audit.cjs 0 violations in 24
+//    states, type check passes. The October 4, 2026 results are in its
+//    DESIGN-LOG.md section 9.
+//  - Card detail type (12 px at 6.00:1 before, 14 px at 8.06:1 now) and the
+//    photography change (960 px to 3,000 px sources) are recorded in that log;
+//    the current values were measured.
+//  - walkthrough.mp4 is the original recording with one edit: original frames
+//    148-191 (4.93-6.37 s, the grid scrolling past a product photo whose
+//    licence couldn't be confirmed at source) were cut on November 24, 2026.
+//    It is now 25.8 s; the original is archived in Wovenward/docs/
+//    portfolio-archive-2026-11-23/walkthrough-original.mp4. It is not one
+//    continuous take; don't describe it as one.
+//  - Photography: licensed stock images (Burst and StockSnap). See the
+//    storefront's docs/ASSET-SOURCES.md and docs/PHOTO-RIGHTS-REVIEW.md. The
+//    people shown aren't connected with Wovenward; never imply they endorse it
+//    or describe them (no model sizes).
+//  - Provenance: the storefront's design log records the owner's brief
+//    (palette, scope, constraints) and refinement requests; the build itself is
+//    recorded by its implementer and the log doesn't name the tool. The role
+//    line below is the owner's own wording; never claim the owner wrote the code.
 
-export const wovenward: WovenwardPresentation = {
-  eyebrow: 'Personal concept · E-commerce UX/UI',
-  subtitle: 'A considered clothing experience.',
-  meta: [
-    { label: 'Role', value: 'UX & UI Design' },
-    { label: 'Year', value: '2026' },
-    { label: 'Platform', value: 'Responsive web' },
-    { label: 'Scope', value: 'Browse to bag' },
-  ],
-  showcase: {
-    desktop: {
-      src: `${base}/showcase-desktop.webp`,
-      alt: 'Wovenward homepage on desktop: the serif headline "Clothes you’ll reach for first." beside a large photo of a blush wool coat and a smaller inset of an oat jumper',
-      width: 2048,
-      height: 1280,
-    },
-    mobile: {
-      src: `${base}/showcase-mobile.webp`,
-      alt: 'Wovenward homepage on a phone with the headline and Shop the collection button above the photographs',
-      width: 780,
-      height: 1688,
-    },
-    description:
-      'The Wovenward homepage shown in a desktop browser window, with the mobile version in a phone frame in front of it on the right.',
-    caption: 'The homepage at 1440 px and 390 px. Actual Wovenward interface.',
-  },
-  imageNote:
-    'Products, prices, measurements and stock are sample data for this concept store. Photography is from Burst and StockSnap; sources are recorded in the project’s asset log.',
-  overview: {
-    title: 'Less uncertainty, from browse to bag.',
-    challenge: {
-      heading: 'Clothes are easy to see. Fit is harder to judge.',
-      body: 'A product photo can’t answer every shopping question. Availability, measurements and the selected variant need to be clear before a shopper adds an item.',
-    },
-    goal: {
-      heading: 'Make each decision legible.',
-      body: 'Bring in-stock sizes into discovery, explain sizing on the product page, and carry the exact choice into a reviewable bag.',
-    },
-    contribution: {
-      heading: 'UX & visual design',
-      body: 'Experience structure, interface direction, interaction states and responsive refinement.',
-    },
-    scope: {
-      heading: 'A concept store',
-      body: 'Homepage, collection, product details, size guidance and bag, with twelve sample products. There is no payment, fulfillment or completed purchase flow.',
-    },
-  },
-  journey: {
-    title: 'One decision prepares the next.',
-    body: 'The core journey connects discovery, fit and selection without hiding the details.',
-    steps: [
-      { title: 'Discover', body: 'Enter through featured pieces or a category.' },
-      { title: 'Narrow', body: 'Filter by category, size in stock and maximum price.' },
-      { title: 'Evaluate', body: 'Inspect the garment and compare measurements.' },
-      { title: 'Review', body: 'Check the chosen variant and quantity in the bag.' },
+const desktop = (file: string, alt: string, label: string, height = 1500, width = 2400): WoveFigure => ({
+  image: { src: `${shots}/${file}`, alt, width, height },
+  label,
+  chrome: true,
+})
+const phone = (file: string, alt: string, label: string): WoveFigure => ({
+  image: { src: `${shots}/${file}`, alt, width: 780, height: 1688 },
+  label,
+  portrait: true,
+})
+
+export const wovenward: WovenwardCaseStudy = {
+  opening: {
+    eyebrow: 'Personal concept · Responsive e-commerce',
+    title: 'Wovenward',
+    subtitle: 'Clothing chosen with the facts in view.',
+    lede: 'A responsive clothing store designed around three questions every shopper asks: is it available in my size, how will it fit, and what exactly am I buying? The scope runs from browsing to the bag.',
+    meta: [
+      { label: 'My role', value: 'Product direction, UX/UI design direction, prototype review and iteration' },
+      { label: 'Deliverable', value: 'Working responsive storefront' },
+      { label: 'Scope', value: 'Browse to bag; no checkout' },
+      { label: 'Status', value: 'Concept, not yet tested with shoppers' },
     ],
-    principles: [
-      {
-        title: 'Keep browsing context',
-        body: 'Search, filters and sorting live in the URL, so reload, Back and returning to the collection keep the shopper’s choices.',
-      },
-      {
-        title: 'Make correction straightforward',
-        body: 'Filters can be removed one at a time, a missing size is flagged beside the size options, and bag quantities can change within stock limits.',
-      },
-    ],
-  },
-  wireframes: {
-    title: 'Low-fidelity layout study',
-    body: 'Retrospective wireframes that map the current experience across six views: homepage, collection, product details, size guide, bag and mobile. They were drawn after the build to show its structure, not as early-stage sketches.',
-    corrected: {
-      src: `${base}/wovenward-wireframes-corrected.svg`,
-      alt: 'Grayscale wireframe board in six parts: homepage with the headline and featured pieces, collection with filters and product cards, product details with size options, size guide tables, bag with a checkout-unavailable notice, and two mobile layouts',
-      width: 1536,
-      height: 1024,
-    },
-    supplied: {
-      src: `${base}/wireframe-board-supplied.webp`,
-      small: `${base}/wireframe-board-supplied-800.webp`,
-      alt: 'The originally supplied wireframe board, with generic navigation, pound prices and several color swatches',
-      width: 1536,
-      height: 1024,
-    },
-    suppliedNote:
-      'The originally supplied board, kept unchanged for reference. It was generated for this study, and five details didn’t match the app.',
-    corrections: [
-      'Navigation now uses the app’s links (Shop all, Coats & jackets, Knitwear, Shirts, Dresses and Bag) instead of Women, Men, Accessories and Journal.',
-      'Prices are shown in US dollars, the app’s currency, instead of pounds.',
-      'Each product shows a single colorway, labeled “Available in Olive only.”, because every product currently has one color.',
-      'The bag says “Checkout is unavailable” because this is a concept store, rather than “Please try again later”, which suggested a temporary fault.',
-      'The homepage uses the real eyebrow, headline and actions: “Clothes you’ll reach for first.”, Shop the collection and Coats & jackets.',
-    ],
-    svgHref: `${base}/wovenward-wireframes-corrected.svg`,
-  },
-  identity: {
-    title: 'Warm editorial design. Practical controls.',
-    body: 'A restrained palette and a clear type hierarchy let the clothing lead the page.',
-    swatches: [
-      { name: 'Porcelain', hex: '#F5F2EC', usage: 'Page background' },
-      { name: 'Deep ink', hex: '#252824', usage: 'Text and the footer' },
-      { name: 'Muted indigo', hex: '#344A64', usage: 'Primary actions and focus' },
-      { name: 'Clay', hex: '#B9785F', usage: 'Decorative accents only' },
-      { name: 'Dark clay', hex: '#8C4E37', usage: 'Accent text, 5.8:1 on porcelain' },
-    ],
-    displayFont: {
-      name: 'Newsreader',
-      role: 'Display · page and section titles and the wordmark, mostly at light weights',
-    },
-    bodyFont: {
-      name: 'Manrope',
-      role: 'Interface · navigation, prices, available sizes and actions, with tabular figures for prices',
-    },
-    note: 'Selected and sold-out sizes also use words, checks and distinct borders, so color is never the only signal.',
-  },
-  collection: {
-    title: 'Give the collection a clear entrance.',
-    body: 'The homepage leads into featured clothing and categories; the collection is built to browse what’s actually available.',
     hero: {
-      src: `${base}/home-hero.webp`,
-      small: `${base}/home-hero-800.webp`,
-      alt: 'Homepage hero: the eyebrow "The everyday collection", the headline with "reach for" in clay italic, a short paragraph, a Shop the collection button and a Coats & jackets link, beside the coat photo and an overlapping jumper inset',
-      width: 1600,
-      height: 1000,
-    },
-    heroNotes: [
-      {
-        title: 'An editorial opening',
-        body: 'The offset image composition and serif headline set the tone, and “Shop the collection” is the single primary next step.',
+      image: {
+        src: `${shots}/d-home.webp`,
+        alt: 'Wovenward homepage on desktop: the serif headline “Clothes you’ll reach for first.” with “reach for” in italic clay, a short introduction and a Shop the collection button, beside a large photo of a blush wool-blend coat and a smaller inset of an oat mock-neck jumper.',
+        width: 2400,
+        height: 1500,
       },
-      {
-        title: 'A quieter supporting image',
-        body: 'The oat jumper replaced a stronger red inset, and the main caption sits clear of the overlap.',
-      },
-    ],
-    sections: {
-      src: `${base}/home-sections.webp`,
-      small: `${base}/home-sections-800.webp`,
-      alt: 'Featured pieces row of four product cards with names, prices, colors and available sizes, above a Shop by category row of five photo tiles',
-      width: 1600,
-      height: 1244,
+      label: 'Homepage, 1440 px',
+      chrome: true,
     },
-    sectionsCaption: 'Hero products don’t repeat in the featured row, and category tiles use photos not shown elsewhere on the page.',
-    filtered: {
-      src: `${base}/shop-filtered.webp`,
-      small: `${base}/shop-filtered-800.webp`,
-      alt: 'All clothing filtered to Knitwear and Shirts, size XS in stock and up to $150: a 3 pieces count, removable filter chips, Clear all, and three product cards',
-      width: 1600,
-      height: 1000,
-    },
-    filteredNotes: [
-      {
-        title: 'Narrow the range',
-        body: 'Category, size in stock and maximum price work alongside title search and sorting. A count and removable chips keep active choices visible.',
-      },
-      {
-        title: 'A size filter that means available',
-        body: 'Filtering by a size only returns pieces with that size in stock, and cards list only in-stock sizes.',
-      },
-    ],
-    empty: {
-      src: `${base}/shop-empty.webp`,
-      small: `${base}/shop-empty-800.webp`,
-      alt: 'Search for "parka" with 0 pieces: "No pieces match parka." with advice to try a shorter word such as shirt, coat or dress, and Clear all filters and View all 12 pieces buttons',
-      width: 1600,
-      height: 614,
-    },
-    emptyCaption: 'Search and filter empty states each explain what to try next.',
+    contentsLabel: 'In this case study',
+    note: 'Products, prices, measurements and stock are sample data, and nothing can be bought. Stock photography is used for illustration. No affiliation with or endorsement by the people depicted is claimed.',
   },
-  product: {
-    title: 'Put fit beside the decision.',
-    body: 'Product details pair the garment’s photographs with size, quantity and supporting information.',
-    layout: {
-      src: `${base}/product-layout.webp`,
-      small: `${base}/product-layout-800.webp`,
-      alt: 'Funnel-Neck Utility Jacket product page: a vertical thumbnail rail labeled Full look and Detail, a large photo with a 1 / 2 counter, and a panel with price, the Olive color, size options with M selected, a fit note, quantity and Add to bag',
-      width: 1600,
-      height: 1087,
-    },
-    layoutCaption: 'The gallery is capped to the viewport height, so the title, options and Add to bag sit on screen together.',
-    required: {
-      src: `${base}/panel-size-required.webp`,
-      alt: 'Size options outlined after Add to bag was pressed without a size, with the message "Choose a size to add this to your bag. Not sure? Open the size guide."',
-      width: 962,
-      height: 962,
-    },
-    selected: {
-      src: `${base}/panel-size-selected.webp`,
-      alt: 'Size M selected with a check, L shown as sold out with a dashed border and strike, a legend for Selected and Sold out, and the status "Size M selected · 6 in stock."',
-      width: 962,
-      height: 956,
-    },
-    stateNotes: [
-      {
-        title: 'Show every state',
-        body: 'Available, selected and sold-out sizes look different and carry non-color cues: a check, a dashed strike and a small legend.',
-      },
-      {
-        title: 'Guide, don’t block',
-        body: 'Adding without a size outlines the options, explains what’s needed and moves focus to the first available size.',
-      },
-    ],
-    guide: {
-      src: `${base}/size-guide.webp`,
-      small: `${base}/size-guide-800.webp`,
-      alt: 'Size guide dialog with a Centimeters and Inches toggle, a garment measurements table for chest, body length and sleeve, and a body measurements table for chest, waist and hip',
-      width: 1473,
-      height: 1622,
-    },
-    guideNotes: [
-      {
-        title: 'Make comparisons possible',
-        body: 'The guide separates garment and body measurements, says how each one is taken, and switches between centimeters and inches.',
-      },
-      {
-        title: 'Honest about models',
-        body: 'There are no “model wears size M” notes, because the people in the photographs are real and their sizes aren’t known.',
-      },
-    ],
-  },
-  bag: {
-    title: 'A reviewable selection, without surprises.',
-    body: 'Confirmation repeats the exact choice, and the bag keeps every detail together.',
-    added: {
-      src: `${base}/added-dialog.webp`,
-      small: `${base}/added-dialog-800.webp`,
-      alt: 'Added to your bag dialog showing the jacket thumbnail, color Olive, size M, quantity 2 and price $372, the bag count and subtotal, and View bag and Continue shopping buttons',
-      width: 1080,
-      height: 844,
-    },
-    addedNotes: [
-      {
-        title: 'Repeat the exact choice',
-        body: 'The confirmation names the item, color, size, quantity and price, then offers View bag or Continue shopping.',
-      },
-      {
-        title: 'Focus that follows',
-        body: 'Closing returns focus to Add to bag, or to the selected size when the last one in stock has just been added.',
-      },
-    ],
-    bag: {
-      src: `${base}/bag.webp`,
-      small: `${base}/bag-800.webp`,
-      alt: 'Your bag with two items, each showing color, size, unit price, a quantity stepper, Remove and stock left, beside a summary with the subtotal, a note that it excludes shipping and taxes, and a Checkout is unavailable notice',
-      width: 1600,
-      height: 833,
-    },
-    bagNotes: [
-      {
-        title: 'Keep the detail',
-        body: 'Item, color, size, unit price and quantity stay together, and quantities respect stock limits.',
-      },
-      {
-        title: 'Be clear about scope',
-        body: 'The subtotal excludes shipping and taxes, and checkout is unavailable in this concept, so no checkout button is offered.',
-      },
-    ],
-  },
-  walkthrough: {
-    eyebrow: 'Walkthrough',
-    title: 'From browsing to bag.',
-    body: 'The shop prototype, recorded in one pass: filter by an available size, check the fit, choose that size and review it in the bag.',
+
+  experience: {
+    title: 'A product photo can’t answer every question.',
+    challenge: 'Shoppers need to know what’s available in their size, how a piece will fit, and exactly what they’ve chosen before it reaches the bag. Wovenward puts those answers where each decision is made.',
     video: {
       mp4: `${base}/walkthrough.mp4`,
       poster: {
@@ -275,149 +85,153 @@ export const wovenward: WovenwardPresentation = {
         height: 1000,
       },
       label: 'shopping walkthrough',
-      duration: 27,
-      caption: 'Recorded from the working prototype at 1280 × 800, about 27 seconds, with no audio.',
+      duration: 26,
+      caption: 'Recorded from the working storefront · 26 seconds · No audio',
       description:
         'The recording starts on All clothing and checks size L under Size in stock, which narrows 12 pieces to 10 by leaving out pieces where L is sold out. It opens the Mock-Neck Jumper, then the size guide, scrolling through the garment and body measurements in centimeters before closing it. It selects size L and adds the jumper to the bag, and the Added to your bag dialog confirms color, size, quantity and price. View bag ends on the bag page: one Mock-Neck Jumper in Oat, size L, at $128, with the note that checkout is unavailable in this concept store.',
     },
+    descriptionSummary: 'What the walkthrough shows',
   },
-  responsive: {
-    title: 'Clear decisions on smaller screens.',
-    body: 'The collection stays scannable, while product actions remain close to the selection.',
-    screens: [
-      {
-        image: {
-          src: `${base}/m-home.webp`,
-          alt: 'Mobile homepage with a compact header, the headline and Shop the collection button',
-          width: 780,
-          height: 1688,
-        },
-        caption: 'A compact header and the same clear first step.',
-      },
-      {
-        image: {
-          src: `${base}/m-shop-filtered.webp`,
-          alt: 'Mobile collection with a Filters button showing 4 active filters, opened to the category and size-in-stock options',
-          width: 780,
-          height: 1688,
-        },
-        caption: 'Filters collapse behind one button with an active count.',
-      },
-      {
-        image: {
-          src: `${base}/m-product.webp`,
-          alt: 'Mobile product page with the photo gallery and a fixed bottom bar showing the price, "Choose a size" and Add to bag',
-          width: 780,
-          height: 1688,
-        },
-        caption: 'Add to bag stays fixed at the bottom of the screen.',
-      },
-      {
-        image: {
-          src: `${base}/m-added.webp`,
-          alt: 'Mobile Added to your bag dialog with the item details and View bag button',
-          width: 780,
-          height: 1688,
-        },
-        caption: 'Dialogs keep a clear path back to the page.',
-      },
-      {
-        image: {
-          src: `${base}/m-bag.webp`,
-          alt: 'Mobile bag with item details and quantity steppers',
-          width: 780,
-          height: 1688,
-        },
-        caption: 'Bag lines stack without losing variant detail.',
-      },
-    ],
+
+  discover: {
+    id: 'discover',
+    index: '02',
+    label: 'Discover',
+    title: 'Discover what is actually available.',
+    standfirst: 'A size filter should describe stock, not the sizes a garment was once made in.',
+    lead: desktop(
+      'd-shop-size.webp',
+      'All clothing on desktop filtered by size L: the Size in stock control with L selected, a count of 10 pieces, a removable “Size L” chip and Clear all, and product cards that list only their in-stock sizes.',
+      'Size in stock: L, 1440 px',
+    ),
     notes: [
-      {
-        title: 'Size guide that fits',
-        body: 'Measurement tables show all five sizes on a phone instead of scrolling sideways.',
-      },
-      {
-        title: 'Motion that supports hierarchy',
-        body: 'The hero rises in once, cards zoom slightly and crossfade on hover-capable devices, and sections fade up as they arrive.',
-      },
-      {
-        title: 'Visible by default',
-        body: 'Content is visible before scripts run; reveals only hide content after the page opts in, and a fallback shows anything left hidden.',
-      },
+      { title: 'Filters describe stock', figure: '12 → 10', body: 'Choosing L under “Size in stock” leaves out every piece whose L is sold out.', source: 'verified' },
+      { title: 'Cards agree with the filter', body: 'Cards list only available sizes. For each size, XS to XL, the filter returns exactly the cards that list it.', source: 'verified' },
+      { title: 'Choices are kept', body: 'Search, filters and sort live in the address, so reload and Back restore them.', source: 'verified' },
+      { title: 'Easy to undo', figure: '2 ways out', body: 'Each filter is a removable chip. An empty result offers Clear all filters or View all 12 pieces.', source: 'verified' },
     ],
-    reducedMotion:
-      'With reduced motion, the hero entrance, card effects, reveals and dialog easing are all turned off.',
-  },
-  refinements: {
-    title: 'Refine the evidence on the page.',
-    body: 'A refinement pass focused on garment visibility, hierarchy and more useful card details, followed by fixes found in screenshot review and scripted checks.',
-    before: {
-      src: `${base}/refine-before.webp`,
-      small: `${base}/refine-before-800.webp`,
-      alt: 'Earlier collection page with face-led crops, a red crewneck and a yellow-shutter backdrop, and small card text',
-      width: 1440,
-      height: 1180,
-    },
-    after: {
-      src: `${base}/refine-after.webp`,
-      small: `${base}/refine-after-800.webp`,
-      alt: 'Refined collection page with garment-led photography and larger card names, prices and available sizes',
-      width: 1440,
-      height: 1180,
-    },
-    beforeCaption: 'Earlier iteration: face-led crops and 12 px card details.',
-    afterCaption: 'Refined: more of each garment, 16 px names and prices, darker 14 px details.',
-    items: [
-      {
-        title: 'Show more of the garment',
-        body: 'Six products moved to sharper photography, and their names, colors and descriptions were rewritten to match what the new images show.',
-      },
-      {
-        title: 'Make card details easier to scan',
-        body: 'Names and prices use 16 px type; color and available sizes use darker 14 px text. Long names wrap clear of the price.',
-      },
-      {
-        title: 'One current link at a time',
-        body: 'Every category link looked active on the collection page; current state now compares the path and query.',
-      },
-      {
-        title: 'Keep the caption clear',
-        body: 'The overlapping hero inset covered the main image’s caption, so the caption moved clear of it.',
-      },
-      {
-        title: 'Fix focus and scroll edge cases',
-        body: 'Focus no longer lands on a disabled button after the last item in stock is added, and View bag no longer leaves the page scroll-locked.',
-      },
-      {
-        title: 'Resolve accessibility findings',
-        body: 'Struck-through sold-out sizes on cards failed contrast at 55% opacity and now use a muted color plus the strike.',
-      },
+    supporting: [
+      desktop(
+        'd-shop-empty.webp',
+        'No pieces match “zzz” with these filters: the empty state explains that search looks at product names, with Clear all filters and View all 12 pieces buttons, and the active chips “zzz” and “Size XS”.',
+        'Empty result',
+      ),
+    ],
+    phones: [
+      phone('m-shop-size.webp', 'All clothing on a phone: filters collapsed behind a Filters button showing 1 active, 10 pieces, a removable Size L chip, and two product cards listing available sizes.', 'Phone, filtered'),
     ],
   },
-  outcome: {
-    title: 'A coherent browse-to-bag experience.',
-    delivered: {
-      title: 'Discovery, fit and review',
-      body: 'The homepage, collection, product guidance and bag form one connected journey. The strongest improvements are the visible stock information and precise variant feedback.',
+
+  fit: {
+    id: 'fit',
+    index: '03',
+    label: 'Fit',
+    title: 'Understand how it fits.',
+    standfirst: 'Fit information sits beside the size choice, and the store won’t let a missing size pass silently.',
+    lead: desktop(
+      'd-product.webp',
+      'Mock-Neck Jumper product page on desktop: a gallery with Front, Seated and Detail thumbnails, the price, colour Oat, size options XS to XL with M sold out, a Size guide link, a fit note and quantity.',
+      'Product page, 1440 px',
+    ),
+    notes: [
+      { title: 'Two kinds of measurement', body: 'The size guide shows the garment laid flat and the body each size is designed for, for all five sizes, with how each is measured.', source: 'verified' },
+      { title: 'Centimetres or inches', figure: '104 cm = 41.0 in', body: 'One switch converts every table, rounded to the nearest half inch.', source: 'measured' },
+      { title: 'Sold out, never by colour alone', body: 'A sold-out size has a dashed border, a diagonal strike and “sold out” in its name, with a key beside the options.', source: 'verified' },
+      { title: 'A missing size is caught', body: 'Add to bag without a size shows an inline message, outlines the options and moves focus to the first available size.', source: 'verified' },
+    ],
+    supporting: [
+      desktop(
+        'd-size-guide-cm.webp',
+        'Size guide for the Mock-Neck Jumper in centimetres: garment chest, body length and sleeve for XS to XL, then body chest, waist and hip, with how to measure each.',
+        'Size guide, centimetres',
+        1620,
+        1472,
+      ),
+      desktop(
+        'd-size-guide-in.webp',
+        'The same size guide switched to inches: chest 41.0, 43.5, 45.5, 48.0 and 50.5 inches from XS to XL.',
+        'Size guide, inches',
+        1620,
+        1472,
+      ),
+    ],
+    phones: [],
+    sequence: {
+      label: 'On a phone',
+      before: phone('m-product.webp', 'Mock-Neck Jumper on a phone, scrolled to the top, with a fixed bar at the bottom showing $128, Choose a size, and Add to bag.', 'Tap Add to bag, no size chosen'),
+      after: phone('m-size-required.webp', 'After tapping Add to bag: the page has scrolled to the size options above the fixed bar, M is shown sold out, and a red message reads “Choose a size to add this to your bag. Not sure? Open the size guide.”', 'The sizes, in view'),
+      caption: 'The fixed Add to bag bar scrolls the size options into view above itself and focuses the first available size (measured at 390 × 844).',
     },
-    lesson: {
-      title: 'Consistency is product information',
-      body: 'A photograph, name, color and size need to agree across the card, product page and bag. A more polished image only helps when those details stay accurate.',
-    },
-    checks: {
-      title: 'Recorded checks',
-      body: 'The development record reports 76 scripted checks passing on two consecutive runs, a clean type check and production build, and no axe violations across 24 scanned states.',
-    },
-    next: {
-      title: 'Test confidence, not just completion',
-      body: 'Observe shoppers finding an in-stock size, interpreting the size guide and checking a bag, to learn whether the information supports confident choices.',
-    },
-    limits:
-      'No usability study has been conducted. Automated checks don’t establish ease of use or accessibility for everyone; screen readers, other browsers and real devices remain to be tested.',
-    pdf: {
-      href: `${base}/wovenward-ux-case-study.pdf`,
-      label: 'Download the case study PDF',
-      detail: '12 pages · 7.3 MB',
-    },
+  },
+
+  review: {
+    id: 'review',
+    index: '04',
+    label: 'Review',
+    title: 'Review exactly what you chose.',
+    standfirst: 'Every confirmation repeats the variant, and the bag stays honest about stock and price.',
+    lead: desktop(
+      'd-bag.webp',
+      'Your bag on desktop with 3 items: a Mock-Neck Jumper in Oat, size L, quantity 1 with “3 in stock in size L”; a Funnel-Neck Utility Jacket in Olive, size XS, quantity 2 with the increase button disabled and “That’s all 2 in stock in size XS”; a $500 subtotal that excludes shipping and taxes, and a note that checkout is unavailable.',
+      'Bag, 1440 px',
+    ),
+    notes: [
+      { title: 'The exact variant, confirmed', body: 'Adding opens a confirmation with colour, size, quantity and price, plus the bag count and subtotal.', source: 'verified' },
+      { title: 'Quantities respect stock', figure: '“That’s all 2 in stock”', body: 'Steppers stop at the stock left, counting what’s already in the bag; typed values are clamped.', source: 'verified' },
+      { title: 'A transparent subtotal', body: 'The subtotal excludes shipping and taxes, and says so. Checkout is outside this concept’s scope, and the bag states it plainly.', source: 'verified' },
+      { title: 'A bag that checks availability', body: 'Only product, colour, size and quantity are saved in the browser, and they’re checked against stock on every visit.', source: 'recorded' },
+    ],
+    supporting: [
+      desktop(
+        'd-added.webp',
+        'Added to your bag dialog over the product page: Mock-Neck Jumper, colour Oat, size L, quantity 1, price $128, bag 1 item, subtotal $128, with View bag and Continue shopping buttons.',
+        'Confirmation, 1440 px',
+      ),
+    ],
+    phones: [
+      phone('m-added.webp', 'The Added to your bag confirmation on a phone, listing colour, size, quantity and price, with View bag and Continue shopping.', 'Phone confirmation'),
+      phone('m-bag.webp', 'Your bag on a phone with both lines, quantity steppers, the stock notes and line totals.', 'Phone bag'),
+    ],
+  },
+
+  identity: {
+    title: 'Editorial identity, functional design.',
+    standfirst: 'Newsreader gives the store its editorial voice; Manrope, indigo actions and visible borders keep every control plain to use.',
+    palette: [
+      { name: 'Porcelain', hex: '#F5F2EC', role: 'Page', contrast: 'Ink 13.35:1' },
+      { name: 'Deep ink', hex: '#252824', role: 'Text and footer', contrast: '13.35:1' },
+      { name: 'Muted indigo', hex: '#344A64', role: 'Primary actions', contrast: '8.14:1; white on it 9.09:1' },
+      { name: 'Dark clay', hex: '#8C4E37', role: 'Accent text', contrast: '5.77:1' },
+      { name: 'Clay', hex: '#B9785F', role: 'Rules and markers only', contrast: '3.18:1, never text' },
+    ],
+    type: [
+      { name: 'Newsreader', role: 'Titles and the wordmark, mostly light weights', sample: 'Clothes you’ll reach for first.' },
+      { name: 'Manrope', role: 'Prices, controls and product facts', sample: 'Available sizes: XS, S, M, L · $128' },
+    ],
+    refinements: [
+      { title: 'Card details easier to read', figure: '12 px → 14 px', body: 'Colour and available sizes moved to 14 px in a darker grey: 6.00:1 → 8.06:1 contrast.', source: 'recorded' },
+      { title: 'Sharper, garment-led photography', figure: '960 → 3,000 px', body: 'Six products received higher-resolution photography, cropped to show more garment and less face.', source: 'recorded' },
+      { title: 'Title and options on one screen', body: 'The desktop gallery is capped to the viewport height, so the name, price and sizes appear with the photo.', source: 'recorded' },
+      { title: 'Tables that fit a phone', body: 'The size guide shows all five sizes at 390 px without sideways scrolling.', source: 'verified' },
+    ],
+  },
+
+  evidence: {
+    title: 'Checked in code. Not yet tested with shoppers.',
+    standfirst: 'The storefront’s own automated checks, first recorded on October 4, 2026 and re-run for this page on November 23, 2026. They aren’t user research.',
+    checks: [
+      { label: 'Scripted shopping checks', recorded: '76 / 76', rerun: '76 / 76' },
+      { label: 'Accessibility (axe), 24 states', recorded: '0 violations', rerun: '0 violations' },
+      { label: 'Type check and production build', recorded: 'Pass', rerun: 'Pass' },
+      { label: 'Phone: Add to bag with no size', recorded: '—', rerun: 'Sizes in view, first size focused' },
+    ],
+    notDone: ['Testing with shoppers', 'Screen readers', 'Safari, Firefox and real phones', 'Windows High Contrast'],
+    learned: 'Trust in a clothing store is built from small, consistent facts: the same size list on the card and the filter, the same variant in the confirmation and the bag.',
+    next: [
+      'Do shoppers set a size before browsing, and trust the result?',
+      'Can they choose a size from the guide alone?',
+      'After adding, can they say exactly what is in their bag?',
+    ],
+    contactLabel: 'Start a project',
   },
 }

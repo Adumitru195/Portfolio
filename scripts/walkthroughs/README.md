@@ -5,7 +5,7 @@ Tools for recording, reviewing and checking the silent walkthrough videos shown 
 | Project | Video | How it's made |
 | --- | --- | --- |
 | Porchlight | `public/projects/porchlight/walkthrough.mp4` (~37 s) | `record-porchlight.mjs`, from the working prototype. The published file is the 14 Oct 2026 recording with 1.8 s cut (original frames 239–292, the 4-result state) for photo licensing on 23 Nov 2026; a fresh run records the full flow |
-| Wovenward | `public/projects/wovenward/walkthrough.mp4` (~27 s) | `record-wovenward.mjs`, from the working prototype |
+| Wovenward | `public/projects/wovenward/walkthrough.mp4` (~26 s) | `record-wovenward.mjs`, from the working prototype. The published file has 1.5 s cut (original frames 148–191, the grid scrolling past a product photo awaiting licence confirmation) on 24 Nov 2026; a fresh run records the full flow |
 | Typography Systems | `public/projects/typography-systems/walkthrough.mp4` (~35 s) | `record-typography.py`, from the original book PDFs (a publication walkthrough, not a product demo) |
 | Afterglow Cinema | `public/projects/afterglow-cinema/motion-demo.mp4` + `.webm` (~20 s) | Recorded earlier in the Afterglow repo (`docs/verification/motion-check.cjs`). These tools don't regenerate it. |
 | AIC Museum Experience | none yet | Pending; see [Not recorded yet](#not-recorded-yet) |
