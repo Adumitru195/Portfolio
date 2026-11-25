@@ -1,5 +1,6 @@
 import type { PointerEvent } from 'react'
 import { Link } from 'react-router-dom'
+import MapAttribution from '@/components/MapAttribution'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 import type { Variants } from 'framer-motion'
 import { ArrowRight, ArrowUpRight } from '@phosphor-icons/react'
@@ -126,6 +127,7 @@ export default function FeaturedProject() {
               </div>
             ))}
           </dl>
+          <MapAttribution subject="Map in the Explore screen" className="mt-3 text-backwater-ink/75" linkClassName={focusRing} />
 
           <div className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-4">
             <Link

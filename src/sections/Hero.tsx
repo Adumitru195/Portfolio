@@ -7,6 +7,7 @@ import { heroCopy } from '@/data/hero'
 import { person } from '@/data/person'
 import { useSiteNavigation } from '@/hooks/useSiteNavigation'
 import HeroWorkspace from '@/components/hero/HeroWorkspace'
+import MapAttribution from '@/components/MapAttribution'
 
 const focusRing =
   'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
@@ -104,6 +105,7 @@ export default function Hero() {
 
         <div className="lg:col-span-6 w-full max-w-[38rem] md:ml-auto lg:max-w-none">
           <HeroWorkspace interactionRef={heroRef} />
+          <MapAttribution subject="Backwater Journal map" className="mt-3 text-right text-text-muted" linkClassName={focusRing} />
         </div>
       </div>
     </section>

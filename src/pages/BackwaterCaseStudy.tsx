@@ -8,6 +8,7 @@ import { backwater, type BwScreen } from '@/data/backwater'
 import PresentationActions from '@/components/presentation/PresentationActions'
 import ZoomFigure from '@/components/presentation/ZoomFigure'
 import ResponsiveWalkthrough from '@/components/presentation/ResponsiveWalkthrough'
+import MapAttribution from '@/components/MapAttribution'
 import { workLink, workState } from '@/components/presentation/PresentationOpening'
 import { fadeUp } from '@/lib/motion'
 import { backwaterTheme, PresentationThemeContext, type SectionTone } from '@/lib/presentationTheme'
@@ -184,7 +185,10 @@ function Opening() {
               <ScreenFigure screen={dock} className="mt-16" />
               <ScreenFigure screen={explore} />
             </div>
-            <figcaption className={`${label} relative mt-6 text-[#5A665E]`}>{opening.caption}</figcaption>
+            <figcaption className="relative mt-6">
+              <span className={`${label} block text-[#5A665E]`}>{opening.caption}</span>
+              <MapAttribution subject="Map in the Explore screen" className="mt-2 text-[#5A665E]" linkClassName={focus} />
+            </figcaption>
           </figure>
         </Reveal>
       </div>
@@ -221,7 +225,10 @@ function Walkthrough() {
                 descriptionId={descriptionId}
               />
             </div>
-            <figcaption className={`${label} relative mt-5 text-[#5A665E]`}>{walkthrough.disclosure}</figcaption>
+            <figcaption className="relative mt-5">
+              <span className={`${label} block text-[#5A665E]`}>{walkthrough.disclosure}</span>
+              <MapAttribution subject="Map in the Explore scene" className="mt-2 text-[#5A665E]" linkClassName={focus} />
+            </figcaption>
           </figure>
           <details className="group mt-5 max-w-[70ch]">
             <summary className={`inline-flex min-h-11 cursor-pointer items-center rounded text-sm font-semibold text-[#20382F] underline-offset-2 hover:underline ${focus}`}>
@@ -293,6 +300,7 @@ function Explore() {
             <ScreenFigure screen={explore.before} />
             <ScreenFigure screen={explore.after} className="mt-16" />
           </div>
+          <MapAttribution subject="Maps in both screens" className="relative mx-auto mt-4 max-w-[560px] text-[#5A665E]" linkClassName={focus} />
         </div>
         <div className="lg:col-span-6">
           <Reveal>
