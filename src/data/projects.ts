@@ -25,7 +25,7 @@ export const projects: Project[] = [
     tags: ['UX Research', 'Mobile App', 'Group Project', 'Academic'],
     year: '2026',
     image: '/Portfolio/projects/aic-museum-experience/aic-cover.jpg',
-    imageAlt: 'AIC Museum Experience case study cover: “Beyond the gallery.” beside light and dark versions of the concept’s home screen.',
+    imageAlt: 'AIC Museum Experience title beside Georges Seurat’s A Sunday on La Grande Jatte, a public-domain painting from the Art Institute of Chicago, hung in a pale arch.',
     featured: false,
   },
   {

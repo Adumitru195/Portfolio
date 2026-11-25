@@ -37,7 +37,7 @@ export const workFolders: Record<string, WorkFolder> = {
     tint: 'stone',
     cover: {
       src: '/Portfolio/projects/aic-museum-experience/aic-folder-cover.jpg',
-      alt: 'AIC Museum Experience title beside the original light and dark versions of the concept’s home screen.',
+      alt: 'AIC Museum Experience title beside Georges Seurat’s A Sunday on La Grande Jatte, a public-domain painting from the Art Institute of Chicago, hung in a pale arch.',
     },
   },
   porchlight: {
