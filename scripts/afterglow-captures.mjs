@@ -2,8 +2,8 @@
 //
 // Every image comes from the working prototype (UX Projects/Afterglow Cinema),
 // not from a mock-up. Cinemas, schedules, availability and prices are the
-// prototype's fictional sample data. The films and their artwork are fictional
-// and original to the prototype (see that project's docs/ASSET-SOURCES.md).
+// prototype's fictional sample data. The films are fictional; their artwork was
+// generated with ChatGPT (see that project's docs/ASSET-SOURCES.md).
 //
 // Run the prototype, then this script, with Playwright available without adding
 // it to package.json:

@@ -14,20 +14,24 @@ const shots = `${base}/case-study`
 //    Microsoft Edge at 390 x 844 and 1440 x 900.
 //  - Test results were re-run on November 23, 2026 with the prototype's own
 //    suites in docs/verification/: browser-check 74/74, 74/74, 73/73; axe-audit
-//    0 violations in 14 states; artwork-contrast 27/27, lowest 5.25:1;
+//    0 violations in 14 states; artwork-contrast 123/123 (all nine film pages), lowest 4.06:1;
 //    motion-check 61/61; showcase-check 43/43. Bundle sizes are from a fresh
 //    production build.
 //  - Contrast ratios are computed with the WCAG 2.x formula from the tokens.
 //  - motion-demo.mp4/.webm is the October 4, 2026 recording with its first two
 //    frames (blank white page-load frames) removed on November 23, 2026; the
 //    originals are archived in Afterglow Cinema/docs/portfolio-archive-2026-11-23/.
-//  - Films are fictional and their artwork is original to the prototype
-//    (scripts/generate-artwork.py there; Afterglow Cinema/docs/ASSET-SOURCES.md).
+//  - Films are fictional. Their nine posters and nine widescreen backdrops
+//    were generated with ChatGPT (November 25, 2026; Afterglow Cinema/photos and
+//    docs/ASSET-SOURCES.md). Captures, card, poster and recording were remade
+//    then with the clock fixed to November 23; layout measurements unchanged,
+//    artwork contrast now checked on all nine film pages: 123/123, lowest 4.06:1
+//    (film-page title, needs 3:1).
 //    On November 24, 2026 they replaced unlicensed studio artwork; captures,
 //    card, poster and recording were remade then (clock fixed to November 23,
 //    so the sample schedule is unchanged). Re-verified the same day:
 //    browser-check 74/74, 74/74, 73/73; axe 14 states clean; artwork-contrast
-//    27/27, lowest 5.25:1; motion 61/61; showcase 43/43. Showtimes now begins
+//    27/27, lowest 5.25:1 (superseded Nov 25, see above); motion 61/61; showcase 43/43. Showtimes now begins
 //    at 575 px (1440 x 900) and 664 px (390 x 844).
 //  - Provenance: the prototype's code was written with Claude Code under the
 //    owner's product direction, UX/UI and interaction design, and review
@@ -67,7 +71,7 @@ export const afterglow: AfterglowCaseStudy = {
       { problem: 'Showtime selection', stat: { value: '0', label: 'tabs between a film and its showtimes', detail: '', kind: 'verified' } },
       { problem: 'Understanding the selection', stat: { value: '1 click', label: 'from the homepage to a complete showing summary', detail: '', kind: 'verified' } },
     ],
-    note: 'Cinemas, schedules and prices are sample data, and no tickets are sold. The films are fictional, and their posters are original artwork made for the prototype. Afterglow isn’t affiliated with any studio, distributor or cinema.',
+    note: 'Cinemas, schedules and prices are sample data, and no tickets are sold. The films are fictional, and their posters and backdrops were generated with ChatGPT for the prototype; credits on the posters are sample content. Afterglow isn’t affiliated with any studio, distributor or cinema.',
   },
 
   journey: {
@@ -231,7 +235,7 @@ export const afterglow: AfterglowCaseStudy = {
     checks: [
       { value: '74 / 74 / 73', label: 'browser checks pass', detail: 'Full journey at 390, 768 and 1440 px.', kind: 'verified' },
       { value: '0', label: 'accessibility violations', detail: 'axe, WCAG 2.2 A/AA, 14 states.', kind: 'verified' },
-      { value: '5.25:1', label: 'lowest contrast of text over artwork', detail: '27 of 27 measurements pass.', kind: 'verified' },
+      { value: '4.06:1', label: 'lowest contrast of text over artwork', detail: '123 of 123 measurements pass.', kind: 'verified' },
       { value: '61 / 61', label: 'motion and reduced-motion checks', detail: 'Including 0 frames drawn at rest.', kind: 'verified' },
       { value: '94.8 kB', label: 'app code, gzipped', detail: 'The 132 kB 3D scene loads only on desktop.', kind: 'measured' },
     ],
